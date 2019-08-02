@@ -1,0 +1,29 @@
+.title{
+  font-size: 14px;
+}
+
+.text{
+  font-size: 12px;
+}
+
+.creditCards{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 330px;
+}
+
+.creditCard:hover{
+  cursor: pointer;
+}
+
+.creditCards::-webkit-scrollbar {
+  width: 5px;
+}
+
+.creditCards::-webkit-scrollbar-track{
+  background: #ddd;
+}
+
+.creditCards::-webkit-scrollbar-thumb{
+  background: #9E56FC; 
+}

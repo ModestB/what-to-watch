@@ -1,0 +1,158 @@
+.Card{
+  height: 175px;
+  max-height: 175px;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.6s ease-in-out; 
+}
+
+.Card.SinglePage{
+  height: auto;
+  max-height: 700px;
+}
+
+.Card:hover{
+  /* cursor: pointer; */
+}
+
+.CardTitle{
+  font-size: 14px;
+  padding-right: 40px;
+  color: #616161;
+}
+
+.CardImg, .NoImg{
+  width: 120px;
+  min-width: 120px;
+  max-height: 175px;
+  height: 175px;
+  transition: all 0.3s ease-in-out;
+}
+
+.NoImg{
+  background-color: #616161;
+}
+
+.CardText{
+  font-size: 12px;
+}
+
+.textOverview{
+  max-height: 180px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.CardFooter{ 
+  border: none;
+}
+
+.date{
+  font-size: 10px;
+}
+
+.Badge{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0;
+  font-size: 16px;
+  height: 40px;
+  width: 40px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.Btn{
+  height: 32px;
+  border-radius: 0;
+  padding: 3px 12px;
+  font-size: 17px;
+}
+
+.CardOverlay{
+  position: absolute;
+  bottom: 0;
+  left: -120px;
+  width: 0%;
+  height: 30px;
+  background-color: rgba(158, 86, 252, 0.9);
+  transition: all 0.4s ease-in-out;
+}
+
+.Card:hover .CardOverlay{
+  left: 0;
+  width: 120px;
+}
+
+.CardOverlay:hover{
+  cursor: pointer;
+}
+
+.CardOverlay p{
+  font-size: 16px;
+  font-weight: bold;
+  color: #F2F2F2;
+  white-space: nowrap;
+}
+
+.SinglePage .CardImg, .SinglePage .NoImg{
+  width: 130px;
+  min-width: 130px;
+  height: 195px;
+  max-height: 195px;
+}
+
+.reviews, 
+.trailers{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 330px;
+}
+
+.reviews::-webkit-scrollbar,
+.trailers::-webkit-scrollbar,
+.textOverview::-webkit-scrollbar {
+  width: 5px;
+}
+
+.reviews::-webkit-scrollbar-track,
+.trailers::-webkit-scrollbar-track,
+.textOverview::-webkit-scrollbar-track{
+  background: #ddd;
+}
+
+.reviews::-webkit-scrollbar-thumb,
+.trailers::-webkit-scrollbar-thumb,
+.textOverview::-webkit-scrollbar-thumb {
+  background: #9E56FC; 
+}
+
+
+.containerHeader p{
+  font-size: 18px;
+  color: #616161;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.containerHeader span{
+  position: absolute;
+  width: calc(100% - 32px);
+  bottom: 12px;
+  left: 0;
+  background-color: #616161;
+  height: 1px;
+}
+
+.accordion .card{
+  border-left: 0;
+  border-right: 0;
+  
+}
+
+.accordion .cardHeader{
+  border-radius: 0;
+  background-color: #ffffff;
+}

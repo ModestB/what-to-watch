@@ -1,0 +1,26 @@
+.accordion .card{
+  border-left: 0;
+  border-right: 0;
+  
+}
+
+.accordion .cardHeader{
+  border-radius: 0;
+  background-color: #ffffff;
+}
+
+.containerHeader p{
+  font-size: 18px;
+  color: #616161;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.containerHeader span{
+  position: absolute;
+  width: calc(100% - 32px);
+  bottom: 12px;
+  left: 0;
+  background-color: #616161;
+  height: 1px;
+}

@@ -1,0 +1,26 @@
+.SearchFormInput{
+  height: 32px;
+  border-radius: 0;
+  font-size: 12px;
+}
+
+.SearchFormInput:focus{
+  border-color:#9E56FC;
+  box-shadow: 0 0 0 0.2rem rgba(158, 86, 252, .25);
+}
+
+.SearchSubmitBtn{
+  height: 32px;
+  min-width: 110px;
+  border-radius: 0;
+  padding: 3px 12px;
+  font-size: 17px;
+  background-color: #9E56FC;
+  border-color:  #9E56FC;
+}
+
+.SearchSubmitBtn:hover{
+  background-color: rgb(137, 47, 255);
+  border-color:  rgb(137, 47, 255);
+  box-shadow: 0 0 0 0.2rem rgba(137, 47, 255, .25);
+}
