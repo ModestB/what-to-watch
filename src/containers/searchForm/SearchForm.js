@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 // Import CSS
-import classes from "./SearchForm.module.css";
+import classes from "./SearchForm.module.scss";
 
 class SearchForm extends Component {
   formSubmitHandler = (e) => {
