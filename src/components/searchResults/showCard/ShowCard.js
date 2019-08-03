@@ -98,11 +98,12 @@ class ShowCard extends Component{
   
     if (this.props.displayTrailers) {
       if (this.props.trailers.length > 0) {
-        trailers = this.props.trailers.map( element => {
+        trailers = this.props.trailers.map(element => {
           return (
             <TrailerCard 
               key={element.id}
               youtubeKey={element.key}
+              title={element.name}
             />
           )
         }) 

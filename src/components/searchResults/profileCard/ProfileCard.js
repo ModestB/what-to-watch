@@ -3,9 +3,6 @@ import React from 'react';
 // Bootsrap imports
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Badge from 'react-bootstrap/Badge';
 
 // Components imports
 import NoImagePerson from '../../../icons/js/Person';

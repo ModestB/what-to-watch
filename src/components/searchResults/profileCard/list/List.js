@@ -6,10 +6,11 @@ import Badge from 'react-bootstrap/Badge';
 import classes from './List.module.css';
 
 const List = (props) => {
-  let knownForList = props.elements.map(( element ) => {
+  let knownForList = props.elements.map((element) => {
+    let item = null;
     switch (element.media_type ) {
       case "movie":
-        return (
+        item = 
           <ListGroup.Item 
             className={`${ classes.ListGroupItem } d-flex pt-0 pb-1 pl-0 pr-1`}
             key={element.id}
@@ -27,9 +28,9 @@ const List = (props) => {
               {element.title} 
             </span>
           </ListGroup.Item>
-        )
+        break;
       case "tv":
-        return (
+        item =
           <ListGroup.Item 
             className={`${ classes.ListGroupItem } d-flex pt-0 pb-1 pl-0 pr-1`}
             key={element.id}
@@ -47,11 +48,14 @@ const List = (props) => {
             {element.name} 
             </span>         
           </ListGroup.Item>
-        )
+        break;
+      default:
+        item  = null;
     }
+    return item;
   })
   return(
-    <ListGroup className={`${ classes.ListGroup } mt-2`}>
+    <ListGroup className={`${classes.ListGroup} mt-2`}>
       {knownForList}
     </ListGroup>
   )

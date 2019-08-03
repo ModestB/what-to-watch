@@ -14,10 +14,11 @@ class SearchResults extends Component {
     let resultToDisplay = null;
     let goBackBtn = null;
 
-    resultToDisplay = this.props.displayedResults.map( element => {
-      switch ( element.media_type ) {
+    resultToDisplay = this.props.displayedResults.map(element => {
+      let card = null;
+      switch (element.media_type) {
         case "movie":
-          return (
+          card =
             <ShowCard 
               key = {element.id} 
               title = {element.title}
@@ -35,10 +36,11 @@ class SearchResults extends Component {
               displayTrailersHandler = {this.props.displayTrailersHandler}
               displayTrailers = {this.props.displayTrailers}
               trailers = {this.props.trailers}
-              loading = {this.props.loading}/>        
-          )
+              loading = {this.props.loading}
+            />
+          break;            
         case "person":
-          return (
+          card =
             <ProfileCard
               key = {element.id} 
               name = {element.name}
@@ -51,10 +53,11 @@ class SearchResults extends Component {
               displayDetailedProfile = {this.props.displayDetailedProfile}
               singleProfileDetails = {this.props.singleProfileDetails}
               singleProfileCredits = {this.props.singleProfileCredits}
-              loading = {this.props.loading}/>   
-          )
+              loading = {this.props.loading}
+            />   
+          break; 
         case "tv":
-          return (
+          card =
             <ShowCard 
               key = {element.id } 
               title = {element.original_name}
@@ -72,13 +75,18 @@ class SearchResults extends Component {
               displayTrailersHandler = {this.props.displayTrailersHandler}
               displayTrailers = {this.props.displayTrailers}
               trailers = {this.props.trailers}
-              loading = {this.props.loading}/>   
-          )
+              loading = {this.props.loading}
+            /> 
+          break; 
+        default:
+          card = <p className="text-alert">No results</p>; 
       };
+
+      return card;
     });
 
     if (this.props.displayNewSinglePage) {
-      if( this.props.singlePageType === "movie"){
+      if(this.props.singlePageType === "movie"){
             resultToDisplay =
               <ShowCard 
                 key = {this.props.displayedResults[0].id} 
