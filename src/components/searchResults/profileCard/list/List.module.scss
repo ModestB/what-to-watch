@@ -1,0 +1,33 @@
+@import 'assets/styles/variables';
+
+.ListGroup{
+  overflow-y: auto;
+  height: 100px;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $text__color--grey;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $color--primary; 
+  }
+}
+
+.ListGroupItem{
+  border: none;
+  font-size: 12px;
+  color: $color--dark;
+}
+
+.ShowName:hover{
+  cursor: pointer;
+  color: $color--primary;
+}
+
+.Badge{
+  font-size: 11px;
+  border-radius: 0;
+  min-width: 75px;
+  max-width: 75px;
+}

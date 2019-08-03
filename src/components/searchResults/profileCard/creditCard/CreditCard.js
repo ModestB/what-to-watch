@@ -3,7 +3,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 
-import classes from './CreditCard.module.css';
+import classes from './CreditCard.module.scss';
 
 const CreditCard = (props) => {
   return (

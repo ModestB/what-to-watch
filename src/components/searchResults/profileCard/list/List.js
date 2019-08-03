@@ -3,7 +3,7 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
 
-import classes from './List.module.css';
+import classes from './List.module.scss';
 
 const List = (props) => {
   let knownForList = props.elements.map((element) => {

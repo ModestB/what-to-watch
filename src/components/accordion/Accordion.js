@@ -1,6 +1,6 @@
 import React from 'react';
 
-import classes from './Accordion.module.css';
+import classes from './Accordion.module.scss';
 import Card from 'react-bootstrap/Card';
 
 const Accordion = (props) => {

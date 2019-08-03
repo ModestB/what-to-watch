@@ -1,0 +1,29 @@
+@import 'assets/styles/variables';
+
+.accordion{
+  .card{
+    border-left: 0;
+    border-right: 0;
+  }  
+  .cardHeader{
+    border-radius: 0;
+    background-color: $color--light
+  }
+}
+
+.containerHeader{
+  p{
+    font-size: 18px;
+    color: $text__color--dark;
+    background-color:$color--light;
+    z-index: 2;
+  }
+  span{
+    position: absolute;
+    width: calc(100% - 32px);
+    bottom: 12px;
+    left: 0;
+    background-color: $text__color--dark;
+    height: 1px;
+  }
+}

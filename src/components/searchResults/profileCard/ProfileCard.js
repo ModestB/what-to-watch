@@ -13,7 +13,7 @@ import CreditCard from './creditCard/CreditCard';
 import List from './list/List';
 
 // CSS imports
-import classes from "./ProfileCard.module.css";
+import classes from "./ProfileCard.module.scss";
 
 const profileCard = (props) => {
   let cardBodyContent = null;

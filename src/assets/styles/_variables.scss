@@ -1,0 +1,18 @@
+$text__color--light: #ffffff;
+$text__color--grey: #F2F2F2;
+$text__color--grey2: #dddddd;
+$text__color--dark: #616161;
+
+$color--light: #ffffff;
+$color--dark: #616161;
+$color--primary: #9E56FC;
+$color--primary--darker: darken($color--primary, 20);
+$color--success: #56FC67;
+$color--warning: #EDFC56;
+
+$color--danger: #FC5656;
+$color--danger--darker: darken($color--danger, 20);
+
+$shadow--danger: rgba(252, 86, 86, .25);
+$shadow--primary: rgba(158, 86, 252, .25);
+$shadow--primary--darker: rgba(137, 47, 255, .25);

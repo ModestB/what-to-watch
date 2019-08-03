@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 
 
 // Style imports
-import classes from "./ReviewCard.module.css";
+import classes from "./ReviewCard.module.scss";
 
 const reviewCard = ( props ) => {
   return (

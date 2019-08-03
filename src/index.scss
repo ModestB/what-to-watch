@@ -1,0 +1,102 @@
+@import 'assets/styles/variables';
+
+body {
+  width: 400px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.badge{
+  &.badge-success{ 
+    background-color: $color--success;
+  }
+  &.badge-warning{ 
+    background-color: $color--warning;
+    color: $text__color--light;
+  }
+  &.badge-danger{ 
+    background-color: $color--danger;
+  }
+}
+
+.btn-danger, 
+.btn-primary{
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-danger{
+  background-color: $color--danger;
+  &:hover{
+    background-color: $color--danger--darker;
+    border-color: $color--danger--darker;
+  }
+}
+
+.btn-primary{
+  background-color: $color--primary;
+  border-color:  $color--primary;
+  box-shadow: 0 0 0 0.2rem $shadow--primary;
+  &:hover{
+    background-color: $color--primary--darker;
+    border-color:  $color--primary--darker;
+    box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
+  }
+}
+
+.btn-danger:not(:disabled):not(.disabled):active,
+.btn-danger:not(:disabled):not(.disabled):focus{
+  background-color: $color--danger--darker;
+  border-color: $color--danger--darker;
+  box-shadow: 0 0 0 0.2rem $shadow--danger;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled):focus{
+  background-color: $color--primary--darker;
+  border-color:  $color--primary--darker;
+  box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
+}
+
+.accordion{
+  > .card{
+    .card-header{
+      margin-bottom: 0;
+    }
+  }
+  .card-header{
+    transition: all 0.2s ease-in-out;
+    &:hover{
+      cursor: pointer;
+      background-color: $color--primary;
+      p{
+        background-color: $color--primary;
+        color: $text__color--light;
+      }
+      span{
+        background-color: $color--light;
+      }
+    }
+    &:not(.collapsed),
+    &:not(.collapsed) p {
+      background-color: $color--primary;
+      color: $color--light;
+    }
+
+    &:not(.collapsed){
+      span{
+        background-color: $text__color--light;
+      }
+    }
+    span,
+    p{
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}

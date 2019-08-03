@@ -10,7 +10,7 @@ import NoImage from '../../../icons/js/NoImage';
 import Accordion from '../../accordion/Accordion';
 
 // Style imports
-import classes from "./ShowCard.module.css";
+import classes from "./ShowCard.module.scss";
 
 class ShowCard extends Component{
   // constructor(props) {

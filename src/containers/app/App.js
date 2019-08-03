@@ -17,7 +17,7 @@ import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
 // APIE
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
-const DEFAULT_QUERY = "sophie turner";
+const DEFAULT_QUERY = "avengers";
 
 class App extends Component {
   constructor(props) {

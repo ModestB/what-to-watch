@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./TrailerCard.module.css";
+import classes from "./TrailerCard.module.scss";
 
 const trailerCard = (props) => {
   return (

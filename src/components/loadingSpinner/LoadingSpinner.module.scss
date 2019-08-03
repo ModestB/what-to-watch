@@ -1,3 +1,5 @@
+@import 'assets/styles/variables';
+
 .loadingSpinner {
   display: inline-block;
   position: relative;
@@ -9,7 +11,7 @@
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  background: #9E56FC;
+  background: $color--primary;
   animation: lds-grid 1.2s linear infinite;
 }
 .loadingSpinner div:nth-child(1) {

@@ -1,3 +1,5 @@
+@import 'assets/styles/variables';
+
 .Card{
   height: 175px;
   max-height: 175px;
@@ -6,15 +8,10 @@
   overflow: hidden;
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.6s ease-in-out; 
-}
-
-.Card.SinglePage{
-  height: auto;
-  max-height: 700px;
-}
-
-.Card:hover{
-  /* cursor: pointer; */
+  &.SinglePage{
+    height: auto;
+    max-height: 700px;
+  }
 }
 
 .CardTitle{
@@ -37,12 +34,6 @@
 
 .CardText{
   font-size: 12px;
-}
-
-.textOverview{
-  max-height: 180px;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .CardFooter{ 
@@ -93,66 +84,41 @@
 .CardOverlay p{
   font-size: 16px;
   font-weight: bold;
-  color: #F2F2F2;
+  color: $text__color--grey;
   white-space: nowrap;
 }
 
-.SinglePage .CardImg, .SinglePage .NoImg{
-  width: 130px;
-  min-width: 130px;
-  height: 195px;
-  max-height: 195px;
+.SinglePage{
+  .CardImg,
+  .NoImg{
+    width: 130px;
+    min-width: 130px;
+    height: 195px;
+    max-height: 195px;
+  }
+}
+
+.textOverview{
+  max-height: 180px;
 }
 
 .reviews, 
 .trailers{
-  overflow-y: auto;
-  overflow-x: hidden;
   height: 330px;
 }
 
-.reviews::-webkit-scrollbar,
-.trailers::-webkit-scrollbar,
-.textOverview::-webkit-scrollbar {
-  width: 5px;
-}
-
-.reviews::-webkit-scrollbar-track,
-.trailers::-webkit-scrollbar-track,
-.textOverview::-webkit-scrollbar-track{
-  background: #ddd;
-}
-
-.reviews::-webkit-scrollbar-thumb,
-.trailers::-webkit-scrollbar-thumb,
-.textOverview::-webkit-scrollbar-thumb {
-  background: #9E56FC; 
-}
-
-
-.containerHeader p{
-  font-size: 18px;
-  color: #616161;
-  background-color: #ffffff;
-  z-index: 2;
-}
-
-.containerHeader span{
-  position: absolute;
-  width: calc(100% - 32px);
-  bottom: 12px;
-  left: 0;
-  background-color: #616161;
-  height: 1px;
-}
-
-.accordion .card{
-  border-left: 0;
-  border-right: 0;
-  
-}
-
-.accordion .cardHeader{
-  border-radius: 0;
-  background-color: #ffffff;
+.reviews, 
+.trailers,
+.textOverview{
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track{
+    background: $text__color--grey2;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: $color--primary; 
+  }
 }

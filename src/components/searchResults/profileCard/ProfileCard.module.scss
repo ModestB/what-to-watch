@@ -1,0 +1,122 @@
+@import 'assets/styles/variables';
+
+.Card{
+  height: 175px;
+  max-height: 175px;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  &.detailedCard{
+    height: auto;
+    max-height: 700px;
+  }
+}
+
+.cardFooter{
+  border: none;
+  background-color: $color--light;
+}
+
+.CardTitle{
+  font-size: 16px;
+  color: $text__color--dark;
+}
+
+.CardImg, 
+.NoImg{
+  width: 120px;
+  min-width: 120px;
+  height: 175px;
+  max-height: 175px;
+  transition: all 0.3s ease-in-out;
+}
+
+.detailedCard{
+  .CardImg,
+  .NoImg{
+    width: 130px;
+    min-width: 130px;
+    height: 195px;
+    max-height: 195px;
+  }
+}
+
+.NoImg{
+  background-color: $color--dark
+}
+ 
+.ShowName:hover{
+  cursor: pointer;
+  color: $color--primary;
+}
+
+.title,
+.text{
+  color: $text__color--dark;
+}
+
+.title{
+  font-size: 14px;
+}
+
+.text{
+  font-size: 12px;
+}
+
+.Badge{
+  font-size: 11px;
+  border-radius: 0;
+  min-width: 75px;
+  max-width: 75px;
+}
+
+.CardOverlay{
+  position: absolute;
+  bottom: 0;
+  left: -120px;
+  width: 0%;
+  height: 30px;
+  background-color: rgba(158, 86, 252, 0.9);
+  transition: all 0.4s ease-in-out;
+}
+
+.Card:hover .CardOverlay{
+  left: 0;
+  width: 120px;
+}
+
+.CardOverlay{
+  &:hover{
+    cursor: pointer;
+  }
+  p{
+    font-size: 16px;
+    font-weight: bold;
+    color: $text__color--grey;
+    white-space: nowrap;
+  }
+}
+
+.loadingSpinner{
+  width: 218px;
+  height: 121px;
+}
+
+.creditCards{
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 330px;
+  &:hover{
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track{
+    background: $text__color--grey2;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: $color--primary; 
+  }
+}

@@ -7,7 +7,7 @@ import ProfileCard from "./profileCard/ProfileCard";
 import Button from 'react-bootstrap/Button';
 
 // Style imports
-import classes from "./SearchResults.module.css";
+import classes from "./SearchResults.module.scss";
 
 class SearchResults extends Component {
   render () {
