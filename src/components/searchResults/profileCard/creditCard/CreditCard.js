@@ -7,7 +7,7 @@ import classes from './CreditCard.module.scss';
 
 const CreditCard = (props) => {
   return (
-    <Col xs='6' key={props.id} onClick={ () => props.showSingleShow(props.id, props.mediaType) }>
+    <Col xs='6' onClick={ () => props.showSingleShow(props.id, props.mediaType) }>
       <Card className={`${classes.creditCard} border-0 `}>
         <Card.Body className='px-2 pt-0'>
           {props.posterImg}

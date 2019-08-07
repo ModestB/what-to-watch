@@ -128,7 +128,7 @@ class App extends Component {
       })
   }
 
-  findShowByIdHandler = ( showId, mediaType ) => {
+  findShowByIdHandler = (showId, mediaType) => {
     this.setState( () => {
       return {
         loading: true

@@ -24,3 +24,12 @@
     box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
   }
 }
+
+.iconClose{
+  position: absolute;
+  top: 3px;
+  right: 10px;
+  &:hover{
+    cursor: pointer;
+  }
+}

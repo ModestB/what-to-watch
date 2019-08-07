@@ -125,11 +125,13 @@ class ShowCard extends Component{
             elements = {[
               {
                 title : 'Trailers',
-                body : trailersContainer
+                body : trailersContainer,
+                id: this.props.element.id
               },
               {
                 title : 'Reviews',
-                body : reviewsContainer
+                body : reviewsContainer,
+                id: this.props.element.id
               },
             ]}
           />
@@ -145,7 +147,7 @@ class ShowCard extends Component{
           
             <Card.Body className="d-flex p-0">
               { posterImg }
-              <div class="d-flex flex-column pt-3 pl-3 pb-1 w-100">
+              <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
                 { cardTitle }
                 { cardText }
                 { date }  

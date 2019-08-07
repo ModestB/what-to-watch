@@ -5,10 +5,12 @@ import Card from 'react-bootstrap/Card';
 
 const Accordion = (props) => {
   let cards = null;
-
   cards = props.elements.map((element, index) => {
     return (
-      <Card className={`${ classes.card } rounded-0`}>
+      <Card 
+        className={`${ classes.card } rounded-0`}
+        key={`${element.id}${index}`}
+      >
         <Card.Header className={`${ classes.cardHeader } collapsed`}  id={`heading${index}`}   data-toggle="collapse" data-target={`#collapse${index}`} aria-expanded="false" aria-controls={`collapse${index}`}>
           <h2 className="mb-0">
             <div className={`${classes.containerHeader} position-relative d-flex justify-content-center font-weight-bold`}>

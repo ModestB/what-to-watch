@@ -61,6 +61,7 @@ const profileCard = (props) => {
       }
       return (
         <CreditCard
+          key={element.id}
           id={element.id}
           mediaType={element.media_type}
           title={element.original_title}
@@ -108,11 +109,13 @@ const profileCard = (props) => {
               body : 
                 <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} my-3 ml-3 pr-3`}>
                   {props.singleProfileDetails.biography ? props.singleProfileDetails.biography : 'No Information'}
-                </p>
+                </p>,
+              id: props.element.id
             },
             {
               title : 'Starred In',
-              body : creditCards 
+              body : creditCards,
+              id: props.element.id 
             },
           ]}
         />

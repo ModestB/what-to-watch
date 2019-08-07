@@ -1,0 +1,42 @@
+@import 'assets/styles/variables';
+
+.suggestions{
+  position: absolute;
+  z-index: 0;
+  top: 58px;
+  height: 0;
+  width: 252px;
+  background-color: $color--light;
+  opacity: 0;
+  padding: 0;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+  &.show{
+    height: 130px;
+    border: 1px solid #ced4da;
+    opacity: 1;
+    z-index: 2;
+  }
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track{
+    background: $text__color--grey2;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: $color--primary; 
+  }
+  p{
+    font-size: 14px;
+    padding: 6px 12px;
+    &:hover{
+      background-color: $color--grey;
+      color: $color--primary;
+      cursor: pointer;
+    }
+    span{
+      color: $color--primary;
+      font-weight: 700;
+    }
+  }
+}
