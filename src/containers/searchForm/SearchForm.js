@@ -63,6 +63,8 @@ class SearchForm extends Component {
   formSubmitHandler = (e) => {
     e.preventDefault();
     this.setState ({
+      value: '',
+      searchSuggestions: [],
       showSuggestions: false
     })
     this.props.searchHandler(this.nameInput.value);
