@@ -17,7 +17,6 @@ import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
 // APIE
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
-const DEFAULT_QUERY = "avengers";
 
 class App extends Component {
   constructor(props) {
@@ -231,22 +230,13 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    fetch( MULTI_API + DEFAULT_QUERY )
-    .then( (response) => {
-      return response.json()
-    })
-    .then( ( data ) => {
-      this.setState({
-        searchInputValue : DEFAULT_QUERY,
-        searchResult : data.results,
-        displayedResults : data.results
-      })
-    })  
-  }
-
   render () {
-    let searchResult = <p>No results</p>;
+    let searchResult = null;
+
+    if (this.state.searchInputValue !== 'null') {
+      searchResult = <p>No results</p>;
+    }
+
     if (this.state.searchResult.length > 0) {
       searchResult = 
         <SearchResults 
