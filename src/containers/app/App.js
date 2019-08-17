@@ -41,7 +41,9 @@ class App extends Component {
     displayDetailedProfile: false,
     singleProfileDetails: {},
     singleProfileCredits: [],
-    loading : false
+    loading : false,
+    loadingProfile: false,
+    loadingShowCard: false
   }
 
   searchHandler = ( inputValue ) => {
@@ -78,12 +80,12 @@ class App extends Component {
         singlePageData : elementToDisplay[0],
         displaySinglePage : true,
         displayedResults : elementToDisplay,
-        singlePageType : elementToDisplay[0].media_type
+        singlePageType : elementToDisplay[0].media_type,
+        loadingShowCard : true
       }    
     });
 
-    this.displayTrailersHandler(element.id, element.media_type);
-    this.displayReviewsHandler(element.id, element.media_type);
+    this.getAdditionalShowInfoHandler(element.id, element.media_type);
   };
 
   filterProfileSinglePageHandler = ( profileId ) => {
@@ -148,8 +150,7 @@ class App extends Component {
         return response.json();
       })
       .then( ( data ) => {
-        this.displayTrailersHandler(showId, mediaType);
-        this.displayReviewsHandler(showId, mediaType);
+        this.getAdditionalShowInfoHandler(showId, mediaType);
         this.setState( (  ) => {
           return {
             singlePageData : [data],
@@ -161,8 +162,6 @@ class App extends Component {
           }    
         });
       })
-
-      
   };
 
   showPreviousResultsHandler = () => {
@@ -172,82 +171,57 @@ class App extends Component {
         displayNewSinglePage : false,
         displayedResults : [...prevState.searchResult],
         displayReviews : false,
+        reviews : [],
+        trailers : [],
         displayTrailers : false,
-        displayDetailedProfile: false
+        displayDetailedProfile: false,
+        loading: false
       }    
     });
   };
 
-  displayReviewsHandler = ( showId, mediaType ) => {
-    let request = "";
+  getAdditionalShowInfoHandler = ( showId, mediaType ) => {
+    let requestTrailers = "";
+    let requestReviews = "";
+    let trailersData = null;
+    let reviewsData = null;
 
-    if( !this.state.displayReviews){
-      this.setState( () => {
-        return {
-          loading: true
-        }    
-      });
-
+    if(!this.state.displayTrailers && !this.state.displayReviews){
       if( mediaType === 'movie'){
-        request = ` https://api.themoviedb.org/3/movie/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
-      } else {
-        request = `
-        https://api.themoviedb.org/3/tv/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
-      }
-  
-      return fetch( request )
-        .then( (response) => {
-          return response.json();
-        })
-        .then( ( data ) => {
-          this.setState( () => {
-            return {
-              displayReviews : true,
-              reviews: data.results,
-              loading: false
-            }    
-          });
-        })
-    } else {
-      this.setState( () => {
-        return {
-          displayReviews : false
-        };
-      })
-    }
-  };
-
-  displayTrailersHandler = ( showId, mediaType ) => {
-    let request = "";
-
-    if( !this.state.displayTrailers){
-      this.setState( () => {
-        return {
-          loading: true
-        }    
-      });
-
-      if( mediaType === 'movie'){
-        request = `https://api.themoviedb.org/3/movie/${showId}/videos?api_key=${API_KEY}&language=en-US`;
+        requestTrailers = `https://api.themoviedb.org/3/movie/${showId}/videos?api_key=${API_KEY}&language=en-US`;
+        requestReviews = `https://api.themoviedb.org/3/movie/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
       } else {  
-        request = `https://api.themoviedb.org/3/tv/${showId}/videos?api_key=${API_KEY}&language=en-US`
+        requestTrailers = `https://api.themoviedb.org/3/tv/${showId}/videos?api_key=${API_KEY}&language=en-US`
+        requestReviews = `https://api.themoviedb.org/3/tv/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
       }
   
-      return fetch( request )
+      return fetch( requestTrailers )
         .then( (response) => {
           return response.json();
         })
         .then( ( data ) => {
+          trailersData  = data.results.filter( (element)  => {
+            return element.type === 'Trailer' && element.site === "YouTube";
+          })
+
+          return fetch( requestReviews );
+        })
+        .then( (response) => {
+          return response.json()
+        })
+        .then( (data)  => {
+          reviewsData = data;
           this.setState( () => {
             return {
-              displayTrailers : true,
-              trailers : data.results.filter( (element)  => {
-                return element.type === 'Trailer' && element.site === "YouTube";
-              }),
-              loading: false
-            }    
-          });
-        })
+              displayTrailers: true,
+              displayReviews: true,
+              trailers: trailersData,
+              reviews: reviewsData.results,
+              loadingShowCard: false
+            }
+          })
+         })
+        ;
     } else {
       this.setState( () => {
         return {
@@ -286,7 +260,7 @@ class App extends Component {
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.state.displayReviews}
           reviews = {this.state.reviews}
-          displayTrailersHandler = {this.displayTrailersHandler}
+          getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.state.displayTrailers}
           trailers = {this.state.trailers}
           loading = {this.state.loading}
@@ -295,6 +269,8 @@ class App extends Component {
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}
           displayNewSinglePage = {this.state.displayNewSinglePage}
+          loadingProfile = {this.state.loadingProfile}
+          loadingShowCard = {this.state.loadingShowCard}
         />
     }
     return (
@@ -305,8 +281,7 @@ class App extends Component {
             <h1 className="text-left mb-0 mt-2 ml-2"><b>Show</b> Lover</h1>
           </div>  
           <SearchForm searchHandler = {this.searchHandler}/>
-          { /*BUG: test if && !this.state.displaySinglePage does anything */}
-          { (this.state.loading && !this.state.displaySinglePage) ? <LoadingSpinner/> : searchResult}      
+          { this.state.loading ? <LoadingSpinner/> : searchResult}      
         </Container>
       </div>
     );
