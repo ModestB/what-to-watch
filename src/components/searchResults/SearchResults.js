@@ -11,6 +11,7 @@ import classes from "./SearchResults.module.scss";
 const SearchResults = (props) => {
   let resultToDisplay = null;
   let goBackBtn = null;
+  let searchResultClasses = null;
 
   resultToDisplay = props.displayedResults.map(element => {
     let card = null;
@@ -77,7 +78,27 @@ const SearchResults = (props) => {
           /> 
         break; 
       default:
-        card = <p className="text-alert">No results</p>; 
+        card =
+          <ShowCard 
+            key = {element.id } 
+            title = {element.original_name ? element.original_name : element.original_title}
+            overview = {element.overview}
+            posterPath = {element.poster_path}
+            rating = {element.vote_average}
+            date = {element.first_air_date ? element.first_air_date : element.release_date}
+            mediaType = {element.original_name ? 'tv' : 'movie'} 
+            element = {element}
+            filterSinglePage = {props.filterSinglePage}
+            displaySinglePage = {props.displaySinglePage}
+            displayReviewsHandler = {props.displayReviewsHandler}
+            displayReviews = {props.displayReviews}
+            reviews = {props.reviews}
+            displayTrailersHandler = {props.displayTrailersHandler}
+            displayTrailers = {props.displayTrailers}
+            trailers = {props.trailers}
+            loading = {props.loadingShowCard}
+          /> 
+
     };
 
     return card;
@@ -140,9 +161,13 @@ const SearchResults = (props) => {
         </Button>
       </div>;
   }
+
+  if (!props.displaySinglePage && !props.displayDetailedProfile) {
+    searchResultClasses = `${classes.resultsContainer} customScroll`
+  }
  
   return (
-    <div className="row ">
+    <div className={`${searchResultClasses} row`}>
       { goBackBtn }
       { resultToDisplay }
     </div>

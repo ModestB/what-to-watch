@@ -55,7 +55,7 @@ const List = (props) => {
     return item;
   })
   return(
-    <ListGroup className={`${classes.ListGroup} mt-2`}>
+    <ListGroup className={`${classes.ListGroup} customScroll mt-2`}>
       {knownForList}
     </ListGroup>
   )

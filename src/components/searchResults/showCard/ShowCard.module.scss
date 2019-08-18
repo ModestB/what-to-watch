@@ -3,6 +3,7 @@
 .Card{
   height: 175px;
   max-height: 175px;
+  margin-left: 19px;
   border: none;
   border-radius: 0;
   overflow: hidden;
@@ -11,6 +12,7 @@
   &.SinglePage{
     height: auto;
     max-height: 700px;
+    margin-left: 0px;
   }
 }
 
@@ -110,15 +112,5 @@
 .reviews, 
 .trailers,
 .textOverview{
-  overflow-y: auto;
   overflow-x: hidden;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-track{
-    background: $text__color--grey2;
-  }
-  &::-webkit-scrollbar-thumb{
-    background: $color--primary; 
-  }
 }

@@ -73,7 +73,7 @@ const profileCard = (props) => {
     })
 
     creditCards = 
-      <Row noGutters='true' className={`${classes.creditCards} p-3`}>
+      <Row noGutters='true' className={`${classes.creditCards} customScroll p-3`}>
         {creditCardsContent}
       </Row>;
   }
@@ -107,7 +107,7 @@ const profileCard = (props) => {
             {
               title : 'Biography',
               body : 
-                <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} my-3 ml-3 pr-3`}>
+                <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} customScroll my-3 ml-3 pr-3`}>
                   {props.singleProfileDetails.biography ? props.singleProfileDetails.biography : 'No Information'}
                 </p>,
               id: props.element.id

@@ -1,17 +1,7 @@
 @import 'assets/styles/variables';
 
 .ListGroup{
-  overflow-y: auto;
   height: 100px;
-  &::-webkit-scrollbar {
-    width: 5px;
-  }
-  &::-webkit-scrollbar-track {
-    background: $text__color--grey;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: $color--primary; 
-  }
 }
 
 .ListGroupItem{

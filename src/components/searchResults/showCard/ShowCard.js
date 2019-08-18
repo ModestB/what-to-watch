@@ -27,7 +27,7 @@ const ShowCard = (props) => {
   let cardOverlay = 
     <div 
       className={`${classes.CardOverlay} d-flex align-items-center justify-content-center px-2`} 
-      onClick={  () => props.filterSinglePage(props.element) }>
+      onClick={  () => props.filterSinglePage(props.element, props.mediaType) }>
       <p className="mb-0">More Info</p>
     </div>;
 
@@ -45,7 +45,7 @@ const ShowCard = (props) => {
   if(props.overview && !props.displaySinglePage) {
     cardText = <Card.Text className={`${classes.CardText} text-left mb-2 pr-3`}> { props.overview.substring(0, 150) + "..."  } </Card.Text>;
   } else {
-    cardText = <Card.Text className={`${ [classes.CardText, classes.textOverview].join(' ') } text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
+    cardText = <Card.Text className={`${ [classes.CardText, classes.textOverview].join(' ') } customScroll text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
   }
  
   if(!props.displaySinglePage) {
@@ -86,7 +86,7 @@ const ShowCard = (props) => {
     }
     reviewsContainer = 
       <div className="mb-3">
-        <div className={`${props.reviews.length > 0 ? classes.reviews : ''} d-flex flex-column pl-3 pt-3`}>  
+        <div className={`${props.reviews.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3 pt-3`}>  
           { reviews }
         </div>
       </div>  
@@ -94,7 +94,6 @@ const ShowCard = (props) => {
 
   if (props.displayTrailers) {
     if (props.trailers.length > 0) {
-      console.log(props.trailers)
       trailers = props.trailers.map(element => {
         return (
           <TrailerCard 
@@ -109,7 +108,7 @@ const ShowCard = (props) => {
     }
     trailersContainer = 
       <div className="">
-        <div className={`${props.trailers.length > 0 ? classes.trailers : ''} p-3`}>
+        <div className={`${props.trailers.length > 0 ? classes.trailers : ''} customScroll p-3`}>
           { trailers }
         </div>
       </div>;

@@ -29,6 +29,7 @@ class App extends Component {
     searchResult  : [],
     displayedResults: [],
     singlePageData : [],
+    showTrending : true,
     displaySinglePage : false,
     displayNewSinglePage : false,
     singlePageType : "",
@@ -40,14 +41,33 @@ class App extends Component {
     displayDetailedProfile: false,
     singleProfileDetails: {},
     singleProfileCredits: [],
-    loading : false,
+    loading : true,
     loadingProfile: false,
     loadingShowCard: false
+  }
+
+  componentDidMount(){
+    let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
+
+    return fetch(request)
+      .then( (response) => {
+        return response.json();
+      })
+      .then( ( data ) => {
+        this.setState( () => {
+          return {
+            searchResult : data.results,
+            displayedResults : data.results,
+            loading : false
+          }    
+        });
+      })
   }
 
   searchHandler = ( inputValue ) => {
     this.setState( () => {
       return {
+        showTrending: false,
         loading: true
       }    
     });
@@ -58,6 +78,7 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.setState({
+          showTrending : false,
           searchInputValue :  inputValue,
           searchResult : data.results,
           displayedResults : data.results,
@@ -70,7 +91,7 @@ class App extends Component {
       })
   }
 
-  filterSinglePageHandler = ( element ) => {
+  filterSinglePageHandler = ( element, mediaType ) => {
     let elementToDisplay = this.state.displayedResults.filter( ( item ) => {
       return item.id === element.id
     })
@@ -84,7 +105,7 @@ class App extends Component {
       }    
     });
 
-    this.getAdditionalShowInfoHandler(element.id, element.media_type);
+    this.getAdditionalShowInfoHandler(element.id, (element.media_type ? element.media_type : mediaType));
   };
 
   filterProfileSinglePageHandler = ( profileId ) => {
@@ -232,6 +253,7 @@ class App extends Component {
 
   render () {
     let searchResult = null;
+    let sectionTitle = null;
 
     if (this.state.searchInputValue !== 'null') {
       searchResult = <p>No results</p>;
@@ -263,14 +285,23 @@ class App extends Component {
           loadingShowCard = {this.state.loadingShowCard}
         />
     }
+
+    if (!this.state.displaySinglePage && !this.state.displayDetailedProfile) {
+      sectionTitle =   
+        <h2 className='sectionTitle'>
+          <span>{this.state.showTrending ? 'Trending' : 'Results'}</span>
+        </h2>
+    }
+
     return (
-      <div className="App">
+      <div className='App'>
         <Container className="pt-3">
           <div className="d-flex justify-content-center align-items-center">
             <IconTv fill="#9E56FC" height="40px" width="40px"/>
             <h1 className="text-left mb-0 mt-2 ml-2"><b>Show</b> Lover</h1>
           </div>  
           <SearchForm searchHandler = {this.searchHandler}/>
+          { sectionTitle }
           { this.state.loading ? <LoadingSpinner/> : searchResult}      
         </Container>
       </div>
