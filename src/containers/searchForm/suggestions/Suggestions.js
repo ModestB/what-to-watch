@@ -28,8 +28,10 @@ const suggestions = (props) => {
       return (     
         <div
           key={element.id}
-          className='mb-0 text-left'
+          className='suggestion mb-0 text-left'
+          onMouseOver={(e) => mouseHoverHandler(e)}
           onClick={() => props.suggestionClickHandler(name)}
+          data-text={name.toLowerCase()}
         >
           {ReactHtmlParser(`<p class="mb-0">${editedName}</p>`)}
         </div>
@@ -38,10 +40,21 @@ const suggestions = (props) => {
   }
 
   return (
-    <div className={`${classes.suggestions} ${props.showSuggestions ? classes.show : ''}`}>
+    <div 
+      className={`${classes.suggestions} ${props.showSuggestions ? classes.show : ''} suggestions-container`}
+      id="suggestionsContainer"
+    >
       {suggestions}
     </div>
   )
 }
+
+function mouseHoverHandler(e) {
+  let readySuggestion = document.querySelector('.suggestions-container .suggestion.ready');
+  if (readySuggestion) {
+    readySuggestion.classList.remove('ready');
+  };
+  e.currentTarget.classList.add('ready');
+};
 
 export default suggestions;

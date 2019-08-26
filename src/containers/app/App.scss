@@ -35,3 +35,13 @@
     }
   }
 }
+
+.suggestion{
+  &.ready{
+    p{
+      background-color: $color--grey;
+      color: $color--primary;
+      cursor: pointer;
+    }
+  }
+}

@@ -23,7 +23,8 @@ class SearchForm extends Component {
   state = {
     value: '',
     searchSuggestions: [],
-    showSuggestions: false
+    showSuggestions: false,
+    elementToFocus: null
   }
 
   handleChange(event){
@@ -37,10 +38,9 @@ class SearchForm extends Component {
       this.setState ({
         showSuggestions: false
       })
-  
-    } else {
+    } else {    
       return fetch(keywordRequest)
-        .then((response) => {
+        .then((response) => {  
           return response.json();
         })
         .then((data) => {
@@ -102,6 +102,7 @@ class SearchForm extends Component {
       <Form 
         className='d-flex position-relative pt-4 pb-3`'
         onSubmit={this.formSubmitHandler}
+        id="searchForm"
       >
         <Form.Group 
           className="position-relative flex-grow-1" 
@@ -144,6 +145,7 @@ class SearchForm extends Component {
           suggestions={this.state.searchSuggestions}
           showSuggestions={this.state.showSuggestions}
           suggestionClickHandler={this.suggestionClickHandler}
+          elementToFocus={this.state.elementToFocus}
         />      
       </Form>
     )

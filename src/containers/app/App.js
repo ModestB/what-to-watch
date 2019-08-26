@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 // Style imports
 import './App.scss';
 
+import {searchSuggestionSelectHandler} from '../../assets/js/all';
+
 // Container imports
 import SearchForm from "../searchForm/SearchForm";
 
@@ -14,7 +16,7 @@ import SearchResults from "../../components/searchResults/SearchResults";
 import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
 
-// APIE
+// API
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
 
@@ -47,6 +49,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    searchSuggestionSelectHandler();
     let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
 
     return fetch(request)
