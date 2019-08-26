@@ -19,6 +19,7 @@ class SearchForm extends Component {
 
     this.handleChange=this.handleChange.bind(this);
     this.suggestionClickHandler=this.suggestionClickHandler.bind(this);
+    this.seacrApiCallTimeout=0;
   }
   state = {
     value: '',
@@ -28,28 +29,34 @@ class SearchForm extends Component {
   }
 
   handleChange(event){
+    event.persist(); 
+    let keywordRequest = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${event.target.value}&page=1&include_adult=false`
+
     this.setState ({
       value: event.target.value
     })
 
-    let keywordRequest = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${event.target.value}&page=1&include_adult=false`
-
-    if (!event.target.value) {
-      this.setState ({
-        showSuggestions: false
-      })
-    } else {    
-      return fetch(keywordRequest)
-        .then((response) => {  
-          return response.json();
+    if (this.seacrApiCallTimeout) {
+      clearTimeout(this.seacrApiCallTimeout)
+    };
+    this.seacrApiCallTimeout = setTimeout(() => {
+      if (!event.target.value) {
+        this.setState ({
+          showSuggestions: false
         })
-        .then((data) => {
-          this.setState ({
-            showSuggestions: true,
-            searchSuggestions: data.results
-          })     
-        })
-    }
+      } else {    
+        return fetch(keywordRequest)
+          .then((response) => {  
+            return response.json();
+          })
+          .then((data) => {
+            this.setState ({
+              showSuggestions: true,
+              searchSuggestions: data.results
+            })     
+          })
+      }
+    }, 500)
   }
 
   suggestionClickHandler (value) {

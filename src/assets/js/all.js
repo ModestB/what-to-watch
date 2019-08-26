@@ -48,7 +48,7 @@ function moveSuggestionHandler(readySuggestion, suggestionsContainer, suggestion
 
   // Scroll move up
   if (!moveDown) {
-    // Prevent scroll movement above first element
+    // Prevent scroll movement above first elements
     if (prevEleIndex === 0) {
       return false;
     };
