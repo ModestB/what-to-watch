@@ -136,7 +136,7 @@ const ShowCard = (props) => {
   }
  
   return (
-    <div className="col-12">
+    <div className="col flex-grow-0">
       <Card className={`${classes.Card} flex-column px-0 mb-3 ${ props.displaySinglePage ? classes.SinglePage : ''}`}>
         <div className="d-flex h-100">
           { badge }

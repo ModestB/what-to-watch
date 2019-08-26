@@ -167,7 +167,7 @@ const SearchResults = (props) => {
   }
  
   return (
-    <div className={`${searchResultClasses} row`}>
+    <div className={`${searchResultClasses} row flex-column flex-nowrap justify-content-start align-items-center`}>
       { goBackBtn }
       { resultToDisplay }
     </div>
