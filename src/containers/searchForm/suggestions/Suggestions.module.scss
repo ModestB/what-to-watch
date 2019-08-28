@@ -4,18 +4,19 @@
   position: absolute;
   z-index: 0;
   top: 58px;
-  height: 0;
   width: 252px;
+  height: 0;
   background-color: $color--light;
   opacity: 0;
   padding: 0;
   overflow-y: auto;
   transition: all 0.3s ease-in-out;
   &.show{
-    height: 130px;
+    height: 140px;
     border: 1px solid #ced4da;
     opacity: 1;
     z-index: 2;
+    padding-bottom: 10px; 
   }
   &::-webkit-scrollbar {
     width: 5px;

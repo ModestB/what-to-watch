@@ -29,18 +29,18 @@ class SearchForm extends Component {
   }
 
   handleChange(event){
-    event.persist(); 
-    let keywordRequest = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${event.target.value}&page=1&include_adult=false`
+    let keywordRequest = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${event.target.value}&page=1&include_adult=false`;
+    let value = event.target.value;
 
     this.setState ({
       value: event.target.value
     })
 
     if (this.seacrApiCallTimeout) {
-      clearTimeout(this.seacrApiCallTimeout)
+      clearTimeout(this.seacrApiCallTimeout);
     };
     this.seacrApiCallTimeout = setTimeout(() => {
-      if (!event.target.value) {
+      if (!value) {
         this.setState ({
           showSuggestions: false
         })
@@ -70,7 +70,7 @@ class SearchForm extends Component {
   formSubmitHandler = (e) => {
     e.preventDefault();
     this.setState ({
-      value: '',
+      value: e.target[0].value,
       searchSuggestions: [],
       showSuggestions: false
     })
@@ -83,14 +83,6 @@ class SearchForm extends Component {
         showSuggestions: false
       })   
     })    
-  }
-
-  focusHandler = () => {
-    if (this.state.value) {
-      this.setState({
-        showSuggestions: true
-      })
-    }  
   }
 
   deleteInputHandler = () => {
@@ -123,7 +115,6 @@ class SearchForm extends Component {
             value={this.state.value}
             onChange={this.handleChange}
             onBlur={this.focusOutHandler}
-            onFocus={this.focusHandler}
           />
           {this.state.value ? 
             <div 

@@ -262,7 +262,7 @@ class App extends Component {
       searchResult = <p>No results</p>;
     }
 
-    if (this.state.searchResult.length > 0) {
+    if (this.state.searchResult && this.state.searchResult.length > 0) {
       searchResult = 
         <SearchResults 
           displayedResults = {this.state.displayedResults} 

@@ -30,7 +30,7 @@ const suggestions = (props) => {
           key={element.id}
           className='suggestion mb-0 text-left'
           onMouseOver={(e) => mouseHoverHandler(e)}
-          onClick={() => props.suggestionClickHandler(name)}
+          onMouseDown={() => props.suggestionClickHandler(name)}
           data-text={name.toLowerCase()}
         >
           {ReactHtmlParser(`<p class="mb-0">${editedName}</p>`)}
