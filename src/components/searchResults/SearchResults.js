@@ -4,6 +4,7 @@ import React from "react";
 import ShowCard from "./showCard/ShowCard";
 import ProfileCard from "./profileCard/ProfileCard";
 import Button from 'react-bootstrap/Button';
+import MovieDb from '../../icons/js/Moviedb';
 
 // Style imports
 import classes from "./SearchResults.module.scss";
@@ -167,10 +168,17 @@ const SearchResults = (props) => {
   }
  
   return (
-    <div className={`${searchResultClasses} row flex-column flex-nowrap justify-content-start align-items-center`}>
-      { goBackBtn }
-      { resultToDisplay }
+    <div className="d-flex flex-column">
+      <div className={`${searchResultClasses} row flex-column flex-nowrap justify-content-start align-items-center`}>
+        { goBackBtn }
+        { resultToDisplay }
+      </div>
+      <a href="https://www.themoviedb.org/" target="_blank" className="ml-auto pt-2 pb-1">
+        <MovieDb height="50px" width="120px"/>
+      </a>
+      
     </div>
+
   )
 };
 
