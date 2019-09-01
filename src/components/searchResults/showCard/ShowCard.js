@@ -43,7 +43,7 @@ const ShowCard = (props) => {
   }
 
   if(props.overview && !props.displaySinglePage) {
-    cardText = <Card.Text className={`${classes.CardText} text-left mb-2 pr-3`}> { props.overview.substring(0, 150) + "..."  } </Card.Text>;
+    cardText = <Card.Text className={`${classes.CardText} text-left mb-2 pr-3`}> { props.overview.substring(0, 130) + "..."  } </Card.Text>;
   } else {
     cardText = <Card.Text className={`${ [classes.CardText, classes.textOverview].join(' ') } customScroll text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
   }
@@ -51,7 +51,7 @@ const ShowCard = (props) => {
   if(!props.displaySinglePage) {
     cardTitle =
       <Card.Title className={`${classes.CardTitle} text-left font-weight-bold`} title={ props.title }> 
-        { props.title.length > 25 ? props.title.substring(0, 25) + "..." :  props.title } 
+        { props.title.length > 40 ? props.title.substring(0, 40) + "..." :  props.title } 
       </Card.Title> 
   } else {
     cardTitle =
