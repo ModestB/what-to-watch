@@ -297,7 +297,7 @@ class App extends Component {
     }
 
     return (
-      <div className='App'>
+      <div className='App customScroll'>
         <Container className="pt-3">
           <div className="d-flex justify-content-center align-items-center">
             <IconTv fill="#9E56FC" height="40px" width="40px"/>

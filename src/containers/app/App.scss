@@ -4,7 +4,8 @@
   text-align: center;
   background-color: $color--grey;
   transition: all 0.4s ease-in-out;
-  height: 835px;
+  height: 600px;
+  overflow: auto;
   h1{
     font-size: 24px;
     color: $text__color--dark;
