@@ -1,37 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import classes from './Accordion.module.scss';
-import Card from 'react-bootstrap/Card';
+import AccordionItem from './accordionItem/AccordionItem';
 
-const Accordion = (props) => {
-  let cards = null;
-  cards = props.elements.map((element, index) => {
+class Accordion extends Component {
+  constructor(props) {
+    super(props);
+
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+  state = {
+    show0: false,
+    show1: false,
+  }
+
+  clickHandler (eleTitle) {
+    if (eleTitle===0) {
+      this.setState(state => {
+        return {
+          show0: !state.show0,
+          show1: false
+        }
+      })
+    } else {
+      this.setState(state => {
+        return {
+          show1: !state.show1,
+          show0: false
+        }
+      })
+    }
+  }
+
+  render () {
+    let accordionItems = this.props.elements.map((element, index) => {
+      return (  
+        <AccordionItem
+          key={element.id+index}
+          show={ index === 0 ? this.state.show0 : this.state.show1}
+          index={index}
+          clickHandler={this.clickHandler}
+          title={element.title}
+          body={element.body}
+        />
+      )
+    });
+  
     return (
-      <Card 
-        className={`${ classes.card } rounded-0`}
-        key={`${element.id}${index}`}
-      >
-        <Card.Header className={`${ classes.cardHeader } collapsed`}  id={`heading${index}`}   data-toggle="collapse" data-target={`#collapse${index}`} aria-expanded="false" aria-controls={`collapse${index}`}>
-          <h2 className="mb-0">
-            <div className={`${classes.containerHeader} position-relative d-flex justify-content-center font-weight-bold`}>
-              <p className="mb-0 px-2">{element.title}</p><span className=""></span>
-            </div>     
-          </h2>
-        </Card.Header>
-        <div id={`collapse${index}`} className="collapse" aria-labelledby={`heading${index}`} data-parent="#accordionExample">
-          <Card.Body className="p-0">
-            {element.body}        
-          </Card.Body>
-        </div>
-      </Card>
+      <div className={`${ classes.accordion } accordion d-flex`}>
+        {accordionItems}
+      </div>
     )
-  });
-
-  return (
-    <div className={`${ classes.accordion } accordion`} id="accordionExample">
-      {cards}
-    </div>
-  )
+  }
 }
-
 export default Accordion;

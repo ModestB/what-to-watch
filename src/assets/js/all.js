@@ -1,4 +1,3 @@
-
 export function searchSuggestionSelectHandler() {
   const input = document.getElementById('searchNameInput');
   const suggestionsContainer = document.getElementById('suggestionsContainer');

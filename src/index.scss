@@ -64,43 +64,6 @@ code {
   box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
 }
 
-.accordion{
-  > .card{
-    .card-header{
-      margin-bottom: 0;
-    }
-  }
-  .card-header{
-    transition: all 0.2s ease-in-out;
-    &:hover{
-      cursor: pointer;
-      background-color: $color--primary;
-      p{
-        background-color: $color--primary;
-        color: $text__color--light;
-      }
-      span{
-        background-color: $color--light;
-      }
-    }
-    &:not(.collapsed),
-    &:not(.collapsed) p {
-      background-color: $color--primary;
-      color: $color--light;
-    }
-
-    &:not(.collapsed){
-      span{
-        background-color: $text__color--light;
-      }
-    }
-    span,
-    p{
-      transition: all 0.2s ease-in-out;
-    }
-  }
-}
-
 .customScroll{
   overflow-y: auto;
   &::-webkit-scrollbar {
@@ -116,3 +79,33 @@ code {
     }
   }
 }
+
+.accordion{
+  > .card:first-of-type{
+    .card-header{
+      border-right : 1px solid $color--grey-2;
+    }
+  }
+  .containerBody{
+    position: absolute;
+    height: 325px;
+    width: 370px;
+    bottom: 0;
+    opacity: 0;
+    background-color: $color--light;
+    transition: bottom 0.5s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 0;
+    &.active{
+      bottom: 47px;
+      opacity: 1;
+      z-index: 1;
+    }
+    &.containerBody--left{
+      left: 0;
+    }
+    &.containerBody--right{
+      right: 0;
+    }
+  }
+}
+

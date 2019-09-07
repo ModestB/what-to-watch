@@ -86,7 +86,7 @@ const ShowCard = (props) => {
     }
     reviewsContainer = 
       <div className="mb-3">
-        <div className={`${props.reviews.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3 pt-3`}>  
+        <div className={`${props.reviews.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3`}>  
           { reviews }
         </div>
       </div>  
@@ -108,7 +108,7 @@ const ShowCard = (props) => {
     }
     trailersContainer = 
       <div className="">
-        <div className={`${props.trailers.length > 0 ? classes.trailers : ''} customScroll p-3`}>
+        <div className={`${props.trailers.length > 0 ? classes.trailers : ''} customScroll px-3`}>
           { trailers }
         </div>
       </div>;

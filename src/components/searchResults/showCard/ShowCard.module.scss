@@ -11,8 +11,8 @@
   transition: all 0.6s ease-in-out; 
   margin-bottom: 16px;
   &.SinglePage{
-    height: auto;
-    max-height: 535px;
+    height: 370px;
+    min-height: 370px;
     margin-left: 0px;
     margin-bottom: 0;
   }
@@ -103,12 +103,14 @@
 }
 
 .textOverview{
-  max-height: 180px;
+  position: relative;
+  z-index: 1;
+  max-height: 225px;
 }
 
 .reviews, 
 .trailers{
-  height: 230px;
+  height: 290px;
 }
 
 .reviews, 

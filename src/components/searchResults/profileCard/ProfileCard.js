@@ -101,13 +101,13 @@ const profileCard = (props) => {
       </div>;
     
     cardFooterContent = 
-      <Card.Footer className={`${ classes.cardFooter } px-0 pt-2 pb-0`}>
+      <Card.Footer className={`${ classes.cardFooter } mt-auto px-0 pt-2 pb-0`}>
         <Accordion 
           elements = {[
             {
               title : 'Biography',
               body : 
-                <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} customScroll my-3 ml-3 pr-3`}>
+                <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} customScroll my-0 ml-3 pr-3 pb-3`}>
                   {props.singleProfileDetails.biography ? props.singleProfileDetails.biography : 'No Information'}
                 </p>,
               id: props.element.id
@@ -123,17 +123,21 @@ const profileCard = (props) => {
   }
 
   return (
-    <div className="col-12">
-      <Card className={`${classes.Card} ${props.displayDetailedProfile? classes.detailedCard : ''}  px-0 mb-3`}>
+    <div className="col flex-grow-0">
+      <Card className={`${classes.Card} ${props.displayDetailedProfile? classes.detailedCard : ''}  px-0`}>
+        <div className="d-flex h-100">
+          <Card.Body className="d-flex p-0 ">
+            { posterImg }
+            <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
+              <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
+              { cardBodyContent }  
+            </div>
+          
+          </Card.Body>
+
+        </div>
         
-        <Card.Body className="d-flex p-0 flex-grow-0">
-          { posterImg }
-          <div className="pt-3 pl-3">
-            <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
-            { cardBodyContent }  
-          </div>
-        
-        </Card.Body>
+   
         {cardFooterContent}
         { props.displayDetailedProfile? '' : cardOverlay }
       </Card>

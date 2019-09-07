@@ -5,7 +5,6 @@ import App from './containers/app/App';
 import * as serviceWorker from './serviceWorker';
 
 require('bootstrap');
-require('jquery');
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
