@@ -116,7 +116,7 @@ const ShowCard = (props) => {
 
   if (props.displaySinglePage) {
     cardFooterContent  = 
-      <Card.Footer className={`${classes.CardFooter} p-0 mt-2`}>
+      <Card.Footer className={`${classes.CardFooter} p-0 mt-auto`}>
         <Accordion 
           elements = {[
             {
@@ -134,26 +134,35 @@ const ShowCard = (props) => {
       </Card.Footer>
     cardOverlay = null;
   }
+
+  let content = 
+    // TODO: maybe change to AUX 
+    <div className="d-flex flex-column h-100">
+      <div className="d-flex h-100">
+
+        { badge }
+        
+        <Card.Body className="d-flex p-0">
+          { posterImg }
+          <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
+            { cardTitle }
+            { cardText }
+            { date }  
+          </div>      
+        </Card.Body>
+      </div>
+      
+      { cardFooterContent }
+
+      { cardOverlay }
+    </div>;
  
   return (
     <div className="col flex-grow-0">
       <Card className={`${classes.Card} flex-column px-0 ${ props.displaySinglePage ? classes.SinglePage : ''}`}>
-        <div className="d-flex h-100">
-          { badge }
+
+        { props.loading ? <LoadingSpinner /> : content }
         
-          <Card.Body className="d-flex p-0">
-            { posterImg }
-            <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
-              { cardTitle }
-              { cardText }
-              { date }  
-            </div>      
-          </Card.Body>
-        </div>
-
-        { props.loading ? <LoadingSpinner /> : cardFooterContent }
-
-        { cardOverlay }
       </Card>
     </div>
   )

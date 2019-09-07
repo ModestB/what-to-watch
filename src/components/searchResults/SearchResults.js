@@ -49,7 +49,6 @@ const SearchResults = (props) => {
             showSingleShow = {props.findShowById} 
             filterProfileSinglePage = {props.filterProfileSinglePage}
             element = {element}
-            detailedProfileLoading = {props.detailedProfileLoading}
             displayDetailedProfile = {props.displayDetailedProfile}
             singleProfileDetails = {props.singleProfileDetails}
             singleProfileCredits = {props.singleProfileCredits}

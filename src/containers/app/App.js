@@ -39,7 +39,6 @@ class App extends Component {
     reviews : [],
     displayTrailers : false,
     trailers : [],
-    detailedProfileLoading : false,
     displayDetailedProfile: false,
     singleProfileDetails: {},
     singleProfileCredits: [],
@@ -124,7 +123,8 @@ class App extends Component {
     this.setState( () => {
       return {
         displayedResults: elementToDisplay,
-        detailedProfileLoading: true
+        loadingProfile: true,
+        displayDetailedProfile: true,
       }    
     });
     
@@ -144,8 +144,7 @@ class App extends Component {
         credits = data.cast;
         this.setState( () => {
           return {
-            detailedProfileLoading: false,
-            displayDetailedProfile: true,
+            loadingProfile: false,
             singleProfileDetails: details,
             singleProfileCredits: credits,
           }    
@@ -279,7 +278,6 @@ class App extends Component {
           displayTrailers = {this.state.displayTrailers}
           trailers = {this.state.trailers}
           loading = {this.state.loading}
-          detailedProfileLoading = {this.state.detailedProfileLoading}
           displayDetailedProfile = {this.state.displayDetailedProfile}
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}

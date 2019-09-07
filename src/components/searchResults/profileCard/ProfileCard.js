@@ -23,7 +23,7 @@ const profileCard = (props) => {
   let imgSrc = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
   let posterImg = 
     <div 
-    className={`${ classes.NoImg } d-flex justify-content-center align-items-center` }
+      className={`${ classes.NoImg } d-flex justify-content-center align-items-center` }
     >
       <NoImagePerson fill="#ffffff" width="75px" height="75px" />
     </div>;
@@ -78,12 +78,7 @@ const profileCard = (props) => {
       </Row>;
   }
 
-  if (props.detailedProfileLoading){
-    cardBodyContent = 
-      <div className={classes.loadingSpinner}>
-        <LoadingSpinner/>
-      </div>;
-  } else if (props.displayDetailedProfile) {
+  if (props.displayDetailedProfile) {
     cardBodyContent = 
       <div>
         <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
@@ -122,24 +117,31 @@ const profileCard = (props) => {
       </Card.Footer>
   }
 
+  let content = 
+    <div className="d-flex flex-column h-100">
+      <div className="d-flex h-100">
+        <Card.Body className="d-flex p-0 ">
+          { posterImg }
+          <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
+            <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
+            { cardBodyContent }  
+          </div>
+        
+        </Card.Body>
+
+      </div>
+        
+      {cardFooterContent}
+      
+      { props.displayDetailedProfile? '' : cardOverlay }
+    </div>;
+
   return (
     <div className="col flex-grow-0">
-      <Card className={`${classes.Card} ${props.displayDetailedProfile? classes.detailedCard : ''}  px-0`}>
-        <div className="d-flex h-100">
-          <Card.Body className="d-flex p-0 ">
-            { posterImg }
-            <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
-              <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
-              { cardBodyContent }  
-            </div>
-          
-          </Card.Body>
+      <Card className={`${classes.Card} ${props.displayDetailedProfile ? classes.detailedCard : ''}  px-0`}>
 
-        </div>
-        
-   
-        {cardFooterContent}
-        { props.displayDetailedProfile? '' : cardOverlay }
+        { props.loading ? <LoadingSpinner /> : content }
+
       </Card>
     </div>
   )
