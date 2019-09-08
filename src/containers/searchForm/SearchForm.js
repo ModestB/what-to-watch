@@ -69,6 +69,9 @@ class SearchForm extends Component {
 
   formSubmitHandler = (e) => {
     e.preventDefault();
+    if (this.seacrApiCallTimeout) {
+      clearTimeout(this.seacrApiCallTimeout);
+    };
     this.setState ({
       value: e.target[0].value,
       searchSuggestions: [],
