@@ -15,8 +15,8 @@ class Accordion extends Component {
     show1: false,
   }
 
-  clickHandler (eleTitle) {
-    if (eleTitle===0) {
+  clickHandler (itemIndex, itemTitle) {
+    if (itemIndex===0) {
       this.setState(state => {
         return {
           show0: !state.show0,
@@ -29,6 +29,12 @@ class Accordion extends Component {
           show1: !state.show1,
           show0: false
         }
+      })
+    }
+    // Stop youtube video on close
+    if (itemTitle==="Trailers") {
+      Array.from(document.querySelectorAll('iframe')).forEach((e) => {
+        e.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
       })
     }
   }

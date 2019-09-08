@@ -11,7 +11,7 @@ const AccordionItem = (props) => {
     >
       <Card.Header 
         className={`${classes.cardHeader} ${props.show? classes.active : ''}`}
-        onClick={() => props.clickHandler(props.index)}
+        onClick={() => props.clickHandler(props.index, props.title)}
       >
         <h2 className="mb-0">
           <div className={`${classes.containerHeader} position-relative d-flex justify-content-center font-weight-bold`}>
@@ -26,7 +26,7 @@ const AccordionItem = (props) => {
       >
         <CloseIcon 
           className={`${classes.closeIcon}`}
-          onClick={() => props.clickHandler(props.index)}
+          onClick={() => props.clickHandler(props.index, props.title)}
           width="20px" 
           height="20px"
         />
