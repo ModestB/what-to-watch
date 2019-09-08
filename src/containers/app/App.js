@@ -299,7 +299,7 @@ class App extends Component {
         <Container className="pt-3">
           <div className="d-flex justify-content-center align-items-center">
             <IconTv fill="#9E56FC" height="40px" width="40px"/>
-            <h1 className="text-left mb-0 mt-2 ml-2"><b>Show</b> Lover</h1>
+            <h1 className="text-left mb-0 mt-2 ml-2"><b>What</b> To Watch</h1>
           </div>  
           <SearchForm searchHandler = {this.searchHandler}/>
           { sectionTitle }
