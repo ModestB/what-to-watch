@@ -172,7 +172,7 @@ const SearchResults = (props) => {
         { goBackBtn }
         { resultToDisplay }
       </div>
-      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="ml-auto mt-auto pt-2 pb-1">
+      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="ml-auto mt-auto pt-2 pb-1 pr-1">
         <MovieDb height="50px" width="120px"/>
       </a>
       
