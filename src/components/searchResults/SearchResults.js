@@ -169,10 +169,18 @@ const SearchResults = (props) => {
     goBackBtn = 
       <div className="col-12 text-left pb-1">
         <Button 
-          className={`${ classes.BtnGoBack } rounded-0 py-0`}
+          className={`${ classes.Btn } rounded-0 py-0`}
           onClick={ props.showPrevResults } 
-          variant="danger" >
+          variant="danger" 
+        >
           Go back
+        </Button>
+        <Button 
+          className={`${ classes.Btn } rounded-0 py-0 ml-2`}
+          onClick={ props.findTrendingShows } 
+          variant="primary" 
+        >
+          Trending
         </Button>
       </div>;
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Bootsrap imports
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 // Style imports
 import './App.scss';
@@ -55,27 +56,7 @@ class App extends Component {
 
   componentDidMount(){
     searchSuggestionSelectHandler();
-    let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
-
-    return fetch(request)
-      .then( (response) => {
-        return response.json();
-      })
-      .then( ( data ) => {
-        this.setState( () => {
-          return {
-            searchResult : data.results,
-            displayedResults : data.results,
-            loading : false
-          }    
-        });
-      }).then( () => {
-        this.setState( () => {
-          return {
-            bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
-          }
-        })
-      })
+    this.findTrendingShows();
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -204,6 +185,38 @@ class App extends Component {
       })
   };
 
+  findTrendingShows = () => {
+    let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
+
+    return fetch(request)
+      .then( (response) => {
+        return response.json();
+      })
+      .then( ( data ) => {
+        this.setState( () => {
+          return {
+            searchResult : data.results,
+            showTrending : true,
+            displaySinglePage : false,
+            displayNewSinglePage : false,
+            displayedResults : data.results,
+            displayReviews : false,
+            reviews : [],
+            trailers : [],
+            displayTrailers : false,
+            displayDetailedProfile: false,
+            loading: false
+          }    
+        });
+      }).then( () => {
+        this.setState( () => {
+          return {
+            bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
+          }
+        })
+      })
+  }
+
   showPreviousResultsHandler = () => {
     this.setState( ( prevState ) => {
       return {
@@ -317,7 +330,17 @@ class App extends Component {
     let sectionTitle = null;
 
     if (this.state.searchInputValue !== 'null') {
-      searchResult = <p>No results</p>;
+      searchResult = 
+        <div className="mt-3">
+          <p>No results</p>
+          <Button 
+            className={`position-relative rounded-0 py-0 ml-2`}
+            onClick={ this.findTrendingShows } 
+            variant="primary" 
+          >
+            Show Trending
+          </Button>
+        </div>;
     }
 
     if (this.state.searchResult && this.state.searchResult.length > 0) {
@@ -327,6 +350,7 @@ class App extends Component {
           filterSinglePage = {this.filterSinglePageHandler}
           filterProfileSinglePage = {this.filterProfileSinglePageHandler}
           findShowById = {this.findShowByIdHandler}
+          findTrendingShows = {this.findTrendingShows}
           displaySinglePage = {this.state.displaySinglePage} 
           singlePageType = {this.state.singlePageType}
           showPrevResults = {this.showPreviousResultsHandler}

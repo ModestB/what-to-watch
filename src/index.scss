@@ -33,9 +33,12 @@ code {
 
 .btn-danger{
   background-color: $color--danger;
+  box-shadow: 0 0 0 0.2rem $shadow--danger;
   &:hover{
+    cursor: pointer;
     background-color: $color--danger--darker;
     border-color: $color--danger--darker;
+    box-shadow: 0 0 0 0.2rem $shadow--danger--darker;
   }
 }
 
@@ -44,6 +47,7 @@ code {
   border-color:  $color--primary;
   box-shadow: 0 0 0 0.2rem $shadow--primary;
   &:hover{
+    cursor: pointer;
     background-color: $color--primary--darker;
     border-color:  $color--primary--darker;
     box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
