@@ -102,9 +102,14 @@ const profileCard = (props) => {
             {
               title : 'Biography',
               body : 
-                <p className={`${ classes.text } ${ classes.biography }  ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} customScroll my-0 ml-3 pr-3 pb-3`}>
+                <h6 
+                  className=
+                    {`${props.singleProfileDetails.biography ? classes.text : ''} ${ classes.biography }  
+                      ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} 
+                      customScroll my-0 ml-3 pr-3 pb-3`}
+                >
                   {props.singleProfileDetails.biography ? props.singleProfileDetails.biography : 'No Information'}
-                </p>,
+                </h6>,
               id: props.element.id
             },
             {
