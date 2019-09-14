@@ -78,6 +78,17 @@ code {
       background: $color--primary--darker; 
     }
   }
+  &.customScroll--red{
+    &::-webkit-scrollbar-track{
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: $color--danger; 
+      &:hover{
+        background: $color--danger--darker; 
+      }
+    }
+  }
 }
 
 .accordion{

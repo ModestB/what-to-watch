@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import NoImage from '../../../icons/js/NoImage';
 import Accordion from '../../accordion/Accordion';
+import BookmarkButton from '../../bookmarks/bookmarkBtn/BookmarkBtn';
 
 // Style imports
 import classes from "./ShowCard.module.scss";
@@ -144,6 +145,15 @@ const ShowCard = (props) => {
         
         <Card.Body className="d-flex p-0">
           { posterImg }
+          <BookmarkButton 
+            id={props.element.id}
+            mediaType={props.mediaType}
+            title={props.title}
+            bookmarks={props.bookmarks}
+            date={props.date.substring(0, 4)}
+            addBookmark ={props.addBookmark}
+            removeBookmark = {props.removeBookmark}        
+          />
           <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
             { cardTitle }
             { cardText }

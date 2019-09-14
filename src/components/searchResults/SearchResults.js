@@ -37,6 +37,9 @@ const SearchResults = (props) => {
             displayTrailers = {props.displayTrailers}
             trailers = {props.trailers}
             loading = {props.loadingShowCard}
+            addBookmark = {props.addBookmark}
+            removeBookmark = {props.removeBookmark}
+            bookmarks = {props.bookmarks}   
           />
         break;            
       case "person":
@@ -75,6 +78,9 @@ const SearchResults = (props) => {
             displayTrailers = {props.displayTrailers}
             trailers = {props.trailers}
             loading = {props.loadingShowCard}
+            addBookmark = {props.addBookmark}
+            removeBookmark = {props.removeBookmark}
+            bookmarks = {props.bookmarks}
           /> 
         break; 
       default:
@@ -97,6 +103,9 @@ const SearchResults = (props) => {
             displayTrailers = {props.displayTrailers}
             trailers = {props.trailers}
             loading = {props.loadingShowCard}
+            addBookmark = {props.addBookmark}
+            removeBookmark = {props.removeBookmark}
+            bookmarks = {props.bookmarks}
           /> 
 
     };
@@ -125,6 +134,9 @@ const SearchResults = (props) => {
           displayTrailers = {props.displayTrailers}
           trailers = {props.trailers}
           loading = {props.loadingShowCard}
+          addBookmark = {props.addBookmark}
+          removeBookmark = {props.removeBookmark}
+          bookmarks = {props.bookmarks}
         />   
     } else {
       resultToDisplay =
@@ -146,6 +158,9 @@ const SearchResults = (props) => {
           displayTrailers = {props.displayTrailers}
           trailers = {props.trailers}
           loading = {props.loadingShowCard}
+          addBookmark = {props.addBookmark}
+          removeBookmark = {props.removeBookmark}
+          bookmarks = {props.bookmarks}
         />    
     }  
   }

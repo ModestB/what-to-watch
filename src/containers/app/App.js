@@ -15,10 +15,14 @@ import SearchForm from "../searchForm/SearchForm";
 import SearchResults from "../../components/searchResults/SearchResults";
 import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
+import Bookmarks from '../../components/bookmarks/Bookmarks'
 
 // API
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
+
+// LOCAL STORAGE
+const LS_BOOKMARKS = 'wtwBookmarks';
 
 class App extends Component {
   constructor(props) {
@@ -44,7 +48,9 @@ class App extends Component {
     singleProfileCredits: [],
     loading : true,
     loadingProfile: false,
-    loadingShowCard: false
+    loadingShowCard: false,
+    displayBookmarks : false, 
+    bookmarks: []
   }
 
   componentDidMount(){
@@ -63,7 +69,19 @@ class App extends Component {
             loading : false
           }    
         });
+      }).then( () => {
+        this.setState( () => {
+          return {
+            bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
+          }
+        })
       })
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    if (JSON.stringify(prevState.bookmarks) !== JSON.stringify(this.state.bookmarks)) {
+      this.updateLocalSorageBookmarks(this.state.bookmarks)
+    };
   }
 
   searchHandler = ( inputValue ) => {
@@ -253,6 +271,47 @@ class App extends Component {
     }
   }
 
+  displayBookmarksHandler = () => {
+    this.setState((state) => {
+      return {
+        displayBookmarks: !state.displayBookmarks
+      };
+    });
+  };
+
+  addBookmark = (id, title, date, mediaType) => {
+    this.setState((state) => {
+      return {
+        bookmarks: [
+          ...state.bookmarks,
+          {id, title, date, mediaType}
+        ]
+      }
+    });
+  };
+
+  removeBookmark = (id) => {
+    let newBookmarks = 
+      this.state.bookmarks.filter((bookmark) => {
+        if (bookmark.id === id) {
+          return false;
+        }
+        return true;
+      });
+
+    this.setState(() => {
+      return {
+        bookmarks: [
+          ...newBookmarks,
+        ]
+      }
+    });
+  };
+
+  updateLocalSorageBookmarks = (bookmarks) => {
+    localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
+  };
+
   render () {
     let searchResult = null;
     let sectionTitle = null;
@@ -284,6 +343,9 @@ class App extends Component {
           displayNewSinglePage = {this.state.displayNewSinglePage}
           loadingProfile = {this.state.loadingProfile}
           loadingShowCard = {this.state.loadingShowCard}
+          addBookmark = {this.addBookmark}
+          removeBookmark = {this.removeBookmark}
+          bookmarks ={this.state.bookmarks}
         />
     }
 
@@ -303,7 +365,14 @@ class App extends Component {
           </div>  
           <SearchForm searchHandler = {this.searchHandler}/>
           { sectionTitle }
-          { this.state.loading ? <LoadingSpinner/> : searchResult}      
+          { this.state.loading ? <LoadingSpinner/> : searchResult }      
+          <Bookmarks
+            displayBookmarks = {this.state.displayBookmarks}
+            displayBookmarksHandler = {this.displayBookmarksHandler}
+            bookmarks = {this.state.bookmarks}
+            removeBookmark = {this.removeBookmark}
+            findShowById = {this.findShowByIdHandler}
+          />
         </Container>
       </div>
     );
