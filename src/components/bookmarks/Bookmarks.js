@@ -21,7 +21,7 @@ const Bookmarks = (props) => {
 
   let bookmarks = <p className="mb-0">No bookmarks</p>;
 
-  if (props.bookmarks.length > 0) {
+  if (props.bookmarks && props.bookmarks.length > 0) {
     bookmarks = props.bookmarks.map((bookmark) => {
       return (
         <BookmarkItem
@@ -57,7 +57,7 @@ const Bookmarks = (props) => {
             height='30px'
             className={classes.runScaleUpCenter}
           />
-          <span className='pl-2'>{props.bookmarks.length}</span>
+          <span className='pl-2'>{props.bookmarks ? props.bookmarks.length : 0}</span>
         </div>
 
         <CloseIcon 

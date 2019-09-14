@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "Shows Finder",
+  "name": "What To Watch",
   "description": "This extension is a starting point to create a real Chrome extension",
   "version": "0.0.1",
 

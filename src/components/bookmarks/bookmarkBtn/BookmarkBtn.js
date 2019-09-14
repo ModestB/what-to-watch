@@ -9,9 +9,12 @@ const BookmarkBtn = (props) => {
   useEffect(() => {
     let bookmark = null;
 
-    bookmark = props.bookmarks.find((boomark) => {
-      return boomark.id === props.id;
-    })
+    if (props.bookmarks) {
+      bookmark = props.bookmarks.find((boomark) => {
+        return boomark.id === props.id;
+      })
+    }
+  
 
     if (bookmark) {
       setActive(true);

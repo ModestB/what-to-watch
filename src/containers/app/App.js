@@ -294,11 +294,17 @@ class App extends Component {
 
   addBookmark = (id, title, date, mediaType) => {
     this.setState((state) => {
-      return {
-        bookmarks: [
+      let bookmarks;
+      if (!state.bookmarks) {
+        bookmarks = [{id, title, date, mediaType}];
+      } else {
+        bookmarks = [
           ...state.bookmarks,
           {id, title, date, mediaType}
-        ]
+        ];
+      }
+      return {
+        bookmarks: bookmarks
       }
     });
   };
