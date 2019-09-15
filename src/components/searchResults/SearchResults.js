@@ -167,7 +167,7 @@ const SearchResults = (props) => {
 
   if (props.displayDetailedProfile || props.displaySinglePage) {
     goBackBtn = 
-      <div className="col-12 text-left pb-1">
+      <div className="col text-left pb-1">
         <Button 
           className={`${ classes.Btn } rounded-0 py-0`}
           onClick={ props.showPrevResults } 

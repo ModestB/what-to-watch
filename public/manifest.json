@@ -4,6 +4,11 @@
   "name": "What To Watch",
   "description": "Instantly find your favourite movies and TV shows! Or just search for something new.",
   "version": "0.1.0",
+  "applications": {
+    "gecko": {
+        "id": "moweblab@gmail.com"
+    }
+  },
 
   "browser_action": {
     "default_popup": "index.html",
@@ -16,6 +21,6 @@
   },
   "content_security_policy": "script-src 'self' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'",
   "permissions": [
-	"storage"
+	  "storage"
   ]
 }
