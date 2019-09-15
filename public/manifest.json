@@ -2,19 +2,20 @@
   "manifest_version": 2,
 
   "name": "What To Watch",
-  "description": "This extension is a starting point to create a real Chrome extension",
-  "version": "0.0.1",
+  "description": "Instantly find your favourite movies and TV shows! Or just search for something new.",
+  "version": "0.1.0",
 
   "browser_action": {
     "default_popup": "index.html",
-    "default_title": "Open the popup"
+    "default_title": "What To Watch"
   },
   "icons": {
-    "16": "logo-small.png",
-    "48": "logo-small.png",
-    "128": "logo-small.png"
+    "16": "wtw-logo.png",
+    "48": "wtw-logo.png",
+    "128": "wtw-logo.png"
   },
   "content_security_policy": "script-src 'self' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'",
   "permissions": [
+	"storage"
   ]
 }

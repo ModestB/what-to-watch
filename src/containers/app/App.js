@@ -1,3 +1,4 @@
+/* global chrome */
 import React, { Component } from 'react';
 
 // Bootsrap imports
@@ -52,18 +53,13 @@ class App extends Component {
     loadingShowCard: false,
     displayBookmarks : false, 
     bookmarks: []
-  }
-
-  componentDidMount(){
-    searchSuggestionSelectHandler();
-    this.findTrendingShows();
-  }
+  };
 
   componentDidUpdate (prevProps, prevState) {
-    if (JSON.stringify(prevState.bookmarks) !== JSON.stringify(this.state.bookmarks)) {
-      this.updateLocalSorageBookmarks(this.state.bookmarks)
+    if (prevState.bookmarks && JSON.stringify(prevState.bookmarks) !== JSON.stringify(this.state.bookmarks)) {
+      this.updateLocalSorageBookmarks(this.state.bookmarks);
     };
-  }
+  };
 
   searchHandler = ( inputValue ) => {
     this.setState( () => {
@@ -208,12 +204,6 @@ class App extends Component {
             loading: false
           }    
         });
-      }).then( () => {
-        this.setState( () => {
-          return {
-            bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
-          }
-        })
       })
   }
 
@@ -327,9 +317,37 @@ class App extends Component {
     });
   };
 
-  updateLocalSorageBookmarks = (bookmarks) => {
-    localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
+  loadStoredBookmarks = () => {
+    if (process.env.NODE_ENV !== 'production') {
+      this.setState( () => {
+        return {
+          bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
+        }
+      })
+      return;
+    };
+    chrome.storage.sync.get(['LS_BOOKMARKS'], (result) => {
+      this.setState( () => {
+        return {
+          bookmarks :  result.LS_BOOKMARKS
+        };
+      });
+    });
   };
+
+  updateLocalSorageBookmarks = (bookmarks) => {
+    if (process.env.NODE_ENV !== 'production') {
+      localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
+      return;
+    };
+    chrome.storage.sync.set({LS_BOOKMARKS: bookmarks});
+  };
+
+  componentDidMount(){
+    searchSuggestionSelectHandler();
+    this.findTrendingShows();
+    this.loadStoredBookmarks(); 
+  }
 
   render () {
     let searchResult = null;
