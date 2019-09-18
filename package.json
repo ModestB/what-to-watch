@@ -1,6 +1,6 @@
 {
-  "name": "shows-lover",
-  "version": "0.1.0",
+  "name": "what-to-watch",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@svgr/cli": "^4.3.1",

@@ -3,7 +3,7 @@
 
   "name": "What To Watch",
   "description": "Instantly find your favourite movies and TV shows! Or just search for something new.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "applications": {
     "gecko": {
         "id": "moweblab@gmail.com"
