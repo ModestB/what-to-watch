@@ -70,6 +70,8 @@ code {
 
 .customScroll{
   overflow-y: auto;
+  scrollbar-color:  $color--primary $text__color--grey2;
+  scrollbar-width: thin;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -83,6 +85,7 @@ code {
     }
   }
   &.customScroll--red{
+    scrollbar-color:  $color--danger $text__color--grey2;
     &::-webkit-scrollbar-track{
       background: transparent;
     }

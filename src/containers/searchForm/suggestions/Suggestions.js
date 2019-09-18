@@ -41,7 +41,7 @@ const suggestions = (props) => {
 
   return (
     <div 
-      className={`${classes.suggestions} ${props.showSuggestions ? classes.show : ''} suggestions-container`}
+      className={`${classes.suggestions} ${props.showSuggestions ? classes.show : ''} suggestions-container customScroll`}
       id="suggestionsContainer"
     >
       {suggestions}
