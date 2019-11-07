@@ -6,7 +6,11 @@
 What to watch is a browser extension for searching for Movies, TV shows and Actors. It also allows to save Movies, TV shows to bookmarks.
 
 ## Current Status
-- version 0.1.0 [v0.1.0](https://github.com/ModestB/what-to-watch/releases/tag/v0.1.0) [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/what-to-watch/)
+- version 0.1.1 [v0.1.1](https://github.com/ModestB/what-to-watch/releases/tag/v0.1.1)
+
+[Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/what-to-watch/)
+
+[Chrome Add-ons](https://chrome.google.com/webstore/detail/what-to-watch/fgbodlmbchgeoifgoblfdagllijdhmae)
 
 ### Features
 
