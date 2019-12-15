@@ -113,7 +113,7 @@ const SearchResults = (props) => {
     return card;
   });
 
-  if (props.displayNewSinglePage) {
+  if (props.displaySinglePage && !props.displayFilteredPage) {
     if(props.singlePageType === "movie"){
       resultToDisplay =
         <ShowCard 

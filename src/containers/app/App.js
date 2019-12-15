@@ -1,5 +1,9 @@
 /* global chrome */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import * as actions from '../../store/actions/actions';
 
 // Bootsrap imports
 import Container from 'react-bootstrap/Container';
@@ -37,9 +41,6 @@ class App extends Component {
     searchResult  : [],
     displayedResults: [],
     singlePageData : [],
-    showTrending : true,
-    displaySinglePage : false,
-    displayNewSinglePage : false,
     singlePageType : "",
     displayReviews : false,
     reviews : [],
@@ -64,7 +65,6 @@ class App extends Component {
   searchHandler = ( inputValue ) => {
     this.setState( () => {
       return {
-        showTrending: false,
         loading: true
       }    
     });
@@ -74,12 +74,11 @@ class App extends Component {
         return response.json()
       })
       .then( ( data ) => {
+        this.props.setSearchResults();
         this.setState({
-          showTrending : false,
           searchInputValue :  inputValue,
           searchResult : data.results,
           displayedResults : data.results,
-          displaySinglePage : false,
           displayReviews : false,
           displayTrailers : false,
           displayDetailedProfile: false,
@@ -89,13 +88,15 @@ class App extends Component {
   }
 
   filterSinglePageHandler = ( element, mediaType ) => {
+    console.log('filter')
     let elementToDisplay = this.state.displayedResults.filter( ( item ) => {
       return item.id === element.id
     })
+
+    this.props.filterSinglePage();
     this.setState( () => {
       return {
         singlePageData : elementToDisplay[0],
-        displaySinglePage : true,
         displayedResults : elementToDisplay,
         singlePageType : elementToDisplay[0].media_type,
         loadingShowCard : true
@@ -148,6 +149,7 @@ class App extends Component {
   }
 
   findShowByIdHandler = (showId, mediaType) => {
+    console.log('find')
     this.setState( () => {
       return {
         loading: true
@@ -168,11 +170,10 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.getAdditionalShowInfoHandler(showId, mediaType);
+        this.props.findShowById();
         this.setState( (  ) => {
           return {
             singlePageData : [data],
-            displaySinglePage : true,
-            displayNewSinglePage : true,
             displayedResults : [data],
             singlePageType: mediaType,
             loading: false
@@ -189,12 +190,10 @@ class App extends Component {
         return response.json();
       })
       .then( ( data ) => {
+        this.props.findTrendingShows()
         this.setState( () => {
           return {
             searchResult : data.results,
-            showTrending : true,
-            displaySinglePage : false,
-            displayNewSinglePage : false,
             displayedResults : data.results,
             displayReviews : false,
             reviews : [],
@@ -208,10 +207,9 @@ class App extends Component {
   }
 
   showPreviousResultsHandler = () => {
+    this.props.showPreviousResults()
     this.setState( ( prevState ) => {
       return {
-        displaySinglePage : false,
-        displayNewSinglePage : false,
         displayedResults : [...prevState.searchResult],
         displayReviews : false,
         reviews : [],
@@ -375,7 +373,7 @@ class App extends Component {
           filterProfileSinglePage = {this.filterProfileSinglePageHandler}
           findShowById = {this.findShowByIdHandler}
           findTrendingShows = {this.findTrendingShows}
-          displaySinglePage = {this.state.displaySinglePage} 
+          displaySinglePage = {this.props.displaySinglePage} 
           singlePageType = {this.state.singlePageType}
           showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
@@ -388,7 +386,7 @@ class App extends Component {
           displayDetailedProfile = {this.state.displayDetailedProfile}
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}
-          displayNewSinglePage = {this.state.displayNewSinglePage}
+          displayFilteredPage = {this.props.displayFilteredPage}
           loadingProfile = {this.state.loadingProfile}
           loadingShowCard = {this.state.loadingShowCard}
           addBookmark = {this.addBookmark}
@@ -397,10 +395,10 @@ class App extends Component {
         />
     }
 
-    if (!this.state.displaySinglePage && !this.state.displayDetailedProfile) {
+    if (!this.props.displaySinglePage && !this.state.displayDetailedProfile) {
       sectionTitle =   
         <h2 className='sectionTitle'>
-          <span>{this.state.showTrending ? 'Trending' : 'Results'}</span>
+          <span>{this.props.displayTrendingPage ? 'Trending' : 'Results'}</span>
         </h2>
     }
 
@@ -427,4 +425,23 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateProps = state => {
+  return {
+    displaySinglePage: state.displaySinglePage,
+    displayFilteredPage: state.displayFilteredPage,
+    displayTrendingPage: state.displayTrendingPage
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    setSearchResults: () => dispatch(actions.setSearchResults()),
+    findShowById: () => dispatch(actions.findShowById()),
+    findTrendingShows: () => dispatch(actions.findTrendingShows()),
+    filterSinglePage: () => dispatch(actions.filterSinglePage()),
+    showPreviousResults: () => dispatch(actions.showPreviousResults()),
+
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(App);
