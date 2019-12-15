@@ -52,7 +52,7 @@ const SearchResults = (props) => {
             showSingleShow = {props.findShowById} 
             filterProfileSinglePage = {props.filterProfileSinglePage}
             element = {element}
-            displayDetailedProfile = {props.displayDetailedProfile}
+            displaySinglePage = {props.displaySinglePage}
             singleProfileDetails = {props.singleProfileDetails}
             singleProfileCredits = {props.singleProfileCredits}
             loading = {props.loadingProfile}
@@ -165,7 +165,7 @@ const SearchResults = (props) => {
     }  
   }
 
-  if (props.displayDetailedProfile || props.displaySinglePage) {
+  if (props.displaySinglePage) {
     goBackBtn = 
       <div className="col text-left pb-1">
         <Button 
@@ -185,7 +185,7 @@ const SearchResults = (props) => {
       </div>;
   }
 
-  if (!props.displaySinglePage && !props.displayDetailedProfile) {
+  if (!props.displaySinglePage) {
     searchResultClasses = `${classes.resultsContainer} customScroll`
   }
  

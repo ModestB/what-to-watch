@@ -78,7 +78,7 @@ const profileCard = (props) => {
       </Row>;
   }
 
-  if (props.displayDetailedProfile) {
+  if (props.displaySinglePage) {
     cardBodyContent = 
       <div>
         <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
@@ -138,12 +138,12 @@ const profileCard = (props) => {
         
       {cardFooterContent}
       
-      { props.displayDetailedProfile? '' : cardOverlay }
+      { props.displaySinglePage? '' : cardOverlay }
     </div>;
 
   return (
     <div className="col flex-grow-0">
-      <Card className={`${classes.Card} ${props.displayDetailedProfile ? classes.detailedCard : ''}  px-0`}>
+      <Card className={`${classes.Card} ${props.displaySinglePage ? classes.detailedCard : ''}  px-0`}>
 
         { props.loading ? <LoadingSpinner /> : content }
 

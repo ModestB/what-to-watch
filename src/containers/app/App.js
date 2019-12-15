@@ -46,7 +46,6 @@ class App extends Component {
     reviews : [],
     displayTrailers : false,
     trailers : [],
-    displayDetailedProfile: false,
     singleProfileDetails: {},
     singleProfileCredits: [],
     loading : true,
@@ -81,7 +80,6 @@ class App extends Component {
           displayedResults : data.results,
           displayReviews : false,
           displayTrailers : false,
-          displayDetailedProfile: false,
           loading: false
         })
       })
@@ -116,11 +114,11 @@ class App extends Component {
       return item.id === profileId
     })
 
+    this.props.filterSinglePage()
     this.setState( () => {
       return {
         displayedResults: elementToDisplay,
         loadingProfile: true,
-        displayDetailedProfile: true,
       }    
     });
     
@@ -199,7 +197,6 @@ class App extends Component {
             reviews : [],
             trailers : [],
             displayTrailers : false,
-            displayDetailedProfile: false,
             loading: false
           }    
         });
@@ -215,7 +212,6 @@ class App extends Component {
         reviews : [],
         trailers : [],
         displayTrailers : false,
-        displayDetailedProfile: false,
         loading: false
       }    
     });
@@ -383,7 +379,6 @@ class App extends Component {
           displayTrailers = {this.state.displayTrailers}
           trailers = {this.state.trailers}
           loading = {this.state.loading}
-          displayDetailedProfile = {this.state.displayDetailedProfile}
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}
           displayFilteredPage = {this.props.displayFilteredPage}
@@ -395,7 +390,7 @@ class App extends Component {
         />
     }
 
-    if (!this.props.displaySinglePage && !this.state.displayDetailedProfile) {
+    if (!this.props.displaySinglePage) {
       sectionTitle =   
         <h2 className='sectionTitle'>
           <span>{this.props.displayTrendingPage ? 'Trending' : 'Results'}</span>
