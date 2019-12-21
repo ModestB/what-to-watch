@@ -48,9 +48,6 @@ class App extends Component {
     trailers : [],
     singleProfileDetails: {},
     singleProfileCredits: [],
-    loading : true,
-    loadingProfile: false,
-    loadingShowCard: false,
     displayBookmarks : false, 
     bookmarks: []
   };
@@ -62,11 +59,7 @@ class App extends Component {
   };
 
   searchHandler = ( inputValue ) => {
-    this.setState( () => {
-      return {
-        loading: true
-      }    
-    });
+    this.props.startSearch();
 
     fetch( MULTI_API +  inputValue )
       .then( (response) => {
@@ -80,7 +73,6 @@ class App extends Component {
           displayedResults : data.results,
           displayReviews : false,
           displayTrailers : false,
-          loading: false
         })
       })
   }
@@ -97,7 +89,6 @@ class App extends Component {
         singlePageData : elementToDisplay[0],
         displayedResults : elementToDisplay,
         singlePageType : elementToDisplay[0].media_type,
-        loadingShowCard : true
       }    
     });
 
@@ -118,7 +109,6 @@ class App extends Component {
     this.setState( () => {
       return {
         displayedResults: elementToDisplay,
-        loadingProfile: true,
       }    
     });
     
@@ -136,9 +126,9 @@ class App extends Component {
       })
       .then( ( data ) => {
         credits = data.cast;
+        this.props.filterSinglePageEnd()
         this.setState( () => {
           return {
-            loadingProfile: false,
             singleProfileDetails: details,
             singleProfileCredits: credits,
           }    
@@ -147,12 +137,7 @@ class App extends Component {
   }
 
   findShowByIdHandler = (showId, mediaType) => {
-    console.log('find')
-    this.setState( () => {
-      return {
-        loading: true
-      }    
-    });
+    this.props.startSearch();
 
     let request = "";
 
@@ -174,7 +159,6 @@ class App extends Component {
             singlePageData : [data],
             displayedResults : [data],
             singlePageType: mediaType,
-            loading: false
           }    
         });
       })
@@ -197,7 +181,6 @@ class App extends Component {
             reviews : [],
             trailers : [],
             displayTrailers : false,
-            loading: false
           }    
         });
       })
@@ -212,7 +195,6 @@ class App extends Component {
         reviews : [],
         trailers : [],
         displayTrailers : false,
-        loading: false
       }    
     });
   };
@@ -248,13 +230,13 @@ class App extends Component {
         })
         .then( (data)  => {
           reviewsData = data;
+          this.props.getExtraShowInfo();
           this.setState( () => {
             return {
               displayTrailers: true,
               displayReviews: true,
               trailers: trailersData,
               reviews: reviewsData.results,
-              loadingShowCard: false
             }
           })
          })
@@ -378,12 +360,12 @@ class App extends Component {
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.state.displayTrailers}
           trailers = {this.state.trailers}
-          loading = {this.state.loading}
+          loading = {this.props.loading}
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}
           displayFilteredPage = {this.props.displayFilteredPage}
-          loadingProfile = {this.state.loadingProfile}
-          loadingShowCard = {this.state.loadingShowCard}
+          loadingProfile = {this.props.loadingProfile}
+          loadingShowCard = {this.props.loadingShowCard}
           addBookmark = {this.addBookmark}
           removeBookmark = {this.removeBookmark}
           bookmarks ={this.state.bookmarks}
@@ -406,7 +388,7 @@ class App extends Component {
           </div>  
           <SearchForm searchHandler = {this.searchHandler}/>
           { sectionTitle }
-          { this.state.loading ? <LoadingSpinner/> : searchResult }      
+          { this.props.loading ? <LoadingSpinner/> : searchResult }      
           <Bookmarks
             displayBookmarks = {this.state.displayBookmarks}
             displayBookmarksHandler = {this.displayBookmarksHandler}
@@ -424,17 +406,23 @@ const mapStateProps = state => {
   return {
     displaySinglePage: state.displaySinglePage,
     displayFilteredPage: state.displayFilteredPage,
-    displayTrendingPage: state.displayTrendingPage
+    displayTrendingPage: state.displayTrendingPage,
+    loading: state.loading,
+    loadingProfile: state.loadingProfile,
+    loadingShowCard: state.loadingShowCard
   }
 }
 
 const mapStateDispatch = dispatch => {
   return {
+    startSearch: () => dispatch(actions.startSearchResults()),
     setSearchResults: () => dispatch(actions.setSearchResults()),
     findShowById: () => dispatch(actions.findShowById()),
     findTrendingShows: () => dispatch(actions.findTrendingShows()),
     filterSinglePage: () => dispatch(actions.filterSinglePage()),
+    filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
     showPreviousResults: () => dispatch(actions.showPreviousResults()),
+    getExtraShowInfo: () => dispatch(actions.getExtraShowInfo())
 
   }
 }
