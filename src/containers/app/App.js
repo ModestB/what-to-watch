@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    searchInputValue :  "null",
     searchResult  : [],
     displayedResults: [],
     singlePageData : [],
@@ -66,9 +65,8 @@ class App extends Component {
         return response.json()
       })
       .then( ( data ) => {
-        this.props.setSearchResults();
+        this.props.setSearchResults(inputValue);
         this.setState({
-          searchInputValue :  inputValue,
           searchResult : data.results,
           displayedResults : data.results,
           displayReviews : false,
@@ -329,7 +327,7 @@ class App extends Component {
     let searchResult = null;
     let sectionTitle = null;
 
-    if (this.state.searchInputValue !== 'null') {
+    if (this.state.searchInputValue !== null) {
       searchResult = 
         <div className="mt-3">
           <p>No results</p>
@@ -409,14 +407,15 @@ const mapStateProps = state => {
     displayTrendingPage: state.displayTrendingPage,
     loading: state.loading,
     loadingProfile: state.loadingProfile,
-    loadingShowCard: state.loadingShowCard
+    loadingShowCard: state.loadingShowCard,
+    searchInputValue: state.searchInputValue
   }
 }
 
 const mapStateDispatch = dispatch => {
   return {
     startSearch: () => dispatch(actions.startSearchResults()),
-    setSearchResults: () => dispatch(actions.setSearchResults()),
+    setSearchResults: (inputValue) => dispatch(actions.setSearchResults(inputValue)),
     findShowById: () => dispatch(actions.findShowById()),
     findTrendingShows: () => dispatch(actions.findTrendingShows()),
     filterSinglePage: () => dispatch(actions.filterSinglePage()),

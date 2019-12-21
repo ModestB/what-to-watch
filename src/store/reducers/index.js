@@ -8,11 +8,14 @@ import loading from './loading/loading';
 import loadingProfile from './loading/loadingProfile';
 import loadingShowCard from './loading/loadingShowCard';
 
+import searchInputValue from './search/searchInputValue';
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
   displayTrendingPage,
   loading,
   loadingProfile,
-  loadingShowCard
+  loadingShowCard,
+  searchInputValue
 })

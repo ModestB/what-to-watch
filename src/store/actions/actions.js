@@ -13,8 +13,11 @@ export const startSearchResults = () => ({
   type:  START_SEARCH
 });
 
-export const setSearchResults = () => ({
-  type:  SET_SEARCH_RESULTS
+export const setSearchResults = (inputValue) => ({
+  type:  SET_SEARCH_RESULTS,
+  payload: {
+    inputValue
+  }
 });
 
 export const findShowById = () => ({
