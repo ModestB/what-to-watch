@@ -44,8 +44,12 @@ export const filterSinglePage = (itemId, displayedResults) => ({
   }
 });
 
-export const filterSinglePageEnd = () => ({
-  type:  FILTER_SINGLE_PAGE_END
+export const filterSinglePageEnd = (profileDetails, profileCredits) => ({
+  type:  FILTER_SINGLE_PAGE_END,
+  payload: {
+    profileDetails,
+    profileCredits
+  }
 });
 
 export const showPreviousResults = (prevResults) => ({

@@ -37,8 +37,6 @@ class App extends Component {
   }
 
   state = {
-    singleProfileDetails: {},
-    singleProfileCredits: [],
     displayBookmarks : false, 
     bookmarks: []
   };
@@ -73,8 +71,8 @@ class App extends Component {
     let detailsRequest = `https://api.themoviedb.org/3/person/${profileId}?api_key=${API_KEY}&language=en-US`;
     let combinedCreditsRequest = `
     https://api.themoviedb.org/3/person/${profileId}/combined_credits?api_key=${API_KEY}&language=en-US`
-    let details = null;
-    let credits = null;
+    let profileDetails = null;
+    let profileCredits = null;
 
     this.props.filterSinglePage(profileId, this.props.displayedResults)
     
@@ -84,21 +82,15 @@ class App extends Component {
       })
       .then( ( data ) => {
         // SECOND FETCH
-        details = data;
+        profileDetails = data;
         return  fetch( combinedCreditsRequest );
       })
       .then( (response) => {
         return response.json()
       })
       .then( ( data ) => {
-        credits = data.cast;
-        this.props.filterSinglePageEnd()
-        this.setState( () => {
-          return {
-            singleProfileDetails: details,
-            singleProfileCredits: credits,
-          }    
-        });
+        profileCredits = data.cast;
+        this.props.filterSinglePageEnd(profileDetails, profileCredits)
       })
   }
 
@@ -287,8 +279,8 @@ class App extends Component {
           displayTrailers = {this.props.displayTrailers}
           trailers = {this.props.trailersData}
           loading = {this.props.loading}
-          singleProfileDetails = {this.state.singleProfileDetails}
-          singleProfileCredits = {this.state.singleProfileCredits}
+          singleProfileDetails = {this.props.profileDetails}
+          singleProfileCredits = {this.props.profileCredits}
           displayFilteredPage = {this.props.displayFilteredPage}
           loadingProfile = {this.props.loadingProfile}
           loadingShowCard = {this.props.loadingShowCard}
@@ -343,7 +335,9 @@ const mapStateProps = state => {
     displayReviews: state.displayReviews,
     displayTrailers: state.displayTrailers,
     reviewsData: state.reviewsData,
-    trailersData: state.trailersData
+    trailersData: state.trailersData,
+    profileDetails: state.profileDetails,
+    profileCredits: state.profileCredits,
   }
 }
 
@@ -354,7 +348,7 @@ const mapStateDispatch = dispatch => {
     findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
     findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
-    filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
+    filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
     getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData))
 

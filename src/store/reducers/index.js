@@ -20,6 +20,8 @@ import displayTrailers from './extraInfo/trailers/displayTrailers';
 
 import reviewsData from './extraInfo/reviews/reviewsData';
 import trailersData from './extraInfo/trailers/trailersData';
+import profileDetails from './extraInfo/profileDetails/profileDetails';
+import profileCredits from './extraInfo/profileCredits/profileCredits';
 
 export default combineReducers({
   displaySinglePage,
@@ -35,5 +37,7 @@ export default combineReducers({
   displayReviews,
   displayTrailers,
   reviewsData,
-  trailersData
+  trailersData,
+  profileDetails,
+  profileCredits
 })
