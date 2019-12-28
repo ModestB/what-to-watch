@@ -11,6 +11,8 @@ import loadingShowCard from './loading/loadingShowCard';
 import searchInputValue from './search/searchInputValue';
 import searchResults from './search/searchResults';
 
+import displayedResults from './results/displayedResults';
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
@@ -19,5 +21,6 @@ export default combineReducers({
   loadingProfile,
   loadingShowCard,
   searchInputValue,
-  searchResults
+  searchResults,
+  displayedResults
 })

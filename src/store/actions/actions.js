@@ -21,8 +21,11 @@ export const setSearchResults = (inputValue, searchResults) => ({
   }
 });
 
-export const findShowById = () => ({
-  type:  FIND_SHOW_BY_ID
+export const findShowById = (searchResults) => ({
+  type:  FIND_SHOW_BY_ID,
+  payload: {
+    searchResults
+  }
 });
 
 export const findTrendingShows = (searchResults) => ({
@@ -32,16 +35,22 @@ export const findTrendingShows = (searchResults) => ({
   }
 });
 
-export const filterSinglePage = () => ({
-  type:  FILTER_SINGLE_PAGE
+export const filterSinglePage = (itemId) => ({
+  type:  FILTER_SINGLE_PAGE,
+  payload: {
+    itemId
+  }
 });
 
 export const filterSinglePageEnd = () => ({
   type:  FILTER_SINGLE_PAGE_END
 });
 
-export const showPreviousResults = () => ({
-  type:  SHOW_PREVIOUS_RESULTS
+export const showPreviousResults = (prevResults) => ({
+  type:  SHOW_PREVIOUS_RESULTS,
+  payload: {
+    prevResults
+  }
 });
 
 export const getExtraShowInfo = () => ({

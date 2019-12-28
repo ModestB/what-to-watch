@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    displayedResults: [],
     singlePageData : [],
     singlePageType : "",
     displayReviews : false,
@@ -66,7 +65,6 @@ class App extends Component {
       .then( ( data ) => {
         this.props.setSearchResults(inputValue, data.results);
         this.setState({
-          displayedResults : data.results,
           displayReviews : false,
           displayTrailers : false,
         })
@@ -75,15 +73,14 @@ class App extends Component {
 
   filterSinglePageHandler = ( element, mediaType ) => {
     console.log('filter')
-    let elementToDisplay = this.state.displayedResults.filter( ( item ) => {
+    let elementToDisplay = this.props.displayedResults.filter( ( item ) => {
       return item.id === element.id
     })
 
-    this.props.filterSinglePage();
+    this.props.filterSinglePage(element.id);
     this.setState( () => {
       return {
         singlePageData : elementToDisplay[0],
-        displayedResults : elementToDisplay,
         singlePageType : elementToDisplay[0].media_type,
       }    
     });
@@ -97,16 +94,8 @@ class App extends Component {
     https://api.themoviedb.org/3/person/${profileId}/combined_credits?api_key=${API_KEY}&language=en-US`
     let details = null;
     let credits = null;
-    let elementToDisplay = this.state.displayedResults.filter( ( item ) => {
-      return item.id === profileId
-    })
 
-    this.props.filterSinglePage()
-    this.setState( () => {
-      return {
-        displayedResults: elementToDisplay,
-      }    
-    });
+    this.props.filterSinglePage(profileId)
     
     return fetch( detailsRequest )
       .then( (response) => {
@@ -149,14 +138,15 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.getAdditionalShowInfoHandler(showId, mediaType);
-        this.props.findShowById();
+    
         this.setState( (  ) => {
           return {
             singlePageData : [data],
-            displayedResults : [data],
             singlePageType: mediaType,
           }    
         });
+
+        this.props.findShowById([data]);
       })
   };
 
@@ -172,7 +162,6 @@ class App extends Component {
 
         this.setState( () => {
           return {
-            displayedResults : data.results,
             displayReviews : false,
             reviews : [],
             trailers : [],
@@ -183,10 +172,9 @@ class App extends Component {
   }
 
   showPreviousResultsHandler = () => {
-    this.props.showPreviousResults()
+    this.props.showPreviousResults([...this.props.searchResults])
     this.setState( ( prevState ) => {
       return {
-        displayedResults : [...this.props.searchResults],
         displayReviews : false,
         reviews : [],
         trailers : [],
@@ -342,7 +330,7 @@ class App extends Component {
     if (this.props.searchResults && this.props.searchResults.length > 0) {
       searchResult = 
         <SearchResults 
-          displayedResults = {this.state.displayedResults} 
+          displayedResults = {this.props.displayedResults} 
           filterSinglePage = {this.filterSinglePageHandler}
           filterProfileSinglePage = {this.filterProfileSinglePageHandler}
           findShowById = {this.findShowByIdHandler}
@@ -407,7 +395,8 @@ const mapStateProps = state => {
     loadingProfile: state.loadingProfile,
     loadingShowCard: state.loadingShowCard,
     searchInputValue: state.searchInputValue,
-    searchResults: state.searchResults
+    searchResults: state.searchResults,
+    displayedResults: state.displayedResults
   }
 }
 
@@ -415,11 +404,11 @@ const mapStateDispatch = dispatch => {
   return {
     startSearch: () => dispatch(actions.startSearchResults()),
     setSearchResults: (inputValue, searchResults) => dispatch(actions.setSearchResults(inputValue, searchResults)),
-    findShowById: () => dispatch(actions.findShowById()),
+    findShowById: (searchResults) => dispatch(actions.findShowById(searchResults)),
     findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
-    filterSinglePage: () => dispatch(actions.filterSinglePage()),
+    filterSinglePage: (itemId) => dispatch(actions.filterSinglePage(itemId)),
     filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
-    showPreviousResults: () => dispatch(actions.showPreviousResults()),
+    showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
     getExtraShowInfo: () => dispatch(actions.getExtraShowInfo())
 
   }
