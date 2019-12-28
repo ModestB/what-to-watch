@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    displayReviews : false,
     reviews : [],
     displayTrailers : false,
     trailers : [],
@@ -63,7 +62,6 @@ class App extends Component {
       .then( ( data ) => {
         this.props.setSearchResults(inputValue, data.results);
         this.setState({
-          displayReviews : false,
           displayTrailers : false,
         })
       })
@@ -143,7 +141,6 @@ class App extends Component {
 
         this.setState( () => {
           return {
-            displayReviews : false,
             reviews : [],
             trailers : [],
             displayTrailers : false,
@@ -156,7 +153,6 @@ class App extends Component {
     this.props.showPreviousResults([...this.props.searchResults])
     this.setState( ( prevState ) => {
       return {
-        displayReviews : false,
         reviews : [],
         trailers : [],
         displayTrailers : false,
@@ -170,7 +166,7 @@ class App extends Component {
     let trailersData = null;
     let reviewsData = null;
 
-    if(!this.state.displayTrailers && !this.state.displayReviews){
+    if(!this.state.displayTrailers && !this.props.displayReviews){
       if( mediaType === 'movie'){
         requestTrailers = `https://api.themoviedb.org/3/movie/${showId}/videos?api_key=${API_KEY}&language=en-US`;
         requestReviews = `https://api.themoviedb.org/3/movie/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
@@ -199,7 +195,6 @@ class App extends Component {
           this.setState( () => {
             return {
               displayTrailers: true,
-              displayReviews: true,
               trailers: trailersData,
               reviews: reviewsData.results,
             }
@@ -320,7 +315,7 @@ class App extends Component {
           singlePageType = {this.props.singlePageType}
           showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
-          displayReviews = {this.state.displayReviews}
+          displayReviews = {this.props.displayReviews}
           reviews = {this.state.reviews}
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.state.displayTrailers}
@@ -378,7 +373,8 @@ const mapStateProps = state => {
     searchInputValue: state.searchInputValue,
     searchResults: state.searchResults,
     displayedResults: state.displayedResults,
-    singlePageType: state.singlePageType
+    singlePageType: state.singlePageType,
+    displayReviews: state.displayReviews
   }
 }
 
