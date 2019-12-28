@@ -19,6 +19,7 @@ import displayReviews from './extraInfo/reviews/displayReviews';
 import displayTrailers from './extraInfo/trailers/displayTrailers';
 
 import reviewsData from './extraInfo/reviews/reviewsData';
+import trailersData from './extraInfo/trailers/trailersData';
 
 export default combineReducers({
   displaySinglePage,
@@ -33,5 +34,6 @@ export default combineReducers({
   singlePageType,
   displayReviews,
   displayTrailers,
-  reviewsData
+  reviewsData,
+  trailersData
 })

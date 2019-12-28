@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    trailers : [],
     singleProfileDetails: {},
     singleProfileCredits: [],
     displayBookmarks : false, 
@@ -133,22 +132,11 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.props.findTrendingShows(data.results)
-
-        this.setState( () => {
-          return {
-            trailers : [],
-          }    
-        });
       })
   }
 
   showPreviousResultsHandler = () => {
     this.props.showPreviousResults([...this.props.searchResults])
-    this.setState( ( prevState ) => {
-      return {
-        trailers : [],
-      }    
-    });
   };
 
   getAdditionalShowInfoHandler = ( showId, mediaType ) => {
@@ -182,12 +170,7 @@ class App extends Component {
         })
         .then( (data)  => {
           reviewsData = data;
-          this.props.getExtraShowInfo(reviewsData.results);
-          this.setState( () => {
-            return {
-              trailers: trailersData,
-            }
-          })
+          this.props.getExtraShowInfo(reviewsData.results, trailersData);
          })
         ;
     }
@@ -302,7 +285,7 @@ class App extends Component {
           reviews = {this.props.reviews}
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.props.displayTrailers}
-          trailers = {this.state.trailers}
+          trailers = {this.props.trailersData}
           loading = {this.props.loading}
           singleProfileDetails = {this.state.singleProfileDetails}
           singleProfileCredits = {this.state.singleProfileCredits}
@@ -359,7 +342,8 @@ const mapStateProps = state => {
     singlePageType: state.singlePageType,
     displayReviews: state.displayReviews,
     displayTrailers: state.displayTrailers,
-    reviews: state.reviewsData
+    reviews: state.reviewsData,
+    trailersData: state.trailersData
   }
 }
 
@@ -372,7 +356,7 @@ const mapStateDispatch = dispatch => {
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
-    getExtraShowInfo: (reviewsData) => dispatch(actions.getExtraShowInfo(reviewsData))
+    getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData))
 
   }
 }

@@ -55,10 +55,11 @@ export const showPreviousResults = (prevResults) => ({
   }
 });
 
-export const getExtraShowInfo = (reviewsData) => ({
+export const getExtraShowInfo = (reviewsData, trailersData) => ({
   type:  GET_EXTRA_SHOW_INFO,
   payload: {
-    reviewsData
+    reviewsData,
+    trailersData
   }
 });
 
