@@ -7,7 +7,11 @@ import {
   FILTER_SINGLE_PAGE_END,
   SHOW_PREVIOUS_RESULTS,
   GET_EXTRA_SHOW_INFO,
-  TOGGLE_BOOKMARKS
+  TOGGLE_BOOKMARKS,
+  ADD_BOOKMARK,
+  REMOVE_BOOKMARK,
+  LOAD_BOOKMARKS_STORAGE,
+  UPDATE_BOOKMARKS_STORAGE,
 } from '../actionTypes/actionTypes';
 
 export const startSearchResults = () => ({
@@ -68,7 +72,30 @@ export const getExtraShowInfo = (reviewsData, trailersData) => ({
   }
 
 });
+
 export const toggleBookmarks = () => ({
   type:  TOGGLE_BOOKMARKS
+});
+
+export const addBookmark = (bookmarkDetails) => ({
+  type:  ADD_BOOKMARK,
+  payload: {
+    bookmarkDetails
+  }
+});
+
+export const removeBookmark = (bookmarkId) => ({
+  type:  REMOVE_BOOKMARK,
+  payload: {
+    bookmarkId
+  }
+});
+
+export const loadBookmarksStorage = () => ({
+  type:  LOAD_BOOKMARKS_STORAGE,
+});
+
+export const updateBookmarksStorage = () => ({
+  type:  UPDATE_BOOKMARKS_STORAGE,
 });
 

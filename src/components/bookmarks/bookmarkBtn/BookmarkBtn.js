@@ -25,7 +25,7 @@ const BookmarkBtn = (props) => {
 
   function clickHandler() {
     if (!active) {
-      props.addBookmark(props.id, props.title, props.date, props.mediaType);
+      props.addBookmark({id: props.id, title: props.title, date: props.date, mediaType: props.mediaType});
     } else {
       setActive(false);
       props.removeBookmark(props.id);

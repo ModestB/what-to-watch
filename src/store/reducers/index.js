@@ -23,6 +23,7 @@ import trailersData from './extraInfo/trailers/trailersData';
 import profileDetails from './extraInfo/profileDetails/profileDetails';
 import profileCredits from './extraInfo/profileCredits/profileCredits';
 
+import bookmarks from './bookmarks/bookmarks';
 import displayBookmarks from './bookmarks/displayBookmarks';
 
 export default combineReducers({
@@ -42,5 +43,6 @@ export default combineReducers({
   trailersData,
   profileDetails,
   profileCredits,
+  bookmarks,
   displayBookmarks
 })

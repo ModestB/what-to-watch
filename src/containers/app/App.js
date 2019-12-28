@@ -27,8 +27,6 @@ import Bookmarks from '../../components/bookmarks/Bookmarks'
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
 const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
 
-// LOCAL STORAGE
-const LS_BOOKMARKS = 'wtwBookmarks';
 
 class App extends Component {
   constructor(props) {
@@ -36,14 +34,8 @@ class App extends Component {
     this.filterSinglePageHandler = this.filterSinglePageHandler.bind(this);
   }
 
-  state = {
-    bookmarks: []
-  };
-
   componentDidUpdate (prevProps, prevState) {
-    if (prevState.bookmarks && JSON.stringify(prevState.bookmarks) !== JSON.stringify(this.state.bookmarks)) {
-      this.updateLocalSorageBookmarks(this.state.bookmarks);
-    };
+    this.props.updateBookmarksStorage();
   };
 
   searchHandler = ( inputValue ) => {
@@ -166,79 +158,17 @@ class App extends Component {
         ;
     }
   }
-
-  addBookmark = (id, title, date, mediaType) => {
-    this.setState((state) => {
-      let bookmarks;
-      if (!state.bookmarks) {
-        bookmarks = [{id, title, date, mediaType}];
-      } else {
-        bookmarks = [
-          ...state.bookmarks,
-          {id, title, date, mediaType}
-        ];
-      }
-      return {
-        bookmarks: bookmarks
-      }
-    });
-  };
-
-  removeBookmark = (id) => {
-    let newBookmarks = 
-      this.state.bookmarks.filter((bookmark) => {
-        if (bookmark.id === id) {
-          return false;
-        }
-        return true;
-      });
-
-    this.setState(() => {
-      return {
-        bookmarks: [
-          ...newBookmarks,
-        ]
-      }
-    });
-  };
-
-  loadStoredBookmarks = () => {
-    if (process.env.NODE_ENV !== 'production') {
-      this.setState( () => {
-        return {
-          bookmarks : JSON.parse(localStorage.getItem(LS_BOOKMARKS))
-        }
-      })
-      return;
-    };
-    chrome.storage.sync.get(['LS_BOOKMARKS'], (result) => {
-      this.setState( () => {
-        return {
-          bookmarks :  result.LS_BOOKMARKS
-        };
-      });
-    });
-  };
-
-  updateLocalSorageBookmarks = (bookmarks) => {
-    if (process.env.NODE_ENV !== 'production') {
-      localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
-      return;
-    };
-    chrome.storage.sync.set({LS_BOOKMARKS: bookmarks});
-  };
-
   componentDidMount(){
     searchSuggestionSelectHandler();
     this.findTrendingShows();
-    this.loadStoredBookmarks(); 
+    this.props.loadBookmarksStorage(); 
   }
 
   render () {
     let searchResult = null;
     let sectionTitle = null;
 
-    if (this.state.searchInputValue !== null) {
+    if (this.props.searchInputValue !== null) {
       searchResult = 
         <div className="mt-3">
           <p>No results</p>
@@ -275,9 +205,9 @@ class App extends Component {
           displayFilteredPage = {this.props.displayFilteredPage}
           loadingProfile = {this.props.loadingProfile}
           loadingShowCard = {this.props.loadingShowCard}
-          addBookmark = {this.addBookmark}
-          removeBookmark = {this.removeBookmark}
-          bookmarks ={this.state.bookmarks}
+          addBookmark = {this.props.addBookmark}
+          removeBookmark = {this.props.removeBookmark}
+          bookmarks ={this.props.bookmarks}
         />
     }
 
@@ -301,8 +231,8 @@ class App extends Component {
           <Bookmarks
             displayBookmarks = {this.props.displayBookmarks}
             displayBookmarksHandler = {this.props.toggleBookmarks}
-            bookmarks = {this.state.bookmarks}
-            removeBookmark = {this.removeBookmark}
+            bookmarks = {this.props.bookmarks}
+            removeBookmark = {this.props.removeBookmark}
             findShowById = {this.findShowByIdHandler}
           />
         </Container>
@@ -329,7 +259,8 @@ const mapStateProps = state => {
     trailersData: state.trailersData,
     profileDetails: state.profileDetails,
     profileCredits: state.profileCredits,
-    displayBookmarks: state.displayBookmarks
+    displayBookmarks: state.displayBookmarks,
+    bookmarks: state.bookmarks
   }
 }
 
@@ -343,7 +274,11 @@ const mapStateDispatch = dispatch => {
     filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
     getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData)),
-    toggleBookmarks: () => dispatch(actions.toggleBookmarks())
+    toggleBookmarks: () => dispatch(actions.toggleBookmarks()),
+    addBookmark: (bookmarkDetails) => dispatch(actions.addBookmark(bookmarkDetails)),
+    removeBookmark: (bookmarkId) => dispatch(actions.removeBookmark(bookmarkId)),
+    loadBookmarksStorage: () => dispatch(actions.loadBookmarksStorage()),
+    updateBookmarksStorage: () => dispatch(actions.updateBookmarksStorage()),
   }
 }
 
