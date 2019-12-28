@@ -16,6 +16,7 @@ import displayedResults from './results/displayedResults';
 import singlePageType from './singlePage/singlePageType';
 
 import displayReviews from './extraInfo/reviews/displayReviews';
+import displayTrailers from './extraInfo/trailers/displayTrailers';
 
 export default combineReducers({
   displaySinglePage,
@@ -28,5 +29,6 @@ export default combineReducers({
   searchResults,
   displayedResults,
   singlePageType,
-  displayReviews
+  displayReviews,
+  displayTrailers
 })

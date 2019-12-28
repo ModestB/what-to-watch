@@ -38,7 +38,6 @@ class App extends Component {
 
   state = {
     reviews : [],
-    displayTrailers : false,
     trailers : [],
     singleProfileDetails: {},
     singleProfileCredits: [],
@@ -61,9 +60,6 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.props.setSearchResults(inputValue, data.results);
-        this.setState({
-          displayTrailers : false,
-        })
       })
   }
 
@@ -143,7 +139,6 @@ class App extends Component {
           return {
             reviews : [],
             trailers : [],
-            displayTrailers : false,
           }    
         });
       })
@@ -155,7 +150,6 @@ class App extends Component {
       return {
         reviews : [],
         trailers : [],
-        displayTrailers : false,
       }    
     });
   };
@@ -166,7 +160,7 @@ class App extends Component {
     let trailersData = null;
     let reviewsData = null;
 
-    if(!this.state.displayTrailers && !this.props.displayReviews){
+    if(!this.props.displayTrailers && !this.props.displayReviews){
       if( mediaType === 'movie'){
         requestTrailers = `https://api.themoviedb.org/3/movie/${showId}/videos?api_key=${API_KEY}&language=en-US`;
         requestReviews = `https://api.themoviedb.org/3/movie/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
@@ -194,19 +188,12 @@ class App extends Component {
           this.props.getExtraShowInfo();
           this.setState( () => {
             return {
-              displayTrailers: true,
               trailers: trailersData,
               reviews: reviewsData.results,
             }
           })
          })
         ;
-    } else {
-      this.setState( () => {
-        return {
-          displayTrailers : false
-        };
-      })
     }
   }
 
@@ -318,7 +305,7 @@ class App extends Component {
           displayReviews = {this.props.displayReviews}
           reviews = {this.state.reviews}
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
-          displayTrailers = {this.state.displayTrailers}
+          displayTrailers = {this.props.displayTrailers}
           trailers = {this.state.trailers}
           loading = {this.props.loading}
           singleProfileDetails = {this.state.singleProfileDetails}
@@ -374,7 +361,8 @@ const mapStateProps = state => {
     searchResults: state.searchResults,
     displayedResults: state.displayedResults,
     singlePageType: state.singlePageType,
-    displayReviews: state.displayReviews
+    displayReviews: state.displayReviews,
+    displayTrailers: state.displayTrailers
   }
 }
 
