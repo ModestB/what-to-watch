@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    reviews : [],
     trailers : [],
     singleProfileDetails: {},
     singleProfileCredits: [],
@@ -137,7 +136,6 @@ class App extends Component {
 
         this.setState( () => {
           return {
-            reviews : [],
             trailers : [],
           }    
         });
@@ -148,7 +146,6 @@ class App extends Component {
     this.props.showPreviousResults([...this.props.searchResults])
     this.setState( ( prevState ) => {
       return {
-        reviews : [],
         trailers : [],
       }    
     });
@@ -185,11 +182,10 @@ class App extends Component {
         })
         .then( (data)  => {
           reviewsData = data;
-          this.props.getExtraShowInfo();
+          this.props.getExtraShowInfo(reviewsData.results);
           this.setState( () => {
             return {
               trailers: trailersData,
-              reviews: reviewsData.results,
             }
           })
          })
@@ -303,7 +299,7 @@ class App extends Component {
           showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.props.displayReviews}
-          reviews = {this.state.reviews}
+          reviews = {this.props.reviews}
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.props.displayTrailers}
           trailers = {this.state.trailers}
@@ -362,7 +358,8 @@ const mapStateProps = state => {
     displayedResults: state.displayedResults,
     singlePageType: state.singlePageType,
     displayReviews: state.displayReviews,
-    displayTrailers: state.displayTrailers
+    displayTrailers: state.displayTrailers,
+    reviews: state.reviewsData
   }
 }
 
@@ -375,7 +372,7 @@ const mapStateDispatch = dispatch => {
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
-    getExtraShowInfo: () => dispatch(actions.getExtraShowInfo())
+    getExtraShowInfo: (reviewsData) => dispatch(actions.getExtraShowInfo(reviewsData))
 
   }
 }
