@@ -13,6 +13,8 @@ import searchResults from './search/searchResults';
 
 import displayedResults from './results/displayedResults';
 
+import singlePageType from './singlePage/singlePageType';
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
@@ -22,5 +24,6 @@ export default combineReducers({
   loadingShowCard,
   searchInputValue,
   searchResults,
-  displayedResults
+  displayedResults,
+  singlePageType
 })

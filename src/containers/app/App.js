@@ -37,8 +37,6 @@ class App extends Component {
   }
 
   state = {
-    singlePageData : [],
-    singlePageType : "",
     displayReviews : false,
     reviews : [],
     displayTrailers : false,
@@ -73,17 +71,8 @@ class App extends Component {
 
   filterSinglePageHandler = ( element, mediaType ) => {
     console.log('filter')
-    let elementToDisplay = this.props.displayedResults.filter( ( item ) => {
-      return item.id === element.id
-    })
 
-    this.props.filterSinglePage(element.id);
-    this.setState( () => {
-      return {
-        singlePageData : elementToDisplay[0],
-        singlePageType : elementToDisplay[0].media_type,
-      }    
-    });
+    this.props.filterSinglePage(element.id, this.props.displayedResults);
 
     this.getAdditionalShowInfoHandler(element.id, (element.media_type ? element.media_type : mediaType));
   };
@@ -95,7 +84,7 @@ class App extends Component {
     let details = null;
     let credits = null;
 
-    this.props.filterSinglePage(profileId)
+    this.props.filterSinglePage(profileId, this.props.displayedResults)
     
     return fetch( detailsRequest )
       .then( (response) => {
@@ -138,15 +127,7 @@ class App extends Component {
       })
       .then( ( data ) => {
         this.getAdditionalShowInfoHandler(showId, mediaType);
-    
-        this.setState( (  ) => {
-          return {
-            singlePageData : [data],
-            singlePageType: mediaType,
-          }    
-        });
-
-        this.props.findShowById([data]);
+        this.props.findShowById([data], mediaType);
       })
   };
 
@@ -336,7 +317,7 @@ class App extends Component {
           findShowById = {this.findShowByIdHandler}
           findTrendingShows = {this.findTrendingShows}
           displaySinglePage = {this.props.displaySinglePage} 
-          singlePageType = {this.state.singlePageType}
+          singlePageType = {this.props.singlePageType}
           showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.state.displayReviews}
@@ -396,7 +377,8 @@ const mapStateProps = state => {
     loadingShowCard: state.loadingShowCard,
     searchInputValue: state.searchInputValue,
     searchResults: state.searchResults,
-    displayedResults: state.displayedResults
+    displayedResults: state.displayedResults,
+    singlePageType: state.singlePageType
   }
 }
 
@@ -404,9 +386,9 @@ const mapStateDispatch = dispatch => {
   return {
     startSearch: () => dispatch(actions.startSearchResults()),
     setSearchResults: (inputValue, searchResults) => dispatch(actions.setSearchResults(inputValue, searchResults)),
-    findShowById: (searchResults) => dispatch(actions.findShowById(searchResults)),
+    findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
     findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
-    filterSinglePage: (itemId) => dispatch(actions.filterSinglePage(itemId)),
+    filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
     getExtraShowInfo: () => dispatch(actions.getExtraShowInfo())

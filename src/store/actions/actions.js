@@ -21,10 +21,11 @@ export const setSearchResults = (inputValue, searchResults) => ({
   }
 });
 
-export const findShowById = (searchResults) => ({
+export const findShowById = (searchResults, mediaType) => ({
   type:  FIND_SHOW_BY_ID,
   payload: {
-    searchResults
+    searchResults,
+    mediaType
   }
 });
 
@@ -35,10 +36,11 @@ export const findTrendingShows = (searchResults) => ({
   }
 });
 
-export const filterSinglePage = (itemId) => ({
+export const filterSinglePage = (itemId, displayedResults) => ({
   type:  FILTER_SINGLE_PAGE,
   payload: {
-    itemId
+    itemId,
+    displayedResults
   }
 });
 
