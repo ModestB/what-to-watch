@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    displayBookmarks : false, 
     bookmarks: []
   };
 
@@ -167,14 +166,6 @@ class App extends Component {
         ;
     }
   }
-
-  displayBookmarksHandler = () => {
-    this.setState((state) => {
-      return {
-        displayBookmarks: !state.displayBookmarks
-      };
-    });
-  };
 
   addBookmark = (id, title, date, mediaType) => {
     this.setState((state) => {
@@ -308,8 +299,8 @@ class App extends Component {
           { sectionTitle }
           { this.props.loading ? <LoadingSpinner/> : searchResult }      
           <Bookmarks
-            displayBookmarks = {this.state.displayBookmarks}
-            displayBookmarksHandler = {this.displayBookmarksHandler}
+            displayBookmarks = {this.props.displayBookmarks}
+            displayBookmarksHandler = {this.props.toggleBookmarks}
             bookmarks = {this.state.bookmarks}
             removeBookmark = {this.removeBookmark}
             findShowById = {this.findShowByIdHandler}
@@ -338,6 +329,7 @@ const mapStateProps = state => {
     trailersData: state.trailersData,
     profileDetails: state.profileDetails,
     profileCredits: state.profileCredits,
+    displayBookmarks: state.displayBookmarks
   }
 }
 
@@ -350,8 +342,8 @@ const mapStateDispatch = dispatch => {
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
-    getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData))
-
+    getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData)),
+    toggleBookmarks: () => dispatch(actions.toggleBookmarks())
   }
 }
 

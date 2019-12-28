@@ -23,6 +23,8 @@ import trailersData from './extraInfo/trailers/trailersData';
 import profileDetails from './extraInfo/profileDetails/profileDetails';
 import profileCredits from './extraInfo/profileCredits/profileCredits';
 
+import displayBookmarks from './bookmarks/displayBookmarks';
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
@@ -39,5 +41,6 @@ export default combineReducers({
   reviewsData,
   trailersData,
   profileDetails,
-  profileCredits
+  profileCredits,
+  displayBookmarks
 })
