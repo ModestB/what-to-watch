@@ -37,7 +37,6 @@ class App extends Component {
   }
 
   state = {
-    searchResult  : [],
     displayedResults: [],
     singlePageData : [],
     singlePageType : "",
@@ -65,9 +64,8 @@ class App extends Component {
         return response.json()
       })
       .then( ( data ) => {
-        this.props.setSearchResults(inputValue);
+        this.props.setSearchResults(inputValue, data.results);
         this.setState({
-          searchResult : data.results,
           displayedResults : data.results,
           displayReviews : false,
           displayTrailers : false,
@@ -170,10 +168,10 @@ class App extends Component {
         return response.json();
       })
       .then( ( data ) => {
-        this.props.findTrendingShows()
+        this.props.findTrendingShows(data.results)
+
         this.setState( () => {
           return {
-            searchResult : data.results,
             displayedResults : data.results,
             displayReviews : false,
             reviews : [],
@@ -188,7 +186,7 @@ class App extends Component {
     this.props.showPreviousResults()
     this.setState( ( prevState ) => {
       return {
-        displayedResults : [...prevState.searchResult],
+        displayedResults : [...this.props.searchResults],
         displayReviews : false,
         reviews : [],
         trailers : [],
@@ -341,7 +339,7 @@ class App extends Component {
         </div>;
     }
 
-    if (this.state.searchResult && this.state.searchResult.length > 0) {
+    if (this.props.searchResults && this.props.searchResults.length > 0) {
       searchResult = 
         <SearchResults 
           displayedResults = {this.state.displayedResults} 
@@ -408,16 +406,17 @@ const mapStateProps = state => {
     loading: state.loading,
     loadingProfile: state.loadingProfile,
     loadingShowCard: state.loadingShowCard,
-    searchInputValue: state.searchInputValue
+    searchInputValue: state.searchInputValue,
+    searchResults: state.searchResults
   }
 }
 
 const mapStateDispatch = dispatch => {
   return {
     startSearch: () => dispatch(actions.startSearchResults()),
-    setSearchResults: (inputValue) => dispatch(actions.setSearchResults(inputValue)),
+    setSearchResults: (inputValue, searchResults) => dispatch(actions.setSearchResults(inputValue, searchResults)),
     findShowById: () => dispatch(actions.findShowById()),
-    findTrendingShows: () => dispatch(actions.findTrendingShows()),
+    findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
     filterSinglePage: () => dispatch(actions.filterSinglePage()),
     filterSinglePageEnd: () => dispatch(actions.filterSinglePageEnd()),
     showPreviousResults: () => dispatch(actions.showPreviousResults()),

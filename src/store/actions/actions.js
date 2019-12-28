@@ -13,10 +13,11 @@ export const startSearchResults = () => ({
   type:  START_SEARCH
 });
 
-export const setSearchResults = (inputValue) => ({
+export const setSearchResults = (inputValue, searchResults) => ({
   type:  SET_SEARCH_RESULTS,
   payload: {
-    inputValue
+    inputValue,
+    searchResults
   }
 });
 
@@ -24,8 +25,11 @@ export const findShowById = () => ({
   type:  FIND_SHOW_BY_ID
 });
 
-export const findTrendingShows = () => ({
-  type:  FIND_TRENDING_SHOWS
+export const findTrendingShows = (searchResults) => ({
+  type:  FIND_TRENDING_SHOWS,
+  payload: {
+    searchResults
+  }
 });
 
 export const filterSinglePage = () => ({

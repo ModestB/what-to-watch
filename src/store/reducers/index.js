@@ -9,6 +9,7 @@ import loadingProfile from './loading/loadingProfile';
 import loadingShowCard from './loading/loadingShowCard';
 
 import searchInputValue from './search/searchInputValue';
+import searchResults from './search/searchResults';
 
 export default combineReducers({
   displaySinglePage,
@@ -17,5 +18,6 @@ export default combineReducers({
   loading,
   loadingProfile,
   loadingShowCard,
-  searchInputValue
+  searchInputValue,
+  searchResults
 })
