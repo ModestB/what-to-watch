@@ -282,7 +282,7 @@ class App extends Component {
           showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.props.displayReviews}
-          reviews = {this.props.reviews}
+          reviews = {this.props.reviewsData}
           getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.props.displayTrailers}
           trailers = {this.props.trailersData}
@@ -342,7 +342,7 @@ const mapStateProps = state => {
     singlePageType: state.singlePageType,
     displayReviews: state.displayReviews,
     displayTrailers: state.displayTrailers,
-    reviews: state.reviewsData,
+    reviewsData: state.reviewsData,
     trailersData: state.trailersData
   }
 }
