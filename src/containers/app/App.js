@@ -38,18 +38,6 @@ class App extends Component {
     this.props.updateBookmarksStorage();
   };
 
-  searchHandler = ( inputValue ) => {
-    this.props.startSearch();
-
-    fetch( MULTI_API +  inputValue )
-      .then( (response) => {
-        return response.json()
-      })
-      .then( ( data ) => {
-        this.props.setSearchResults(inputValue, data.results);
-      })
-  }
-
   filterSinglePageHandler = ( element, mediaType ) => {
     console.log('filter')
 
@@ -225,7 +213,7 @@ class App extends Component {
             <IconTv fill="#9E56FC" height="40px" width="40px"/>
             <h1 className="text-left mb-0 mt-2 ml-2"><b>What</b> To Watch</h1>
           </div>  
-          <SearchForm searchHandler = {this.searchHandler}/>
+          <SearchForm searchHandler = {this.props.getSearchResults}/>
           { sectionTitle }
           { this.props.loading ? <LoadingSpinner/> : searchResult }      
           <Bookmarks
@@ -266,8 +254,6 @@ const mapStateProps = state => {
 
 const mapStateDispatch = dispatch => {
   return {
-    startSearch: () => dispatch(actions.startSearchResults()),
-    setSearchResults: (inputValue, searchResults) => dispatch(actions.setSearchResults(inputValue, searchResults)),
     findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
     findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
@@ -279,6 +265,7 @@ const mapStateDispatch = dispatch => {
     removeBookmark: (bookmarkId) => dispatch(actions.removeBookmark(bookmarkId)),
     loadBookmarksStorage: () => dispatch(actions.loadBookmarksStorage()),
     updateBookmarksStorage: () => dispatch(actions.updateBookmarksStorage()),
+    getSearchResults: (inputValue) => dispatch(actions.getSearchResults(inputValue))
   }
 }
 

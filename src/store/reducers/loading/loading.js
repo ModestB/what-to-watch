@@ -1,5 +1,5 @@
 import {
-  START_SEARCH,
+  REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
   FIND_SHOW_BY_ID,
   FIND_TRENDING_SHOWS,
@@ -8,7 +8,7 @@ import {
 
 export default (state = true, action) => {
   switch (action.type) {
-    case START_SEARCH: {
+    case REQUEST_SEARCH_RESULTS: {
       return true;
     };
     case SET_SEARCH_RESULTS: {
