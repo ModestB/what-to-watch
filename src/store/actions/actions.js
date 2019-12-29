@@ -1,3 +1,4 @@
+/* global chrome */
 import {
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
@@ -10,9 +11,12 @@ import {
   TOGGLE_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
-  LOAD_BOOKMARKS_STORAGE,
+  SET_BOOKMARKS_STORAGE,
   UPDATE_BOOKMARKS_STORAGE,
 } from '../actionTypes/actionTypes';
+
+// LOCAL STORAGE
+const LS_BOOKMARKS = 'wtwBookmarks';
 
 // API
 const API_KEY = `${process.env.REACT_APP_API_KEY}`;
@@ -101,25 +105,55 @@ export const toggleBookmarks = () => ({
   type:  TOGGLE_BOOKMARKS
 });
 
-export const addBookmark = (bookmarkDetails) => ({
-  type:  ADD_BOOKMARK,
+export const setBookmarksStorage = (bookmarks) => ({
+  type:  SET_BOOKMARKS_STORAGE,
   payload: {
-    bookmarkDetails
+    bookmarks: bookmarks
   }
-});
-
-export const removeBookmark = (bookmarkId) => ({
-  type:  REMOVE_BOOKMARK,
-  payload: {
-    bookmarkId
-  }
-});
-
-export const loadBookmarksStorage = () => ({
-  type:  LOAD_BOOKMARKS_STORAGE,
 });
 
 export const updateBookmarksStorage = () => ({
   type:  UPDATE_BOOKMARKS_STORAGE,
 });
+
+export function getBookmarksStorage(){
+  return function(dispatch) {
+    if (process.env.NODE_ENV !== 'production') {
+      return dispatch(setBookmarksStorage(JSON.parse(localStorage.getItem(LS_BOOKMARKS))))
+    };
+  
+    chrome.storage.sync.get(['LS_BOOKMARKS'], (result) => {      
+      if(typeof result.LS_BOOKMARKS !== 'undefined'){
+        return dispatch(setBookmarksStorage(result.LS_BOOKMARKS));
+      }
+      return dispatch(setBookmarksStorage([]))
+    });
+  }
+}
+
+export function addBookmark(bookmarkDetails, ) {
+  return function(dispatch) {
+    dispatch({
+      type:  ADD_BOOKMARK,
+      payload: {
+        bookmarkDetails
+      }
+    })
+
+    return  dispatch(updateBookmarksStorage())
+  }
+}
+
+export function removeBookmark(bookmarkId) {
+  return function(dispatch) {
+    dispatch({
+      type:  REMOVE_BOOKMARK,
+      payload: {
+        bookmarkId
+      }
+    })
+
+    return  dispatch(updateBookmarksStorage())
+  }
+}
 

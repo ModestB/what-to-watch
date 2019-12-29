@@ -2,7 +2,7 @@
 import {
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
-  LOAD_BOOKMARKS_STORAGE,
+  SET_BOOKMARKS_STORAGE,
   UPDATE_BOOKMARKS_STORAGE
 } from '../../actionTypes/actionTypes';
 
@@ -31,16 +31,6 @@ function removeBookmark (state, bookmarkId) {
   });
 }
 
-function loadBookmarks () {
-  if (process.env.NODE_ENV !== 'production') {
-    return JSON.parse(localStorage.getItem(LS_BOOKMARKS))
-  };
-
-  chrome.storage.sync.get(['LS_BOOKMARKS'], (result) => {
-    return result.LS_BOOKMARKS
-  });
-}
-
 function updateBookmarksStorage (bookmarks) {
   if (process.env.NODE_ENV !== 'production') {
     localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
@@ -61,8 +51,8 @@ export default (state = [], action) => {
       return removeBookmark(state, action.payload.bookmarkId);
     };
 
-    case  LOAD_BOOKMARKS_STORAGE: {
-      return loadBookmarks();
+    case  SET_BOOKMARKS_STORAGE: {
+      return action.payload.bookmarks;
     };
 
     case  UPDATE_BOOKMARKS_STORAGE: {

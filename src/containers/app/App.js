@@ -34,10 +34,6 @@ class App extends Component {
     this.filterSinglePageHandler = this.filterSinglePageHandler.bind(this);
   }
 
-  componentDidUpdate (prevProps, prevState) {
-    this.props.updateBookmarksStorage();
-  };
-
   filterSinglePageHandler = ( element, mediaType ) => {
     console.log('filter')
 
@@ -149,7 +145,7 @@ class App extends Component {
   componentDidMount(){
     searchSuggestionSelectHandler();
     this.findTrendingShows();
-    this.props.loadBookmarksStorage(); 
+    this.props.getBookmarksStorage(); 
   }
 
   render () {
@@ -263,8 +259,7 @@ const mapStateDispatch = dispatch => {
     toggleBookmarks: () => dispatch(actions.toggleBookmarks()),
     addBookmark: (bookmarkDetails) => dispatch(actions.addBookmark(bookmarkDetails)),
     removeBookmark: (bookmarkId) => dispatch(actions.removeBookmark(bookmarkId)),
-    loadBookmarksStorage: () => dispatch(actions.loadBookmarksStorage()),
-    updateBookmarksStorage: () => dispatch(actions.updateBookmarksStorage()),
+    getBookmarksStorage: () => dispatch(actions.getBookmarksStorage()),
     getSearchResults: (inputValue) => dispatch(actions.getSearchResults(inputValue))
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "what-to-watch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "dependencies": {
     "@svgr/cli": "^4.3.1",
