@@ -31,16 +31,7 @@ const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&
 class App extends Component {
   constructor(props) {
     super(props);
-    this.filterSinglePageHandler = this.filterSinglePageHandler.bind(this);
   }
-
-  filterSinglePageHandler = ( element, mediaType ) => {
-    console.log('filter')
-
-    this.props.filterSinglePage(element.id, this.props.displayedResults);
-
-    this.props.getExtraShowInfo(element.id, (element.media_type ? element.media_type : mediaType))
-  };
 
   filterProfileSinglePageHandler = ( profileId ) => {
     let detailsRequest = `https://api.themoviedb.org/3/person/${profileId}?api_key=${API_KEY}&language=en-US`;
@@ -89,7 +80,7 @@ class App extends Component {
         this.props.findShowById([data], mediaType);
       })
   };
-  
+
   showPreviousResultsHandler = () => {
     this.props.showPreviousResults([...this.props.searchResults])
   };
@@ -122,7 +113,6 @@ class App extends Component {
       searchResult = 
         <SearchResults 
           displayedResults = {this.props.displayedResults} 
-          filterSinglePage = {this.filterSinglePageHandler}
           filterProfileSinglePage = {this.filterProfileSinglePageHandler}
           findShowById = {this.findShowByIdHandler}
           getTrendingShows = {this.props.getTrendingShows}

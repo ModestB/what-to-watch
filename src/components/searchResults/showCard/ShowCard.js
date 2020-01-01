@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import { filterSinglePage } from '../../../store/actions/actions';
 
 // Components imports
 import ReviewCard from './reviewCard/ReviewCard';
@@ -14,6 +18,8 @@ import BookmarkButton from '../../bookmarks/bookmarkBtn/BookmarkBtn';
 import classes from "./ShowCard.module.scss";
 
 const ShowCard = (props) => {
+
+  console.log()
   let imgSrc = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
   let badge = null;
   let cardText = null;
@@ -28,7 +34,7 @@ const ShowCard = (props) => {
   let cardOverlay = 
     <div 
       className={`${classes.CardOverlay} d-flex align-items-center justify-content-center px-2`} 
-      onClick={  () => props.filterSinglePage(props.element, props.mediaType) }>
+      onClick={  () => props.filterSinglePage(props.element, props.displayedResults) }>
       <p className="mb-0">More Info</p>
     </div>;
 
@@ -179,4 +185,16 @@ const ShowCard = (props) => {
   
 }
 
-export default ShowCard;
+const mapStateProps = state => {
+  return {
+    displayedResults: state.displayedResults,
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    filterSinglePage: (itemId, displayedResults) => dispatch(filterSinglePage(itemId, displayedResults))
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(ShowCard);

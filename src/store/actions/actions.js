@@ -13,8 +13,12 @@ import {
   UPDATE_BOOKMARKS_STORAGE,
 } from '../actionTypes/actionTypes';
 
+import { getExtraShowInfo } from './api/extraShowInfoActions';
+
 export * from './api/extraShowInfoActions';
 export * from './api/trendingShowsActions';
+
+
 
 // LOCAL STORAGE
 const LS_BOOKMARKS = 'wtwBookmarks';
@@ -64,13 +68,21 @@ export const findShowById = (searchResults, mediaType) => ({
   }
 });
 
-export const filterSinglePage = (itemId, displayedResults) => ({
-  type:  FILTER_SINGLE_PAGE,
-  payload: {
-    itemId,
-    displayedResults
+
+export function filterSinglePage (element, displayedResults) {
+  return function(dispatch){
+    dispatch({
+      type:  FILTER_SINGLE_PAGE,
+      payload: {
+        itemId: element.id,
+        displayedResults
+      }
+    });
+
+    dispatch(getExtraShowInfo(element.id, element.media_type)
+    )
   }
-});
+}
 
 export const filterSinglePageEnd = (profileDetails, profileCredits) => ({
   type:  FILTER_SINGLE_PAGE_END,

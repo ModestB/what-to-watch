@@ -28,7 +28,6 @@ const SearchResults = (props) => {
             date = {element.release_date}
             mediaType = {element.media_type}
             element = {element}
-            filterSinglePage = {props.filterSinglePage}
             displaySinglePage = {props.displaySinglePage}          
             displayReviewsHandler = {props.displayReviewsHandler}    
             displayReviews = {props.displayReviews}
@@ -69,7 +68,6 @@ const SearchResults = (props) => {
             date = {element.first_air_date}
             mediaType = {element.media_type} 
             element = {element}
-            filterSinglePage = {props.filterSinglePage}
             displaySinglePage = {props.displaySinglePage}
             displayReviewsHandler = {props.displayReviewsHandler}
             displayReviews = {props.displayReviews}
@@ -94,7 +92,6 @@ const SearchResults = (props) => {
             date = {element.first_air_date ? element.first_air_date : element.release_date}
             mediaType = {element.original_name ? 'tv' : 'movie'} 
             element = {element}
-            filterSinglePage = {props.filterSinglePage}
             displaySinglePage = {props.displaySinglePage}
             displayReviewsHandler = {props.displayReviewsHandler}
             displayReviews = {props.displayReviews}
@@ -125,7 +122,6 @@ const SearchResults = (props) => {
           date = {props.displayedResults[0].release_date}
           mediaType = {props.singlePageType}
           element = {props.displayedResults[0]}
-          filterSinglePage = {props.filterSinglePage}
           displaySinglePage = {props.displaySinglePage}
           displayReviewsHandler = {props.displayReviewsHandler}
           displayReviews = {props.displayReviews}
@@ -149,7 +145,6 @@ const SearchResults = (props) => {
           date = {props.displayedResults[0].first_air_date}
           mediaType = {props.singlePageType}
           element = {props.displayedResults[0]}
-          filterSinglePage = {props.filterSinglePage}
           displaySinglePage = {props.displaySinglePage}
           displayReviewsHandler = {props.displayReviewsHandler} 
           displayReviews = {props.displayReviews}
