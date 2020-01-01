@@ -89,19 +89,7 @@ class App extends Component {
         this.props.findShowById([data], mediaType);
       })
   };
-
-  // getTrendingShows = () => {
-  //   let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
-
-  //   return fetch(request)
-  //     .then( (response) => {
-  //       return response.json();
-  //     })
-  //     .then( ( data ) => {
-  //       this.props.getTrendingShows(data.results)
-  //     })
-  // }
-
+  
   showPreviousResultsHandler = () => {
     this.props.showPreviousResults([...this.props.searchResults])
   };
