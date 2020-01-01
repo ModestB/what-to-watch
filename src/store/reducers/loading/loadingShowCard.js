@@ -1,6 +1,6 @@
 import {
   FILTER_SINGLE_PAGE,
-  GET_EXTRA_SHOW_INFO 
+  SET_EXTRA_SHOW_INFO 
 } from '../../actionTypes/actionTypes';
 
 export default (state = false, action) => {
@@ -8,7 +8,7 @@ export default (state = false, action) => {
     case FILTER_SINGLE_PAGE: {
       return true;
     };
-    case GET_EXTRA_SHOW_INFO: {
+    case SET_EXTRA_SHOW_INFO: {
       return false;
     };
     default:

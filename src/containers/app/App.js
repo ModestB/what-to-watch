@@ -39,7 +39,7 @@ class App extends Component {
 
     this.props.filterSinglePage(element.id, this.props.displayedResults);
 
-    this.getAdditionalShowInfoHandler(element.id, (element.media_type ? element.media_type : mediaType));
+    this.props.getExtraShowInfo(element.id, (element.media_type ? element.media_type : mediaType))
   };
 
   filterProfileSinglePageHandler = ( profileId ) => {
@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   findShowByIdHandler = (showId, mediaType) => {
-    this.props.startSearch();
+    // this.props.startSearch();
 
     let request = "";
 
@@ -85,7 +85,7 @@ class App extends Component {
         return response.json();
       })
       .then( ( data ) => {
-        this.getAdditionalShowInfoHandler(showId, mediaType);
+        this.props.getExtraShowInfo(showId, mediaType);
         this.props.findShowById([data], mediaType);
       })
   };
@@ -106,42 +106,6 @@ class App extends Component {
     this.props.showPreviousResults([...this.props.searchResults])
   };
 
-  getAdditionalShowInfoHandler = ( showId, mediaType ) => {
-    let requestTrailers = "";
-    let requestReviews = "";
-    let trailersData = null;
-    let reviewsData = null;
-
-    if(!this.props.displayTrailers && !this.props.displayReviews){
-      if( mediaType === 'movie'){
-        requestTrailers = `https://api.themoviedb.org/3/movie/${showId}/videos?api_key=${API_KEY}&language=en-US`;
-        requestReviews = `https://api.themoviedb.org/3/movie/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
-      } else {  
-        requestTrailers = `https://api.themoviedb.org/3/tv/${showId}/videos?api_key=${API_KEY}&language=en-US`
-        requestReviews = `https://api.themoviedb.org/3/tv/${showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
-      }
-  
-      return fetch( requestTrailers )
-        .then( (response) => {
-          return response.json();
-        })
-        .then( ( data ) => {
-          trailersData  = data.results.filter( (element)  => {
-            return element.type === 'Trailer' && element.site === "YouTube";
-          })
-
-          return fetch( requestReviews );
-        })
-        .then( (response) => {
-          return response.json()
-        })
-        .then( (data)  => {
-          reviewsData = data;
-          this.props.getExtraShowInfo(reviewsData.results, trailersData);
-         })
-        ;
-    }
-  }
   componentDidMount(){
     searchSuggestionSelectHandler();
     this.findTrendingShows();
@@ -180,7 +144,6 @@ class App extends Component {
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.props.displayReviews}
           reviews = {this.props.reviewsData}
-          getAdditionalShowInfoHandler = {this.getAdditionalShowInfoHandler}
           displayTrailers = {this.props.displayTrailers}
           trailers = {this.props.trailersData}
           loading = {this.props.loading}
@@ -255,7 +218,7 @@ const mapStateDispatch = dispatch => {
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
-    getExtraShowInfo: (reviewsData, trailersData) => dispatch(actions.getExtraShowInfo(reviewsData, trailersData)),
+    getExtraShowInfo: (showId, mediaType) => dispatch(actions.getExtraShowInfo(showId, mediaType)),
     toggleBookmarks: () => dispatch(actions.toggleBookmarks()),
     addBookmark: (bookmarkDetails) => dispatch(actions.addBookmark(bookmarkDetails)),
     removeBookmark: (bookmarkId) => dispatch(actions.removeBookmark(bookmarkId)),

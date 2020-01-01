@@ -15,6 +15,13 @@ import {
   UPDATE_BOOKMARKS_STORAGE,
 } from '../actionTypes/actionTypes';
 
+export * from './api/extraShowInfoActions';
+
+// console.log(extraShowInfo)
+// export {
+//   extraShowInfo.setExtraShowInfo(),
+// }
+
 // LOCAL STORAGE
 const LS_BOOKMARKS = 'wtwBookmarks';
 
@@ -93,13 +100,13 @@ export const showPreviousResults = (prevResults) => ({
   }
 });
 
-export const getExtraShowInfo = (reviewsData, trailersData) => ({
-  type:  GET_EXTRA_SHOW_INFO,
-  payload: {
-    reviewsData,
-    trailersData
-  }
-});
+// export const getExtraShowInfo = (reviewsData, trailersData) => ({
+//   type:  GET_EXTRA_SHOW_INFO,
+//   payload: {
+//     reviewsData,
+//     trailersData
+//   }
+// });
 
 export const toggleBookmarks = () => ({
   type:  TOGGLE_BOOKMARKS
