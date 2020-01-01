@@ -1,6 +1,6 @@
 import { 
   SET_SEARCH_RESULTS,
-  FIND_TRENDING_SHOWS 
+  SET_TRENDING_SHOWS 
 } from '../../actionTypes/actionTypes';
 
 
@@ -10,7 +10,7 @@ export default (state = [], action) => {
       return action.payload.searchResults;
     }
     
-    case FIND_TRENDING_SHOWS: {
+    case SET_TRENDING_SHOWS: {
       return action.payload.searchResults;
     }
 

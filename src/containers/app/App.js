@@ -90,17 +90,17 @@ class App extends Component {
       })
   };
 
-  findTrendingShows = () => {
-    let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
+  // getTrendingShows = () => {
+  //   let request =  `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`
 
-    return fetch(request)
-      .then( (response) => {
-        return response.json();
-      })
-      .then( ( data ) => {
-        this.props.findTrendingShows(data.results)
-      })
-  }
+  //   return fetch(request)
+  //     .then( (response) => {
+  //       return response.json();
+  //     })
+  //     .then( ( data ) => {
+  //       this.props.getTrendingShows(data.results)
+  //     })
+  // }
 
   showPreviousResultsHandler = () => {
     this.props.showPreviousResults([...this.props.searchResults])
@@ -108,7 +108,7 @@ class App extends Component {
 
   componentDidMount(){
     searchSuggestionSelectHandler();
-    this.findTrendingShows();
+    this.props.getTrendingShows();
     this.props.getBookmarksStorage(); 
   }
 
@@ -122,7 +122,7 @@ class App extends Component {
           <p>No results</p>
           <Button 
             className={`position-relative rounded-0 py-0 ml-2`}
-            onClick={ this.findTrendingShows } 
+            onClick={ this.props.getTrendingShows } 
             variant="primary" 
           >
             Show Trending
@@ -137,7 +137,7 @@ class App extends Component {
           filterSinglePage = {this.filterSinglePageHandler}
           filterProfileSinglePage = {this.filterProfileSinglePageHandler}
           findShowById = {this.findShowByIdHandler}
-          findTrendingShows = {this.findTrendingShows}
+          getTrendingShows = {this.props.getTrendingShows}
           displaySinglePage = {this.props.displaySinglePage} 
           singlePageType = {this.props.singlePageType}
           showPrevResults = {this.showPreviousResultsHandler}
@@ -214,7 +214,7 @@ const mapStateProps = state => {
 const mapStateDispatch = dispatch => {
   return {
     findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
-    findTrendingShows: (searchResults) => dispatch(actions.findTrendingShows(searchResults)),
+    getTrendingShows: () => dispatch(actions.getTrendingShows()),
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),

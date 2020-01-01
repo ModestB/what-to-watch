@@ -177,7 +177,7 @@ const SearchResults = (props) => {
         </Button>
         <Button 
           className={`${ classes.Btn } rounded-0 py-0 ml-2`}
-          onClick={ props.findTrendingShows } 
+          onClick={ props.getTrendingShows } 
           variant="primary" 
         >
           Trending

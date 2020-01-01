@@ -3,11 +3,9 @@ import {
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
   FIND_SHOW_BY_ID,
-  FIND_TRENDING_SHOWS,
   FILTER_SINGLE_PAGE,
   FILTER_SINGLE_PAGE_END,
   SHOW_PREVIOUS_RESULTS,
-  GET_EXTRA_SHOW_INFO,
   TOGGLE_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
@@ -16,11 +14,7 @@ import {
 } from '../actionTypes/actionTypes';
 
 export * from './api/extraShowInfoActions';
-
-// console.log(extraShowInfo)
-// export {
-//   extraShowInfo.setExtraShowInfo(),
-// }
+export * from './api/trendingShowsActions';
 
 // LOCAL STORAGE
 const LS_BOOKMARKS = 'wtwBookmarks';
@@ -70,13 +64,6 @@ export const findShowById = (searchResults, mediaType) => ({
   }
 });
 
-export const findTrendingShows = (searchResults) => ({
-  type:  FIND_TRENDING_SHOWS,
-  payload: {
-    searchResults
-  }
-});
-
 export const filterSinglePage = (itemId, displayedResults) => ({
   type:  FILTER_SINGLE_PAGE,
   payload: {
@@ -99,14 +86,6 @@ export const showPreviousResults = (prevResults) => ({
     prevResults
   }
 });
-
-// export const getExtraShowInfo = (reviewsData, trailersData) => ({
-//   type:  GET_EXTRA_SHOW_INFO,
-//   payload: {
-//     reviewsData,
-//     trailersData
-//   }
-// });
 
 export const toggleBookmarks = () => ({
   type:  TOGGLE_BOOKMARKS

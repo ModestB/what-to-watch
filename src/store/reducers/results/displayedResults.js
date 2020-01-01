@@ -2,7 +2,7 @@ import {
   SET_SEARCH_RESULTS,
   FIND_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
-  FIND_TRENDING_SHOWS,
+  SET_TRENDING_SHOWS,
   SHOW_PREVIOUS_RESULTS 
 } from '../../actionTypes/actionTypes';
 
@@ -26,7 +26,7 @@ export default (state = [], action) => {
       return filterElementToDisplay(state, action.payload.itemId)
     }
 
-    case FIND_TRENDING_SHOWS: {
+    case SET_TRENDING_SHOWS: {
       return action.payload.searchResults;
     }
 

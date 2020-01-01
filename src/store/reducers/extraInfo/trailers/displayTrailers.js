@@ -2,7 +2,7 @@ import {
   SET_SEARCH_RESULTS, 
   SHOW_PREVIOUS_RESULTS,
   SET_EXTRA_SHOW_INFO,
-  FIND_TRENDING_SHOWS,
+  SET_TRENDING_SHOWS,
 } from '../../../actionTypes/actionTypes';
 
 export default (state = false, action) => {
@@ -11,7 +11,7 @@ export default (state = false, action) => {
       return false;
     }
 
-    case FIND_TRENDING_SHOWS: {
+    case SET_TRENDING_SHOWS: {
       return false;
     }
 
