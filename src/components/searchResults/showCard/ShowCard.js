@@ -193,7 +193,7 @@ const mapStateProps = state => {
 
 const mapStateDispatch = dispatch => {
   return {
-    filterSinglePage: (itemId, displayedResults) => dispatch(filterSinglePage(itemId, displayedResults))
+    filterSinglePage: (element, displayedResults) => dispatch(filterSinglePage(element, displayedResults))
   }
 }
 

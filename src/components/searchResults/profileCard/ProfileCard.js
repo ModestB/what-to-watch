@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import { filterSinglePage } from '../../../store/actions/actions';
 
 // Bootsrap imports
 import Card from 'react-bootstrap/Card';
@@ -30,7 +34,7 @@ const profileCard = (props) => {
   let cardOverlay = 
     <div 
     className={`${classes.CardOverlay} d-flex align-items-center justify-content-center px-2`} 
-    onClick={  () => props.filterProfileSinglePage( props.element.id ) }
+    onClick={  () => props.filterSinglePage( props.element, props.displayedResults ) }
     >
       <p className="mb-0">More Info</p>
     </div>;
@@ -152,4 +156,16 @@ const profileCard = (props) => {
   )
 };
 
-export default profileCard;
+const mapStateProps = state => {
+  return {
+    displayedResults: state.displayedResults,
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    filterSinglePage: (element, displayedResults) => dispatch(filterSinglePage(element, displayedResults))
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(profileCard);

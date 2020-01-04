@@ -49,7 +49,6 @@ const SearchResults = (props) => {
             posterPath = {element.profile_path}
             knownFor = {element.known_for}
             showSingleShow = {props.findShowById} 
-            filterProfileSinglePage = {props.filterProfileSinglePage}
             element = {element}
             displaySinglePage = {props.displaySinglePage}
             singleProfileDetails = {props.singleProfileDetails}

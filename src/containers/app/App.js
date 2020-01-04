@@ -33,33 +33,6 @@ class App extends Component {
     super(props);
   }
 
-  filterProfileSinglePageHandler = ( profileId ) => {
-    let detailsRequest = `https://api.themoviedb.org/3/person/${profileId}?api_key=${API_KEY}&language=en-US`;
-    let combinedCreditsRequest = `
-    https://api.themoviedb.org/3/person/${profileId}/combined_credits?api_key=${API_KEY}&language=en-US`
-    let profileDetails = null;
-    let profileCredits = null;
-
-    this.props.filterSinglePage(profileId, this.props.displayedResults)
-    
-    return fetch( detailsRequest )
-      .then( (response) => {
-        return response.json();
-      })
-      .then( ( data ) => {
-        // SECOND FETCH
-        profileDetails = data;
-        return  fetch( combinedCreditsRequest );
-      })
-      .then( (response) => {
-        return response.json()
-      })
-      .then( ( data ) => {
-        profileCredits = data.cast;
-        this.props.filterSinglePageEnd(profileDetails, profileCredits)
-      })
-  }
-
   findShowByIdHandler = (showId, mediaType) => {
     // this.props.startSearch();
 
@@ -112,8 +85,7 @@ class App extends Component {
     if (this.props.searchResults && this.props.searchResults.length > 0) {
       searchResult = 
         <SearchResults 
-          displayedResults = {this.props.displayedResults} 
-          filterProfileSinglePage = {this.filterProfileSinglePageHandler}
+          displayedResults = {this.props.displayedResults}
           findShowById = {this.findShowByIdHandler}
           getTrendingShows = {this.props.getTrendingShows}
           displaySinglePage = {this.props.displaySinglePage} 
@@ -194,7 +166,6 @@ const mapStateDispatch = dispatch => {
     findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
     getTrendingShows: () => dispatch(actions.getTrendingShows()),
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
-    filterSinglePageEnd: (profileDetails, profileCredits) => dispatch(actions.filterSinglePageEnd(profileDetails, profileCredits)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
     getExtraShowInfo: (showId, mediaType) => dispatch(actions.getExtraShowInfo(showId, mediaType)),
     toggleBookmarks: () => dispatch(actions.toggleBookmarks()),

@@ -1,10 +1,10 @@
 import { 
-  FILTER_SINGLE_PAGE_END
+  SET_EXTRA_PROFILE_INFO
 } from '../../../actionTypes/actionTypes';
 
 export default (state = [], action) => {
   switch (action.type) {
-    case FILTER_SINGLE_PAGE_END: {
+    case SET_EXTRA_PROFILE_INFO: {
       return action.payload.profileCredits;
     }
 

@@ -4,7 +4,6 @@ import {
   SET_SEARCH_RESULTS,
   FIND_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
-  FILTER_SINGLE_PAGE_END,
   SHOW_PREVIOUS_RESULTS,
   TOGGLE_BOOKMARKS,
   ADD_BOOKMARK,
@@ -14,8 +13,10 @@ import {
 } from '../actionTypes/actionTypes';
 
 import { getExtraShowInfo } from './api/extraShowInfoActions';
+import { getExtraProfileInfo } from './api/extraProfileInfoActions';
 
 export * from './api/extraShowInfoActions';
+export * from './api/extraProfileInfoActions';
 export * from './api/trendingShowsActions';
 
 
@@ -78,19 +79,13 @@ export function filterSinglePage (element, displayedResults) {
         displayedResults
       }
     });
-
-    dispatch(getExtraShowInfo(element.id, element.media_type)
-    )
+    if(element.media_type === "person") {
+      dispatch(getExtraProfileInfo(element.id))
+    } else {
+      dispatch(getExtraShowInfo(element.id, element.media_type))
+    }
   }
 }
-
-export const filterSinglePageEnd = (profileDetails, profileCredits) => ({
-  type:  FILTER_SINGLE_PAGE_END,
-  payload: {
-    profileDetails,
-    profileCredits
-  }
-});
 
 export const showPreviousResults = (prevResults) => ({
   type:  SHOW_PREVIOUS_RESULTS,
