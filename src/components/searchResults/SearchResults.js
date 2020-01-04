@@ -1,4 +1,9 @@
 import React from "react";
+import { connect } from 'react-redux';
+
+// Action Types
+import * as actions from '../../store/actions/actions';
+
 
 // Components imports
 import ShowCard from "./showCard/ShowCard";
@@ -163,7 +168,7 @@ const SearchResults = (props) => {
       <div className="col text-left pb-1">
         <Button 
           className={`${ classes.Btn } rounded-0 py-0`}
-          onClick={ props.showPrevResults } 
+          onClick={ () => props.showPreviousResults([...props.searchResults])} 
           variant="danger" 
         >
           Go back
@@ -197,4 +202,16 @@ const SearchResults = (props) => {
   )
 };
 
-export default SearchResults;
+const mapStateProps = state => {
+  return {
+    searchResults: state.searchResults,
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(SearchResults);

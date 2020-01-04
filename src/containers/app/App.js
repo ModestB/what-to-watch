@@ -29,14 +29,6 @@ const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  showPreviousResultsHandler = () => {
-    this.props.showPreviousResults([...this.props.searchResults])
-  };
-
   componentDidMount(){
     searchSuggestionSelectHandler();
     this.props.getTrendingShows();
@@ -68,7 +60,6 @@ class App extends Component {
           getTrendingShows = {this.props.getTrendingShows}
           displaySinglePage = {this.props.displaySinglePage} 
           singlePageType = {this.props.singlePageType}
-          showPrevResults = {this.showPreviousResultsHandler}
           displayReviewsHandler  = {this.displayReviewsHandler}
           displayReviews = {this.props.displayReviews}
           reviews = {this.props.reviewsData}
@@ -141,9 +132,6 @@ const mapStateProps = state => {
 const mapStateDispatch = dispatch => {
   return {
     getTrendingShows: () => dispatch(actions.getTrendingShows()),
-    filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
-    showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
-    getExtraShowInfo: (showId, mediaType) => dispatch(actions.getExtraShowInfo(showId, mediaType)),
     toggleBookmarks: () => dispatch(actions.toggleBookmarks()),
     addBookmark: (bookmarkDetails) => dispatch(actions.addBookmark(bookmarkDetails)),
     removeBookmark: (bookmarkId) => dispatch(actions.removeBookmark(bookmarkId)),
