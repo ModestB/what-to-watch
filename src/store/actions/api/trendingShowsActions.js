@@ -24,5 +24,4 @@ export function getTrendingShows(){
         dispatch(setTrendingShows(data.results))
       })
   }
-
 }

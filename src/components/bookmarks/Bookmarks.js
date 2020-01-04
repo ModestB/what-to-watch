@@ -32,7 +32,6 @@ const Bookmarks = (props) => {
           date={bookmark.date}
           removeBookmark={props.removeBookmark}
           displayBookmarksHandler={props.displayBookmarksHandler}
-          findShowById={props.findShowById}
         />
       );
     });

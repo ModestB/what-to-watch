@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import * as actions from '../../../store/actions/actions';
 
 import classes from './BookmarkItem.module.scss';
 import CloseIcon from '../../../icons/js/Close';
@@ -6,7 +10,7 @@ import CloseIcon from '../../../icons/js/Close';
 const BookmarkItem  = React.memo(function BookmarkItem (props) {
   function clickHandler () {
     props.displayBookmarksHandler();
-    props.findShowById(props.id, props.mediaType);
+    props.getShowById(props.id, props.mediaType);
   }
 
   return (
@@ -28,4 +32,10 @@ const BookmarkItem  = React.memo(function BookmarkItem (props) {
   )
 });
 
-export default BookmarkItem;
+const mapStateDispatch = dispatch => {
+  return {
+    getShowById: (showId, mediaType) => dispatch(actions.getShowById(showId, mediaType)) 
+  }
+}
+
+export default connect(null, mapStateDispatch)(BookmarkItem);

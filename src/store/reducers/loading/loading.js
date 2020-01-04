@@ -1,7 +1,7 @@
 import {
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
-  FIND_SHOW_BY_ID,
+  SET_SHOW_BY_ID,
   SET_TRENDING_SHOWS,
   SHOW_PREVIOUS_RESULTS
 } from '../../actionTypes/actionTypes';
@@ -14,7 +14,7 @@ export default (state = true, action) => {
     case SET_SEARCH_RESULTS: {
       return false;
     };
-    case FIND_SHOW_BY_ID: {
+    case SET_SHOW_BY_ID: {
       return false;
     };
     case SET_TRENDING_SHOWS: {

@@ -1,5 +1,5 @@
 import { 
-  FIND_SHOW_BY_ID,
+  SET_SHOW_BY_ID,
   FILTER_SINGLE_PAGE
 } from '../../actionTypes/actionTypes';
 
@@ -11,7 +11,7 @@ function filterElementToDisplay (displayedResults, itemId) {
 
 export default (state = null, action) => {
   switch (action.type) {
-    case FIND_SHOW_BY_ID: {
+    case SET_SHOW_BY_ID: {
       return action.payload.mediaType;
     }
 

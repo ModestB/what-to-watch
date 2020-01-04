@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import * as actions from '../../../../store/actions/actions';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
@@ -23,7 +27,7 @@ const List = (props) => {
             </Badge>
             <span 
               className={`${ classes.ShowName } text-left`} 
-              onClick={() => props.showSingleShow(element.id, element.media_type)}
+              onClick={() => props.getShowById(element.id, element.media_type)}
             > 
               {element.title} 
             </span>
@@ -43,7 +47,7 @@ const List = (props) => {
             </Badge>
             <span 
               className={`${ classes.ShowName } text-left`} 
-              onClick={() => props.showSingleShow(element.id, element.media_type)}
+              onClick={() => props.getShowById(element.id, element.media_type)}
             > 
             {element.name} 
             </span>         
@@ -61,4 +65,10 @@ const List = (props) => {
   )
 }
 
-export default List;
+const mapStateDispatch = dispatch => {
+  return {
+    getShowById: (showId, mediaType) => dispatch(actions.getShowById(showId, mediaType)) 
+  }
+}
+
+export default connect(null, mapStateDispatch)(List);

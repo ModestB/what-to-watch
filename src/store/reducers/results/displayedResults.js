@@ -1,6 +1,6 @@
 import { 
   SET_SEARCH_RESULTS,
-  FIND_SHOW_BY_ID,
+  SET_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
   SET_TRENDING_SHOWS,
   SHOW_PREVIOUS_RESULTS 
@@ -18,7 +18,7 @@ export default (state = [], action) => {
       return action.payload.searchResults;
     }
 
-    case FIND_SHOW_BY_ID: {
+    case SET_SHOW_BY_ID: {
       return action.payload.searchResults;
     }
     

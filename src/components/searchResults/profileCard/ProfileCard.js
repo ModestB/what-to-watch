@@ -45,7 +45,6 @@ const profileCard = (props) => {
         <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
         <List 
           elements={props.knownFor}
-          showSingleShow={props.showSingleShow}
         />
       </div>
   }
@@ -70,7 +69,6 @@ const profileCard = (props) => {
           mediaType={element.media_type}
           title={element.original_title}
           character={element.character}
-          showSingleShow={props.showSingleShow}
           posterImg={creditPosterImg}
         />
       );

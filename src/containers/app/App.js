@@ -33,27 +33,6 @@ class App extends Component {
     super(props);
   }
 
-  findShowByIdHandler = (showId, mediaType) => {
-    // this.props.startSearch();
-
-    let request = "";
-
-    if( mediaType === 'movie'){
-      request = `https://api.themoviedb.org/3/movie/${showId}?api_key=${API_KEY}&language=en-US`;
-    } else {
-      request = `https://api.themoviedb.org/3/tv/${showId}?api_key=${API_KEY}&language=en-US `
-    }
-
-    return fetch( request )
-      .then( (response) => {
-        return response.json();
-      })
-      .then( ( data ) => {
-        this.props.getExtraShowInfo(showId, mediaType);
-        this.props.findShowById([data], mediaType);
-      })
-  };
-
   showPreviousResultsHandler = () => {
     this.props.showPreviousResults([...this.props.searchResults])
   };
@@ -86,7 +65,6 @@ class App extends Component {
       searchResult = 
         <SearchResults 
           displayedResults = {this.props.displayedResults}
-          findShowById = {this.findShowByIdHandler}
           getTrendingShows = {this.props.getTrendingShows}
           displaySinglePage = {this.props.displaySinglePage} 
           singlePageType = {this.props.singlePageType}
@@ -130,7 +108,6 @@ class App extends Component {
             displayBookmarksHandler = {this.props.toggleBookmarks}
             bookmarks = {this.props.bookmarks}
             removeBookmark = {this.props.removeBookmark}
-            findShowById = {this.findShowByIdHandler}
           />
         </Container>
       </div>
@@ -163,7 +140,6 @@ const mapStateProps = state => {
 
 const mapStateDispatch = dispatch => {
   return {
-    findShowById: (searchResults, mediaType) => dispatch(actions.findShowById(searchResults,  mediaType)),
     getTrendingShows: () => dispatch(actions.getTrendingShows()),
     filterSinglePage: (itemId, displayedResults) => dispatch(actions.filterSinglePage(itemId, displayedResults)),
     showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),

@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import * as actions from '../../../../store/actions/actions';
 
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
@@ -7,7 +11,7 @@ import classes from './CreditCard.module.scss';
 
 const CreditCard = (props) => {
   return (
-    <Col xs='6' onClick={ () => props.showSingleShow(props.id, props.mediaType) }>
+    <Col xs='6' onClick={ () => props.getShowById(props.id, props.mediaType) }>
       <Card className={`${classes.creditCard} border-0 `}>
         <Card.Body className='px-2 pt-0'>
           {props.posterImg}
@@ -21,4 +25,10 @@ const CreditCard = (props) => {
   )
 }
 
-export default  CreditCard;
+const mapStateDispatch = dispatch => {
+  return {
+    getShowById: (showId, mediaType) => dispatch(actions.getShowById(showId, mediaType)) 
+  }
+}
+
+export default  connect(null, mapStateDispatch)(CreditCard);

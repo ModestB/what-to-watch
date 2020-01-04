@@ -2,7 +2,6 @@
 import {
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
-  FIND_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
   SHOW_PREVIOUS_RESULTS,
   TOGGLE_BOOKMARKS,
@@ -18,8 +17,7 @@ import { getExtraProfileInfo } from './api/extraProfileInfoActions';
 export * from './api/extraShowInfoActions';
 export * from './api/extraProfileInfoActions';
 export * from './api/trendingShowsActions';
-
-
+export * from './api/showByIdActions';
 
 // LOCAL STORAGE
 const LS_BOOKMARKS = 'wtwBookmarks';
@@ -60,15 +58,6 @@ export function getSearchResults(inputValue) {
       })
   }
 }
-
-export const findShowById = (searchResults, mediaType) => ({
-  type:  FIND_SHOW_BY_ID,
-  payload: {
-    searchResults,
-    mediaType
-  }
-});
-
 
 export function filterSinglePage (element, displayedResults) {
   return function(dispatch){
