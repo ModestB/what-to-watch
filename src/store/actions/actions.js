@@ -9,6 +9,10 @@ import {
   REMOVE_BOOKMARK,
   SET_BOOKMARKS_STORAGE,
   UPDATE_BOOKMARKS_STORAGE,
+  FOCUS_OUT_SEARCH_SUGEGSTIONS,
+  DELETE_SEARCH_SUGGESTIONS_INPUT,
+  SET_SEARCH_SUGGESTIONS_TIMEOUT,
+  CLEAR_SEARCH_SUGGESTIONS_TIMEOUT
 } from '../actionTypes/actionTypes';
 
 import { getExtraShowInfo } from './api/extraShowInfoActions';
@@ -18,6 +22,7 @@ export * from './api/extraShowInfoActions';
 export * from './api/extraProfileInfoActions';
 export * from './api/trendingShowsActions';
 export * from './api/showByIdActions';
+export * from './api/seachSuggestionsActions';
 
 // LOCAL STORAGE
 const LS_BOOKMARKS = 'wtwBookmarks';
@@ -113,7 +118,7 @@ export function getBookmarksStorage(){
   }
 }
 
-export function addBookmark(bookmarkDetails, ) {
+export function addBookmark(bookmarkDetails) {
   return function(dispatch) {
     dispatch({
       type:  ADD_BOOKMARK,
@@ -139,3 +144,27 @@ export function removeBookmark(bookmarkId) {
   }
 }
 
+export const focusOutSearchSuggestions = () => ({
+  type:  FOCUS_OUT_SEARCH_SUGEGSTIONS
+})
+
+
+export function deleteSearchSuggestionsInput (input) {
+ input.focus();
+  return function(dispatch) {
+    dispatch({
+      type:  DELETE_SEARCH_SUGGESTIONS_INPUT
+    })
+  }
+}
+
+export const setSearchSuggestionTimeout = (timeout) => ({
+  type:  SET_SEARCH_SUGGESTIONS_TIMEOUT,
+  payload: {
+    timeout
+  }
+
+})
+export const clearSearchSuggestionTimeout = () => ({
+  type:  CLEAR_SEARCH_SUGGESTIONS_TIMEOUT,
+})

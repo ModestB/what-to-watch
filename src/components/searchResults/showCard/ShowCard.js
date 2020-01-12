@@ -154,7 +154,7 @@ const ShowCard = (props) => {
             id={props.element.id}
             mediaType={props.mediaType}
             title={props.title}
-            date={props.date.substring(0, 4)}      
+            date={props.date ? props.date.substring(0, 4) : 'Not specified'}      
           />
           <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
             { cardTitle }

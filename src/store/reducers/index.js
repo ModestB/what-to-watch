@@ -26,6 +26,10 @@ import profileCredits from './extraInfo/profileCredits/profileCredits';
 import bookmarks from './bookmarks/bookmarks';
 import displayBookmarks from './bookmarks/displayBookmarks';
 
+import showSuggestions from './suggestions/showSuggestions';
+import suggestionsResults from './suggestions/suggestionsResults';
+import suggestionsApiCallTimeout from './suggestions/suggestionsApiCallTimeout';
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
@@ -44,5 +48,8 @@ export default combineReducers({
   profileDetails,
   profileCredits,
   bookmarks,
-  displayBookmarks
+  displayBookmarks,
+  showSuggestions,
+  suggestionsResults,
+  suggestionsApiCallTimeout
 })

@@ -1,5 +1,16 @@
 import React, { Component } from "react";
 
+import { connect } from 'react-redux';
+
+// Action Types
+import {
+  getSearchResults,
+  focusOutSearchSuggestions,
+  getSearchSuggestions,
+  deleteSearchSuggestionsInput,
+  clearSearchSuggestionTimeout 
+} from '../../store/actions/actions';
+
 // Bootsrap imports
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -10,93 +21,13 @@ import classes from './SearchForm.module.scss';
 import Suggestions from './suggestions/Suggestions';
 import CloseIcon from '../../icons/js/Close';
 
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-
 class SearchForm extends Component {
-  constructor(props){
-    super(props);
-    this.state = {value: ''};
-
-    this.handleChange=this.handleChange.bind(this);
-    this.suggestionClickHandler=this.suggestionClickHandler.bind(this);
-    this.seacrApiCallTimeout=0;
-  }
-  state = {
-    value: '',
-    searchSuggestions: [],
-    showSuggestions: false,
-    elementToFocus: null
-  }
-
-  handleChange(event){
-    let keywordRequest = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${event.target.value}&page=1&include_adult=false`;
-    let value = event.target.value;
-
-    this.setState ({
-      value: event.target.value
-    })
-
-    if (this.seacrApiCallTimeout) {
-      clearTimeout(this.seacrApiCallTimeout);
-    };
-    this.seacrApiCallTimeout = setTimeout(() => {
-      if (!value) {
-        this.setState ({
-          showSuggestions: false
-        })
-      } else {    
-        return fetch(keywordRequest)
-          .then((response) => {  
-            return response.json();
-          })
-          .then((data) => {
-            this.setState ({
-              showSuggestions: true,
-              searchSuggestions: data.results
-            })     
-          })
-      }
-    }, 500)
-  }
-
-  suggestionClickHandler (value) {
-    this.setState ({
-      value: value,
-      showSuggestions: false
-    })
-    this.props.searchHandler(value);
-  }
-
   formSubmitHandler = (e) => {
     e.preventDefault();
-    if (this.seacrApiCallTimeout) {
-      clearTimeout(this.seacrApiCallTimeout);
-    };
-    this.setState ({
-      value: e.target[0].value,
-      searchSuggestions: [],
-      showSuggestions: false
-    })
-    this.props.searchHandler(this.nameInput.value);
-  }
-
-  focusOutHandler = () => {
-    window.setTimeout(() => {
-      this.setState({
-        showSuggestions: false
-      })   
-    })    
-  }
-
-  deleteInputHandler = () => {
-    this.setState({
-      value: '',
-      searchSuggestions: [],
-      showSuggestions: false,
-      
-    }, () => {
-      this.nameInput.focus();
-    })
+    this.props.clearSearchSuggestionTimeout()
+    if(e.target[0].value){
+      this.props.getSearchResults(e.target[0].value, this.nameInput.value);
+    }
   }
 
   render () {
@@ -115,14 +46,14 @@ class SearchForm extends Component {
             type="text" 
             ref={(ref) => { this.nameInput = ref; }} 
             placeholder="Enter Movie or Tv show name..." 
-            value={this.state.value}
-            onChange={this.handleChange}
-            onBlur={this.focusOutHandler}
+            value={this.props.searchInputValue}
+            onChange={(e) => this.props.getSearchSuggestions(e.target.value)}
+            onBlur={this.props.focusOutSearchSuggestions}
           />
-          {this.state.value ? 
+          {this.props.searchInputValue ? 
             <div 
               className={classes.iconClose}
-              onClick={this.deleteInputHandler}
+              onClick={ () =>   this.props.deleteSearchSuggestionsInput(this.nameInput)}
             >
               <CloseIcon 
                 fill="#616161" 
@@ -141,16 +72,27 @@ class SearchForm extends Component {
         >
           Find
         </Button>
-        <Suggestions 
-          value={this.state.value}
-          suggestions={this.state.searchSuggestions}
-          showSuggestions={this.state.showSuggestions}
-          suggestionClickHandler={this.suggestionClickHandler}
-          elementToFocus={this.state.elementToFocus}
-        />      
+        <Suggestions />      
       </Form>
     )
   }
 }
 
-export default SearchForm;
+const mapStateProps = state => {
+  return {
+    showSuggestions: state.showSuggestions,
+    searchInputValue: state.searchInputValue
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    getSearchResults: (inputValue) => dispatch(getSearchResults(inputValue)),
+    focusOutSearchSuggestions: () => dispatch(focusOutSearchSuggestions()),
+    getSearchSuggestions: (inputValue) => dispatch(getSearchSuggestions(inputValue)),
+    deleteSearchSuggestionsInput: (input) => dispatch(deleteSearchSuggestionsInput(input)),
+    clearSearchSuggestionTimeout : () => dispatch(clearSearchSuggestionTimeout())
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(SearchForm);
