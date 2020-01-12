@@ -53,8 +53,8 @@ const profileCard = (props) => {
     posterImg = <Card.Img className={`${classes.CardImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
   }
 
-  if (props.singleProfileCredits) {
-    creditCardsContent = props.singleProfileCredits.map((element) => {
+  if (props.profileCredits) {
+    creditCardsContent = props.profileCredits.map((element) => {
       let creditPosterImg = 
         <div className={`${ classes.NoImg } d-flex justify-content-center align-items-center mx-auto` }>
           <NoImageCredit fill="#ffffff" width="50px" height="50px" />
@@ -85,15 +85,15 @@ const profileCard = (props) => {
       <div>
         <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
         <p className={`${ classes.text } text-left mb-1`}>
-          {props.singleProfileDetails.known_for_department ? props.singleProfileDetails.known_for_department : '-'}
+          {props.profileDetails.known_for_department ? props.profileDetails.known_for_department : '-'}
         </p>
         <p className={`${ classes.title } font-weight-bold text-left mt-1 mb-1`}>Birthday </p>
         <p className={`${ classes.text } text-left mb-1`}>
-          {props.singleProfileDetails.birthday ? props.singleProfileDetails.birthday : '-'}
+          {props.profileDetails.birthday ? props.profileDetails.birthday : '-'}
         </p>
         <p className={`${ classes.title } font-weight-bold text-left mt-1 mb-1`}>Place Of Birth</p>
         <p className={`${ classes.text } text-left mb-1`}>
-          {props.singleProfileDetails.place_of_birth ? props.singleProfileDetails.place_of_birth : '-'}
+          {props.profileDetails.place_of_birth ? props.profileDetails.place_of_birth : '-'}
         </p>
       </div>;
     
@@ -106,11 +106,11 @@ const profileCard = (props) => {
               body : 
                 <h6 
                   className=
-                    {`${props.singleProfileDetails.biography ? classes.text : ''} ${ classes.biography }  
-                      ${props.singleProfileDetails.biography ? 'text-justify' : 'text-center'} 
+                    {`${props.profileDetails.biography ? classes.text : ''} ${ classes.biography }  
+                      ${props.profileDetails.biography ? 'text-justify' : 'text-center'} 
                       customScroll my-0 ml-3 pr-3 pb-3`}
                 >
-                  {props.singleProfileDetails.biography ? props.singleProfileDetails.biography : 'No Information'}
+                  {props.profileDetails.biography ? props.profileDetails.biography : 'No Information'}
                 </h6>,
               id: props.element.id
             },
@@ -132,10 +132,8 @@ const profileCard = (props) => {
           <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
             <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
             { cardBodyContent }  
-          </div>
-        
+          </div> 
         </Card.Body>
-
       </div>
         
       {cardFooterContent}
@@ -147,7 +145,7 @@ const profileCard = (props) => {
     <div className="col flex-grow-0">
       <Card className={`${classes.Card} ${props.displaySinglePage ? classes.detailedCard : ''}  px-0`}>
 
-        { props.loading ? <LoadingSpinner /> : content }
+        { props.loadingProfile ? <LoadingSpinner /> : content }
 
       </Card>
     </div>
@@ -157,6 +155,10 @@ const profileCard = (props) => {
 const mapStateProps = state => {
   return {
     displayedResults: state.displayedResults,
+    displaySinglePage: state.displaySinglePage,
+    profileDetails: state.profileDetails,
+    profileCredits: state.profileCredits,
+    loadingProfile: state.loadingProfile
   }
 }
 

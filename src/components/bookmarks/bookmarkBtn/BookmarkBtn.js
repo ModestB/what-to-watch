@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import {
+  addBookmark,
+  removeBookmark
+} from '../../../store/actions/actions';
 
 import classes from './BookmarkBtn.module.scss';
 import HeartIcon from '../../../icons/js/Heart';
@@ -42,4 +49,17 @@ const BookmarkBtn = (props) => {
   );
 }
 
-export default BookmarkBtn;
+const mapStateProps = state => {
+  return {
+    bookmarks: state.bookmarks
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    addBookmark: (bookmarkDetails) => dispatch(addBookmark(bookmarkDetails)),
+    removeBookmark: (bookmarkId) => dispatch(removeBookmark(bookmarkId)),
+  }
+}
+
+export default connect(mapStateProps, mapStateDispatch)(BookmarkBtn);

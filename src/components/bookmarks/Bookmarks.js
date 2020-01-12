@@ -1,4 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { connect } from 'react-redux';
+
+// Action Types
+import {
+  toggleBookmarks,
+  removeBookmark
+} from '../../store/actions/actions';
 
 import classes from './Bookmarks.module.scss';
 
@@ -30,8 +37,6 @@ const Bookmarks = (props) => {
           title={bookmark.title}
           mediaType={bookmark.mediaType}
           date={bookmark.date}
-          removeBookmark={props.removeBookmark}
-          displayBookmarksHandler={props.displayBookmarksHandler}
         />
       );
     });
@@ -45,7 +50,7 @@ const Bookmarks = (props) => {
     >
       <header 
         className={`d-flex align-items-center justify-content-between`}
-        onClick={props.displayBookmarksHandler}
+        onClick={props.toggleBookmarks}
       >
         <div className='d-flex align-items-center'>
           <p className={`${classes.Title} mb-0 pr-2`}> To Watch</p>
@@ -74,4 +79,17 @@ const Bookmarks = (props) => {
   ) 
 }
 
-export default Bookmarks;
+const mapStateProps = state => {
+  return {
+    displayBookmarks: state.displayBookmarks,
+    bookmarks: state.bookmarks
+  }
+}
+
+const mapStateDispatch = dispatch => {
+  return {
+    toggleBookmarks: () => dispatch(toggleBookmarks()),
+    removeBookmark: (bookmarkId) => dispatch(removeBookmark(bookmarkId)),
+  }
+}
+export default connect(mapStateProps, mapStateDispatch)(Bookmarks);

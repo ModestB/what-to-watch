@@ -19,7 +19,6 @@ import classes from "./ShowCard.module.scss";
 
 const ShowCard = (props) => {
 
-  console.log()
   let imgSrc = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
   let badge = null;
   let cardText = null;
@@ -78,8 +77,8 @@ const ShowCard = (props) => {
   }
 
   if (props.displayReviews) {
-    if (props.reviews.length > 0) {
-      reviews = props.reviews.map( element => {
+    if (props.reviewsData.length > 0) {
+      reviews = props.reviewsData.map( element => {
         return (
           <ReviewCard 
             key={element.id}
@@ -93,15 +92,15 @@ const ShowCard = (props) => {
     }
     reviewsContainer = 
       <div className="mb-3">
-        <div className={`${props.reviews.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3`}>  
+        <div className={`${props.reviewsData.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3`}>  
           { reviews }
         </div>
       </div>  
   }
 
   if (props.displayTrailers) {
-    if (props.trailers.length > 0) {
-      trailers = props.trailers.map(element => {
+    if (props.trailersData.length > 0) {
+      trailers = props.trailersData.map(element => {
         return (
           <TrailerCard 
             key={element.id}
@@ -115,7 +114,7 @@ const ShowCard = (props) => {
     }
     trailersContainer = 
       <div className="">
-        <div className={`${props.trailers.length > 0 ? classes.trailers : ''} customScroll px-3`}>
+        <div className={`${props.trailersData.length > 0 ? classes.trailers : ''} customScroll px-3`}>
           { trailers }
         </div>
       </div>;
@@ -155,10 +154,7 @@ const ShowCard = (props) => {
             id={props.element.id}
             mediaType={props.mediaType}
             title={props.title}
-            bookmarks={props.bookmarks}
-            date={props.date.substring(0, 4)}
-            addBookmark ={props.addBookmark}
-            removeBookmark = {props.removeBookmark}        
+            date={props.date.substring(0, 4)}      
           />
           <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
             { cardTitle }
@@ -177,7 +173,7 @@ const ShowCard = (props) => {
     <div className="col flex-grow-0">
       <Card className={`${classes.Card} flex-column px-0 ${ props.displaySinglePage ? classes.SinglePage : ''}`}>
 
-        { props.loading ? <LoadingSpinner /> : content }
+        { props.loadingShowCard ? <LoadingSpinner /> : content }
         
       </Card>
     </div>
@@ -188,6 +184,12 @@ const ShowCard = (props) => {
 const mapStateProps = state => {
   return {
     displayedResults: state.displayedResults,
+    displaySinglePage: state.displaySinglePage,
+    displayReviews: state.displayReviews,
+    reviewsData: state.reviewsData,
+    displayTrailers: state.displayTrailers,
+    trailersData: state.trailersData,
+    loadingShowCard: state.loadingShowCard
   }
 }
 

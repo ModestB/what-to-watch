@@ -1,6 +1,7 @@
 import {
   FILTER_SINGLE_PAGE,
-  SET_EXTRA_SHOW_INFO 
+  SET_EXTRA_SHOW_INFO,
+  SET_TRENDING_SHOWS 
 } from '../../actionTypes/actionTypes';
 
 export default (state = false, action) => {
@@ -9,6 +10,9 @@ export default (state = false, action) => {
       return true;
     };
     case SET_EXTRA_SHOW_INFO: {
+      return false;
+    };
+    case SET_TRENDING_SHOWS: {
       return false;
     };
     default:

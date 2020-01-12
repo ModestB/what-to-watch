@@ -2,7 +2,10 @@ import React from "react";
 import { connect } from 'react-redux';
 
 // Action Types
-import * as actions from '../../store/actions/actions';
+import {
+  showPreviousResults,
+  getTrendingShows
+} from '../../store/actions/actions';
 
 
 // Components imports
@@ -32,18 +35,7 @@ const SearchResults = (props) => {
             rating = {element.vote_average}
             date = {element.release_date}
             mediaType = {element.media_type}
-            element = {element}
-            displaySinglePage = {props.displaySinglePage}          
-            displayReviewsHandler = {props.displayReviewsHandler}    
-            displayReviews = {props.displayReviews}
-            reviews = {props.reviews}
-            displayTrailersHandler = {props.displayTrailersHandler}
-            displayTrailers = {props.displayTrailers}
-            trailers = {props.trailers}
-            loading = {props.loadingShowCard}
-            addBookmark = {props.addBookmark}
-            removeBookmark = {props.removeBookmark}
-            bookmarks = {props.bookmarks}   
+            element = {element}     
           />
         break;            
       case "person":
@@ -54,10 +46,6 @@ const SearchResults = (props) => {
             posterPath = {element.profile_path}
             knownFor = {element.known_for}
             element = {element}
-            displaySinglePage = {props.displaySinglePage}
-            singleProfileDetails = {props.singleProfileDetails}
-            singleProfileCredits = {props.singleProfileCredits}
-            loading = {props.loadingProfile}
           />   
         break; 
       case "tv":
@@ -71,17 +59,6 @@ const SearchResults = (props) => {
             date = {element.first_air_date}
             mediaType = {element.media_type} 
             element = {element}
-            displaySinglePage = {props.displaySinglePage}
-            displayReviewsHandler = {props.displayReviewsHandler}
-            displayReviews = {props.displayReviews}
-            reviews = {props.reviews}
-            displayTrailersHandler = {props.displayTrailersHandler}
-            displayTrailers = {props.displayTrailers}
-            trailers = {props.trailers}
-            loading = {props.loadingShowCard}
-            addBookmark = {props.addBookmark}
-            removeBookmark = {props.removeBookmark}
-            bookmarks = {props.bookmarks}
           /> 
         break; 
       default:
@@ -95,19 +72,7 @@ const SearchResults = (props) => {
             date = {element.first_air_date ? element.first_air_date : element.release_date}
             mediaType = {element.original_name ? 'tv' : 'movie'} 
             element = {element}
-            displaySinglePage = {props.displaySinglePage}
-            displayReviewsHandler = {props.displayReviewsHandler}
-            displayReviews = {props.displayReviews}
-            reviews = {props.reviews}
-            displayTrailersHandler = {props.displayTrailersHandler}
-            displayTrailers = {props.displayTrailers}
-            trailers = {props.trailers}
-            loading = {props.loadingShowCard}
-            addBookmark = {props.addBookmark}
-            removeBookmark = {props.removeBookmark}
-            bookmarks = {props.bookmarks}
           /> 
-
     };
 
     return card;
@@ -125,17 +90,6 @@ const SearchResults = (props) => {
           date = {props.displayedResults[0].release_date}
           mediaType = {props.singlePageType}
           element = {props.displayedResults[0]}
-          displaySinglePage = {props.displaySinglePage}
-          displayReviewsHandler = {props.displayReviewsHandler}
-          displayReviews = {props.displayReviews}
-          reviews = {props.reviews}
-          displayTrailersHandler = {props.displayTrailersHandler}
-          displayTrailers = {props.displayTrailers}
-          trailers = {props.trailers}
-          loading = {props.loadingShowCard}
-          addBookmark = {props.addBookmark}
-          removeBookmark = {props.removeBookmark}
-          bookmarks = {props.bookmarks}
         />   
     } else {
       resultToDisplay =
@@ -148,17 +102,6 @@ const SearchResults = (props) => {
           date = {props.displayedResults[0].first_air_date}
           mediaType = {props.singlePageType}
           element = {props.displayedResults[0]}
-          displaySinglePage = {props.displaySinglePage}
-          displayReviewsHandler = {props.displayReviewsHandler} 
-          displayReviews = {props.displayReviews}
-          reviews = {props.reviews}
-          displayTrailersHandler = {props.displayTrailersHandler}
-          displayTrailers = {props.displayTrailers}
-          trailers = {props.trailers}
-          loading = {props.loadingShowCard}
-          addBookmark = {props.addBookmark}
-          removeBookmark = {props.removeBookmark}
-          bookmarks = {props.bookmarks}
         />    
     }  
   }
@@ -175,7 +118,7 @@ const SearchResults = (props) => {
         </Button>
         <Button 
           className={`${ classes.Btn } rounded-0 py-0 ml-2`}
-          onClick={ props.getTrendingShows } 
+          onClick={ () => props.getTrendingShows() } 
           variant="primary" 
         >
           Trending
@@ -195,22 +138,25 @@ const SearchResults = (props) => {
       </div>
       <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="ml-auto mt-auto pt-2 pb-1 pr-1">
         <MovieDb height="50px" width="120px"/>
-      </a>
-      
+      </a>     
     </div>
-
   )
 };
 
 const mapStateProps = state => {
   return {
     searchResults: state.searchResults,
+    displayedResults: state.displayedResults,
+    displaySinglePage: state.displaySinglePage,
+    displayFilteredPage: state.displayFilteredPage,
+    singlePageType: state.singlePageType
   }
 }
 
 const mapStateDispatch = dispatch => {
   return {
-    showPreviousResults: (prevResults) => dispatch(actions.showPreviousResults(prevResults)),
+    showPreviousResults: (prevResults) => dispatch(showPreviousResults(prevResults)),
+    getTrendingShows: () => dispatch(getTrendingShows()),
   }
 }
 

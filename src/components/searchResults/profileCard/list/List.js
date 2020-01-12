@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Action Types
-import * as actions from '../../../../store/actions/actions';
+import { getShowById } from '../../../../store/actions/actions';
 
 import ListGroup from 'react-bootstrap/ListGroup';
 import Badge from 'react-bootstrap/Badge';
@@ -67,7 +67,7 @@ const List = (props) => {
 
 const mapStateDispatch = dispatch => {
   return {
-    getShowById: (showId, mediaType) => dispatch(actions.getShowById(showId, mediaType)) 
+    getShowById: (showId, mediaType) => dispatch(getShowById(showId, mediaType)) 
   }
 }
 
