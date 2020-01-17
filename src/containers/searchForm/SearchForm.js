@@ -18,7 +18,7 @@ import Button from 'react-bootstrap/Button';
 // Import CSS
 import classes from './SearchForm.module.scss';
 
-import Suggestions from './suggestions/Suggestions';
+import Suggestions from '../../components/searchForm/suggestions/Suggestions';
 import CloseIcon from '../../icons/js/Close';
 
 class SearchForm extends Component {
