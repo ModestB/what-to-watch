@@ -1,0 +1,15 @@
+.icon-close{
+  min-width: 20px;
+  min-height: 20px;
+  transition: all 0.3s ease-in-out;
+  &:hover{
+    cursor: pointer;
+    animation: rotate-scale-up 0.65s linear both;
+  }
+  &.icon-close--dark{
+    fill: $color--dark;
+    &:hover{
+      fill: $color--danger;
+    }
+  }
+}
