@@ -12,4 +12,10 @@
       fill: $color--danger;
     }
   }
+  &.icon-close--light{
+    fill: $color--light;
+  }
+  &.icon-close--danger{
+    fill: $color--danger;
+  }
 }

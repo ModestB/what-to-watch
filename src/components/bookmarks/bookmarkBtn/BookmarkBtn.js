@@ -41,7 +41,7 @@ const BookmarkBtn = (props) => {
 
   return (   
     <HeartIcon
-      className={`${classes.bookmarkBtn} ${active ? classes.active : ''}`}
+      className={`${classes.btn} ${active ? classes.active : ''}`}
       onClick={clickHandler}
       width='25px'
       height='25px'

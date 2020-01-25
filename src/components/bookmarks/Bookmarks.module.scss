@@ -1,6 +1,7 @@
 @import 'assets/styles/variables';
+@import 'assets/styles/keyframes';
 
-.BookmarksHolder{
+.container{
   position: absolute;
   z-index: 2;
   bottom: 17px;
@@ -29,8 +30,8 @@
       bottom 0.4s ease-in-out, 
       height 0.4s ease-in-out, 
       width 0.4s ease-in-out 0.4s;
-    header{ 
-      .closeIcon{
+    .header{ 
+      .iconClose{
         display: block;
       }
     }
@@ -42,25 +43,19 @@
         width 0.4s ease-in-out 0.4s;
     }
   }
-  header{
+  .header{
     width: 100%;
     height: 40px;
-    padding: 0 16px;
+    padding: 0 14px;
     color: $color--light;
     background-color: $color--danger;
     font-size: 18px;
     cursor: pointer;
-    &:hover{
-      .closeIcon{
-        animation: rotate-scale-up 0.65s linear both;
-      }
-    }
-    .Title{
+    .title{
       white-space: nowrap;
     }
-    .closeIcon{
+    .iconClose{
       display: none;
-      fill: $color--light;
     }
   }
   .body{
@@ -72,28 +67,7 @@
       height 0.4s ease-in-out 0.4s, 
       width 0.4s ease-in-out;
   }
-  .runScaleUpCenter{
+  .iconHeart{
     animation: scale-up-center 0.3s ease-in-out 2 alternate both;
-  }
-}
-
-@keyframes rotate-scale-up {
-  0% {
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    transform: scale(1.5) rotateZ(180deg);
-  }
-  100% {
-    transform: scale(1) rotateZ(360deg);
-  }
- }
-
-@keyframes scale-up-center {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.5);
   }
 }

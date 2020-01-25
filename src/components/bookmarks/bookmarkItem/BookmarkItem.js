@@ -27,7 +27,7 @@ const BookmarkItem  = React.memo(function BookmarkItem (props) {
       </div>
       
       <CloseIcon 
-        className={`${classes.closeIcon}`}
+        className='icon-close icon-close--danger'
         onClick={() => props.removeBookmark(props.id)}
         width="20px" 
         height="20px"

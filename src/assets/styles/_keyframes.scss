@@ -12,3 +12,12 @@
             transform: scale(1) rotateZ(360deg);
   }
 }
+
+@keyframes scale-up-center {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.5);
+  }
+}

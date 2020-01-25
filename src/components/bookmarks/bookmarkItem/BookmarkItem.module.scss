@@ -6,25 +6,3 @@
     color: $color--primary;
   }
 }
-
-.closeIcon{
-  fill: $color--danger;
-  min-width: 20px;
-  min-height: 20px;
-  &:hover{
-    cursor: pointer;
-    animation: rotate-scale-up 0.65s linear both;
-  }
-}
-
-@keyframes rotate-scale-up {
-  0% {
-    transform: scale(1) rotateZ(0);
-  }
-  50% {
-    transform: scale(1.5) rotateZ(180deg);
-  }
-  100% {
-    transform: scale(1) rotateZ(360deg);
-  }
- }

@@ -44,28 +44,28 @@ const Bookmarks = (props) => {
   return (
     <div 
       className={`
-        ${classes.BookmarksHolder} 
+        ${classes.container} 
         ${props.displayBookmarks ? classes.active : ''}
       `}
     >
       <header 
-        className={`d-flex align-items-center justify-content-between`}
+        className={`${classes.header}  d-flex align-items-center justify-content-between`}
         onClick={props.toggleBookmarks}
       >
         <div className='d-flex align-items-center'>
-          <p className={`${classes.Title} mb-0 pr-2`}> To Watch</p>
+          <p className={`${classes.title} mb-0 pr-2`}> To Watch</p>
           <HeartIcon
             key={heartKey > 1 ? heartKey : '0'}
             fill='#ffffff'
             width='30px'
             height='30px'
-            className={classes.runScaleUpCenter}
+            className={classes.iconHeart}
           />
           <span className='pl-2'>{props.bookmarks ? props.bookmarks.length : 0}</span>
         </div>
 
         <CloseIcon 
-          className={`${classes.closeIcon}`}
+          className={`${classes.iconClose} icon-close icon-close--light`}
           width="20px" 
           height="20px"
         />
