@@ -11,7 +11,7 @@ import LoadingSpinner from '../../loadingSpinner/LoadingSpinner';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 import NoImage from '../../../icons/js/NoImage';
-import Accordion from '../../accordion/Accordion';
+import Accordion from '../../../containers/accordion/Accordion';
 import BookmarkButton from '../../bookmarks/bookmarkBtn/BookmarkBtn';
 
 // Style imports

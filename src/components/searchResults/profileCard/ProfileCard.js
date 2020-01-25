@@ -12,7 +12,7 @@ import Row from 'react-bootstrap/Row';
 import NoImagePerson from '../../../icons/js/Person';
 import NoImageCredit from '../../../icons/js/NoImage';
 import LoadingSpinner from '../../loadingSpinner/LoadingSpinner';
-import Accordion from '../../accordion/Accordion';
+import Accordion from '../../../containers/accordion/Accordion';
 import CreditCard from './creditCard/CreditCard';
 import List from './list/List';
 
