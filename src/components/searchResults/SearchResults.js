@@ -110,14 +110,14 @@ const SearchResults = (props) => {
     goBackBtn = 
       <div className="col text-left pb-1">
         <Button 
-          className={`${ classes.Btn } rounded-0 py-0`}
+          className='btn btn--small rounded-0 py-0'
           onClick={ () => props.showPreviousResults([...props.searchResults])} 
           variant="danger" 
         >
           Go back
         </Button>
         <Button 
-          className={`${ classes.Btn } rounded-0 py-0 ml-2`}
+          className='btn btn--small rounded-0 py-0 ml-2'
           onClick={ () => props.getTrendingShows() } 
           variant="primary" 
         >
@@ -127,7 +127,7 @@ const SearchResults = (props) => {
   }
 
   if (!props.displaySinglePage) {
-    searchResultClasses = `${classes.resultsContainer} customScroll`
+    searchResultClasses = `${classes.container} customScroll`
   }
  
   return (
