@@ -21,7 +21,7 @@
 .title{
   font-size: 14px;
   padding-right: 40px;
-  color: #616161;
+  color: $text__color--dark;
 }
 
 .posterImg{
@@ -33,7 +33,7 @@
 }
 
 .posterImgPlaceholder{
-  background-color: #616161;
+  background-color: $text__color--dark;
 }
 
 .description{
@@ -71,7 +71,7 @@
   left: -120px;
   width: 0%;
   height: 30px;
-  background-color: rgba(158, 86, 252, 0.9);
+  background-color: rgba($color--primary, 0.9);
   transition: all 0.4s ease-in-out;
 }
 
