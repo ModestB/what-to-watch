@@ -1,27 +1,12 @@
 @import 'assets/styles/variables';
 
-.SearchFormInput{
+.input{
   height: 32px;
   border-radius: 0;
   font-size: 12px;
   &:focus{
     border-color:$color--primary;
     box-shadow: 0 0 0 0.2rem $shadow--primary;
-  }
-}
-
-.SearchSubmitBtn{
-  height: 32px;
-  min-width: 110px;
-  border-radius: 0;
-  padding: 3px 12px;
-  font-size: 17px;
-  background-color: $color--primary;
-  border-color:  $color--primary;
-  &:hover{
-    background-color: $color--primary--darker;
-    border-color:  $color--primary--darker;
-    box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
   }
 }
 

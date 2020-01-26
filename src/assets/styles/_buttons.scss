@@ -3,4 +3,20 @@
     height: 24px;  
     font-size: 12px;
   }
+  &.btn--big{
+    height: 32px;
+    min-width: 110px;
+    border-radius: 0;
+    padding: 3px 12px;
+    font-size: 17px;
+  }
+  &.btn--primary{
+    background-color: $color--primary;
+    border-color:  $color--primary;
+    &:hover{
+      background-color: $color--primary--darker;
+      border-color:  $color--primary--darker;
+      box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
+    }
+  }
 }

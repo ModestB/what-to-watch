@@ -42,7 +42,7 @@ class SearchForm extends Component {
           controlId="searchNameInput"
         >
           <Form.Control 
-            className={`${classes.SearchFormInput} pr-4`} 
+            className={`${classes.input} pr-4`} 
             type="text" 
             ref={(ref) => { this.nameInput = ref; }} 
             placeholder="Enter Movie or Tv show name..." 
@@ -66,7 +66,7 @@ class SearchForm extends Component {
           
         </Form.Group>
         <Button 
-          className={`${ classes.SearchSubmitBtn } ml-2`}
+          className='btn btn--big btn--priamry ml-2'
           variant="primary" 
           type="submit"
         >
