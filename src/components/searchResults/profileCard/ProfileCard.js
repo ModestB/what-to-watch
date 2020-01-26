@@ -27,14 +27,14 @@ const profileCard = (props) => {
   let imgSrc = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
   let posterImg = 
     <div 
-      className={`${ classes.NoImg } d-flex justify-content-center align-items-center` }
+      className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ') } d-flex justify-content-center align-items-center` }
     >
       <NoImagePerson fill="#ffffff" width="75px" height="75px" />
     </div>;
   let cardOverlay = 
     <div 
-    className={`${classes.CardOverlay} d-flex align-items-center justify-content-center px-2`} 
-    onClick={  () => props.filterSinglePage( props.element, props.displayedResults ) }
+      className={`${classes.overlay} d-flex align-items-center justify-content-center px-2`} 
+      onClick={  () => props.filterSinglePage( props.element, props.displayedResults ) }
     >
       <p className="mb-0">More Info</p>
     </div>;
@@ -50,17 +50,17 @@ const profileCard = (props) => {
   }
 
   if (props.posterPath) {
-    posterImg = <Card.Img className={`${classes.CardImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
+    posterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
   }
 
   if (props.profileCredits) {
     creditCardsContent = props.profileCredits.map((element) => {
       let creditPosterImg = 
-        <div className={`${ classes.NoImg } d-flex justify-content-center align-items-center mx-auto` }>
+        <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ') } d-flex justify-content-center align-items-center mx-auto` }>
           <NoImageCredit fill="#ffffff" width="50px" height="50px" />
         </div>;
       if (element.poster_path) {
-        creditPosterImg = <Card.Img className={`${classes.CardImg} img-fluid`} variant="left" src={ imgSrc + element.poster_path } />
+        creditPosterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + element.poster_path } />
       }
       return (
         <CreditCard
@@ -98,7 +98,7 @@ const profileCard = (props) => {
       </div>;
     
     cardFooterContent = 
-      <Card.Footer className={`${ classes.cardFooter } mt-auto px-0 pt-2 pb-0`}>
+      <Card.Footer className={`${ classes.footer} mt-auto px-0 pt-2 pb-0`}>
         <Accordion 
           elements = {[
             {
@@ -130,7 +130,7 @@ const profileCard = (props) => {
         <Card.Body className="d-flex p-0 ">
           { posterImg }
           <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
-            <Card.Title className={`${classes.CardTitle} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
+            <Card.Title className={`${classes.title} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
             { cardBodyContent }  
           </div> 
         </Card.Body>
@@ -143,7 +143,7 @@ const profileCard = (props) => {
 
   return (
     <div className="col flex-grow-0">
-      <Card className={`${classes.Card} ${props.displaySinglePage ? classes.detailedCard : ''}  px-0`}>
+      <Card className={`${classes.container} ${props.displaySinglePage ? classes.singlePage : ''}  px-0`}>
 
         { props.loadingProfile ? <LoadingSpinner /> : content }
 
