@@ -1,6 +1,6 @@
 @import 'assets/styles/variables';
 
-.Card{
+.container{
   height: 175px;
   max-height: 175px;
   margin-left: 19px;
@@ -10,7 +10,7 @@
   box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out; 
   margin-bottom: 16px;
-  &.SinglePage{
+  &.singlePage{
     height: 370px;
     min-height: 370px;
     margin-left: 0px;
@@ -18,13 +18,13 @@
   }
 }
 
-.CardTitle{
+.title{
   font-size: 14px;
   padding-right: 40px;
   color: #616161;
 }
 
-.CardImg, .NoImg{
+.posterImg{
   width: 120px;
   min-width: 120px;
   max-height: 175px;
@@ -32,15 +32,21 @@
   transition: all 0.3s ease-in-out;
 }
 
-.NoImg{
+.posterImgPlaceholder{
   background-color: #616161;
 }
 
-.CardText{
+.description{
   font-size: 12px;
 }
 
-.CardFooter{ 
+.descriptionOverview{
+  position: relative;
+  z-index: 1;
+  max-height: 235px;
+}
+
+.footer{ 
   border: none;
 }
 
@@ -48,7 +54,7 @@
   font-size: 10px;
 }
 
-.Badge{
+.badge{
   position: absolute;
   top: 0;
   right: 0;
@@ -59,14 +65,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
-.Btn{
-  height: 32px;
-  border-radius: 0;
-  padding: 3px 12px;
-  font-size: 17px;
-}
-
-.CardOverlay{
+.overlay{
   position: absolute;
   bottom: 0;
   left: -120px;
@@ -76,36 +75,29 @@
   transition: all 0.4s ease-in-out;
 }
 
-.Card:hover .CardOverlay{
+.container:hover .overlay{
   left: 0;
   width: 120px;
 }
 
-.CardOverlay:hover{
+.overlay:hover{
   cursor: pointer;
 }
 
-.CardOverlay p{
+.overlay p{
   font-size: 16px;
   font-weight: bold;
   color: $text__color--grey;
   white-space: nowrap;
 }
 
-.SinglePage{
-  .CardImg,
-  .NoImg{
+.singlePage{
+  .posterImg{
     width: 130px;
     min-width: 130px;
     height: 195px;
     max-height: 195px;
   }
-}
-
-.textOverview{
-  position: relative;
-  z-index: 1;
-  max-height: 235px;
 }
 
 .reviews, 
@@ -115,6 +107,6 @@
 
 .reviews, 
 .trailers,
-.textOverview{
+.descriptionOverview{
   overflow-x: hidden;
 }

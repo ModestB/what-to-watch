@@ -29,10 +29,10 @@ const ShowCard = (props) => {
   let reviews = null;
   let trailersContainer = null;
   let trailers = null;
-  let posterImg = <div className={`${ classes.NoImg } d-flex justify-content-center align-items-center` }><NoImage fill="#ffffff" width="50px" height="50px" /></div>;
+  let posterImg = <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ')} d-flex justify-content-center align-items-center` }><NoImage fill="#ffffff" width="50px" height="50px" /></div>;
   let cardOverlay = 
     <div 
-      className={`${classes.CardOverlay} d-flex align-items-center justify-content-center px-2`} 
+      className={`${classes.overlay} d-flex align-items-center justify-content-center px-2`} 
       onClick={  () => props.filterSinglePage(props.element, props.displayedResults) }>
       <p className="mb-0">More Info</p>
     </div>;
@@ -45,23 +45,23 @@ const ShowCard = (props) => {
     } else if ( props.rating <= 4 ) {
       badgeVariant = "danger";
     }
-    badge = <Badge className={`${ classes.Badge } d-flex align-items-center justify-content-center`} variant={ badgeVariant }> { props.rating } </Badge>;
+    badge = <Badge className={`${classes.badge} d-flex align-items-center justify-content-center`} variant={ badgeVariant }> { props.rating } </Badge>;
   }
 
   if(props.overview && !props.displaySinglePage) {
-    cardText = <Card.Text className={`${classes.CardText} text-left mb-2 pr-3`}> { props.overview.substring(0, 130) + "..."  } </Card.Text>;
+    cardText = <Card.Text className={`${classes.description} text-left mb-2 pr-3`}> { props.overview.substring(0, 130) + "..."  } </Card.Text>;
   } else {
-    cardText = <Card.Text className={`${ [classes.CardText, classes.textOverview].join(' ') } customScroll text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
+    cardText = <Card.Text className={`${ [classes.description, classes.descriptionOverview].join(' ') } customScroll text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
   }
  
   if(!props.displaySinglePage) {
     cardTitle =
-      <Card.Title className={`${classes.CardTitle} text-left font-weight-bold`} title={ props.title }> 
+      <Card.Title className={`${classes.title} text-left font-weight-bold`} title={ props.title }> 
         { props.title.length > 40 ? props.title.substring(0, 40) + "..." :  props.title } 
       </Card.Title> 
   } else {
     cardTitle =
-      <Card.Title className={`${classes.CardTitle} text-left font-weight-bold`} title={ props.title }> 
+      <Card.Title className={`${classes.title} text-left font-weight-bold`} title={ props.title }> 
         { props.title } 
       </Card.Title>
   }
@@ -73,7 +73,7 @@ const ShowCard = (props) => {
   }
 
   if(props.posterPath) {
-    posterImg = <Card.Img className={`${classes.CardImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
+    posterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
   }
 
   if (props.displayReviews) {
@@ -122,7 +122,7 @@ const ShowCard = (props) => {
 
   if (props.displaySinglePage) {
     cardFooterContent  = 
-      <Card.Footer className={`${classes.CardFooter} p-0 mt-auto`}>
+      <Card.Footer className={`${classes.footer} p-0 mt-auto`}>
         <Accordion 
           elements = {[
             {
@@ -171,7 +171,7 @@ const ShowCard = (props) => {
  
   return (
     <div className="col flex-grow-0">
-      <Card className={`${classes.Card} flex-column px-0 ${ props.displaySinglePage ? classes.SinglePage : ''}`}>
+      <Card className={`${classes.container} flex-column px-0 ${ props.displaySinglePage ? classes.singlePage : ''}`}>
 
         { props.loadingShowCard ? <LoadingSpinner /> : content }
         
