@@ -20,3 +20,45 @@
     }
   }
 }
+
+.btn-danger, 
+.btn-primary{
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-danger{
+  background-color: $color--danger;
+  box-shadow: 0 0 0 0.2rem $shadow--danger;
+  &:hover{
+    cursor: pointer;
+    background-color: $color--danger--darker;
+    border-color: $color--danger--darker;
+    box-shadow: 0 0 0 0.2rem $shadow--danger--darker;
+  }
+}
+
+.btn-primary{
+  background-color: $color--primary;
+  border-color:  $color--primary;
+  box-shadow: 0 0 0 0.2rem $shadow--primary;
+  &:hover{
+    cursor: pointer;
+    background-color: $color--primary--darker;
+    border-color:  $color--primary--darker;
+    box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
+  }
+}
+
+.btn-danger:not(:disabled):not(.disabled):active,
+.btn-danger:not(:disabled):not(.disabled):focus{
+  background-color: $color--danger--darker;
+  border-color: $color--danger--darker;
+  box-shadow: 0 0 0 0.2rem $shadow--danger;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled):focus{
+  background-color: $color--primary--darker;
+  border-color:  $color--primary--darker;
+  box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
+}

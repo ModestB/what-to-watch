@@ -1,3 +1,29 @@
+body {
+  width: 400px;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.badge{
+  &.badge-success{ 
+    background-color: $color--success;
+  }
+  &.badge-warning{ 
+    background-color: $color--warning;
+    color: $text__color--light;
+  }
+  &.badge-danger{ 
+    background-color: $color--danger;
+  }
+}
+
 .icon-close{
   min-width: 20px;
   min-height: 20px;
@@ -26,6 +52,36 @@
       background-color: $color--grey;
       color: $color--primary;
       cursor: pointer;
+    }
+  }
+}
+
+.customScroll{
+  overflow-y: auto;
+  scrollbar-color:  $color--primary $text__color--grey2;
+  scrollbar-width: thin;
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track{
+    background: $text__color--grey2;
+  }
+  &::-webkit-scrollbar-thumb{
+    background: $color--primary; 
+    &:hover{
+      background: $color--primary--darker; 
+    }
+  }
+  &.customScroll--red{
+    scrollbar-color:  $color--danger $text__color--grey2;
+    &::-webkit-scrollbar-track{
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb{
+      background: $color--danger; 
+      &:hover{
+        background: $color--danger--darker; 
+      }
     }
   }
 }
