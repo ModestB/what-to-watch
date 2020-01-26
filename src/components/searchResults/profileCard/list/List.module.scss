@@ -1,21 +1,21 @@
 @import 'assets/styles/variables';
 
-.ListGroup{
+.container{
   height: 100px;
 }
 
-.ListGroupItem{
+.item{
   border: none;
   font-size: 12px;
   color: $color--dark;
 }
 
-.ShowName:hover{
+.title:hover{
   cursor: pointer;
   color: $color--primary;
 }
 
-.Badge{
+.badge{
   font-size: 11px;
   border-radius: 0;
   min-width: 75px;

@@ -16,17 +16,17 @@ const List = (props) => {
       case "movie":
         item = 
           <ListGroup.Item 
-            className={`${ classes.ListGroupItem } d-flex pt-0 pb-1 pl-0 pr-1`}
+            className={`${classes.item} d-flex pt-0 pb-1 pl-0 pr-1`}
             key={element.id}
           > 
             <Badge 
-              className={`${ classes.Badge } d-flex align-items-center justify-content-center mb-1 mr-1`} 
+              className={`${classes.badge} d-flex align-items-center justify-content-center mb-1 mr-1`} 
               variant="success"
             > 
               {element.release_date} 
             </Badge>
             <span 
-              className={`${ classes.ShowName } text-left`} 
+              className={`${classes.title} text-left`} 
               onClick={() => props.getShowById(element.id, element.media_type)}
             > 
               {element.title} 
@@ -36,17 +36,17 @@ const List = (props) => {
       case "tv":
         item =
           <ListGroup.Item 
-            className={`${ classes.ListGroupItem } d-flex pt-0 pb-1 pl-0 pr-1`}
+            className={`${classes.item} d-flex pt-0 pb-1 pl-0 pr-1`}
             key={element.id}
           > 
             <Badge 
-              className={`${ classes.Badge } d-flex align-items-center justify-content-center mb-1 mr-1`} 
+              className={`${classes.badge} d-flex align-items-center justify-content-center mb-1 mr-1`} 
               variant="success"
             > 
               {element.first_air_date} 
             </Badge>
             <span 
-              className={`${ classes.ShowName } text-left`} 
+              className={`${classes.title} text-left`} 
               onClick={() => props.getShowById(element.id, element.media_type)}
             > 
             {element.name} 
@@ -59,7 +59,7 @@ const List = (props) => {
     return item;
   })
   return(
-    <ListGroup className={`${classes.ListGroup} customScroll mt-2`}>
+    <ListGroup className={`${classes.container} customScroll mt-2`}>
       {knownForList}
     </ListGroup>
   )
