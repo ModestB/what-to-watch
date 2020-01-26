@@ -14,7 +14,7 @@ import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 
 // Style imports
-import './App.scss';
+import classes from './App.module.scss';
 
 import {searchSuggestionSelectHandler} from '../../assets/js/all';
 
@@ -59,13 +59,13 @@ class App extends Component {
 
     if (!this.props.displaySinglePage) {
       sectionTitle =   
-        <h2 className='sectionTitle'>
+        <h2 className={`${classes.subtitle}`}>
           <span>{this.props.displayTrendingPage ? 'Trending' : 'Results'}</span>
         </h2>
     }
 
     return (
-      <div className='App customScroll'>
+      <div className={`${classes.container} customScroll`}>
         <Container className="pt-3">
           <div className="d-flex justify-content-center align-items-center">
             <IconTv fill="#9E56FC" height="40px" width="40px"/>
