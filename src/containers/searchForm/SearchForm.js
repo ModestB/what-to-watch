@@ -46,7 +46,7 @@ class SearchForm extends Component {
             type="text" 
             ref={(ref) => { this.nameInput = ref; }} 
             placeholder="Enter Movie or Tv show name..." 
-            value={this.props.searchInputValue}
+            value={this.props.searchInputValue ? this.props.searchInputValue : ""}
             onChange={(e) => this.props.getSearchSuggestions(e.target.value)}
             onBlur={this.props.focusOutSearchSuggestions}
           />

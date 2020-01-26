@@ -1,12 +1,12 @@
 @import 'assets/styles/variables';
 
-.loadingSpinner {
+.spinner {
   display: inline-block;
   position: relative;
   width: 64px;
   height: 64px;
 }
-.loadingSpinner div {
+.spinner div {
   position: absolute;
   width: 13px;
   height: 13px;
@@ -14,47 +14,47 @@
   background: $color--primary;
   animation: lds-grid 1.2s linear infinite;
 }
-.loadingSpinner div:nth-child(1) {
+.spinner div:nth-child(1) {
   top: 6px;
   left: 6px;
   animation-delay: 0s;
 }
-.loadingSpinner div:nth-child(2) {
+.spinner div:nth-child(2) {
   top: 6px;
   left: 26px;
   animation-delay: -0.4s;
 }
-.loadingSpinner div:nth-child(3) {
+.spinner div:nth-child(3) {
   top: 6px;
   left: 45px;
   animation-delay: -0.8s;
 }
-.loadingSpinner div:nth-child(4) {
+.spinner div:nth-child(4) {
   top: 26px;
   left: 6px;
   animation-delay: -0.4s;
 }
-.loadingSpinner div:nth-child(5) {
+.spinner div:nth-child(5) {
   top: 26px;
   left: 26px;
   animation-delay: -0.8s;
 }
-.loadingSpinner div:nth-child(6) {
+.spinner div:nth-child(6) {
   top: 26px;
   left: 45px;
   animation-delay: -1.2s;
 }
-.loadingSpinner div:nth-child(7) {
+.spinner div:nth-child(7) {
   top: 45px;
   left: 6px;
   animation-delay: -0.8s;
 }
-.loadingSpinner div:nth-child(8) {
+.spinner div:nth-child(8) {
   top: 45px;
   left: 26px;
   animation-delay: -1.2s;
 }
-.loadingSpinner div:nth-child(9) {
+.spinner div:nth-child(9) {
   top: 45px;
   left: 45px;
   animation-delay: -1.6s;

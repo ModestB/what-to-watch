@@ -49,7 +49,7 @@ const suggestions = (props) => {
 
   return (
     <div 
-      className={`${classes.suggestions} ${props.showSuggestions ? classes.show : ''} suggestions-container customScroll`}
+      className={`${classes.container} ${props.showSuggestions ? classes.show : ''} suggestions-container customScroll`}
       id="suggestionsContainer"
     >
       {suggestions}
@@ -60,6 +60,7 @@ const suggestions = (props) => {
 function mouseHoverHandler(e) {
   let readySuggestion = document.querySelector('.suggestions-container .suggestion.ready');
   if (readySuggestion) {
+    console.log('remove')
     readySuggestion.classList.remove('ready');
   };
   e.currentTarget.classList.add('ready');
