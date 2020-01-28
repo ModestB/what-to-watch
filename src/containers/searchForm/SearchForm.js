@@ -11,10 +11,6 @@ import {
   clearSearchSuggestionTimeout 
 } from '../../store/actions/actions';
 
-// Bootsrap imports
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
 // Import CSS
 import classes from './SearchForm.module.scss';
 
@@ -32,17 +28,17 @@ class SearchForm extends Component {
 
   render () {
     return (
-      <Form 
-        className='d-flex position-relative pt-4 pb-3`'
+      <form
+        className={`${classes.form}`}
         onSubmit={this.formSubmitHandler}
         id="searchForm"
       >
-        <Form.Group 
-          className="position-relative flex-grow-1" 
-          controlId="searchNameInput"
+        <div
+          className={`${classes.inputWrapper}`} 
+          id="searchNameInput"
         >
-          <Form.Control 
-            className={`${classes.input} pr-4`} 
+          <input
+            className={`${classes.input}`} 
             type="text" 
             ref={(ref) => { this.nameInput = ref; }} 
             placeholder="Enter Movie or Tv show name..." 
@@ -64,16 +60,15 @@ class SearchForm extends Component {
             : null
           }
           
-        </Form.Group>
-        <Button 
-          className='btn btn--big btn--priamry ml-2'
-          variant="primary" 
+        </div>
+        <div
+          className={`${classes.btn} btn btn--big btn--primary`}
           type="submit"
         >
           Find
-        </Button>
+        </div>
         <Suggestions />      
-      </Form>
+      </form>
     )
   }
 }

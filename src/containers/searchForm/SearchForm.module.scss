@@ -1,12 +1,30 @@
 @import 'assets/styles/variables';
 
-.input{
-  height: 32px;
-  border-radius: 0;
-  font-size: 12px;
-  &:focus{
-    border-color:$color--primary;
-    box-shadow: 0 0 0 0.2rem $shadow--primary;
+.form{
+  display: flex;
+  position: relative;
+  padding-top: 24px;
+  .inputWrapper{
+    position: relative;
+    flex-grow: 1;
+    margin-bottom: 16px;
+  }
+  .input{
+    height: 32px;
+    border-radius: 0;
+    font-size: 12px;
+    padding: 6px 12px 6px 24px;
+    width: 100%;
+    border: 1px solid $color--grey-3;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    &:focus{
+      border-color: $color--primary;
+      box-shadow: 0 0 0 0.2rem $shadow--primary;
+      outline: none;
+    }
+  }
+  .btn{
+    margin-left: 8px;
   }
 }
 
