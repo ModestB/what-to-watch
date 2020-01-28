@@ -7,8 +7,17 @@
   transition: all 0.4s ease-in-out;
   height: 600px;
   overflow: auto;
+  padding: 15px 15px 0 15px;
+  .header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   h1{
     font-size: 24px;
+    text-align: left;
+    margin-top: 8px;
+    margin-left: 8px;
     color: $text__color--dark;
   }
   .subtitle{
@@ -35,5 +44,8 @@
       padding: 0 10px;
       background-color: $color--grey;
     }
+  }
+  .noResults{
+    margin-top: 16px;
   }
 }

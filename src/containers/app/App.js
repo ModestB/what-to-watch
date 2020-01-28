@@ -9,10 +9,6 @@ import {
   getSearchResults
 } from '../../store/actions/actions';
 
-// Bootsrap imports
-import Container from 'react-bootstrap/Container';
-import Button from 'react-bootstrap/Button';
-
 // Style imports
 import classes from './App.module.scss';
 
@@ -40,15 +36,14 @@ class App extends Component {
 
     if (this.props.searchInputValue !== null) {
       searchResult = 
-        <div className="mt-3">
+        <div className={`${classes.noResults}`}>
           <p>No results</p>
-          <Button 
-            className={`position-relative rounded-0 py-0 ml-2`}
+          <div
+            className='btn btn--primary btn--big'
             onClick={ this.props.getTrendingShows } 
-            variant="primary" 
           >
             Show Trending
-          </Button>
+          </div>
         </div>;
     }
 
@@ -65,18 +60,16 @@ class App extends Component {
     }
 
     return (
-      <div className={`${classes.container} customScroll`}>
-        <Container className="pt-3">
-          <div className="d-flex justify-content-center align-items-center">
-            <IconTv fill="#9E56FC" height="40px" width="40px"/>
-            <h1 className="text-left mb-0 mt-2 ml-2"><b>What</b> To Watch</h1>
-          </div>  
-          <SearchForm />
-          { sectionTitle }
-          { this.props.loading ? <LoadingSpinner/> : searchResult }      
-          <Bookmarks/>
-        </Container>
-      </div>
+      <main className={`${classes.container} customScroll`}>
+        <header className={`${classes.header}`}>
+          <IconTv fill="#9E56FC" height="40px" width="40px"/>
+          <h1><b>What</b> To Watch</h1>
+        </header>  
+        <SearchForm />
+        { sectionTitle }
+        { this.props.loading ? <LoadingSpinner/> : searchResult }      
+        <Bookmarks/>
+      </main>
     );
   }
 }

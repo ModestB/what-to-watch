@@ -1,4 +1,8 @@
 .btn{
+  position: relative;
+  &:hover{
+    cursor: pointer;
+  }
   &.btn--small{
     height: 24px;  
     font-size: 12px;
@@ -13,6 +17,7 @@
   &.btn--primary{
     background-color: $color--primary;
     border-color:  $color--primary;
+    color: $color--light;
     &:hover{
       background-color: $color--primary--darker;
       border-color:  $color--primary--darker;
