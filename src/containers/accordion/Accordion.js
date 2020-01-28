@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import AccordionItem from '../../components/accordion/accordionItem/AccordionItem';
 
+import classes from './Accordion.module.scss';
+
 class Accordion extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +55,7 @@ class Accordion extends Component {
     });
   
     return (
-      <div className="accordion d-flex">
+      <div className={`${classes.container}`}>
         {accordionItems}
       </div>
     )

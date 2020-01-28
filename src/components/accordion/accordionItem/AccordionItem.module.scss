@@ -1,6 +1,9 @@
 @import 'assets/styles/variables';
 
 .item{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   overflow: visible !important;
   border: none;
   border-radius: 0;
@@ -12,6 +15,7 @@
     border-right : 1px solid $color--grey-2;
     border-left : 1px solid $color--grey-2;
     background-color: $color--light;
+    padding: 0.75rem 1.25rem;
     transition: all 0.3s ease-in-out;
     &:hover{
       cursor: pointer;
@@ -19,18 +23,27 @@
     }
     &:hover,
     &.active{
-      p{
-        color: $text__color--light;
+      border-color: $color--light;
+      .title{
+        p{
+          color: $text__color--light;
+        }
       }
       .headerOverlay{
         clip-path: circle(137.4% at 3% 98%)
       }
     }
-    p{
-      transition: all 0.3s ease-in-out;
-      font-size: 18px;
-      color: $text__color--dark;
-      z-index: 2;
+    .title{
+      display: flex;
+      position: relative;
+      justify-content: center;
+      font-weight: 700;
+      p{
+        transition: all 0.3s ease-in-out;
+        font-size: 18px;
+        color: $text__color--dark;
+        z-index: 2;
+      }
     }
     .headerOverlay{
       position: absolute;
@@ -46,6 +59,8 @@
   }
   .body{
     position: absolute;
+    display: flex;
+    flex-direction: column;
     height: 325px;
     width: 370px;
     bottom: 0;
