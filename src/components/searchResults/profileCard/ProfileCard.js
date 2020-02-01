@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 // Action Types
 import { filterSinglePage } from '../../../store/actions/actions';
 
-// Bootsrap imports
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-
 // Components imports
 import NoImagePerson from '../../../icons/js/Person';
 import NoImageCredit from '../../../icons/js/NoImage';
@@ -27,22 +23,22 @@ const profileCard = (props) => {
   let imgSrc = 'https://image.tmdb.org/t/p/w185_and_h278_bestv2/';
   let posterImg = 
     <div 
-      className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ') } d-flex justify-content-center align-items-center` }
+      className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ') }` }
     >
       <NoImagePerson fill="#ffffff" width="75px" height="75px" />
     </div>;
   let cardOverlay = 
     <div 
-      className={`${classes.overlay} d-flex align-items-center justify-content-center px-2`} 
+      className={`${classes.overlay}`} 
       onClick={  () => props.filterSinglePage( props.element, props.displayedResults ) }
     >
-      <p className="mb-0">More Info</p>
+      <p>More Info</p>
     </div>;
 
   if (props.knownFor) {
     cardBodyContent =  
       <div>
-        <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
+        <p className={`${ classes.title }`}>Known for </p>
         <List 
           elements={props.knownFor}
         />
@@ -50,17 +46,17 @@ const profileCard = (props) => {
   }
 
   if (props.posterPath) {
-    posterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
+    posterImg = <img className={`${classes.posterImg}`} src={ imgSrc + props.posterPath } />;
   }
 
   if (props.profileCredits) {
     creditCardsContent = props.profileCredits.map((element) => {
       let creditPosterImg = 
-        <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ') } d-flex justify-content-center align-items-center mx-auto` }>
+        <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ')}` }>
           <NoImageCredit fill="#ffffff" width="50px" height="50px" />
         </div>;
       if (element.poster_path) {
-        creditPosterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + element.poster_path } />
+        creditPosterImg = <img className={`${classes.posterImg}`} src={ imgSrc + element.poster_path } />
       }
       return (
         <CreditCard
@@ -75,30 +71,30 @@ const profileCard = (props) => {
     })
 
     creditCards = 
-      <Row noGutters='true' className={`${classes.creditCards} customScroll p-3`}>
+      <div className={`${classes.creditCards} customScroll`}>
         {creditCardsContent}
-      </Row>;
+      </div>;
   }
 
   if (props.displaySinglePage) {
     cardBodyContent = 
       <div>
-        <p className={`${ classes.title } font-weight-bold text-left mt-2 mb-1`}>Known for </p>
-        <p className={`${ classes.text } text-left mb-1`}>
+        <p className={`${ classes.title }`}>Known for </p>
+        <p className={`${ classes.text }`}>
           {props.profileDetails.known_for_department ? props.profileDetails.known_for_department : '-'}
         </p>
-        <p className={`${ classes.title } font-weight-bold text-left mt-1 mb-1`}>Birthday </p>
-        <p className={`${ classes.text } text-left mb-1`}>
+        <p className={`${ classes.title }`}>Birthday </p>
+        <p className={`${ classes.text }`}>
           {props.profileDetails.birthday ? props.profileDetails.birthday : '-'}
         </p>
-        <p className={`${ classes.title } font-weight-bold text-left mt-1 mb-1`}>Place Of Birth</p>
-        <p className={`${ classes.text } text-left mb-1`}>
+        <p className={`${ classes.title }`}>Place Of Birth</p>
+        <p className={`${ classes.text }`}>
           {props.profileDetails.place_of_birth ? props.profileDetails.place_of_birth : '-'}
         </p>
       </div>;
     
     cardFooterContent = 
-      <Card.Footer className={`${ classes.footer} mt-auto px-0 pt-2 pb-0`}>
+      <footer className={`${ classes.footer}`}>
         <Accordion 
           elements = {[
             {
@@ -121,33 +117,31 @@ const profileCard = (props) => {
             },
           ]}
         />
-      </Card.Footer>
+      </footer>
   }
 
   let content = 
-    <div className="d-flex flex-column h-100">
-      <div className="d-flex h-100">
-        <Card.Body className="d-flex p-0 ">
-          { posterImg }
-          <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
-            <Card.Title className={`${classes.title} text-left font-weight-bold mb-1`}> { props.name } </Card.Title>
-            { cardBodyContent }  
-          </div> 
-        </Card.Body>
+    <div className={`${classes.card}`}>
+      <div className={`${classes.body}`}>
+        { posterImg }
+        <div className={`${classes.content}`}>
+          <div className={`${classes.title}`}> { props.name } </div>
+          { cardBodyContent }  
+        </div> 
       </div>
-        
+
       {cardFooterContent}
       
       { props.displaySinglePage? '' : cardOverlay }
     </div>;
 
   return (
-    <div className="col flex-grow-0">
-      <Card className={`${classes.container} ${props.displaySinglePage ? classes.singlePage : ''}  px-0`}>
+    <div className={`${classes.container}`}>
+      <section className={`${classes.card__wrp} ${props.displaySinglePage ? classes.singlePage : ''}`}>
 
         { props.loadingProfile ? <LoadingSpinner /> : content }
 
-      </Card>
+      </section>
     </div>
   )
 };
