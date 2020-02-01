@@ -1,5 +1,12 @@
 @import 'assets/styles/variables';
 
+.container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
 .title{
   &:hover{
     cursor: pointer;

@@ -18,9 +18,9 @@ const BookmarkItem  = React.memo(function BookmarkItem (props) {
   }
 
   return (
-    <div className='d-flex justify-content-between align-items-center pb-2'>
+    <div className={`${classes.container}`}>
       <div 
-        className={`${classes.title} d-flex text-left`}
+        className={`${classes.title}`}
         onClick={clickHandler}
       >
         {`${props.title} (${props.date})`}

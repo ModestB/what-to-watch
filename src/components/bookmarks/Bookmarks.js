@@ -26,7 +26,7 @@ const Bookmarks = (props) => {
   }, [props.bookmarks])
 
 
-  let bookmarks = <p className="mb-0">No bookmarks</p>;
+  let bookmarks = <p>No bookmarks</p>;
 
   if (props.bookmarks && props.bookmarks.length > 0) {
     bookmarks = props.bookmarks.map((bookmark) => {
@@ -49,11 +49,11 @@ const Bookmarks = (props) => {
       `}
     >
       <header 
-        className={`${classes.header}  d-flex align-items-center justify-content-between`}
+        className={`${classes.header}`}
         onClick={props.toggleBookmarks}
       >
-        <div className='d-flex align-items-center'>
-          <p className={`${classes.title} mb-0 pr-2`}> To Watch</p>
+        <div className={`${classes.header__wrp}`}>
+          <p className={`${classes.title}`}> To Watch</p>
           <HeartIcon
             key={heartKey > 1 ? heartKey : '0'}
             fill='#ffffff'
@@ -61,7 +61,7 @@ const Bookmarks = (props) => {
             height='30px'
             className={classes.iconHeart}
           />
-          <span className='pl-2'>{props.bookmarks ? props.bookmarks.length : 0}</span>
+          <span className={`${classes.counter}`}>{props.bookmarks ? props.bookmarks.length : 0}</span>
         </div>
 
         <CloseIcon 
@@ -71,7 +71,7 @@ const Bookmarks = (props) => {
         />
       </header>
       <div
-        className={`${classes.body} p-3 customScroll customScroll--red`}
+        className={`${classes.body} customScroll customScroll--red`}
       >
         { bookmarks }
       </div>

@@ -22,7 +22,6 @@ const BookmarkBtn = (props) => {
       })
     }
   
-
     if (bookmark) {
       setActive(true);
     } else {
