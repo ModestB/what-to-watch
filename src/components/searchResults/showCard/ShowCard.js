@@ -8,8 +8,6 @@ import { filterSinglePage } from '../../../store/actions/actions';
 import ReviewCard from './reviewCard/ReviewCard';
 import TrailerCard from './trailerCard/TrailerCard';
 import LoadingSpinner from '../../loadingSpinner/LoadingSpinner';
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
 import NoImage from '../../../icons/js/NoImage';
 import Accordion from '../../../containers/accordion/Accordion';
 import BookmarkButton from '../../bookmarks/bookmarkBtn/BookmarkBtn';
@@ -29,51 +27,52 @@ const ShowCard = (props) => {
   let reviews = null;
   let trailersContainer = null;
   let trailers = null;
-  let posterImg = <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ')} d-flex justify-content-center align-items-center` }><NoImage fill="#ffffff" width="50px" height="50px" /></div>;
+  let posterImg = <div className={`${ [classes.posterImg, classes.posterImgPlaceholder].join(' ')}`}><NoImage fill="#ffffff" width="50px" height="50px" /></div>;
+
   let cardOverlay = 
     <div 
-      className={`${classes.overlay} d-flex align-items-center justify-content-center px-2`} 
+      className={`${classes.overlay}`} 
       onClick={  () => props.filterSinglePage(props.element, props.displayedResults) }>
-      <p className="mb-0">More Info</p>
+      <p>More Info</p>
     </div>;
 
   if(props.rating){
-    let badgeVariant = 'success';
+    let badgeVariant = classes.badgeSuccess;
 
     if( props.rating > 4 && props.rating < 7){
-      badgeVariant = "warning";
+      badgeVariant = classes.badgeWarning;
     } else if ( props.rating <= 4 ) {
-      badgeVariant = "danger";
+      badgeVariant = classes.badgeDanger;
     }
-    badge = <Badge className={`${classes.badge} d-flex align-items-center justify-content-center`} variant={ badgeVariant }> { props.rating } </Badge>;
+    badge = <span className={`${[classes.badge, badgeVariant].join(' ')}`}> { props.rating } </span>;
   }
 
   if(props.overview && !props.displaySinglePage) {
-    cardText = <Card.Text className={`${classes.description} text-left mb-2 pr-3`}> { props.overview.substring(0, 130) + "..."  } </Card.Text>;
+    cardText = <p className={`${classes.description}`}> { props.overview.substring(0, 130) + "..."  } </p>;
   } else {
-    cardText = <Card.Text className={`${ [classes.description, classes.descriptionOverview].join(' ') } customScroll text-justify mb-2 pr-3`}> { props.overview } </Card.Text>;
+    cardText = <p className={`${ [classes.description, classes.descriptionOverview].join(' ') } customScroll`}> { props.overview } </p>;
   }
  
   if(!props.displaySinglePage) {
     cardTitle =
-      <Card.Title className={`${classes.title} text-left font-weight-bold`} title={ props.title }> 
+      <div className={`${classes.title}`} title={ props.title }> 
         { props.title.length > 40 ? props.title.substring(0, 40) + "..." :  props.title } 
-      </Card.Title> 
+      </div> 
   } else {
     cardTitle =
-      <Card.Title className={`${classes.title} text-left font-weight-bold`} title={ props.title }> 
+      <div className={`${classes.title}`} title={ props.title }> 
         { props.title } 
-      </Card.Title>
+      </div>
   }
 
   if(props.mediaType === 'movie'){
-    date = <p className={`${classes.date} text-right mb-0 mt-auto pr-3`} >Released Date: { props.date }</p>
+    date = <p className={`${classes.date}`} >Released Date: { props.date }</p>
   } else {
-    date = <p className={`${classes.date} text-right mb-0 mt-auto pr-3`} >Air Date: { props.date }</p>
+    date = <p className={`${classes.date}`} >Air Date: { props.date }</p>
   }
 
   if(props.posterPath) {
-    posterImg = <Card.Img className={`${classes.posterImg} img-fluid`} variant="left" src={ imgSrc + props.posterPath } />;
+    posterImg = <img className={`${classes.posterImg}`} src={ imgSrc + props.posterPath } />;
   }
 
   if (props.displayReviews) {
@@ -88,14 +87,12 @@ const ShowCard = (props) => {
         )
       })
     } else {
-      reviews = <h6 className="mb-3 pr-3">No Reviews</h6>
+      reviews = <h6>No Reviews</h6>
     }
     reviewsContainer = 
-      <div className="mb-3">
-        <div className={`${props.reviewsData.length > 0 ? classes.reviews : ''} customScroll d-flex flex-column pl-3`}>  
-          { reviews }
-        </div>
-      </div>  
+      <div className={`${props.reviewsData.length > 0 ? classes.reviews : ''} customScroll`}>  
+        { reviews }
+      </div>
   }
 
   if (props.displayTrailers) {
@@ -110,19 +107,17 @@ const ShowCard = (props) => {
         )
       }) 
     } else {
-      trailers = <h6 className="mb-3 pr-3">No Trailers</h6>
+      trailers = <h6>No Trailers</h6>
     }
-    trailersContainer = 
-      <div className="">
-        <div className={`${props.trailersData.length > 0 ? classes.trailers : ''} customScroll px-3`}>
-          { trailers }
-        </div>
+    trailersContainer =  
+      <div className={`${props.trailersData.length > 0 ? classes.trailers : ''} customScroll`}>
+        { trailers }
       </div>;
   }
 
   if (props.displaySinglePage) {
     cardFooterContent  = 
-      <Card.Footer className={`${classes.footer} p-0 mt-auto`}>
+      <footer className={`${classes.footer}`}>
         <Accordion 
           elements = {[
             {
@@ -137,32 +132,30 @@ const ShowCard = (props) => {
             },
           ]}
         />
-      </Card.Footer>
+      </footer>
     cardOverlay = null;
   }
 
   let content = 
     // TODO: maybe change to AUX 
-    <div className="d-flex flex-column h-100">
-      <div className="d-flex h-100">
-
-        { badge }
-        
-        <Card.Body className="d-flex p-0">
-          { posterImg }
-          <BookmarkButton 
-            id={props.element.id}
-            mediaType={props.mediaType}
-            title={props.title}
-            date={props.date ? props.date.substring(0, 4) : 'Not specified'}      
-          />
-          <div className="d-flex flex-column pt-3 pl-3 pb-1 w-100">
-            { cardTitle }
-            { cardText }
-            { date }  
-          </div>      
-        </Card.Body>
+    <div className={`${classes.card}`}>
+      { badge }
+      
+      <div className={`${classes.body}`}>
+        { posterImg }
+        <BookmarkButton 
+          id={props.element.id}
+          mediaType={props.mediaType}
+          title={props.title}
+          date={props.date ? props.date.substring(0, 4) : 'Not specified'}      
+        />
+        <div className={`${classes.content}`}>
+          { cardTitle }
+          { cardText }
+          { date }  
+        </div>      
       </div>
+  
       
       { cardFooterContent }
 
@@ -170,12 +163,12 @@ const ShowCard = (props) => {
     </div>;
  
   return (
-    <div className="col flex-grow-0">
-      <Card className={`${classes.container} flex-column px-0 ${ props.displaySinglePage ? classes.singlePage : ''}`}>
+    <div className={`${classes.container}`}>
+      <section className={`${classes.card__wrp} ${ props.displaySinglePage ? classes.singlePage : ''}`}>
 
         { props.loadingShowCard ? <LoadingSpinner /> : content }
         
-      </Card>
+      </section>
     </div>
   )
   

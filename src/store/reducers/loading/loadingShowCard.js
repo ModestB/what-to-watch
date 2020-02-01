@@ -1,13 +1,17 @@
 import {
   FILTER_SINGLE_PAGE,
   SET_EXTRA_SHOW_INFO,
-  SET_TRENDING_SHOWS 
+  SET_TRENDING_SHOWS,
+  SET_SEARCH_RESULTS 
 } from '../../actionTypes/actionTypes';
 
 export default (state = false, action) => {
   switch (action.type) {
     case FILTER_SINGLE_PAGE: {
       return true;
+    };
+    case SET_SEARCH_RESULTS: {
+      return false;
     };
     case SET_EXTRA_SHOW_INFO: {
       return false;

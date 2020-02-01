@@ -1,9 +1,17 @@
 @import 'assets/styles/variables';
 
 .container{
+  padding: 0 15px;
+  width: 100%;
+}
+
+.card__wrp{
+  display: flex;
+  flex-direction: column;
+  position: relative;
   height: 175px;
   max-height: 175px;
-  margin-left: 19px;
+  // margin-left: 19px;
   border: none;
   border-radius: 0;
   overflow: hidden;
@@ -16,19 +24,50 @@
     margin-left: 0px;
     margin-bottom: 0;
   }
+  &:hover .overlay{
+    left: 0;
+    width: 120px;
+  }
+  
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .body{
+    display: flex;
+    .content{
+      display: flex;
+      flex-direction: column;
+      padding-top: 16px;
+      padding-left: 16px;
+      padding-bottom: 4px;
+    }
+  }
+  h6{
+    margin-bottom: 16px;
+    padding-right: 16px;
+  }
 }
 
 .title{
   font-size: 14px;
+  text-align: left;
+  font-weight: 700;
   padding-right: 40px;
   color: $text__color--dark;
 }
 
 .posterImg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 120px;
   min-width: 120px;
   max-height: 175px;
   height: 175px;
+  max-width: 100%;
   transition: all 0.3s ease-in-out;
 }
 
@@ -38,6 +77,9 @@
 
 .description{
   font-size: 12px;
+  text-align: justify;
+  padding-right: 16px;
+  margin-bottom: 8px;
 }
 
 .descriptionOverview{
@@ -48,24 +90,46 @@
 
 .footer{ 
   border: none;
+  margin-top: auto;
 }
 
 .date{
   font-size: 10px;
+  text-align: right;
+  margin-top: auto;
+  padding-right: 16px;
 }
 
 .badge{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 0;
   right: 0;
   border-radius: 0;
   font-size: 16px;
+  font-weight: bold;
   height: 40px;
   width: 40px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  &.badgeSuccess{ 
+    background-color: $color--success;
+  }
+  &.badgeWarning{ 
+    background-color: $color--warning;
+    color: $text__color--light;
+  }
+  &.badgeWanger{ 
+    background-color: $color--danger;
+  }
 }
 
 .overlay{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
   position: absolute;
   bottom: 0;
   left: -120px;
@@ -73,11 +137,6 @@
   height: 30px;
   background-color: rgba($color--primary, 0.9);
   transition: all 0.4s ease-in-out;
-}
-
-.container:hover .overlay{
-  left: 0;
-  width: 120px;
 }
 
 .overlay:hover{
@@ -103,6 +162,16 @@
 .reviews, 
 .trailers{
   height: 290px;
+}
+
+.trailers{
+  padding: 0 16px;
+}
+
+.reviews{
+  display: flex;
+  flex-direction: column;
+  padding-left: 16px;
 }
 
 .reviews, 

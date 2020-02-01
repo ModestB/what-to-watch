@@ -1,24 +1,20 @@
 import React from 'react';
 
-// Boostrap imports
-import Card from 'react-bootstrap/Card';
-
-
 // Style imports
 import classes from "./ReviewCard.module.scss";
 
 const reviewCard = ( props ) => {
   return (
-    <Card className={`${classes.card} rounded-0 mb-3`}>
-      <Card.Body className='p-2'>
-        <Card.Title className={`${classes.title} font-weight-bold text-left`}>
+    <div className={`${classes.card}`}>
+      <div className={`${classes.body}`}>
+        <div className={`${classes.title}`}>
           {props.author}
-        </Card.Title>
-        <Card.Text className={`${classes.text} text-justify pl-2`}>
+        </div>
+        <p className={`${classes.text}`}>
           {props.content}
-        </Card.Text>
-      </Card.Body>
-    </Card>
+        </p>
+      </div>
+    </div>
   )
 };
 

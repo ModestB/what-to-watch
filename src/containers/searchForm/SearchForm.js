@@ -61,12 +61,12 @@ class SearchForm extends Component {
           }
           
         </div>
-        <div
+        <button
           className={`${classes.btn} btn btn--big btn--primary`}
           type="submit"
         >
           Find
-        </div>
+        </button>
         <Suggestions />      
       </form>
     )
