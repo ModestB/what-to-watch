@@ -4,9 +4,6 @@ import { connect } from 'react-redux';
 // Action Types
 import { getShowById } from '../../../../store/actions/actions';
 
-import ListGroup from 'react-bootstrap/ListGroup';
-import Badge from 'react-bootstrap/Badge';
-
 import classes from './List.module.scss';
 
 const List = (props) => {
@@ -15,43 +12,37 @@ const List = (props) => {
     switch (element.media_type ) {
       case "movie":
         item = 
-          <ListGroup.Item 
-            className={`${classes.item} d-flex pt-0 pb-1 pl-0 pr-1`}
+          <div 
+            className={`${classes.item}`}
             key={element.id}
           > 
-            <Badge 
-              className={`${classes.badge} d-flex align-items-center justify-content-center mb-1 mr-1`} 
-              variant="success"
-            > 
+            <span className={`${classes.badge}`}> 
               {element.release_date} 
-            </Badge>
+            </span>
             <span 
-              className={`${classes.title} text-left`} 
+              className={`${classes.title}`} 
               onClick={() => props.getShowById(element.id, element.media_type)}
             > 
               {element.title} 
             </span>
-          </ListGroup.Item>
+          </div>
         break;
       case "tv":
         item =
-          <ListGroup.Item 
-            className={`${classes.item} d-flex pt-0 pb-1 pl-0 pr-1`}
+          <div 
+            className={`${classes.item}`}
             key={element.id}
           > 
-            <Badge 
-              className={`${classes.badge} d-flex align-items-center justify-content-center mb-1 mr-1`} 
-              variant="success"
-            > 
+            <span className={`${classes.badge}`}> 
               {element.first_air_date} 
-            </Badge>
+            </span>
             <span 
-              className={`${classes.title} text-left`} 
+              className={`${classes.title}`} 
               onClick={() => props.getShowById(element.id, element.media_type)}
             > 
             {element.name} 
             </span>         
-          </ListGroup.Item>
+          </div>
         break;
       default:
         item  = null;
@@ -59,9 +50,9 @@ const List = (props) => {
     return item;
   })
   return(
-    <ListGroup className={`${classes.container} customScroll mt-2`}>
+    <section className={`${classes.container} customScroll`}>
       {knownForList}
-    </ListGroup>
+    </section>
   )
 }
 

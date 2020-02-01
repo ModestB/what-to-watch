@@ -1,8 +1,17 @@
 .container{
+  width: 50%;
+  .card{
+    display: flex;
+    flex-direction: column;
+    .body{
+      padding: 0 8px 20px 8px;
+    }
+  }
   p{
     font-size: 12px;
   }
   .title{
     font-size: 14px;
+    font-weight: 700;
   }
 }

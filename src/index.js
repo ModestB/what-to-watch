@@ -8,7 +8,7 @@ import * as serviceWorker from './serviceWorker';
 
 import store from './store/index';
 
-require('bootstrap');
+import 'normalize.css';
 
 ReactDOM.render(
   <Provider store={store}>
