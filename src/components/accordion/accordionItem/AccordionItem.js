@@ -10,7 +10,7 @@ const AccordionItem = (props) => {
       className={`${classes.item}`} 
     >
       <header
-        className={`${classes.header} ${props.show? 'active' : ''}`}
+        className={`${classes.header} ${props.show ? classes.active : ''}`}
         onClick={() => props.clickHandler(props.index, props.title)}
       >
         <h2>
