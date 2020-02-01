@@ -1,5 +1,12 @@
 @import 'assets/styles/variables';
 
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 380px;
+}
+
 .spinner {
   display: inline-block;
   position: relative;
