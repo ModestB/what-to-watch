@@ -7,7 +7,6 @@ import {
   getSearchResults
 } from '../../../store/actions/actions';
 
-
 import classes from './Suggestions.module.scss';
 
 import ReactHtmlParser from 'react-html-parser';
@@ -36,12 +35,12 @@ const suggestions = (props) => {
       return (     
         <div
           key={element.id}
-          className='suggestion mb-0 text-left'
+          className={`${classes.item} suggestion`}
           onMouseOver={(e) => mouseHoverHandler(e)}
           onMouseDown={() => props.getSearchResults(name)}
           data-text={name.toLowerCase()}
         >
-          {ReactHtmlParser(`<p class="mb-0">${editedName}</p>`)}
+          {ReactHtmlParser(`<p>${editedName}</p>`)}
         </div>
       )
     })
@@ -60,7 +59,6 @@ const suggestions = (props) => {
 function mouseHoverHandler(e) {
   let readySuggestion = document.querySelector('.suggestions-container .suggestion.ready');
   if (readySuggestion) {
-    console.log('remove')
     readySuggestion.classList.remove('ready');
   };
   e.currentTarget.classList.add('ready');
