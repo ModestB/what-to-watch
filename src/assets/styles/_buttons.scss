@@ -24,6 +24,17 @@
       box-shadow: 0 0 0 0.2rem $shadow--primary--darker;
     }
   }
+  &.btn--danger{
+    background-color: $color--danger;
+    box-shadow: 0 0 0 0.2rem $shadow--danger;
+    color: $color--light;
+    &:hover{
+      cursor: pointer;
+      background-color: $color--danger--darker;
+      border-color: $color--danger--darker;
+      box-shadow: 0 0 0 0.2rem $shadow--danger--darker;
+    }
+  }
 }
 
 .btn-danger, 

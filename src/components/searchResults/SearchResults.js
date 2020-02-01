@@ -7,11 +7,9 @@ import {
   getTrendingShows
 } from '../../store/actions/actions';
 
-
 // Components imports
 import ShowCard from "./showCard/ShowCard";
 import ProfileCard from "./profileCard/ProfileCard";
-import Button from 'react-bootstrap/Button';
 import MovieDb from '../../icons/js/Moviedb';
 
 // Style imports
@@ -108,38 +106,36 @@ const SearchResults = (props) => {
 
   if (props.displaySinglePage) {
     goBackBtn = 
-      <div className="col text-left pb-1">
-        <Button 
-          className='btn btn--small rounded-0 py-0'
+      <header className={`${classes.btn__group}`}>
+        <button
+          className='btn btn--danger btn--small'
           onClick={ () => props.showPreviousResults([...props.searchResults])} 
-          variant="danger" 
         >
           Go back
-        </Button>
-        <Button 
-          className='btn btn--small rounded-0 py-0 ml-2'
+        </button>
+        <button
+          className='btn btn--primary btn--small'
           onClick={ () => props.getTrendingShows() } 
-          variant="primary" 
         >
           Trending
-        </Button>
-      </div>;
+        </button>
+      </header>;
   }
 
   if (!props.displaySinglePage) {
-    searchResultClasses = `${classes.container} customScroll`
+    searchResultClasses = `${classes.wrp} customScroll`
   }
  
   return (
-    <div className="d-flex flex-column">
-      <div className={`${searchResultClasses} row flex-column flex-nowrap justify-content-start align-items-center`}>
+    <section className={`${classes.container}`}>
+      <div className={`${searchResultClasses}`}>
         { goBackBtn }
         { resultToDisplay }
       </div>
-      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className="ml-auto mt-auto pt-2 pb-1 pr-1">
+      <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className={`${classes.logo}`}>
         <MovieDb height="50px" width="120px"/>
       </a>     
-    </div>
+    </section>
   )
 };
 

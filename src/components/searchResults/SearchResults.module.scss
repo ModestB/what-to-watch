@@ -1,5 +1,33 @@
 .container{
+  display: flex;
+  flex-direction: column;
+}
+
+.wrp{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
   height: 380px;
   margin-top: 4px;
   padding-top: 8px;
+}
+
+.btn__group{
+  width: 100%;
+  padding: 0 15px;
+  text-align: left;
+  padding-bottom: 4px;
+  button{
+    &:nth-child(2){
+      margin-left: 4px;
+    }
+  }
+}
+
+.logo{
+  margin-left: auto;
+  margin-top: auto;
+  padding: 8px 4px 4px 0;
 }
