@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Style imports
-import classes from "./ReviewCard.module.scss";
+import classes from "./Review.module.scss";
 
-const reviewCard = ( props ) => {
+const review = ( props ) => {
   return (
     <div className={`${classes.card}`}>
       <div className={`${classes.body}`}>
@@ -18,4 +18,4 @@ const reviewCard = ( props ) => {
   )
 };
 
-export default reviewCard;
+export default review;

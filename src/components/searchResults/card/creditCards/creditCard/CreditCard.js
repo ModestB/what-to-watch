@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Action Types
-import { getShowById } from '../../../../store/actions/actions';
+import { getShowById } from '../../../../../store/actions/actions';
 
 import classes from './CreditCard.module.scss';
 

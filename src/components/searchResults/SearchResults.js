@@ -8,8 +8,7 @@ import {
 } from '../../store/actions/actions';
 
 // Components imports
-import ShowCard from "./showCard/ShowCard";
-import ProfileCard from "./profileCard/ProfileCard";
+import Card from "./card/Card";
 import MovieDb from '../../icons/js/Moviedb';
 
 // Style imports
@@ -25,7 +24,7 @@ const SearchResults = (props) => {
     switch (element.media_type) {
       case "movie":
         card =
-          <ShowCard 
+          <Card 
             key = {element.id} 
             title = {element.title}
             overview = {element.overview}
@@ -38,8 +37,9 @@ const SearchResults = (props) => {
         break;            
       case "person":
         card =
-          <ProfileCard
+          <Card
             key = {element.id} 
+            cardType = 'person'
             name = {element.name}
             posterPath = {element.profile_path}
             knownFor = {element.known_for}
@@ -48,7 +48,7 @@ const SearchResults = (props) => {
         break; 
       case "tv":
         card =
-          <ShowCard 
+          <Card 
             key = {element.id } 
             title = {element.original_name}
             overview = {element.overview}
@@ -61,7 +61,7 @@ const SearchResults = (props) => {
         break; 
       default:
         card =
-          <ShowCard 
+          <Card 
             key = {element.id } 
             title = {element.original_name ? element.original_name : element.original_title}
             overview = {element.overview}
@@ -79,7 +79,7 @@ const SearchResults = (props) => {
   if (props.displaySinglePage && !props.displayFilteredPage) {
     if(props.singlePageType === "movie"){
       resultToDisplay =
-        <ShowCard 
+        <Card 
           key = {props.displayedResults[0].id} 
           title = {props.displayedResults[0].title}
           overview = {props.displayedResults[0].overview}
@@ -91,7 +91,7 @@ const SearchResults = (props) => {
         />   
     } else {
       resultToDisplay =
-        <ShowCard 
+        <Card 
           key = {props.displayedResults[0].id} 
           title = {props.displayedResults[0].original_name}
           overview = {props.displayedResults[0].overview}
