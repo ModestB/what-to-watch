@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../../../../hoc/ReactAux/Aux';
+import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
 
 import List from '../../list/List';
 
@@ -41,10 +41,10 @@ const personContent = (props) => {
   }
 
   content = 
-    <Aux>
+    <ReactAux>
       {name} 
       {bodyContent}
-    </Aux>
+    </ReactAux>
   return (
     content
   )

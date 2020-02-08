@@ -1,5 +1,5 @@
 import React from 'react';
-import Aux from '../../../../../hoc/ReactAux/Aux';
+import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
 
 import classes from './ShowContent.module.scss'
 
@@ -34,11 +34,11 @@ const showContent = (props) => {
   }
 
   content =
-    <Aux>
+    <ReactAux>
       {cardTitle}
       {cardText}
       {date}
-    </Aux>
+    </ReactAux>
   return (
     content
   )
