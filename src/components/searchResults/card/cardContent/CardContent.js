@@ -20,7 +20,6 @@ const cardContent = (props) => {
             profileKnownFor={props.profileKnownFor}
           />
       }
-
     </div> 
   return (
     content

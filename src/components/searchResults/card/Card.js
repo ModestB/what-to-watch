@@ -73,7 +73,6 @@ const card = (props) => {
   }
 
   let content = 
-    // TODO: maybe change to AUX
     <div className={`${classes.card}`}>
       <Badge rating={props.rating}/>
       
@@ -119,7 +118,6 @@ const card = (props) => {
       </section>
     </div>
   )
-  
 }
 
 const mapStateProps = state => {
