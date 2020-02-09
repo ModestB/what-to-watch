@@ -92,15 +92,13 @@ const card = (props) => {
         }
 
         <CardContent 
-          displaySinglePage={props.displaySinglePage}
           cardType={props.cardType}
           showTitle={props.title}
           showOverview={props.overview}
           showMediaType={props.mediaType}
           showDate={props.date}
           personName={props.name}
-          profileKnownFor={props.knownFor}
-          
+          profileKnownFor={props.knownFor}       
         />
       </div>
       

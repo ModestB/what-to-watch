@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+
 import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
 
 import classes from './ShowContent.module.scss'
@@ -44,4 +47,10 @@ const showContent = (props) => {
   )
 };
 
-export default showContent;
+const mapStateProps = state => {
+  return {
+    displaySinglePage: state.displaySinglePage,
+  }
+}
+
+export default connect(mapStateProps, null)(showContent);
