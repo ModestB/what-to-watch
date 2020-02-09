@@ -95,3 +95,14 @@
 .descriptionOverview{
   overflow-x: hidden;
 }
+
+.biography{
+  text-align: justify;
+  padding: 0 16px;
+  max-height: 275px;
+  font-size: 14px;
+  line-height: 1.4;
+  &.biographyNoInfo{
+    text-align: center;
+  }
+}

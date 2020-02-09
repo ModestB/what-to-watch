@@ -20,7 +20,6 @@ const cardContent = (props) => {
           <PersonContent
             displaySinglePage={props.displaySinglePage}
             personName={props.personName}
-            profileDetails={props.profileDetails}
             profileKnownFor={props.profileKnownFor}
           />
       }

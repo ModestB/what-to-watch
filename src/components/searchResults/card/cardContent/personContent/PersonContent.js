@@ -1,7 +1,10 @@
 import React from 'react';
+
+import { connect } from 'react-redux';
+
 import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
 
-import List from '../../list/List';
+import KnowForList from '../../knowForList/KnowForList';
 
 import classes from './PersonContent.module.scss';
 
@@ -10,13 +13,18 @@ const personContent = (props) => {
   let name = null;
   let bodyContent = null;
 
-  name = <div className={`${classes.title}`}> { props.personName } </div>
+  name = 
+    <div 
+      className={`${[classes.name, (!props.displaySinglePage ? classes.nameShort : null)].join(' ')}`}
+    > 
+      { props.personName } 
+    </div>
 
   if (props.profileKnownFor) {
     bodyContent =  
       <div>
         <p className={`${ classes.title }`}>Known for </p>
-        <List 
+        <KnowForList
           elements={props.profileKnownFor}
         />
       </div>
@@ -50,4 +58,11 @@ const personContent = (props) => {
   )
 }
 
-export default personContent;
+const mapStateProps = state => {
+  return {
+    displaySinglePage: state.displaySinglePage,
+    profileDetails: state.profileDetails,
+  }
+}
+
+export default connect(mapStateProps, null)(personContent);

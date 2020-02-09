@@ -38,12 +38,12 @@ class App extends Component {
       searchResult = 
         <div className={`${classes.noResults}`}>
           <p>No results</p>
-          <div
+          <button
             className='btn btn--primary btn--big'
             onClick={ this.props.getTrendingShows } 
           >
             Show Trending
-          </div>
+          </button>
         </div>;
     }
 

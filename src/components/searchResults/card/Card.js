@@ -57,14 +57,11 @@ const card = (props) => {
       {
         title : 'Biography',
         body : 
-          <h6 
-            className=
-              {`${props.profileDetails.biography ? classes.text : ''} ${ classes.biography }  
-                ${props.profileDetails.biography ? 'text-justify' : 'text-center'} 
-                customScroll my-0 ml-3 pr-3 pb-3`}
+          <p 
+            className={`${ classes.biography }  ${!props.profileDetails.biography ? classes.biographyNoInfo : null} customScroll`}
           >
             {props.profileDetails.biography ? props.profileDetails.biography : 'No Information'}
-          </h6>,
+          </p>,
         id: props.element.id
       },
       {
@@ -82,12 +79,17 @@ const card = (props) => {
       
       <div className={`${classes.body}`}>
         <PosterImg posterPath={props.posterPath}/>
-        <BookmarkButton 
-          id={props.element.id}
-          mediaType={props.mediaType}
-          title={props.title}
-          date={props.date ? props.date.substring(0, 4) : 'Not specified'}      
-        />
+        
+        {props.cardType != 'person' ? 
+          <BookmarkButton 
+            id={props.element.id}
+            mediaType={props.mediaType}
+            title={props.title}
+            date={props.date ? props.date.substring(0, 4) : 'Not specified'}      
+          />
+          :
+          null
+        }
 
         <CardContent 
           displaySinglePage={props.displaySinglePage}
@@ -97,12 +99,10 @@ const card = (props) => {
           showMediaType={props.mediaType}
           showDate={props.date}
           personName={props.name}
-          profileDetails={props.profileDetails}
           profileKnownFor={props.knownFor}
           
         />
       </div>
-  
       
       <CardFooter 
         displaySinglePage={props.displaySinglePage}

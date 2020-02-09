@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 // Action Types
 import { getShowById } from '../../../../store/actions/actions';
 
-import classes from './List.module.scss';
+import classes from './KnowForList.module.scss';
 
-const List = (props) => {
+const knowForList = (props) => {
   let knownForList = props.elements.map((element) => {
     let item = null;
     switch (element.media_type ) {
@@ -62,4 +62,4 @@ const mapStateDispatch = dispatch => {
   }
 }
 
-export default connect(null, mapStateDispatch)(List);
+export default connect(null, mapStateDispatch)(knowForList);
