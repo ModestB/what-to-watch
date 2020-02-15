@@ -15,6 +15,12 @@
     &:hover{
       cursor: pointer;
     }
+    .logo{
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 4px;
+    }
   }
   h1{
     font-size: 24px;

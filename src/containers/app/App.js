@@ -22,6 +22,7 @@ import SearchResults from "../../components/searchResults/SearchResults";
 import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
 import Bookmarks from '../../components/bookmarks/Bookmarks'
+import MovieDbSmall from '../../icons/js/MoviedbSmall';
 
 class App extends Component {
   componentDidMount(){
@@ -67,6 +68,9 @@ class App extends Component {
         >
           <IconTv fill="#9E56FC" height="40px" width="40px"/>
           <h1><b>What</b> To Watch</h1>
+          <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className={`${classes.logo}`}>
+            <MovieDbSmall height="50px" width="50px"/>
+          </a> 
         </header>  
         <SearchForm />
         { sectionTitle }
