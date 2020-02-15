@@ -10,6 +10,7 @@ import {
 // Components imports
 import Card from "./card/Card";
 import MovieDb from '../../icons/js/Moviedb';
+import MovieDbSmall from '../../icons/js/MoviedbSmall';
 
 // Style imports
 import classes from "./SearchResults.module.scss";
@@ -133,7 +134,7 @@ const SearchResults = (props) => {
         { resultToDisplay }
       </div>
       <a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" className={`${classes.logo}`}>
-        <MovieDb height="50px" width="120px"/>
+        <MovieDbSmall height="50px" width="50px"/>
       </a>     
     </section>
   )
