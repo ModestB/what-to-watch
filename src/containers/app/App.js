@@ -63,7 +63,7 @@ class App extends Component {
       <main className={`${classes.container} customScroll`}>
         <header 
           className={`${classes.header}`}
-          onClick={() => this.props.getTrendingShows()} 
+          onClick={() => !this.props.displayTrendingPage ? this.props.getTrendingShows() : null} 
         >
           <IconTv fill="#9E56FC" height="40px" width="40px"/>
           <h1><b>What</b> To Watch</h1>
