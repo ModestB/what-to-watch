@@ -3,6 +3,7 @@ import {
   SET_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
   SET_TRENDING_SHOWS,
+  SET_SHOWS_BY_GENRE,
   SHOW_PREVIOUS_RESULTS 
 } from '../../actionTypes/actionTypes';
 
@@ -27,6 +28,10 @@ export default (state = [], action) => {
     }
 
     case SET_TRENDING_SHOWS: {
+      return action.payload.searchResults;
+    }
+
+    case SET_SHOWS_BY_GENRE: {
       return action.payload.searchResults;
     }
 

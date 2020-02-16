@@ -23,7 +23,7 @@ const card = (props) => {
   let cardOverlay = 
     <div 
       className={`${classes.overlay}`} 
-      onClick={  () => props.filterSinglePage(props.element, props.displayedResults) }>
+      onClick={ () => props.filterSinglePage(props.element, props.displayedResults, props.singlePageType) }>
       <p>More Info</p>
     </div>;
 
@@ -131,13 +131,14 @@ const mapStateProps = state => {
     loadingShowCard: state.loadingShowCard,
     profileDetails: state.profileDetails,
     profileCredits: state.profileCredits,
-    loadingProfile: state.loadingProfile
+    loadingProfile: state.loadingProfile,
+    singlePageType: state.singlePageType
   }
 }
 
 const mapStateDispatch = dispatch => {
   return {
-    filterSinglePage: (element, displayedResults) => dispatch(filterSinglePage(element, displayedResults))
+    filterSinglePage: (element, displayedResults, singlePageType) => dispatch(filterSinglePage(element, displayedResults, singlePageType))
   }
 }
 

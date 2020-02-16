@@ -1,6 +1,7 @@
 import {
   SET_SEARCH_RESULTS,
   SET_TRENDING_SHOWS,
+  SET_SHOWS_BY_GENRE
 } from '../../actionTypes/actionTypes';
 
 export default (state = true, action) => {
@@ -11,6 +12,10 @@ export default (state = true, action) => {
 
     case SET_TRENDING_SHOWS: {
       return true;
+    }
+
+    case SET_SHOWS_BY_GENRE: {
+      return false;
     }
 
     default:

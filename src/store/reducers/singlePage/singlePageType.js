@@ -16,7 +16,9 @@ export default (state = null, action) => {
     }
 
     case FILTER_SINGLE_PAGE: {
-      return filterElementToDisplay(action.payload.displayedResults, action.payload.itemId)[0].media_type
+      let mediaType = filterElementToDisplay(action.payload.displayedResults, action.payload.itemId)[0].media_type;
+ 
+      return  mediaType ? mediaType : action.payload.singlePageType;
     }
 
     default:

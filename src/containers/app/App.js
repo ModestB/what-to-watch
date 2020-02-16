@@ -18,7 +18,7 @@ import {searchSuggestionSelectHandler} from '../../assets/js/all';
 import SearchForm from "../searchForm/SearchForm";
 
 // Components imports
-import SearchResults from "../../components/searchResults/SearchResults";
+import SearchResults from "../searchResults/SearchResults";
 import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from '../../components/loadingSpinner/LoadingSpinner';
 import Bookmarks from '../../components/bookmarks/Bookmarks'

@@ -3,7 +3,8 @@ import {
   SET_SHOW_BY_ID,
   SET_TRENDING_SHOWS,
   FILTER_SINGLE_PAGE,
-  SHOW_PREVIOUS_RESULTS
+  SHOW_PREVIOUS_RESULTS,
+  SET_SHOWS_BY_GENRE
 } from '../../actionTypes/actionTypes';
 
 export default (state = false, action) => {
@@ -11,18 +12,27 @@ export default (state = false, action) => {
     case SET_SEARCH_RESULTS: {
       return false;
     }
+
     case SET_SHOW_BY_ID: {
       return false;
     }
+
     case SET_TRENDING_SHOWS: {
       return false;
     }
+
+    case SET_SHOWS_BY_GENRE: {
+      return false;
+    }
+
     case  FILTER_SINGLE_PAGE: {
       return true;
     }
+
     case  SHOW_PREVIOUS_RESULTS: {
       return false;
     } 
+
     default:
       return state;
   }
