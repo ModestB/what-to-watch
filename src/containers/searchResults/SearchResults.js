@@ -117,10 +117,18 @@ class SearchResults extends Component{
     if (this.props.displaySinglePage) {
       let similarButton = null;
       if (this.props.singlePageType !== 'person') {
+        let genreIds = null;
+        if (!this.props.displayedResults[0].genre_ids){
+          genreIds = this.props.displayedResults[0].genres.map( (genre) => {
+            return genre.id
+          })
+        } else {
+          genreIds = this.props.displayedResults[0].genre_ids;
+        }
         similarButton =    
           <button
             className='btn btn--primary btn--small'
-            onClick={ () => this.props.getShowsByGenre(this.props.displayedResults[0].genre_ids, this.props.singlePageType) } 
+            onClick={ () => this.props.getShowsByGenre(genreIds, this.props.singlePageType) } 
           >
             Similar
           </button>
