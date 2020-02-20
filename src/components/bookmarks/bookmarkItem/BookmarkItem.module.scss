@@ -8,6 +8,9 @@
 }
 
 .title{
+  font-size: 16px;
+  text-align: left;
+  line-height: 1.3;
   &:hover{
     cursor: pointer;
     color: $color--primary;
