@@ -19,3 +19,15 @@ What to watch is a browser extension for searching for Movies, TV shows and Acto
 - Ability to save Movies and TV shows to "To watch list" 
 - Support for Chrome, Firefox
 
+### Runing Extension 
+
+Install the dependencies and devDependencies and start the server.
+```sh
+$ npm install 
+$ npm start
+```
+
+To build extension
+```sh
+$ npm run build
+```
