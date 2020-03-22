@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 // Action Types
 import {
@@ -8,58 +8,55 @@ import {
   focusOutSearchSuggestions,
   getSearchSuggestions,
   deleteSearchSuggestionsInput,
-  clearSearchSuggestionTimeout 
-} from '../../store/actions/actions';
+  clearSearchSuggestionTimeout
+} from "../../store/actions/actions";
 
 // Import CSS
-import classes from './SearchForm.module.scss';
+import classes from "./SearchForm.module.scss";
 
-import Suggestions from '../../components/searchForm/suggestions/Suggestions';
-import CloseIcon from '../../icons/js/Close';
+import Suggestions from "../../components/searchForm/suggestions/Suggestions";
+import CloseIcon from "../../icons/js/Close";
 
-class SearchForm extends Component {
-  formSubmitHandler = (e) => {
+export class SearchForm extends Component {
+  formSubmitHandler = e => {
     e.preventDefault();
-    this.props.clearSearchSuggestionTimeout()
-    if(e.target[0].value){
+    this.props.clearSearchSuggestionTimeout();
+    if (e.target[0].value) {
       this.props.getSearchResults(e.target[0].value, this.nameInput.value);
     }
-  }
+  };
 
-  render () {
+  render() {
     return (
       <form
         className={`${classes.form}`}
         onSubmit={this.formSubmitHandler}
         id="searchForm"
       >
-        <div
-          className={`${classes.inputWrapper}`} 
-          id="searchNameInput"
-        >
+        <div className={`${classes.inputWrapper}`} id="searchNameInput">
           <input
-            className={`${classes.input}`} 
-            type="text" 
-            ref={(ref) => { this.nameInput = ref; }} 
-            placeholder="Enter Movie or Tv show name..." 
-            value={this.props.searchInputValue ? this.props.searchInputValue : ""}
-            onChange={(e) => this.props.getSearchSuggestions(e.target.value)}
+            className={`${classes.input}`}
+            type="text"
+            ref={ref => {
+              this.nameInput = ref;
+            }}
+            placeholder="Enter Movie or Tv show name..."
+            value={
+              this.props.searchInputValue ? this.props.searchInputValue : ""
+            }
+            onChange={e => this.props.getSearchSuggestions(e.target.value)}
             onBlur={this.props.focusOutSearchSuggestions}
           />
-          {this.props.searchInputValue ? 
-            <div 
+          {this.props.searchInputValue ? (
+            <div
               className={classes.iconClose}
-              onClick={ () =>   this.props.deleteSearchSuggestionsInput(this.nameInput)}
+              onClick={() =>
+                this.props.deleteSearchSuggestionsInput(this.nameInput)
+              }
             >
-              <CloseIcon 
-                fill="#616161" 
-                width="15px" 
-                height="15px"
-              />
+              <CloseIcon fill="#616161" width="15px" height="15px" />
             </div>
-            : null
-          }
-          
+          ) : null}
         </div>
         <button
           className={`${classes.btn} btn btn--big btn--primary`}
@@ -67,9 +64,9 @@ class SearchForm extends Component {
         >
           Find
         </button>
-        <Suggestions />      
+        <Suggestions />
       </form>
-    )
+    );
   }
 }
 
@@ -77,17 +74,19 @@ const mapStateProps = state => {
   return {
     showSuggestions: state.showSuggestions,
     searchInputValue: state.searchInputValue
-  }
-}
+  };
+};
 
 const mapStateDispatch = dispatch => {
   return {
-    getSearchResults: (inputValue) => dispatch(getSearchResults(inputValue)),
+    getSearchResults: inputValue => dispatch(getSearchResults(inputValue)),
     focusOutSearchSuggestions: () => dispatch(focusOutSearchSuggestions()),
-    getSearchSuggestions: (inputValue) => dispatch(getSearchSuggestions(inputValue)),
-    deleteSearchSuggestionsInput: (input) => dispatch(deleteSearchSuggestionsInput(input)),
-    clearSearchSuggestionTimeout : () => dispatch(clearSearchSuggestionTimeout())
-  }
-}
+    getSearchSuggestions: inputValue =>
+      dispatch(getSearchSuggestions(inputValue)),
+    deleteSearchSuggestionsInput: input =>
+      dispatch(deleteSearchSuggestionsInput(input)),
+    clearSearchSuggestionTimeout: () => dispatch(clearSearchSuggestionTimeout())
+  };
+};
 
 export default connect(mapStateProps, mapStateDispatch)(SearchForm);
