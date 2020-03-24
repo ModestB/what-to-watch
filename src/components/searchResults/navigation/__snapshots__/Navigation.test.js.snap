@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Navigation /> it should match snapshot 1`] = `""`;
+
+exports[`<Navigation /> it should match snapshot if displaySinglePage=true && singlePageType = person 1`] = `
+"<header className=\\"navigation\\">
+  <button className=\\"btn btn--danger btn--small\\" onClick={[Function: onClick]}>
+    Go back
+  </button>
+  <button className=\\"btn btn--primary btn--small\\" onClick={[Function: onClick]}>
+    Trending
+  </button>
+</header>"
+`;
+
+exports[`<Navigation /> it should match snapshot if displaySinglePage=true 1`] = `
+"<header className=\\"navigation\\">
+  <button className=\\"btn btn--danger btn--small\\" onClick={[Function: onClick]}>
+    Go back
+  </button>
+  <button className=\\"btn btn--primary btn--small\\" onClick={[Function: onClick]}>
+    Trending
+  </button>
+  <button className=\\"btn btn--primary btn--small\\" onClick={[Function: onClick]}>
+    Similar
+  </button>
+</header>"
+`;

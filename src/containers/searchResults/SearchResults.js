@@ -1,15 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-// Action Types
-import {
-  showPreviousResults,
-  getTrendingShows,
-  getShowsByGenre
-} from "../../store/actions/actions";
-
 // Components imports
 import Card from "../../components/searchResults/card/Card";
+import Navigation from "../../components/searchResults/navigation/Navigation";
 
 // Style imports
 import classes from "./SearchResults.module.scss";
@@ -26,7 +20,6 @@ export class SearchResults extends Component {
 
   render() {
     let resultToDisplay = null;
-    let navigation = null;
     let searchResultClasses = null;
 
     resultToDisplay = this.props.displayedResults.map(element => {
@@ -128,50 +121,6 @@ export class SearchResults extends Component {
       }
     }
 
-    if (this.props.displaySinglePage) {
-      let similarButton = null;
-      if (this.props.singlePageType !== "person") {
-        let genreIds = null;
-        if (!this.props.displayedResults[0].genre_ids) {
-          genreIds = this.props.displayedResults[0].genres.map(genre => {
-            return genre.id;
-          });
-        } else {
-          genreIds = this.props.displayedResults[0].genre_ids;
-        }
-        similarButton = (
-          <button
-            className="btn btn--primary btn--small"
-            onClick={() =>
-              this.props.getShowsByGenre(genreIds, this.props.singlePageType)
-            }
-          >
-            Similar
-          </button>
-        );
-      }
-      navigation = (
-        <header className={`${classes.btn__group}`}>
-          <button
-            className="btn btn--danger btn--small"
-            onClick={() =>
-              this.props.showPreviousResults([...this.props.searchResults])
-            }
-          >
-            Go back
-          </button>
-          <button
-            className="btn btn--primary btn--small"
-            onClick={() => this.props.getTrendingShows()}
-          >
-            Trending
-          </button>
-
-          {similarButton}
-        </header>
-      );
-    }
-
     if (!this.props.displaySinglePage) {
       searchResultClasses = `${classes.wrp} customScroll`;
     }
@@ -179,7 +128,7 @@ export class SearchResults extends Component {
     return (
       <section id="searchResults" className={`${classes.container}`}>
         <div className={`${searchResultClasses}`} ref={this.resultsContainer}>
-          {navigation}
+          <Navigation />
           {resultToDisplay}
         </div>
       </section>
@@ -197,14 +146,4 @@ const mapStateProps = state => {
   };
 };
 
-const mapStateDispatch = dispatch => {
-  return {
-    showPreviousResults: prevResults =>
-      dispatch(showPreviousResults(prevResults)),
-    getTrendingShows: () => dispatch(getTrendingShows()),
-    getShowsByGenre: (genreIds, singlePageType) =>
-      dispatch(getShowsByGenre(genreIds, singlePageType))
-  };
-};
-
-export default connect(mapStateProps, mapStateDispatch)(SearchResults);
+export default connect(mapStateProps, null)(SearchResults);
