@@ -8,7 +8,7 @@ exports[`<SearchForm /> should match snapshot 1`] = `
   <button className=\\"btn btn btn--big btn--primary\\" type=\\"submit\\">
     Find
   </button>
-  <Connect(suggestions) />
+  <Connect(Suggestions) />
 </form>"
 `;
 
@@ -23,6 +23,6 @@ exports[`<SearchForm /> should match snapshot if searchInputValue !== null 1`] =
   <button className=\\"btn btn btn--big btn--primary\\" type=\\"submit\\">
     Find
   </button>
-  <Connect(suggestions) />
+  <Connect(Suggestions) />
 </form>"
 `;

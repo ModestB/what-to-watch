@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<suggestions /> should match snapshot 1`] = `
+"<div className=\\"container  suggestions-container customScroll\\" id=\\"suggestionsContainer\\">
+  <div className=\\"item suggestion\\" onMouseOver={[Function: onMouseOver]} onMouseDown={[Function: onMouseDown]} data-text=\\"s. darko\\">
+    <p>
+      <span>
+        s
+      </span>
+      . darko
+    </p>
+  </div>
+  <div className=\\"item suggestion\\" onMouseOver={[Function: onMouseOver]} onMouseDown={[Function: onMouseDown]} data-text=\\"frontière(s)\\">
+    <p>
+      frontière(
+      <span>
+        s
+      </span>
+      )
+    </p>
+  </div>
+  <div className=\\"item suggestion\\" onMouseOver={[Function: onMouseOver]} onMouseDown={[Function: onMouseDown]} data-text=\\"house\\">
+    <p>
+      hou
+      <span>
+        s
+      </span>
+      e
+    </p>
+  </div>
+  <div className=\\"item suggestion\\" onMouseOver={[Function: onMouseOver]} onMouseDown={[Function: onMouseDown]} data-text=\\"sophie turner\\">
+    <p>
+      <span>
+        s
+      </span>
+      ophie turner
+    </p>
+  </div>
+</div>"
+`;

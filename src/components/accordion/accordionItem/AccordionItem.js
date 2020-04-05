@@ -1,41 +1,39 @@
-import React from 'react';
+import React from "react";
 
-import CloseIcon from '../../../icons/js/Close';
+import CloseIcon from "../../../icons/js/Close";
 
-import classes from './AccordionItem.module.scss';
+import classes from "./AccordionItem.module.scss";
 
-const AccordionItem = (props) => {
+export const AccordionItem = (props) => {
   return (
-    <section
-      className={`${classes.item}`} 
-    >
+    <section className={`${classes.item}`}>
       <header
-        className={`${classes.header} ${props.show ? classes.active : ''}`}
+        className={`${classes.header} ${props.show ? classes.active : ""}`}
         onClick={() => props.clickHandler(props.index, props.title)}
       >
         <h2>
           <div className={`${classes.title}`}>
             <p>{props.title}</p>
-          </div>     
+          </div>
         </h2>
         <div className={`${classes.headerOverlay}`}></div>
       </header>
 
       <div
-        className={`${classes.body}  ${props.index === 0 ? classes.bodyLeft : classes.bodyRight} ${props.show ? classes.active : ''}`}
+        className={`${classes.body}  ${
+          props.index === 0 ? classes.bodyLeft : classes.bodyRight
+        } ${props.show ? classes.active : ""}`}
       >
-        <CloseIcon 
+        <CloseIcon
           className={`${classes.close} icon-close icon-close--dark`}
           onClick={() => props.clickHandler(props.index, props.title)}
-          width="20px" 
+          width="20px"
           height="20px"
         />
-        <div>
-          {props.body}     
-        </div>      
+        <div>{props.body}</div>
       </div>
     </section>
-  )
+  );
 };
 
 export default AccordionItem;

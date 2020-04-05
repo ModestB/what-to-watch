@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BookmarkItem /> should render initial layout 1`] = `
+"<div className=\\"container\\">
+  <div className=\\"title\\" onClick={[Function: clickHandler]}>
+    Maleficent: Mistress of Evil (2019)
+  </div>
+  <SvgClose className=\\"icon-close icon-close--danger\\" onClick={[Function: onClick]} width=\\"20px\\" height=\\"20px\\" />
+</div>"
+`;

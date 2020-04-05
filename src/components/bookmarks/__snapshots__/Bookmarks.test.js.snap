@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Bookmarks /> should render initial layout no bookmarks 1`] = `
+"<div className=\\"\\\\n        container \\\\n        \\\\n      \\">
+  <header className=\\"header\\" onClick={[undefined]}>
+    <div className=\\"header__wrp\\">
+      <p className=\\"title\\">
+         To Watch
+      </p>
+      <SvgHeart fill=\\"#ffffff\\" width=\\"30px\\" height=\\"30px\\" className=\\"iconHeart\\" />
+      <span className=\\"counter\\">
+        0
+      </span>
+    </div>
+    <SvgClose className=\\"iconClose icon-close icon-close--light\\" width=\\"20px\\" height=\\"20px\\" />
+  </header>
+  <div className=\\"body customScroll customScroll--red\\">
+    <p>
+      No bookmarks
+    </p>
+  </div>
+</div>"
+`;
+
+exports[`<Bookmarks /> should render initial layout with bookmarks 1`] = `
+"<div className=\\"\\\\n        container \\\\n        \\\\n      \\">
+  <header className=\\"header\\" onClick={[undefined]}>
+    <div className=\\"header__wrp\\">
+      <p className=\\"title\\">
+         To Watch
+      </p>
+      <SvgHeart fill=\\"#ffffff\\" width=\\"30px\\" height=\\"30px\\" className=\\"iconHeart\\" />
+      <span className=\\"counter\\">
+        3
+      </span>
+    </div>
+    <SvgClose className=\\"iconClose icon-close icon-close--light\\" width=\\"20px\\" height=\\"20px\\" />
+  </header>
+  <div className=\\"body customScroll customScroll--red\\">
+    <Connect(Component) id={420809} title=\\"Maleficent: Mistress of Evil\\" mediaType=\\"movie\\" date=\\"2019\\" />
+    <Connect(Component) id={69823} title=\\"After M*A*S*H\\" mediaType=\\"tv\\" date=\\"1983\\" />
+    <Connect(Component) id={49434} title=\\"Making M*A*S*H\\" mediaType=\\"tv\\" date=\\"Not specified\\" />
+  </div>
+</div>"
+`;
