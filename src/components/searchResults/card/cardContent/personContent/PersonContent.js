@@ -1,68 +1,75 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
+import ReactAux from "../../../../../hoc/ReactAux/ReactAux";
 
-import KnowForList from '../../knowForList/KnowForList';
+import KnowForList from "../../knowForList/KnowForList";
 
-import classes from './PersonContent.module.scss';
+import classes from "./PersonContent.module.scss";
 
-const personContent = (props) => {
+const PersonContent = (props) => {
   let content = null;
   let name = null;
   let bodyContent = null;
 
-  name = 
-    <div 
-      className={`${[classes.name, (!props.displaySinglePage ? classes.nameShort : null)].join(' ')}`}
-    > 
-      { props.personName } 
+  name = (
+    <div
+      className={`${[
+        classes.name,
+        !props.displaySinglePage ? classes.nameShort : null,
+      ].join(" ")}`}
+    >
+      {props.personName}
     </div>
+  );
 
   if (props.profileKnownFor) {
-    bodyContent =  
+    bodyContent = (
       <div>
-        <p className={`${ classes.title }`}>Known for </p>
-        <KnowForList
-          elements={props.profileKnownFor}
-        />
+        <p className={`${classes.title}`}>Known for </p>
+        <KnowForList elements={props.profileKnownFor} />
       </div>
+    );
   }
 
   if (props.displaySinglePage) {
-    bodyContent = 
+    bodyContent = (
       <div>
-        <p className={`${ classes.title }`}>Known for </p>
-        <p className={`${ classes.text }`}>
-          {props.profileDetails.known_for_department ? props.profileDetails.known_for_department : '-'}
+        <p className={`${classes.title}`}>Known for </p>
+        <p className={`${classes.text}`}>
+          {props.profileDetails.known_for_department
+            ? props.profileDetails.known_for_department
+            : "-"}
         </p>
-        <p className={`${ classes.title }`}>Birthday </p>
-        <p className={`${ classes.text }`}>
-          {props.profileDetails.birthday ? props.profileDetails.birthday : '-'}
+        <p className={`${classes.title}`}>Birthday </p>
+        <p className={`${classes.text}`}>
+          {props.profileDetails.birthday ? props.profileDetails.birthday : "-"}
         </p>
-        <p className={`${ classes.title }`}>Place Of Birth</p>
-        <p className={`${ classes.text }`}>
-          {props.profileDetails.place_of_birth ? props.profileDetails.place_of_birth : '-'}
+        <p className={`${classes.title}`}>Place Of Birth</p>
+        <p className={`${classes.text}`}>
+          {props.profileDetails.place_of_birth
+            ? props.profileDetails.place_of_birth
+            : "-"}
         </p>
-      </div>;
+      </div>
+    );
   }
 
-  content = 
+  content = (
     <ReactAux>
-      {name} 
+      {name}
       {bodyContent}
     </ReactAux>
-  return (
-    content
-  )
-}
+  );
+  return content;
+};
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   return {
     displaySinglePage: state.displaySinglePage,
     profileDetails: state.profileDetails,
-  }
-}
+  };
+};
 
-export default connect(mapStateProps, null)(personContent);
+export default connect(mapStateProps, null)(PersonContent);

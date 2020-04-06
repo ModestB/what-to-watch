@@ -1,56 +1,73 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import ReactAux from '../../../../../hoc/ReactAux/ReactAux';
+import ReactAux from "../../../../../hoc/ReactAux/ReactAux";
 
-import classes from './ShowContent.module.scss'
+import classes from "./ShowContent.module.scss";
 
-const showContent = (props) => {
+export const ShowContent = (props) => {
   let content = null;
   let cardTitle = null;
   let cardText = null;
   let date = null;
 
-  if(!props.displaySinglePage) {
-    cardTitle =
-      <div className={`${classes.title}`} title={ props.showTitle }> 
-        { props.showTitle.length > 40 ? props.showTitle.substring(0, 40) + "..." :  props.showTitle } 
-      </div> 
-  } else {
-    cardTitle =
-      <div className={`${classes.title}`} title={ props.showTitle }> 
-        { props.showTitle } 
+  if (!props.displaySinglePage) {
+    cardTitle = (
+      <div className={`${classes.title}`} title={props.showTitle}>
+        {props.showTitle.length > 40
+          ? props.showTitle.substring(0, 40) + "..."
+          : props.showTitle}
       </div>
-  }
-
-  if(props.showOverview && !props.displaySinglePage) {
-    cardText = <p className={`${classes.description}`}> { props.showOverview.substring(0, 130) + "..."  } </p>;
+    );
   } else {
-    cardText = <p className={`${ [classes.description, classes.descriptionOverview].join(' ') } customScroll`}> { props.showOverview } </p>;
+    cardTitle = (
+      <div className={`${classes.title}`} title={props.showTitle}>
+        {props.showTitle}
+      </div>
+    );
   }
 
-  if(props.mediaType === 'movie'){
-    date = <p className={`${classes.date}`} >Released Date: { props.showDate }</p>
+  if (props.showOverview && !props.displaySinglePage) {
+    cardText = (
+      <p className={`${classes.description}`}>
+        {" "}
+        {props.showOverview.substring(0, 130) + "..."}{" "}
+      </p>
+    );
   } else {
-    date = <p className={`${classes.date}`} >Air Date: { props.showDate }</p>
+    cardText = (
+      <p
+        className={`${[classes.description, classes.descriptionOverview].join(
+          " "
+        )} customScroll`}
+      >
+        {" "}
+        {props.showOverview}{" "}
+      </p>
+    );
   }
 
-  content =
+  if (props.mediaType === "movie") {
+    date = <p className={`${classes.date}`}>Released Date: {props.showDate}</p>;
+  } else {
+    date = <p className={`${classes.date}`}>Air Date: {props.showDate}</p>;
+  }
+
+  content = (
     <ReactAux>
       {cardTitle}
       {cardText}
       {date}
     </ReactAux>
-  return (
-    content
-  )
+  );
+  return content;
 };
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   return {
     displaySinglePage: state.displaySinglePage,
-  }
-}
+  };
+};
 
-export default connect(mapStateProps, null)(showContent);
+export default connect(mapStateProps, null)(ShowContent);
