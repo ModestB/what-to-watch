@@ -31,8 +31,7 @@ export const ShowContent = (props) => {
   if (props.showOverview && !props.displaySinglePage) {
     cardText = (
       <p className={`${classes.description}`}>
-        {" "}
-        {props.showOverview.substring(0, 130) + "..."}{" "}
+        {props.showOverview.substring(0, 130) + "..."}
       </p>
     );
   } else {
@@ -42,8 +41,7 @@ export const ShowContent = (props) => {
           " "
         )} customScroll`}
       >
-        {" "}
-        {props.showOverview}{" "}
+        {props.showOverview}
       </p>
     );
   }
@@ -70,4 +68,7 @@ const mapStateProps = (state) => {
   };
 };
 
-export default connect(mapStateProps, null)(ShowContent);
+export default connect(
+  mapStateProps,
+  null
+)(ShowContent);
