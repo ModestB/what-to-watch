@@ -3,12 +3,10 @@ import React from "react";
 import { connect } from "react-redux";
 
 import ReactAux from "../../../../../hoc/ReactAux/ReactAux";
-
 import KnowForList from "../../knowForList/KnowForList";
-
 import classes from "./PersonContent.module.scss";
 
-const PersonContent = (props) => {
+export const PersonContent = props => {
   let content = null;
   let name = null;
   let bodyContent = null;
@@ -17,7 +15,7 @@ const PersonContent = (props) => {
     <div
       className={`${[
         classes.name,
-        !props.displaySinglePage ? classes.nameShort : null,
+        !props.displaySinglePage ? classes.nameShort : null
       ].join(" ")}`}
     >
       {props.personName}
@@ -65,11 +63,14 @@ const PersonContent = (props) => {
   return content;
 };
 
-const mapStateProps = (state) => {
+const mapStateProps = state => {
   return {
     displaySinglePage: state.displaySinglePage,
-    profileDetails: state.profileDetails,
+    profileDetails: state.profileDetails
   };
 };
 
-export default connect(mapStateProps, null)(PersonContent);
+export default connect(
+  mapStateProps,
+  null
+)(PersonContent);

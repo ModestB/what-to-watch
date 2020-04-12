@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PersonContent /> should match snapshot displaySinglePage = false 1`] = `
+"<_default>
+  <div className=\\"name nameShort\\">
+    Sophie Turner
+  </div>
+  <div>
+    <p className=\\"title\\">
+      Known for 
+    </p>
+    <Connect(knowForList) elements=\\"Acting\\" />
+  </div>
+</_default>"
+`;
+
+exports[`<PersonContent /> should match snapshot displaySinglePage = true 1`] = `
+"<_default>
+  <div className=\\"name \\">
+    Sophie Turner
+  </div>
+  <div>
+    <p className=\\"title\\">
+      Known for 
+    </p>
+    <p className=\\"text\\">
+      Acting
+    </p>
+    <p className=\\"title\\">
+      Birthday 
+    </p>
+    <p className=\\"text\\">
+      1996-02-21
+    </p>
+    <p className=\\"title\\">
+      Place Of Birth
+    </p>
+    <p className=\\"text\\">
+      Northampton, Northamptonshire, England
+    </p>
+  </div>
+</_default>"
+`;
