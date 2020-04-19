@@ -2,29 +2,29 @@ import {
   FOCUS_OUT_SEARCH_SUGEGSTIONS,
   DELETE_SEARCH_SUGGESTIONS_INPUT,
   SET_SEARCH_SUGGESTIONS_TIMEOUT,
-  CLEAR_SEARCH_SUGGESTIONS_TIMEOUT
-} from '../../actionTypes/actionTypes';
+  CLEAR_SEARCH_SUGGESTIONS_TIMEOUT,
+} from "../../actionTypes/actionTypes";
 
 export const focusOutSearchSuggestions = () => ({
-  type:  FOCUS_OUT_SEARCH_SUGEGSTIONS
-})
+  type: FOCUS_OUT_SEARCH_SUGEGSTIONS,
+});
 
-export function deleteSearchSuggestionsInput (input) {
- input.focus();
+export function deleteSearchSuggestionsInput(input) {
+  input ? input.focus() : null;
   return function(dispatch) {
     dispatch({
-      type:  DELETE_SEARCH_SUGGESTIONS_INPUT
-    })
-  }
+      type: DELETE_SEARCH_SUGGESTIONS_INPUT,
+    });
+  };
 }
 
 export const setSearchSuggestionTimeout = (timeout) => ({
-  type:  SET_SEARCH_SUGGESTIONS_TIMEOUT,
+  type: SET_SEARCH_SUGGESTIONS_TIMEOUT,
   payload: {
-    timeout
-  }
-})
+    timeout,
+  },
+});
 
 export const clearSearchSuggestionTimeout = () => ({
-  type:  CLEAR_SEARCH_SUGGESTIONS_TIMEOUT,
-})
+  type: CLEAR_SEARCH_SUGGESTIONS_TIMEOUT,
+});
