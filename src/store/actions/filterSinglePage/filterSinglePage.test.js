@@ -7,7 +7,7 @@ import {
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
-jest.mock("../api/extraShowInfoActions.js");
+jest.mock("../extraShowInfo/extraShowInfoActions.js");
 jest.mock("../extraProfileInfo/extraProfileInfoActions.js");
 
 const middlewares = [thunk];
