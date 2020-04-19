@@ -4,64 +4,66 @@ import {
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   SET_BOOKMARKS_STORAGE,
-  UPDATE_BOOKMARKS_STORAGE
-} from '../../actionTypes/actionTypes';
+  UPDATE_BOOKMARKS_STORAGE,
+} from "../../actionTypes/actionTypes";
 
 // LOCAL STORAGE
-const LS_BOOKMARKS = 'wtwBookmarks';
+const LS_BOOKMARKS = "wtwBookmarks";
 
 export const toggleBookmarks = () => ({
-  type:  TOGGLE_BOOKMARKS
+  type: TOGGLE_BOOKMARKS,
 });
 
 export const setBookmarksStorage = (bookmarks) => ({
-  type:  SET_BOOKMARKS_STORAGE,
+  type: SET_BOOKMARKS_STORAGE,
   payload: {
-    bookmarks: bookmarks
-  }
+    bookmarks: bookmarks,
+  },
 });
 
 export const updateBookmarksStorage = () => ({
-  type:  UPDATE_BOOKMARKS_STORAGE,
+  type: UPDATE_BOOKMARKS_STORAGE,
 });
 
-export function getBookmarksStorage(){
+export function getBookmarksStorage() {
   return function(dispatch) {
-    if (process.env.NODE_ENV !== 'production') {
-      return dispatch(setBookmarksStorage(JSON.parse(localStorage.getItem(LS_BOOKMARKS))))
-    };
-  
-    chrome.storage.sync.get(['LS_BOOKMARKS'], (result) => {      
-      if(typeof result.LS_BOOKMARKS !== 'undefined'){
+    if (process.env.NODE_ENV !== "production") {
+      return dispatch(
+        setBookmarksStorage(JSON.parse(localStorage.getItem(LS_BOOKMARKS)))
+      );
+    }
+
+    chrome.storage.sync.get(["LS_BOOKMARKS"], (result) => {
+      if (typeof result.LS_BOOKMARKS !== "undefined") {
         return dispatch(setBookmarksStorage(result.LS_BOOKMARKS));
       }
-      return dispatch(setBookmarksStorage([]))
+      return dispatch(setBookmarksStorage([]));
     });
-  }
+  };
 }
 
 export function addBookmark(bookmarkDetails) {
   return function(dispatch) {
     dispatch({
-      type:  ADD_BOOKMARK,
+      type: ADD_BOOKMARK,
       payload: {
-        bookmarkDetails
-      }
-    })
+        bookmarkDetails,
+      },
+    });
 
-    return  dispatch(updateBookmarksStorage())
-  }
+    return dispatch(updateBookmarksStorage());
+  };
 }
 
 export function removeBookmark(bookmarkId) {
   return function(dispatch) {
     dispatch({
-      type:  REMOVE_BOOKMARK,
+      type: REMOVE_BOOKMARK,
       payload: {
-        bookmarkId
-      }
-    })
+        bookmarkId,
+      },
+    });
 
-    return  dispatch(updateBookmarksStorage())
-  }
+    return dispatch(updateBookmarksStorage());
+  };
 }

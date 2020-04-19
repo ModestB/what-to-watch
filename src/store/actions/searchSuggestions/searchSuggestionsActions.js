@@ -10,7 +10,7 @@ export const focusOutSearchSuggestions = () => ({
 });
 
 export function deleteSearchSuggestionsInput(input) {
-  input ? input.focus() : null;
+  if (input) input.focus();
   return function(dispatch) {
     dispatch({
       type: DELETE_SEARCH_SUGGESTIONS_INPUT,
