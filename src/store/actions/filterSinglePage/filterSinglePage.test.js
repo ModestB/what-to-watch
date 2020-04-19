@@ -2,13 +2,13 @@ import { filterSinglePage } from "./filterSinglePage";
 import {
   FILTER_SINGLE_PAGE,
   GET_EXTRA_SHOW_INFO,
-  GET_EXTRA_PROFILE_INFO,
+  SET_EXTRA_PROFILE_INFO,
 } from "../../actionTypes/actionTypes";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
 
 jest.mock("../api/extraShowInfoActions.js");
-jest.mock("../api/extraProfileInfoActions.js");
+jest.mock("../extraProfileInfo/extraProfileInfoActions.js");
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -247,7 +247,7 @@ describe("actions", () => {
           singlePageType,
         },
       },
-      { type: GET_EXTRA_PROFILE_INFO },
+      { type: SET_EXTRA_PROFILE_INFO },
     ];
 
     store.dispatch(filterSinglePage(element, displayedResults, singlePageType));

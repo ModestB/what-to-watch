@@ -1,6 +1,6 @@
 /* global chrome */
 export * from "./api/extraShowInfoActions";
-export * from "./api/extraProfileInfoActions";
+export * from "./extraProfileInfo/extraProfileInfoActions";
 export * from "./api/trendingShowsActions";
 export * from "./api/showsByGenreActions";
 export * from "./api/showByIdActions";

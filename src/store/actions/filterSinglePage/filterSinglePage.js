@@ -1,7 +1,7 @@
 import { FILTER_SINGLE_PAGE } from "../../actionTypes/actionTypes";
 
 import { getExtraShowInfo } from "../api/extraShowInfoActions";
-import { getExtraProfileInfo } from "../api/extraProfileInfoActions";
+import { getExtraProfileInfo } from "../extraProfileInfo/extraProfileInfoActions";
 
 export function filterSinglePage(element, displayedResults, singlePageType) {
   return function(dispatch) {
