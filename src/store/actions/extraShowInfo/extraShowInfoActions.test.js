@@ -12,7 +12,7 @@ actions.getExtraShowInfo = jest.fn(() => {
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
-describe("extraProfileInfoActions", () => {
+describe("extraShowInfoActions", () => {
   let store;
   beforeEach(() => {
     store = mockStore({});
