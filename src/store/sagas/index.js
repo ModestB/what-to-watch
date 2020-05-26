@@ -8,6 +8,7 @@ import {
   removeBookmarkSaga,
 } from "./bookmark/bookmarkSaga";
 import { getExtraProfileInfoSaga } from "./extraProfileInfo/extraProfileInfoSaga";
+import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
@@ -16,4 +17,8 @@ export function* watchBookmarks() {
 }
 export function* watchExtraProfileInfo() {
   yield takeEvery(actionsTypes.GET_EXTRA_PROFILE_INFO, getExtraProfileInfoSaga);
+}
+
+export function* watchExtraShowInfo() {
+  yield takeEvery(actionsTypes.GET_EXTRA_SHOW_INFO, getExtraShowInfoSaga);
 }

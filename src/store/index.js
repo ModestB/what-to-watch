@@ -3,7 +3,11 @@ import createSagaMiddleware from "redux-saga";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./reducers/index";
 
-import { watchBookmarks, watchExtraProfileInfo } from "./sagas/index";
+import {
+  watchBookmarks,
+  watchExtraProfileInfo,
+  watchExtraShowInfo,
+} from "./sagas/index";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
@@ -20,5 +24,6 @@ const store = createStore(
 
 sagaMiddleware.run(watchBookmarks);
 sagaMiddleware.run(watchExtraProfileInfo);
+sagaMiddleware.run(watchExtraShowInfo);
 
 export default store;
