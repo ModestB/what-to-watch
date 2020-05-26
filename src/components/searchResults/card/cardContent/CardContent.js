@@ -8,7 +8,7 @@ import classes from "./CardContent.module.scss";
 export const CardContent = (props) => {
   let content = (
     <div className={`${classes.container}`}>
-      {props.cardType != "person" ? (
+      {props.cardType !== "person" ? (
         <ShowContent
           showTitle={props.showTitle}
           showOverview={props.showOverview}
