@@ -12,6 +12,7 @@ import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSaga";
 import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
 import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
+import { getShowByGenreSaga } from "./showByGenre/showByGenreSaga";
 
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
@@ -42,4 +43,8 @@ export function* watchSearchSuggestions() {
     actionsTypes.GET_SEARCH_SUGGESTIONS,
     getSearchSuggestionsSaga
   );
+}
+
+export function* watchShowByGenre() {
+  yield takeEvery(actionsTypes.GET_SHOWS_BY_GENRE, getShowByGenreSaga);
 }
