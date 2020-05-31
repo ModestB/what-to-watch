@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 // Action Types
-import { filterSinglePage } from "../../../store/actions/actions";
+import { initFilterSinglePage } from "../../../store/actions/actions";
 
 // Components imports
 import CardContent from "./cardContent/CardContent";
@@ -24,7 +24,7 @@ const card = (props) => {
     <div
       className={`${classes.overlay}`}
       onClick={() =>
-        props.filterSinglePage(
+        props.initFilterSinglePage(
           props.element,
           props.displayedResults,
           props.singlePageType
@@ -154,8 +154,8 @@ const mapStateProps = (state) => {
 
 const mapStateDispatch = (dispatch) => {
   return {
-    filterSinglePage: (element, displayedResults, singlePageType) =>
-      dispatch(filterSinglePage(element, displayedResults, singlePageType)),
+    initFilterSinglePage: (element, displayedResults, singlePageType) =>
+      dispatch(initFilterSinglePage(element, displayedResults, singlePageType)),
   };
 };
 

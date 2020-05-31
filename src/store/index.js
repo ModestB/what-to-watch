@@ -7,6 +7,7 @@ import {
   watchBookmarks,
   watchExtraProfileInfo,
   watchExtraShowInfo,
+  watchFilterSinglePage,
 } from "./sagas/index";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -25,5 +26,6 @@ const store = createStore(
 sagaMiddleware.run(watchBookmarks);
 sagaMiddleware.run(watchExtraProfileInfo);
 sagaMiddleware.run(watchExtraShowInfo);
+sagaMiddleware.run(watchFilterSinglePage);
 
 export default store;
