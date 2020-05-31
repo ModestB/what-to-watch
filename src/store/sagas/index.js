@@ -13,6 +13,7 @@ import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSag
 import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
 import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
 import { getShowByGenreSaga } from "./showByGenre/showByGenreSaga";
+import { getShowByIdSaga } from "./showById/showByIdSaga";
 
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
@@ -47,4 +48,8 @@ export function* watchSearchSuggestions() {
 
 export function* watchShowByGenre() {
   yield takeEvery(actionsTypes.GET_SHOWS_BY_GENRE, getShowByGenreSaga);
+}
+
+export function* watchShowById() {
+  yield takeEvery(actionsTypes.GET_SHOW_BY_ID, getShowByIdSaga);
 }
