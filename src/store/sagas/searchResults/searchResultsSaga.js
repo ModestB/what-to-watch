@@ -19,7 +19,7 @@ export function* getSearchResultsSaga(action) {
       });
   });
 
-  const searchResultsData = searchResultPromise;
+  const searchResultsData = yield searchResultPromise;
 
   yield put(
     actions.setSearchResults(action.payload.inputValue, searchResultsData)

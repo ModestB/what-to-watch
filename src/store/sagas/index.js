@@ -1,4 +1,4 @@
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery, takeLatest } from "redux-saga/effects";
 
 import * as actionsTypes from "../actionTypes/actionTypes";
 
@@ -11,6 +11,7 @@ import { getExtraProfileInfoSaga } from "./extraProfileInfo/extraProfileInfoSaga
 import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSaga";
 import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
+import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
 
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
@@ -34,4 +35,11 @@ export function* watchFilterSinglePage() {
 
 export function* watchSearchResults() {
   yield takeEvery(actionsTypes.GET_SEARCH_RESULTS, getSearchResultsSaga);
+}
+
+export function* watchSearchSuggestions() {
+  yield takeLatest(
+    actionsTypes.GET_SEARCH_SUGGESTIONS,
+    getSearchSuggestionsSaga
+  );
 }
