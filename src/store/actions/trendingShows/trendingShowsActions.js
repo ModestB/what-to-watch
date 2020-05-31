@@ -1,7 +1,7 @@
-import { SET_TRENDING_SHOWS } from "../../actionTypes/actionTypes";
-
-// API
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+import {
+  SET_TRENDING_SHOWS,
+  GET_TRENDING_SHOWS,
+} from "../../actionTypes/actionTypes";
 
 export const setTrendingShows = (searchResults) => ({
   type: SET_TRENDING_SHOWS,
@@ -10,16 +10,6 @@ export const setTrendingShows = (searchResults) => ({
   },
 });
 
-export function getTrendingShows() {
-  return function(dispatch) {
-    let request = `https://api.themoviedb.org/3/trending/all/week?api_key=${API_KEY}`;
-
-    return fetch(request)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        dispatch(setTrendingShows(data.results));
-      });
-  };
-}
+export const getTrendingShows = () => ({
+  type: GET_TRENDING_SHOWS,
+});

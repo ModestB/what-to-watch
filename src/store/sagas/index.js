@@ -14,7 +14,7 @@ import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
 import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
 import { getShowByGenreSaga } from "./showByGenre/showByGenreSaga";
 import { getShowByIdSaga } from "./showById/showByIdSaga";
-
+import { getTrendingShowsSaga } from "./trendingShows/trendingShowsSaga";
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
   yield takeEvery(actionsTypes.ADD_BOOKMARK, addBookmarkSaga);
@@ -52,4 +52,8 @@ export function* watchShowByGenre() {
 
 export function* watchShowById() {
   yield takeEvery(actionsTypes.GET_SHOW_BY_ID, getShowByIdSaga);
+}
+
+export function* watchTrendingShows() {
+  yield takeEvery(actionsTypes.GET_TRENDING_SHOWS, getTrendingShowsSaga);
 }

@@ -12,6 +12,7 @@ import {
   watchSearchSuggestions,
   watchShowByGenre,
   watchShowById,
+  watchTrendingShows,
 } from "./sagas/index";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -35,5 +36,6 @@ sagaMiddleware.run(watchSearchResults);
 sagaMiddleware.run(watchSearchSuggestions);
 sagaMiddleware.run(watchShowByGenre);
 sagaMiddleware.run(watchShowById);
+sagaMiddleware.run(watchTrendingShows);
 
 export default store;
