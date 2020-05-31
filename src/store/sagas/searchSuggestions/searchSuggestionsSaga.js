@@ -23,3 +23,7 @@ export function* getSearchSuggestionsSaga(action) {
 
   yield put(actions.setSearchSuggestions(value, searchSuggestionsResults));
 }
+
+export function* deleteSearchSuggestionsInputSaga(action) {
+  if (action.payload.input) yield action.payload.input.focus();
+}

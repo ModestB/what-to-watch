@@ -11,7 +11,10 @@ import { getExtraProfileInfoSaga } from "./extraProfileInfo/extraProfileInfoSaga
 import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSaga";
 import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
-import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
+import {
+  getSearchSuggestionsSaga,
+  deleteSearchSuggestionsInputSaga,
+} from "./searchSuggestions/searchSuggestionsSaga";
 import { getShowByGenreSaga } from "./showByGenre/showByGenreSaga";
 import { getShowByIdSaga } from "./showById/showByIdSaga";
 import { getTrendingShowsSaga } from "./trendingShows/trendingShowsSaga";
@@ -43,6 +46,10 @@ export function* watchSearchSuggestions() {
   yield takeLatest(
     actionsTypes.GET_SEARCH_SUGGESTIONS,
     getSearchSuggestionsSaga
+  );
+  yield takeEvery(
+    actionsTypes.DELETE_SEARCH_SUGGESTIONS_INPUT,
+    deleteSearchSuggestionsInputSaga
   );
 }
 
