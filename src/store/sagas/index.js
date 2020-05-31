@@ -10,6 +10,7 @@ import {
 import { getExtraProfileInfoSaga } from "./extraProfileInfo/extraProfileInfoSaga";
 import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSaga";
+import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
 
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
@@ -29,4 +30,8 @@ export function* watchFilterSinglePage() {
     actionsTypes.INIT_FILTER_SINGLE_PAGE,
     initFilterSinglePageSaga
   );
+}
+
+export function* watchSearchResults() {
+  yield takeEvery(actionsTypes.GET_SEARCH_RESULTS, getSearchResultsSaga);
 }
