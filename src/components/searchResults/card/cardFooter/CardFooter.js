@@ -1,22 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import Accordion from '../../../../containers/accordion/Accordion';
-import classes from './CardFooter.module.scss';
+import Accordion from "../../../accordion/Accordion";
+import classes from "./CardFooter.module.scss";
 
 const cardFooter = (props) => {
   let content = null;
 
   if (props.displaySinglePage) {
-    content  = 
+    content = (
       <footer className={`${classes.footer}`}>
-        <Accordion 
-          elements = {props.elements}
-        />
+        <Accordion elements={props.elements} />
       </footer>
+    );
   }
-  return (
-    content
-  )
-}
+  return content;
+};
 
 export default cardFooter;
