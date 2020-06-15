@@ -5,7 +5,7 @@ import Adapter from "enzyme-adapter-react-16";
 
 import { App } from "./App";
 import SearchResults from "../searchResults/SearchResults";
-import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
+import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 
 configure({ adapter: new Adapter() });
 
@@ -28,7 +28,7 @@ describe("<App />", () => {
         "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
       poster_path: "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
       popularity: 386.162,
-      media_type: "movie"
+      media_type: "movie",
     },
     {
       id: 512200,
@@ -46,8 +46,8 @@ describe("<App />", () => {
         "As the gang return to Jumanji to rescue one of their own, they discover that nothing is as they expect. The players will have to brave parts unknown and unexplored in order to escape the world’s most dangerous game.",
       poster_path: "/bB42KDdfWkOvmzmYkmK58ZlCa9P.jpg",
       popularity: 252.566,
-      media_type: "movie"
-    }
+      media_type: "movie",
+    },
   ];
   beforeEach(() => {
     wrapper = shallow(

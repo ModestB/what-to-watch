@@ -1,20 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-import './assets/styles/all.scss';
-import App from './containers/app/App';
-import * as serviceWorker from './serviceWorker';
+import "./assets/styles/all.scss";
+import App from "./components/app/App";
+import * as serviceWorker from "./serviceWorker";
 
-import store from './store/index';
+import store from "./store/index";
 
-import 'normalize.css';
+import "normalize.css";
 
 ReactDOM.render(
   <Provider store={store}>
-     <App />
-  </Provider>, 
-  document.getElementById('root')
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
