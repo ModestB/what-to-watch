@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {
   getTrendingShows,
   getBookmarksStorage,
-  getSearchResults
+  getSearchResults,
 } from "../../store/actions/actions";
 
 // Style imports
@@ -15,7 +15,7 @@ import classes from "./App.module.scss";
 import { searchSuggestionSelectHandler } from "../../assets/js/all";
 
 // Container imports
-import SearchForm from "../searchForm/SearchForm";
+import SearchForm from "../../components/searchForm/SearchForm";
 
 // Components imports
 import SearchResults from "../searchResults/SearchResults";
@@ -93,22 +93,25 @@ export class App extends Component {
   }
 }
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   return {
     displaySinglePage: state.displaySinglePage,
     displayTrendingPage: state.displayTrendingPage,
     loading: state.loading,
     searchInputValue: state.searchInputValue,
-    searchResults: state.searchResults
+    searchResults: state.searchResults,
   };
 };
 
-const mapStateDispatch = dispatch => {
+const mapStateDispatch = (dispatch) => {
   return {
     getTrendingShows: () => dispatch(getTrendingShows()),
     getBookmarksStorage: () => dispatch(getBookmarksStorage()),
-    getSearchResults: inputValue => dispatch(getSearchResults(inputValue))
+    getSearchResults: (inputValue) => dispatch(getSearchResults(inputValue)),
   };
 };
 
-export default connect(mapStateProps, mapStateDispatch)(App);
+export default connect(
+  mapStateProps,
+  mapStateDispatch
+)(App);
