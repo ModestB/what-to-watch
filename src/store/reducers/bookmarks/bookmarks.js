@@ -6,8 +6,7 @@ import {
   UPDATE_BOOKMARKS_STORAGE,
 } from "../../actionTypes/actionTypes";
 
-// LOCAL STORAGE
-const LS_BOOKMARKS = "wtwBookmarks";
+import { LS_BOOKMARKS } from "../../../constants";
 
 function addBookmark(state, bookmarkDetails) {
   let bookmarks = [];

@@ -3,7 +3,7 @@ import { put } from "redux-saga/effects";
 import * as actions from "../../actions/actions";
 
 // API
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
+import { API_KEY } from "../../../constants";
 
 export function* getShowByIdSaga(action) {
   let request = "";

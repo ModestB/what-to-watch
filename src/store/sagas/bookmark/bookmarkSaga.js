@@ -2,9 +2,7 @@
 import { put } from "redux-saga/effects";
 
 import * as actions from "../../actions/actions";
-
-// LOCAL STORAGE
-const LS_BOOKMARKS = "wtwBookmarks";
+import { LS_BOOKMARKS } from "../../../constants";
 
 function* setChromeResults(results) {
   if (typeof results.LS_BOOKMARKS !== "undefined") {
@@ -23,7 +21,7 @@ export function* getBookmarksStorageSaga(action) {
     );
   } else {
     const promise = new Promise((resolve, reject) => {
-      chrome.storage.sync.get("LS_BOOKMARKS", (results) => {
+      chrome.storage.sync.get(LS_BOOKMARKS, (results) => {
         resolve(results);
       });
     });

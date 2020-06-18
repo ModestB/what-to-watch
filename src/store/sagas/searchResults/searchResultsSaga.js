@@ -2,11 +2,11 @@ import { put } from "redux-saga/effects";
 
 import * as actions from "../../actions/actions";
 
-// API
-const API_KEY = `${process.env.REACT_APP_API_KEY}`;
-const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
+import { API_KEY } from "../../../constants";
 
 export function* getSearchResultsSaga(action) {
+  const MULTI_API = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
+
   yield put(actions.requestSearchResults());
 
   const searchResultPromise = new Promise((resolve, reject) => {
