@@ -2,8 +2,6 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import ReactAux from "../../../../../hoc/ReactAux/ReactAux";
-
 import classes from "./ShowContent.module.scss";
 
 export const ShowContent = (props) => {
@@ -53,11 +51,11 @@ export const ShowContent = (props) => {
   }
 
   content = (
-    <ReactAux>
+    <React.Fragment>
       {cardTitle}
       {cardText}
       {date}
-    </ReactAux>
+    </React.Fragment>
   );
   return content;
 };

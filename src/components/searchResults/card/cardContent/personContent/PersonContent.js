@@ -2,11 +2,10 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import ReactAux from "../../../../../hoc/ReactAux/ReactAux";
 import KnowForList from "../../knowForList/KnowForList";
 import classes from "./PersonContent.module.scss";
 
-export const PersonContent = props => {
+export const PersonContent = (props) => {
   let content = null;
   let name = null;
   let bodyContent = null;
@@ -15,7 +14,7 @@ export const PersonContent = props => {
     <div
       className={`${[
         classes.name,
-        !props.displaySinglePage ? classes.nameShort : null
+        !props.displaySinglePage ? classes.nameShort : null,
       ].join(" ")}`}
     >
       {props.personName}
@@ -55,18 +54,18 @@ export const PersonContent = props => {
   }
 
   content = (
-    <ReactAux>
+    <React.Fragment>
       {name}
       {bodyContent}
-    </ReactAux>
+    </React.Fragment>
   );
   return content;
 };
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   return {
     displaySinglePage: state.displaySinglePage,
-    profileDetails: state.profileDetails
+    profileDetails: state.profileDetails,
   };
 };
 
