@@ -29,26 +29,4 @@ describe("searchSuggestionsActions", () => {
     store.dispatch(focusOutSearchSuggestions());
     return expect(store.getActions()).toEqual(expectedOutput);
   });
-
-  it("should create action to DELETE_SEARCH_SUGGESTIONS_INPUT", () => {
-    const expectedOutput = [{ type: DELETE_SEARCH_SUGGESTIONS_INPUT }];
-
-    store.dispatch(deleteSearchSuggestionsInput());
-    return expect(store.getActions()).toEqual(expectedOutput);
-  });
-
-  it("should create action to SET_SEARCH_SUGGESTIONS_TIMEOUT", () => {
-    const payload = { timeout: 10 };
-    const expectedOutput = [{ type: SET_SEARCH_SUGGESTIONS_TIMEOUT, payload }];
-
-    store.dispatch(setSearchSuggestionTimeout(payload.timeout));
-    return expect(store.getActions()).toEqual(expectedOutput);
-  });
-
-  it("should create action to CLEAR_SEARCH_SUGGESTIONS_TIMEOUT", () => {
-    const expectedOutput = [{ type: CLEAR_SEARCH_SUGGESTIONS_TIMEOUT }];
-
-    store.dispatch(clearSearchSuggestionTimeout());
-    return expect(store.getActions()).toEqual(expectedOutput);
-  });
 });

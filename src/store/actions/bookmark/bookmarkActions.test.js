@@ -82,7 +82,7 @@ describe("bookmarkActions", () => {
     return expect(store.getActions()).toEqual(expectedOutput);
   });
 
-  it("should create action to ADD_BOOKMARK, UPDATE_BOOKMARKS_STORAGE", () => {
+  it("should create action to ADD_BOOKMARK", () => {
     const bookmarkDetails = {
       id: 71446,
       title: "La casa de papel",
@@ -96,16 +96,13 @@ describe("bookmarkActions", () => {
           bookmarkDetails,
         },
       },
-      {
-        type: UPDATE_BOOKMARKS_STORAGE,
-      },
     ];
 
     store.dispatch(addBookmark(bookmarkDetails));
     return expect(store.getActions()).toEqual(expectedOutput);
   });
 
-  it("should create action to REMOVE_BOOKMARK, UPDATE_BOOKMARKS_STORAGE", () => {
+  it("should create action to REMOVE_BOOKMARK", () => {
     const bookmarkId = 420809;
     const expectedOutput = [
       {
@@ -114,26 +111,9 @@ describe("bookmarkActions", () => {
           bookmarkId: 420809,
         },
       },
-      {
-        type: UPDATE_BOOKMARKS_STORAGE,
-      },
     ];
 
     store.dispatch(removeBookmark(bookmarkId));
-    return expect(store.getActions()).toEqual(expectedOutput);
-  });
-
-  it("should create action to SET_BOOKMARKS_STORAGE when getBookmarksStorage is called", () => {
-    const expectedOutput = [
-      {
-        type: SET_BOOKMARKS_STORAGE,
-        payload: {
-          bookmarks: null,
-        },
-      },
-    ];
-
-    store.dispatch(getBookmarksStorage());
     return expect(store.getActions()).toEqual(expectedOutput);
   });
 });

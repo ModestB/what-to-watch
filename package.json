@@ -1,6 +1,6 @@
 {
   "name": "what-to-watch",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "private": true,
   "dependencies": {
     "normalize.css": "^8.0.1",
