@@ -17,7 +17,7 @@ export function searchSuggestionSelectHandler() {
     }
   });
 
-  input.addEventListener("keydown", e => {
+  input.addEventListener("keydown", (e) => {
     suggestions = Array.from(
       document.querySelectorAll(".suggestions-container .suggestion")
     );
@@ -63,7 +63,7 @@ function moveSuggestionHandler(
   moveDown
 ) {
   let scrollTopPossition = suggestionsContainer.scrollTop;
-  let prevEleIndex = suggestions.findIndex(e => {
+  let prevEleIndex = suggestions.findIndex((e) => {
     return e === readySuggestion;
   });
   let nextEle = null;

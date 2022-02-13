@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import Trailer from './trailer/Trailer';
+import Trailer from "./trailer/Trailer";
 
-import classes from './Trailers.module.scss'
+import classes from "./Trailers.module.scss";
 
 const trailers = (props) => {
   let content = null;
@@ -10,26 +10,23 @@ const trailers = (props) => {
 
   if (props.displayTrailers) {
     if (props.trailersData.length > 0) {
-      trailers = props.trailersData.map(element => {
+      trailers = props.trailersData.map((element) => {
         return (
           <Trailer
             key={element.id}
             youtubeKey={element.key}
             title={element.name}
           />
-        )
-      }) 
-    } 
+        );
+      });
+    }
 
-    content =  
-      <div className={`${classes.trailers} customScroll`}>
-        { trailers }
-      </div>;
+    content = (
+      <div className={`${classes.trailers} customScroll`}>{trailers}</div>
+    );
   }
 
-  return (
-    content
-  )
-} 
+  return content;
+};
 
 export default trailers;

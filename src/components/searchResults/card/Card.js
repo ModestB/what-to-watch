@@ -159,7 +159,4 @@ const mapStateDispatch = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  mapStateDispatch
-)(card);
+export default connect(mapStateProps, mapStateDispatch)(card);

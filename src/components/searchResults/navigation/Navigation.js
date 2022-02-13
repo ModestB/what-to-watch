@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import {
   showPreviousResults,
   getTrendingShows,
-  getShowsByGenre
+  getShowsByGenre,
 } from "../../../store/actions/actions";
 
 import classes from "./Navigation.module.scss";
@@ -18,7 +18,7 @@ export function Navigation(props) {
     if (props.singlePageType !== "person") {
       let genreIds = null;
       if (!props.displayedResults[0].genre_ids) {
-        genreIds = props.displayedResults[0].genres.map(genre => {
+        genreIds = props.displayedResults[0].genres.map((genre) => {
           return genre.id;
         });
       } else {
@@ -56,22 +56,22 @@ export function Navigation(props) {
   return navigation;
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     searchResults: state.searchResults,
     displayedResults: state.displayedResults,
     displaySinglePage: state.displaySinglePage,
-    singlePageType: state.singlePageType
+    singlePageType: state.singlePageType,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    showPreviousResults: prevResults =>
+    showPreviousResults: (prevResults) =>
       dispatch(showPreviousResults(prevResults)),
     getTrendingShows: () => dispatch(getTrendingShows()),
     getShowsByGenre: (genreIds, singlePageType) =>
-      dispatch(getShowsByGenre(genreIds, singlePageType))
+      dispatch(getShowsByGenre(genreIds, singlePageType)),
   };
 };
 

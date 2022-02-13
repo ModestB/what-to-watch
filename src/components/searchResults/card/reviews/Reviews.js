@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import classes from './Reviews.module.scss';
+import classes from "./Reviews.module.scss";
 
-import Review from './review/Review';
+import Review from "./review/Review";
 
 const reviews = (props) => {
   let content = null;
@@ -10,26 +10,29 @@ const reviews = (props) => {
 
   if (props.displayReviews) {
     if (props.reviewsData.length > 0) {
-      reviews = props.reviewsData.map( element => {
+      reviews = props.reviewsData.map((element) => {
         return (
           <Review
             key={element.id}
             author={element.author}
-            content={element.content} 
+            content={element.content}
           />
-        )
-      })
+        );
+      });
     }
 
-   content = 
-      <div className={`${props.reviewsData.length > 0 ? classes.reviews : ''} customScroll`}>  
-        { reviews }
+    content = (
+      <div
+        className={`${
+          props.reviewsData.length > 0 ? classes.reviews : ""
+        } customScroll`}
+      >
+        {reviews}
       </div>
+    );
   }
 
-  return (
-    content
-  )
-}
+  return content;
+};
 
 export default reviews;

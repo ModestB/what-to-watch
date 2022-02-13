@@ -1,16 +1,16 @@
-import { 
+import {
   SET_SEARCH_RESULTS,
   SET_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
   SET_TRENDING_SHOWS,
   SET_SHOWS_BY_GENRE,
-  SHOW_PREVIOUS_RESULTS 
-} from '../../actionTypes/actionTypes';
+  SHOW_PREVIOUS_RESULTS,
+} from "../../actionTypes/actionTypes";
 
-function filterElementToDisplay (state, itemId) {
-  return state.filter( ( item ) => {
-    return item.id === itemId
-  })
+function filterElementToDisplay(state, itemId) {
+  return state.filter((item) => {
+    return item.id === itemId;
+  });
 }
 
 export default (state = [], action) => {
@@ -22,9 +22,9 @@ export default (state = [], action) => {
     case SET_SHOW_BY_ID: {
       return action.payload.searchResults;
     }
-    
+
     case FILTER_SINGLE_PAGE: {
-      return filterElementToDisplay(state, action.payload.itemId)
+      return filterElementToDisplay(state, action.payload.itemId);
     }
 
     case SET_TRENDING_SHOWS: {
@@ -42,5 +42,4 @@ export default (state = [], action) => {
     default:
       return state;
   }
-}
-
+};

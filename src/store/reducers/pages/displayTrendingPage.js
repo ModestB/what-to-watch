@@ -1,8 +1,8 @@
 import {
   SET_SEARCH_RESULTS,
   SET_TRENDING_SHOWS,
-  SET_SHOWS_BY_GENRE
-} from '../../actionTypes/actionTypes';
+  SET_SHOWS_BY_GENRE,
+} from "../../actionTypes/actionTypes";
 
 export default (state = true, action) => {
   switch (action.type) {
@@ -21,4 +21,4 @@ export default (state = true, action) => {
     default:
       return state;
   }
-}
+};

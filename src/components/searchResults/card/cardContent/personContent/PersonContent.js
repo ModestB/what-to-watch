@@ -69,7 +69,4 @@ const mapStateProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  null
-)(PersonContent);
+export default connect(mapStateProps, null)(PersonContent);

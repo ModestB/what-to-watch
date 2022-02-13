@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import CreditCard from './creditCard/CreditCard';
-import classes from './CreditCards.module.scss';
+import CreditCard from "./creditCard/CreditCard";
+import classes from "./CreditCards.module.scss";
 
 const creditCards = (props) => {
   let content = null;
@@ -19,21 +19,20 @@ const creditCards = (props) => {
         posterPath={element.poster_path}
       />
     );
-  })
+  });
 
-  content =      
+  content = (
     <div className={`${classes.creditCards} customScroll`}>
       {creditCardsContent}
-    </div>;
-  return (
-    content
-  )
-}
+    </div>
+  );
+  return content;
+};
 
-const mapStateProps = state => {
+const mapStateProps = (state) => {
   return {
-    profileCredits: state.profileCredits
-  }
-}
+    profileCredits: state.profileCredits,
+  };
+};
 
 export default connect(mapStateProps, null)(creditCards);

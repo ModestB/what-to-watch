@@ -107,7 +107,4 @@ const mapStateDispatch = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  mapStateDispatch
-)(App);
+export default connect(mapStateProps, mapStateDispatch)(App);

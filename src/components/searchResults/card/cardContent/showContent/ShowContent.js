@@ -66,7 +66,4 @@ const mapStateProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  null
-)(ShowContent);
+export default connect(mapStateProps, null)(ShowContent);

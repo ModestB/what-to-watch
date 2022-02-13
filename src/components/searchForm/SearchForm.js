@@ -80,7 +80,4 @@ const mapStateDispatch = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  mapStateDispatch
-)(SearchForm);
+export default connect(mapStateProps, mapStateDispatch)(SearchForm);

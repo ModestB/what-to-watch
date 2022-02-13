@@ -26,8 +26,8 @@ describe("<Navigation />", () => {
         "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
       poster_path: "/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
       popularity: 295.608,
-      media_type: "movie"
-    }
+      media_type: "movie",
+    },
   ];
 
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe("<Navigation />", () => {
   it("it should match snapshot if displaySinglePage=true", () => {
     wrapper.setProps({
       displaySinglePage: true,
-      displayedResults: displayedResults
+      displayedResults: displayedResults,
     });
     expect(wrapper.debug()).toMatchSnapshot();
   });
@@ -49,7 +49,7 @@ describe("<Navigation />", () => {
   it("it should render 2 buttons if displaySinglePage=true", () => {
     wrapper.setProps({
       displaySinglePage: true,
-      displayedResults: displayedResults
+      displayedResults: displayedResults,
     });
     expect(wrapper.find(".btn")).toHaveLength(3);
   });
@@ -58,7 +58,7 @@ describe("<Navigation />", () => {
     wrapper.setProps({
       displaySinglePage: true,
       displayedResults: displayedResults,
-      singlePageType: "person"
+      singlePageType: "person",
     });
     expect(wrapper.debug()).toMatchSnapshot();
   });
@@ -67,7 +67,7 @@ describe("<Navigation />", () => {
     wrapper.setProps({
       displaySinglePage: true,
       displayedResults: displayedResults,
-      singlePageType: "person"
+      singlePageType: "person",
     });
     expect(wrapper.find(".btn")).toHaveLength(2);
   });

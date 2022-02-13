@@ -135,7 +135,4 @@ const mapStateProps = (state) => {
   };
 };
 
-export default connect(
-  mapStateProps,
-  null
-)(SearchResults);
+export default connect(mapStateProps, null)(SearchResults);

@@ -28,8 +28,8 @@ describe("<PersonContent />", () => {
       profile_path: "/5lzG6z74a8aYVWLsoAQVkyh5IEa.jpg",
       adult: false,
       imdb_id: "nm3849842",
-      homepage: null
-    }
+      homepage: null,
+    },
   };
 
   beforeEach(() => {

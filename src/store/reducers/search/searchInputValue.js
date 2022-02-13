@@ -1,8 +1,8 @@
-import { 
+import {
   SET_SEARCH_RESULTS,
   GET_SEARCH_SUGGESTIONS,
-  DELETE_SEARCH_SUGGESTIONS_INPUT 
-} from '../../actionTypes/actionTypes';
+  DELETE_SEARCH_SUGGESTIONS_INPUT,
+} from "../../actionTypes/actionTypes";
 
 export default (state = null, action) => {
   switch (action.type) {
@@ -15,10 +15,10 @@ export default (state = null, action) => {
     }
 
     case DELETE_SEARCH_SUGGESTIONS_INPUT: {
-      return '';
+      return "";
     }
 
     default:
       return state;
   }
-}
+};

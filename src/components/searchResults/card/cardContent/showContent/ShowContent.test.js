@@ -36,12 +36,7 @@ describe("<ShowContent />", () => {
 
   it("should ellipse title", () => {
     expect(wrapper.find(".title").text()).toHaveLength(43);
-    expect(
-      wrapper
-        .find(".title")
-        .text()
-        .endsWith("...")
-    ).toEqual(true);
+    expect(wrapper.find(".title").text().endsWith("...")).toEqual(true);
     expect(wrapper.find(".title").text()).not.toEqual(props.showTitle);
   });
 
@@ -54,12 +49,7 @@ describe("<ShowContent />", () => {
 
   it("should ellipse overview", () => {
     expect(wrapper.find(".description").text()).toHaveLength(133);
-    expect(
-      wrapper
-        .find(".description")
-        .text()
-        .endsWith("...")
-    ).toEqual(true);
+    expect(wrapper.find(".description").text().endsWith("...")).toEqual(true);
     expect(wrapper.find(".description").text()).not.toEqual(props.showOverview);
   });
 
@@ -69,21 +59,13 @@ describe("<ShowContent />", () => {
   });
 
   it("should start with Air Date", () => {
-    expect(
-      wrapper
-        .find(".date")
-        .text()
-        .startsWith("Air Date:")
-    ).toEqual(true);
+    expect(wrapper.find(".date").text().startsWith("Air Date:")).toEqual(true);
   });
 
   it("should start with Released Date", () => {
     wrapper.setProps({ mediaType: "movie" });
-    expect(
-      wrapper
-        .find(".date")
-        .text()
-        .startsWith("Released Date:")
-    ).toEqual(true);
+    expect(wrapper.find(".date").text().startsWith("Released Date:")).toEqual(
+      true
+    );
   });
 });

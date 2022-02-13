@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgMoviedbSmall = props => (
+const SvgMoviedbSmall = (props) => (
   <svg
     id="moviedb-small_svg__Layer_1"
     data-name="Layer 1"

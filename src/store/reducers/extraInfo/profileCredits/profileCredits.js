@@ -1,6 +1,4 @@
-import { 
-  SET_EXTRA_PROFILE_INFO
-} from '../../../actionTypes/actionTypes';
+import { SET_EXTRA_PROFILE_INFO } from "../../../actionTypes/actionTypes";
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -8,7 +6,7 @@ export default (state = [], action) => {
       return action.payload.profileCredits;
     }
 
-    default: 
+    default:
       return state;
   }
-}
+};

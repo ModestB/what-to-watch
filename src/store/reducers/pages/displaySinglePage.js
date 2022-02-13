@@ -4,8 +4,8 @@ import {
   SET_TRENDING_SHOWS,
   SET_SHOWS_BY_GENRE,
   FILTER_SINGLE_PAGE,
-  SHOW_PREVIOUS_RESULTS
-} from '../../actionTypes/actionTypes';
+  SHOW_PREVIOUS_RESULTS,
+} from "../../actionTypes/actionTypes";
 
 export default (state = false, action) => {
   switch (action.type) {
@@ -25,15 +25,15 @@ export default (state = false, action) => {
       return false;
     }
 
-    case  FILTER_SINGLE_PAGE: {
+    case FILTER_SINGLE_PAGE: {
       return true;
     }
 
-    case  SHOW_PREVIOUS_RESULTS: {
+    case SHOW_PREVIOUS_RESULTS: {
       return false;
-    } 
+    }
 
     default:
       return state;
   }
-}
+};
