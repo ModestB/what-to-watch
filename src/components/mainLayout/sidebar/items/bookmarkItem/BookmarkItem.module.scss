@@ -1,0 +1,10 @@
+@import "assets/styles/variables";
+@import "assets/styles/keyframes";
+
+.counter {
+  padding: 0 $spacing-1;
+}
+
+.iconHeart {
+  animation: scale-up-center 0.3s ease-in-out 2 alternate both;
+}

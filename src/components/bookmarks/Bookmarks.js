@@ -39,14 +39,14 @@ export const Bookmarks = (props) => {
   }
   return (
     <div
-      className={`
-        ${classes.container} 
-        ${props.displayBookmarks ? classes.active : ""}
-      `}
+      className={[
+        classes.container,
+        props.displayBookmarks ? classes.active : "",
+      ].join(" ")}
     >
       <header className={`${classes.header}`} onClick={props.toggleBookmarks}>
         <div className={`${classes.header__wrp}`}>
-          <p className={`${classes.title}`}> To Watch</p>
+          {/* <p className={`${classes.title}`}> To Watch</p> */}
           <HeartIcon
             key={heartKey > 1 ? heartKey : "0"}
             fill="#ffffff"
@@ -59,11 +59,11 @@ export const Bookmarks = (props) => {
           </span>
         </div>
 
-        <CloseIcon
+        {/* <CloseIcon
           className={`${classes.iconClose} icon-close icon-close--light`}
           width="20px"
           height="20px"
-        />
+        /> */}
       </header>
       <div className={`${classes.body} customScroll customScroll--red`}>
         {bookmarks}

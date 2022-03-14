@@ -1,0 +1,35 @@
+@import 'assets/styles/variables';
+
+.name,
+.title,
+.text{
+  color: $text__color--dark;
+  text-align: left;
+}
+
+.title,
+.text{
+  margin-bottom: 6px;
+}
+
+.name{
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  &.nameShort{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 205px;
+  }
+}
+
+.title{
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.text{
+  font-size: 14px;
+  line-height: 1.4;
+}

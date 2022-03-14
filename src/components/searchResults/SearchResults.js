@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 // Components imports
 import Card from "./card/Card";
 import Navigation from "./navigation/Navigation";
+import Bookmarks from "../bookmarks/Bookmarks";
 
 // Style imports
 import classes from "./SearchResults.module.scss";
@@ -117,9 +118,20 @@ const SearchResults = (props) => {
 
   return (
     <section id="searchResults" className={`${classes.container}`}>
-      <div className={`${searchResultClasses}`}>
-        <Navigation />
-        {resultToDisplay}
+      <div className={`${classes.sidebar}`}>
+        <Bookmarks />
+      </div>
+      <div className={`${classes.content}`}>
+        <div id="sidebar-root"></div>
+        {!props.displaySinglePage && (
+          <h2 className={`${classes.subtitle}`}>
+            <span>{props.displayTrendingPage ? "Trending" : "Results"}</span>
+          </h2>
+        )}
+        <div className={`${searchResultClasses}`}>
+          <Navigation />
+          {resultToDisplay}
+        </div>
       </div>
     </section>
   );
@@ -131,6 +143,7 @@ const mapStateProps = (state) => {
     displayedResults: state.displayedResults,
     displaySinglePage: state.displaySinglePage,
     displayFilteredPage: state.displayFilteredPage,
+    displayTrendingPage: state.displayTrendingPage,
     singlePageType: state.singlePageType,
   };
 };

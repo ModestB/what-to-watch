@@ -1,6 +1,6 @@
 import React from "react";
 
-const SvgHeart = (props) => (
+const SvgHeart = props => (
   <svg viewBox="0 0 500 500" {...props}>
     <path
       clipRule="evenodd"

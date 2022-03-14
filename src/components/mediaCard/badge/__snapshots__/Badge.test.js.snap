@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Badge /> should match snapshot  rating < 4  1`] = `
+"<span className=\\"badge badgeDanger\\">
+   
+  3
+   
+</span>"
+`;
+
+exports[`<Badge /> should match snapshot 1`] = `
+"<span className=\\"badge badgeSuccess\\">
+   
+  8
+   
+</span>"
+`;
+
+exports[`<Badge /> should match snapshot 4 <= rating > 7  1`] = `
+"<span className=\\"badge badgeWarning\\">
+   
+  6
+   
+</span>"
+`;

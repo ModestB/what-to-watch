@@ -1,0 +1,43 @@
+@import 'assets/styles/variables';
+
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  margin-top: 8px;
+}
+
+.item{
+  display: flex;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  margin-bottom: 2px;
+  border: none;
+  font-size: 12px;
+  color: $color--dark;
+}
+
+.title{
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-left: 5px;
+  &:hover{
+    cursor: pointer;
+    color: $color--primary;
+  }
+}
+
+.badge{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 0;
+  min-width: 75px;
+  max-width: 75px;
+  color: $color--light;
+  background-color: $color--success;
+}

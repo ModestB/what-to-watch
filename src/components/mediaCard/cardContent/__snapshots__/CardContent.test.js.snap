@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardContent /> should match snapshot 1`] = `
+"<div className=\\"container\\">
+  <Connect(ShowContent) showTitle={[undefined]} showOverview={[undefined]} showMediaType={[undefined]} showDate={[undefined]} />
+</div>"
+`;
+
+exports[`<CardContent /> should match snapshot than cardType = person 1`] = `
+"<div className=\\"container\\">
+  <Connect(PersonContent) personName={[undefined]} profileKnownFor={[undefined]} />
+</div>"
+`;

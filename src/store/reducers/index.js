@@ -29,6 +29,8 @@ import displayBookmarks from "./bookmarks/displayBookmarks";
 import showSuggestions from "./suggestions/showSuggestions";
 import suggestionsResults from "./suggestions/suggestionsResults";
 
+import routes from "./routes/routes";
+
 export default combineReducers({
   displaySinglePage,
   displayFilteredPage,
@@ -50,4 +52,5 @@ export default combineReducers({
   displayBookmarks,
   showSuggestions,
   suggestionsResults,
+  routes,
 });

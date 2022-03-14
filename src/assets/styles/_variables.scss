@@ -1,22 +1,30 @@
 $text__color--light: #ffffff;
-$text__color--grey: #F2F2F2;
+$text__color--grey: #f2f2f2;
 $text__color--grey2: #dddddd;
 $text__color--dark: #616161;
 
 $color--light: #ffffff;
-$color--grey: #F2F2F2;
+$color--grey: #f2f2f2;
 $color--grey-2: #e6e6e6;
 $color--grey-3: #ced4da;
 $color--dark: #616161;
-$color--primary: #9E56FC;
+$color--primary: #9e56fc;
 $color--primary--darker: darken($color--primary, 20);
-$color--success: #56FC67;
-$color--warning: #EDFC56;
+$color--secondary: #56fc67;
+$color--success: #56fc67;
+$color--warning: #edfc56;
 
-$color--danger: #FC5656;
+$color--danger: #fc5656;
 $color--danger--darker: darken($color--danger, 20);
 
-$shadow--danger: rgba(252, 86, 86, .25);
-$shadow--danger--darker: rgba(232, 4, 4, .25);
-$shadow--primary: rgba(158, 86, 252, .25);
-$shadow--primary--darker: rgba(137, 47, 255, .25);
+$shadow--danger: rgba(252, 86, 86, 0.25);
+$shadow--danger--darker: rgba(232, 4, 4, 0.25);
+$shadow--primary: rgba(158, 86, 252, 0.25);
+$shadow--primary--darker: rgba(137, 47, 255, 0.25);
+
+$app-height: 500px;
+$app-header-height: 75px;
+$app-content-height: #{$app-height - $app-header-height};
+$spacing-1: 4px;
+$spacing-2: 8px;
+$spacing-3: 16px;

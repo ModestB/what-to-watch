@@ -1,28 +1,30 @@
-@import 'assets/styles/variables';
+@import "assets/styles/variables";
 
 .container {
   position: relative;
   text-align: center;
   background-color: $color--grey;
   transition: all 0.4s ease-in-out;
-  height: 600px;
+  height: 500px;
   overflow: auto;
-  padding: 15px 15px 0 15px;
-  .header{
+  padding: 0 $spacing-3;
+  .header {
     display: flex;
     justify-content: center;
     align-items: center;
-    &:hover{
+    padding: $spacing-3 0;
+    height: $app-header-height;
+    &:hover {
       cursor: pointer;
     }
-    .logo{
+    .logo {
       position: absolute;
       top: 0;
       right: 0;
       padding: 4px;
     }
   }
-  h1{
+  h1 {
     font-size: 24px;
     font-weight: 400;
     text-align: left;
@@ -31,37 +33,12 @@
     margin-left: 8px;
     color: $text__color--dark;
   }
-  .subtitle{
-    position: relative;
-    text-align: left;
-    padding-left: 20px;
-    font-size: 18px;
-    font-weight: 700;
-    color: $text__color--dark;
-    margin-bottom: 0px;
-    &:after{
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 0;
-      width: 100%;
-      height: 310px;
-      border-top: 3px solid $color--primary;
-      border-left: 3px solid $color--primary;
-    }
-    span{
-      position: relative;
-      z-index: 1;
-      padding: 0 10px;
-      background-color: $color--grey;
-    }
-  }
-  .noResults{
+  .noResults {
     margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    p{
+    p {
       margin-bottom: 10px;
     }
   }

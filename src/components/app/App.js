@@ -23,6 +23,7 @@ import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import Bookmarks from "../bookmarks/Bookmarks";
 import MovieDbSmall from "../../icons/js/MoviedbSmall";
+import MainLayout from "../mainLayout/MainLayout";
 
 const App = (props) => {
   useEffect(() => {
@@ -51,15 +52,6 @@ const App = (props) => {
   if (props.searchResults && props.searchResults.length > 0) {
     searchResult = <SearchResults />;
   }
-
-  if (!props.displaySinglePage) {
-    sectionTitle = (
-      <h2 className={`${classes.subtitle}`}>
-        <span>{props.displayTrendingPage ? "Trending" : "Results"}</span>
-      </h2>
-    );
-  }
-
   return (
     <main className={`${classes.container} customScroll`}>
       <header
@@ -81,10 +73,10 @@ const App = (props) => {
           <MovieDbSmall height="50px" width="50px" />
         </a>
       </header>
-      <SearchForm />
-      {sectionTitle}
-      {props.loading ? <LoadingSpinner /> : searchResult}
-      <Bookmarks />
+      {/* <SearchForm /> */}
+      {/* {props.loading ? <LoadingSpinner /> : searchResult} */}
+      {props.loading ? <LoadingSpinner /> : <MainLayout />}
+      {/* <Bookmarks /> */}
     </main>
   );
 };

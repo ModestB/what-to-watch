@@ -1,0 +1,12 @@
+@import "assets/styles/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  width: calc(100% + #{$spacing-3 * 2});
+  margin: $spacing-3 -$spacing-3 0 -$spacing-3;
+  padding: 0;
+  height: $app-content-height;
+  // display: flex;
+  // flex-direction: column;
+}

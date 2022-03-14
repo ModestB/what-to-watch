@@ -1,0 +1,108 @@
+@import 'assets/styles/variables';
+
+.container{
+  width: 100%;
+}
+
+.card__wrp{
+  background-color: $color--light;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 175px;
+  max-height: 175px;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out; 
+  margin: 0 15px 15px 15px;
+  &.singlePage{
+    height: 390px;
+    min-height: 390px;
+    margin: 0;
+  }
+  &:hover .overlay{
+    left: 0;
+    width: 120px;
+  }
+  
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .body{
+    display: flex;
+    height: 100%;
+    .content{
+      display: flex;
+      flex-direction: column;
+      padding-top: 16px;
+      padding-left: 16px;
+      padding-bottom: 4px;
+    }
+  }
+  h6{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    margin-top: 5px;
+    padding-right: 16px;
+  }
+}
+
+.footer{ 
+  border: none;
+  margin-top: auto;
+}
+
+.overlay{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  position: absolute;
+  bottom: 0;
+  left: -120px;
+  width: 0%;
+  height: 30px;
+  background-color: rgba($color--primary, 0.9);
+  transition: all 0.4s ease-in-out;
+}
+
+.overlay:hover{
+  cursor: pointer;
+}
+
+.overlay p{
+  font-size: 16px;
+  font-weight: bold;
+  color: $text__color--grey;
+  white-space: nowrap;
+}
+
+.singlePage{
+  .posterImg{
+    width: 130px;
+    min-width: 130px;
+    height: 195px;
+    max-height: 195px;
+  }
+}
+
+.descriptionOverview{
+  overflow-x: hidden;
+}
+
+.biography{
+  text-align: justify;
+  padding: 0 16px;
+  max-height: 275px;
+  font-size: 14px;
+  line-height: 1.4;
+  &.biographyNoInfo{
+    text-align: center;
+  }
+}

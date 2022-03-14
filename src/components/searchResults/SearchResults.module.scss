@@ -1,25 +1,63 @@
-.container{
-  display: flex;
-  flex-direction: column;
+@import "assets/styles/variables";
+
+.container {
+  display: grid;
+  grid-template-columns: 55px 1fr;
+  width: calc(100% + #{$spacing-3 * 2});
+  margin: $spacing-3 -$spacing-3 0 -$spacing-3;
+  padding: 0 $spacing-3 0 0;
 }
 
-.wrp{
+.wrp {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
-  height: 400px;
+  height: $app-content-height;
   margin-top: 4px;
   padding-top: 8px;
-  margin-right: -15px;
 }
 
-.btn__group{
+.sidebar {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  padding-right: $spacing-1;
+}
+
+.btn__group {
   width: 100%;
   text-align: left;
   padding-bottom: 4px;
-  button{
+  button {
     margin-right: 5px;
+  }
+}
+
+.subtitle {
+  position: relative;
+  text-align: left;
+  padding-left: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: $text__color--dark;
+  margin-bottom: 0px;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    height: 310px;
+    border-top: 3px solid $color--primary;
+    border-left: 3px solid $color--primary;
+  }
+  span {
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    background-color: $color--grey;
   }
 }
