@@ -1,8 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // Action Types
 import { initFilterSinglePage } from "../../store/actions/actions";
+
+import useRoute from "../../hooks/useRoute";
 
 // Components imports
 import CardContent from "./cardContent/CardContent";
@@ -19,6 +21,16 @@ import CardFooter from "./cardFooter/CardFooter";
 import classes from "./MediaCard.module.scss";
 
 const MediaCard = (props) => {
+  const dispatch = useDispatch();
+  const displayedResults = useSelector((state) => state.displayedResults);
+  const singlePageType = useSelector((state) => state.singlePageType);
+  const displayReviews = useSelector((state) => state.displayReviews);
+  const trailersData = useSelector((state) => state.trailersData);
+  const displayTrailers = useSelector((state) => state.displayTrailers);
+  const loadingShowCard = useSelector((state) => state.loadingShowCard);
+  const profileDetails = useSelector((state) => state.profileDetails);
+  const reviewsData = useSelector((state) => state.reviewsData);
+  const { isSinglePage, changeRoute } = useRoute();
   let accordionElements = null;
 
   if (props.cardType !== "person") {
@@ -27,8 +39,8 @@ const MediaCard = (props) => {
         title: "Trailers",
         body: (
           <Trailers
-            trailersData={props.trailersData}
-            displayTrailers={props.displayTrailers}
+            trailersData={trailersData}
+            displayTrailers={displayTrailers}
           />
         ),
         id: props.element.id,
@@ -36,10 +48,7 @@ const MediaCard = (props) => {
       {
         title: "Reviews",
         body: (
-          <Reviews
-            reviewsData={props.reviewsData}
-            displayReviews={props.displayReviews}
-          />
+          <Reviews reviewsData={reviewsData} displayReviews={displayReviews} />
         ),
         id: props.element.id,
       },
@@ -51,11 +60,11 @@ const MediaCard = (props) => {
         body: (
           <p
             className={`${classes.biography}  ${
-              !props.profileDetails.biography ? classes.biographyNoInfo : null
+              !profileDetails.biography ? classes.biographyNoInfo : null
             } customScroll`}
           >
-            {props.profileDetails.biography
-              ? props.profileDetails.biography
+            {profileDetails.biography
+              ? profileDetails.biography
               : "No Information"}
           </p>
         ),
@@ -69,14 +78,21 @@ const MediaCard = (props) => {
     ];
   }
 
+  const displaySinglePageHandler = () => {
+    dispatch(
+      initFilterSinglePage(props.element, displayedResults, singlePageType)
+    );
+    changeRoute("single");
+  };
+
   return (
     <div className={`${classes.container}`}>
       <section
         className={`${classes.card__wrp} ${
-          props.displaySinglePage ? classes.singlePage : ""
+          isSinglePage ? classes.singlePage : ""
         }`}
       >
-        {props.loadingShowCard ? (
+        {loadingShowCard ? (
           <LoadingSpinner />
         ) : (
           <div className={`${classes.card}`}>
@@ -108,20 +124,14 @@ const MediaCard = (props) => {
             </div>
 
             <CardFooter
-              displaySinglePage={props.displaySinglePage}
+              displaySinglePage={isSinglePage}
               elements={accordionElements}
             />
 
-            {!props.displaySinglePage && (
+            {!isSinglePage && (
               <div
                 className={`${classes.overlay}`}
-                onClick={() =>
-                  props.initFilterSinglePage(
-                    props.element,
-                    props.displayedResults,
-                    props.singlePageType
-                  )
-                }
+                onClick={() => displaySinglePageHandler()}
               >
                 <p>More Info</p>
               </div>
@@ -133,27 +143,4 @@ const MediaCard = (props) => {
   );
 };
 
-const mapStateProps = (state) => {
-  return {
-    displayedResults: state.displayedResults,
-    displaySinglePage: state.displaySinglePage,
-    displayReviews: state.displayReviews,
-    reviewsData: state.reviewsData,
-    displayTrailers: state.displayTrailers,
-    trailersData: state.trailersData,
-    loadingShowCard: state.loadingShowCard,
-    profileDetails: state.profileDetails,
-    profileCredits: state.profileCredits,
-    loadingProfile: state.loadingProfile,
-    singlePageType: state.singlePageType,
-  };
-};
-
-const mapStateDispatch = (dispatch) => {
-  return {
-    initFilterSinglePage: (element, displayedResults, singlePageType) =>
-      dispatch(initFilterSinglePage(element, displayedResults, singlePageType)),
-  };
-};
-
-export default connect(mapStateProps, mapStateDispatch)(MediaCard);
+export default MediaCard;

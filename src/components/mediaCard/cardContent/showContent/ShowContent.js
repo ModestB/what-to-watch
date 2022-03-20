@@ -1,16 +1,18 @@
 import React from "react";
 
-import { connect } from "react-redux";
+import useRoute from "../../../../hooks/useRoute";
 
 import classes from "./ShowContent.module.scss";
 
 export const ShowContent = (props) => {
+  const { isSinglePage } = useRoute();
+
   let content = null;
   let cardTitle = null;
   let cardText = null;
   let date = null;
 
-  if (!props.displaySinglePage) {
+  if (!isSinglePage) {
     cardTitle = (
       <div className={`${classes.title}`} title={props.showTitle}>
         {props.showTitle.length > 40
@@ -26,7 +28,7 @@ export const ShowContent = (props) => {
     );
   }
 
-  if (props.showOverview && !props.displaySinglePage) {
+  if (props.showOverview && !isSinglePage) {
     cardText = (
       <p className={`${classes.description}`}>
         {props.showOverview.substring(0, 100) + "..."}
@@ -60,10 +62,4 @@ export const ShowContent = (props) => {
   return content;
 };
 
-const mapStateProps = (state) => {
-  return {
-    displaySinglePage: state.displaySinglePage,
-  };
-};
-
-export default connect(mapStateProps, null)(ShowContent);
+export default ShowContent;

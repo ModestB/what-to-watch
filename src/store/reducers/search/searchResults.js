@@ -4,18 +4,20 @@ import {
   SET_SHOWS_BY_GENRE,
 } from "../../actionTypes/actionTypes";
 
-export default (state = [], action) => {
+const defaultState = {
+  current: [],
+  previous: [],
+};
+
+export default (state = defaultState, action) => {
   switch (action.type) {
-    case SET_SEARCH_RESULTS: {
-      return action.payload.searchResults;
-    }
-
-    case SET_TRENDING_SHOWS: {
-      return action.payload.searchResults;
-    }
-
+    case SET_SEARCH_RESULTS:
+    case SET_TRENDING_SHOWS:
     case SET_SHOWS_BY_GENRE: {
-      return action.payload.searchResults;
+      return {
+        current: action.payload.searchResults,
+        next: state.previous,
+      };
     }
 
     default:

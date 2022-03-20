@@ -2,10 +2,13 @@ import React from "react";
 
 import { connect } from "react-redux";
 
+import useRoute from "../../../../hooks/useRoute";
+
 import KnowForList from "../../knowForList/KnowForList";
 import classes from "./PersonContent.module.scss";
 
 export const PersonContent = (props) => {
+  const { isSinglePage } = useRoute();
   let content = null;
   let name = null;
   let bodyContent = null;
@@ -14,7 +17,7 @@ export const PersonContent = (props) => {
     <div
       className={`${[
         classes.name,
-        !props.displaySinglePage ? classes.nameShort : null,
+        !isSinglePage ? classes.nameShort : null,
       ].join(" ")}`}
     >
       {props.personName}
@@ -30,7 +33,7 @@ export const PersonContent = (props) => {
     );
   }
 
-  if (props.displaySinglePage) {
+  if (isSinglePage) {
     bodyContent = (
       <div>
         <p className={`${classes.title}`}>Known for </p>
@@ -64,7 +67,6 @@ export const PersonContent = (props) => {
 
 const mapStateProps = (state) => {
   return {
-    displaySinglePage: state.displaySinglePage,
     profileDetails: state.profileDetails,
   };
 };

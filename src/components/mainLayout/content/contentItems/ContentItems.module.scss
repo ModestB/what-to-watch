@@ -6,4 +6,8 @@
   flex-direction: column;
   height: 390px;
   margin-top: $spacing-2;
+
+  &.singlePage {
+    height: 410px;
+  }
 }

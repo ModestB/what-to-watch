@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
 
-import displaySinglePage from "./pages/displaySinglePage";
 import displayFilteredPage from "./pages/displayFilteredPage";
 import displayTrendingPage from "./pages/displayTrendingPage";
 
@@ -32,7 +31,6 @@ import suggestionsResults from "./suggestions/suggestionsResults";
 import routes from "./routes/routes";
 
 export default combineReducers({
-  displaySinglePage,
   displayFilteredPage,
   displayTrendingPage,
   loading,

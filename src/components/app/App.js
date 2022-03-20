@@ -18,7 +18,6 @@ import { searchSuggestionSelectHandler } from "../../assets/js/all";
 import SearchForm from "../searchForm/SearchForm";
 
 // Components imports
-import SearchResults from "../searchResults/SearchResults";
 import IconTv from "../../icons/js/Tv";
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import Bookmarks from "../bookmarks/Bookmarks";
@@ -49,9 +48,6 @@ const App = (props) => {
     );
   }
 
-  if (props.searchResults && props.searchResults.length > 0) {
-    searchResult = <SearchResults />;
-  }
   return (
     <main className={`${classes.container} customScroll`}>
       <header
@@ -83,7 +79,6 @@ const App = (props) => {
 
 const mapStateProps = (state) => {
   return {
-    displaySinglePage: state.displaySinglePage,
     displayTrendingPage: state.displayTrendingPage,
     loading: state.loading,
     searchInputValue: state.searchInputValue,

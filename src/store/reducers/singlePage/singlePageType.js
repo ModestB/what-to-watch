@@ -4,7 +4,7 @@ import {
 } from "../../actionTypes/actionTypes";
 
 function filterElementToDisplay(displayedResults, itemId) {
-  return displayedResults.filter((item) => {
+  return displayedResults.current.filter((item) => {
     return item.id === itemId;
   });
 }
