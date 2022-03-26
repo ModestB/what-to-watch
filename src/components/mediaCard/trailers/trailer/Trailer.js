@@ -5,7 +5,7 @@ import classes from "./Trailer.module.scss";
 const trailerCard = (props) => {
   return (
     <iframe
-      width="340"
+      width="290"
       height="184"
       className={classes.iframe}
       style={{ marginRight: "11px" }}
