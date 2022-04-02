@@ -23,6 +23,7 @@ import classes from "./MediaCard.module.scss";
 const MediaCard = (props) => {
   const dispatch = useDispatch();
   const displayedResults = useSelector((state) => state.displayedResults);
+  const searchResults = useSelector((state) => state.searchResults);
   const singlePageType = useSelector((state) => state.singlePageType);
   const displayReviews = useSelector((state) => state.displayReviews);
   const trailersData = useSelector((state) => state.trailersData);
@@ -101,16 +102,12 @@ const MediaCard = (props) => {
             <div className={`${classes.body}`}>
               <PosterImg posterPath={props.posterPath} />
 
-              {props.cardType !== "person" ? (
-                <BookmarkButton
-                  id={props.element.id}
-                  mediaType={props.mediaType}
-                  title={props.title}
-                  date={
-                    props.date ? props.date.substring(0, 4) : "Not specified"
-                  }
-                />
-              ) : null}
+              <BookmarkButton
+                id={props.element.id}
+                mediaType={props.mediaType}
+                title={props.title}
+                date={props.date ? props.date.substring(0, 4) : "Not specified"}
+              />
 
               <CardContent
                 cardType={props.cardType}

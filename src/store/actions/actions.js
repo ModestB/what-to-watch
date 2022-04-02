@@ -9,3 +9,4 @@ export * from "./bookmark/bookmarkActions";
 export * from "./searchSuggestions/searchSuggestionsActions";
 export * from "./showPrevResults/showPrevResults";
 export * from "./filterSinglePage/filterSinglePage";
+export * from "./displayedResults/displayedResultsActions";

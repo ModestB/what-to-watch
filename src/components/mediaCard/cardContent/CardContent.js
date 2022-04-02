@@ -1,29 +1,25 @@
-import React from "react";
-
-import ShowContent from "./showContent/ShowContent";
-import PersonContent from "./personContent/PersonContent";
+import React, { useState, useEffect } from "react";
 
 import classes from "./CardContent.module.scss";
 
-export const CardContent = (props) => {
-  let content = (
+import CardTitle from "./cardTitle/CardTitle";
+import CardText from "./cardText/CardText";
+
+export const CardContent = ({ showTitle, showOverview, showDate }) => {
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    const showFullDate = new Date(showDate);
+    setDate(showFullDate.getFullYear());
+  }, [showDate]);
+
+  return (
     <div className={`${classes.container}`}>
-      {props.cardType !== "person" ? (
-        <ShowContent
-          showTitle={props.showTitle}
-          showOverview={props.showOverview}
-          showMediaType={props.showMediaType}
-          showDate={props.showDate}
-        />
-      ) : (
-        <PersonContent
-          personName={props.personName}
-          profileKnownFor={props.profileKnownFor}
-        />
-      )}
+      <CardTitle showTitle={showTitle} />
+      <CardText showOverview={showOverview} />
+      <p className={`${classes.date}`}>{date}</p>
     </div>
   );
-  return content;
 };
 
 export default CardContent;

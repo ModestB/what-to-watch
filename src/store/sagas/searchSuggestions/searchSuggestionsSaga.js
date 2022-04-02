@@ -24,5 +24,5 @@ export function* getSearchSuggestionsSaga(action) {
 }
 
 export function* deleteSearchSuggestionsInputSaga(action) {
-  if (action.payload.input) yield action.payload.input.focus();
+  // if (action.payload.input) yield action.payload.input.focus();
 }

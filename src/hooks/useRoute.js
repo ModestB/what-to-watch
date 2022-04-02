@@ -6,6 +6,7 @@ function useRoute() {
   const dispatch = useDispatch();
   const currentRoute = useSelector((state) => state.routes);
   const [isSinglePage, setIsSinglePage] = useState(false);
+  const [isSearchPage, setIsSearchPage] = useState(false);
 
   const changeRoute = (route, title) => {
     dispatch({ type: SET_ROUTE, payload: { route, title } });
@@ -13,12 +14,14 @@ function useRoute() {
 
   useEffect(() => {
     setIsSinglePage(currentRoute.route === "single");
+    setIsSearchPage(currentRoute.route === "search");
   }, [currentRoute]);
 
   return {
     currentRoute,
     changeRoute,
     isSinglePage,
+    isSearchPage,
   };
 }
 

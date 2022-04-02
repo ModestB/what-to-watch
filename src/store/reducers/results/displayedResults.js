@@ -6,6 +6,7 @@ import {
   SET_SHOWS_BY_GENRE,
   SHOW_PREVIOUS_RESULTS,
   SET_ROUTE,
+  RESET_DISPLAYED_RESULTS,
 } from "../../actionTypes/actionTypes";
 
 const defaultState = {
@@ -19,6 +20,10 @@ function filterElementToDisplay(state, itemId) {
   });
 }
 
+function filterOutPersonMedia(results) {
+  return results.filter((result) => result.media_type !== "person");
+}
+
 export default (state = defaultState, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULTS:
@@ -26,9 +31,13 @@ export default (state = defaultState, action) => {
     case SET_TRENDING_SHOWS:
     case SET_SHOWS_BY_GENRE: {
       return {
-        current: action.payload.searchResults,
+        current: filterOutPersonMedia(action.payload.searchResults),
         previous: state.current,
       };
+    }
+
+    case RESET_DISPLAYED_RESULTS: {
+      return defaultState;
     }
 
     case FILTER_SINGLE_PAGE: {

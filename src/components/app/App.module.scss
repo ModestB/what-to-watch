@@ -6,7 +6,7 @@
   background-color: $color--grey;
   transition: all 0.4s ease-in-out;
   height: 500px;
-  overflow: auto;
+  overflow: hidden;
   padding: 0 $spacing-3;
   .header {
     display: flex;

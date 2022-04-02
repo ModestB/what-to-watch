@@ -15,9 +15,7 @@ export default (state = defaultState, action) => {
         title: state.title,
       };
 
-      console.log("back", action.payload);
       if (action.payload.route === "back") {
-        console.log("back");
         previous = {};
         next = state.previous;
       }

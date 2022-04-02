@@ -1,27 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import classes from "./Badge.module.scss";
 
-export const Badge = (props) => {
-  let content = null;
+export const Badge = ({ rating }) => {
+  const [badgeType, setBadgeType] = useState("badgeSuccess");
 
-  if (props.rating) {
-    let type = classes.badgeSuccess;
-
-    if (props.rating > 4 && props.rating < 7) {
-      type = classes.badgeWarning;
-    } else if (props.rating <= 4) {
-      type = classes.badgeDanger;
+  useEffect(() => {
+    if (rating > 5 && rating < 8) {
+      setBadgeType("badgeWarning");
+    } else if (rating <= 5) {
+      setBadgeType("badgeDanger");
+    } else {
+      setBadgeType("badgeSuccess");
     }
-    content = (
-      <span className={`${[classes.badge, type].join(" ")}`}>
-        {" "}
-        {props.rating}{" "}
-      </span>
-    );
-  }
+  }, [rating]);
 
-  return content;
+  return (
+    <span className={`${[classes.badge, classes[badgeType]].join(" ")}`}>
+      {" "}
+      {rating}{" "}
+    </span>
+  );
 };
 
 export default Badge;

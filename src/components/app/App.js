@@ -14,13 +14,8 @@ import classes from "./App.module.scss";
 
 import { searchSuggestionSelectHandler } from "../../assets/js/all";
 
-// Container imports
-import SearchForm from "../searchForm/SearchForm";
-
 // Components imports
 import IconTv from "../../icons/js/Tv";
-import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
-import Bookmarks from "../bookmarks/Bookmarks";
 import MovieDbSmall from "../../icons/js/MoviedbSmall";
 import MainLayout from "../mainLayout/MainLayout";
 
@@ -30,23 +25,6 @@ const App = (props) => {
     props.getTrendingShows();
     props.getBookmarksStorage();
   }, []);
-
-  let searchResult = null;
-  let sectionTitle = null;
-
-  if (props.searchInputValue !== null) {
-    searchResult = (
-      <div className={`${classes.noResults}`}>
-        <p>No results</p>
-        <button
-          className="btn btn--primary btn--big"
-          onClick={props.getTrendingShows}
-        >
-          Show Trending
-        </button>
-      </div>
-    );
-  }
 
   return (
     <main className={`${classes.container} customScroll`}>
@@ -69,10 +47,7 @@ const App = (props) => {
           <MovieDbSmall height="50px" width="50px" />
         </a>
       </header>
-      {/* <SearchForm /> */}
-      {/* {props.loading ? <LoadingSpinner /> : searchResult} */}
-      {props.loading ? <LoadingSpinner /> : <MainLayout />}
-      {/* <Bookmarks /> */}
+      <MainLayout />
     </main>
   );
 };

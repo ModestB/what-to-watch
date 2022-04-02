@@ -1,8 +1,9 @@
 @import "assets/styles/variables";
 
 .form {
+  position: relative;
   display: flex;
-  margin-bottom: 15px;
+  margin: $spacing-2 $spacing-3 $spacing-2 $spacing-3;
   .inputWrapper {
     position: relative;
     flex-grow: 1;

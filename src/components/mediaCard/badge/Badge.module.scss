@@ -1,27 +1,26 @@
-@import 'assets/styles/variables';
+@import "assets/styles/variables";
 
-.badge{
+.badge {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   top: 0;
-  right: 0;
   border-radius: 0;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.2);
   color: $text__color--light;
-  &.badgeSuccess{ 
+  &.badgeSuccess {
     background-color: $color--success;
   }
-  &.badgeWarning{ 
+  &.badgeWarning {
     background-color: $color--warning;
   }
-  &.badgeDanger{ 
+  &.badgeDanger {
     background-color: $color--danger;
   }
 }
