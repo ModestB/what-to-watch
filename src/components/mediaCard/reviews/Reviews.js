@@ -1,38 +1,32 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import classes from "./Reviews.module.scss";
 
 import Review from "./review/Review";
 
-const reviews = (props) => {
-  let content = null;
-  let reviews = <h6>No Reviews</h6>;
+const Reviews = (props) => {
+  const reviewsData = useSelector((state) => state.reviewsData);
 
-  if (props.displayReviews) {
-    if (props.reviewsData.length > 0) {
-      reviews = props.reviewsData.map((element) => {
-        return (
+  return (
+    <div
+      className={`${
+        props.reviewsData.length > 0 ? classes.reviews : ""
+      } customScroll`}
+    >
+      {reviewsData.length ? (
+        reviewsData.map((element) => (
           <Review
             key={element.id}
             author={element.author}
             content={element.content}
           />
-        );
-      });
-    }
-
-    content = (
-      <div
-        className={`${
-          props.reviewsData.length > 0 ? classes.reviews : ""
-        } customScroll`}
-      >
-        {reviews}
-      </div>
-    );
-  }
-
-  return content;
+        ))
+      ) : (
+        <h6>No Reviews</h6>
+      )}
+    </div>
+  );
 };
 
-export default reviews;
+export default Reviews;

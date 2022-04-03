@@ -11,26 +11,28 @@
     border-radius: 0 !important;
     position: relative;
     z-index: 2;
-    border-top: 2px solid $color--grey-2;
-    border-right: 1px solid $color--grey-2;
-    border-left: 1px solid $color--grey-2;
-    background-color: $color--light;
+    border: 1px solid $color--grey-2;
     padding: 0.75rem 1.25rem;
+    background-color: $color--light;
     transition: all 0.3s ease-in-out;
     &:hover {
       cursor: pointer;
       transition: all 0.3s ease-in-out;
     }
-    &:hover,
+    &:hover {
+      .title {
+        p {
+          color: $text__color--primary;
+        }
+      }
+    }
     &.active {
       border-color: $color--primary;
+      background-color: $color--primary;
       .title {
         p {
           color: $text__color--light;
         }
-      }
-      .headerOverlay {
-        clip-path: circle(137.4% at 3% 98%);
       }
     }
     .title {
@@ -81,6 +83,12 @@
     }
   }
   .close {
-    margin: 8px 8px 8px auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    padding: 0 $spacing-2;
+    margin-bottom: $spacing-3;
+    box-shadow: 0 0 0 0.2rem $shadow--primary;
   }
 }

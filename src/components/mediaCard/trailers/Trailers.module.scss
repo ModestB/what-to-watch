@@ -1,5 +1,8 @@
+@import "assets/styles/variables";
+
 .trailers {
-  height: 315px;
-  padding: 0 16px;
+  height: 350px;
+  margin-top: $spacing-2;
+  padding: 0 $spacing-1 0 $spacing-3;
   overflow-x: hidden;
 }

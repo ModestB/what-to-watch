@@ -1,11 +1,11 @@
-*{
+* {
   box-sizing: border-box;
 }
 
 body {
   width: 400px;
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -17,48 +17,47 @@ code {
 
 h1,
 h2,
-p{
+p {
   margin: 0;
 }
 
-.badge{
-  &.badge-success{ 
+.badge {
+  &.badge-success {
     background-color: $color--success;
   }
-  &.badge-warning{ 
+  &.badge-warning {
     background-color: $color--warning;
     color: $text__color--light;
   }
-  &.badge-danger{ 
+  &.badge-danger {
     background-color: $color--danger;
   }
 }
 
-.icon-close{
+.icon-close {
   min-width: 20px;
   min-height: 20px;
   transition: all 0.3s ease-in-out;
-  &:hover{
+  &:hover {
     cursor: pointer;
-    animation: rotate-scale-up 0.65s linear both;
   }
-  &.icon-close--dark{
+  &.icon-close--dark {
     fill: $color--dark;
-    &:hover{
+    &:hover {
       fill: $color--danger;
     }
   }
-  &.icon-close--light{
+  &.icon-close--light {
     fill: $color--light;
   }
-  &.icon-close--danger{
+  &.icon-close--danger {
     fill: $color--danger;
   }
 }
 
-.suggestion{
-  &.ready{
-    p{
+.suggestion {
+  &.ready {
+    p {
       background-color: $color--grey;
       color: $color--primary;
       cursor: pointer;
@@ -66,31 +65,31 @@ p{
   }
 }
 
-.customScroll{
+.customScroll {
   overflow-y: auto;
-  scrollbar-color:  $color--primary $text__color--grey2;
+  scrollbar-color: $color--primary $text__color--grey2;
   scrollbar-width: thin;
   &::-webkit-scrollbar {
     width: 5px;
   }
-  &::-webkit-scrollbar-track{
-    background: $text__color--grey2;
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
-  &::-webkit-scrollbar-thumb{
-    background: $color--primary; 
-    &:hover{
-      background: $color--primary--darker; 
+  &::-webkit-scrollbar-thumb {
+    background: $color--primary;
+    &:hover {
+      background: $color--primary--darker;
     }
   }
-  &.customScroll--red{
-    scrollbar-color:  $color--danger $text__color--grey2;
-    &::-webkit-scrollbar-track{
+  &.customScroll--red {
+    scrollbar-color: $color--danger $text__color--grey2;
+    &::-webkit-scrollbar-track {
       background: transparent;
     }
-    &::-webkit-scrollbar-thumb{
-      background: $color--danger; 
-      &:hover{
-        background: $color--danger--darker; 
+    &::-webkit-scrollbar-thumb {
+      background: $color--danger;
+      &:hover {
+        background: $color--danger--darker;
       }
     }
   }

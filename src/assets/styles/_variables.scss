@@ -1,8 +1,3 @@
-$text__color--light: #ffffff;
-$text__color--grey: #f2f2f2;
-$text__color--grey2: #dddddd;
-$text__color--dark: #616161;
-
 $color--light: #ffffff;
 $color--grey: #f2f2f2;
 $color--grey-2: #e6e6e6;
@@ -16,6 +11,12 @@ $color--warning: #edfc56;
 
 $color--danger: #fc5656;
 $color--danger--darker: darken($color--danger, 20);
+
+$text__color--light: #ffffff;
+$text__color--grey: #f2f2f2;
+$text__color--grey2: #dddddd;
+$text__color--dark: #616161;
+$text__color--primary: $color--primary;
 
 $shadow--danger: rgba(252, 86, 86, 0.25);
 $shadow--danger--darker: rgba(232, 4, 4, 0.25);

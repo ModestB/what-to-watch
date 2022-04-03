@@ -8,13 +8,10 @@ import useRoute from "../../hooks/useRoute";
 
 // Components imports
 import CardContent from "./cardContent/CardContent";
-import CreditCards from "./creditCards/CreditCards";
 import PosterImg from "./posterImg/PosterImg";
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner";
 import BookmarkButton from "../bookmarks/bookmarkBtn/BookmarkBtn";
 import Badge from "./badge/Badge";
-import Trailers from "./trailers/Trailers";
-import Reviews from "./reviews/Reviews";
 import CardFooter from "./cardFooter/CardFooter";
 
 // Style imports
@@ -23,61 +20,10 @@ import classes from "./MediaCard.module.scss";
 const MediaCard = (props) => {
   const dispatch = useDispatch();
   const displayedResults = useSelector((state) => state.displayedResults);
-  const searchResults = useSelector((state) => state.searchResults);
   const singlePageType = useSelector((state) => state.singlePageType);
-  const displayReviews = useSelector((state) => state.displayReviews);
-  const trailersData = useSelector((state) => state.trailersData);
-  const displayTrailers = useSelector((state) => state.displayTrailers);
   const loadingShowCard = useSelector((state) => state.loadingShowCard);
-  const profileDetails = useSelector((state) => state.profileDetails);
-  const reviewsData = useSelector((state) => state.reviewsData);
-  const { isSinglePage, changeRoute } = useRoute();
-  let accordionElements = null;
 
-  if (props.cardType !== "person") {
-    accordionElements = [
-      {
-        title: "Trailers",
-        body: (
-          <Trailers
-            trailersData={trailersData}
-            displayTrailers={displayTrailers}
-          />
-        ),
-        id: props.element.id,
-      },
-      {
-        title: "Reviews",
-        body: (
-          <Reviews reviewsData={reviewsData} displayReviews={displayReviews} />
-        ),
-        id: props.element.id,
-      },
-    ];
-  } else {
-    accordionElements = [
-      {
-        title: "Biography",
-        body: (
-          <p
-            className={`${classes.biography}  ${
-              !profileDetails.biography ? classes.biographyNoInfo : null
-            } customScroll`}
-          >
-            {profileDetails.biography
-              ? profileDetails.biography
-              : "No Information"}
-          </p>
-        ),
-        id: props.element.id,
-      },
-      {
-        title: "Starred In",
-        body: <CreditCards />,
-        id: props.element.id,
-      },
-    ];
-  }
+  const { isSinglePage, changeRoute } = useRoute();
 
   const displaySinglePageHandler = () => {
     dispatch(
@@ -120,10 +66,7 @@ const MediaCard = (props) => {
               />
             </div>
 
-            <CardFooter
-              displaySinglePage={isSinglePage}
-              elements={accordionElements}
-            />
+            <CardFooter />
 
             {!isSinglePage && (
               <div
