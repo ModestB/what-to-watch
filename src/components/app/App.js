@@ -1,13 +1,12 @@
 /* global chrome */
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
 
 // Action Types
 import {
   getTrendingShows,
   getBookmarksStorage,
-  getSearchResults,
 } from "../../store/actions/actions";
+import { useDispatch } from "react-redux";
 
 // Style imports
 import classes from "./App.module.scss";
@@ -20,20 +19,16 @@ import MovieDbSmall from "../../icons/js/MoviedbSmall";
 import MainLayout from "../mainLayout/MainLayout";
 
 const App = (props) => {
+  const dispatch = useDispatch();
   useEffect(() => {
     searchSuggestionSelectHandler();
-    props.getTrendingShows();
-    props.getBookmarksStorage();
+    dispatch(getTrendingShows());
+    dispatch(getBookmarksStorage());
   }, []);
 
   return (
     <main className={`${classes.container} customScroll`}>
-      <header
-        className={`${classes.header}`}
-        onClick={() =>
-          !props.displayTrendingPage ? props.getTrendingShows() : null
-        }
-      >
+      <header className={`${classes.header}`}>
         <IconTv fill="#9E56FC" height="40px" width="40px" />
         <h1>
           <b>What</b> To Watch
@@ -52,21 +47,4 @@ const App = (props) => {
   );
 };
 
-const mapStateProps = (state) => {
-  return {
-    displayTrendingPage: state.displayTrendingPage,
-    loading: state.loading,
-    searchInputValue: state.searchInputValue,
-    searchResults: state.searchResults,
-  };
-};
-
-const mapStateDispatch = (dispatch) => {
-  return {
-    getTrendingShows: () => dispatch(getTrendingShows()),
-    getBookmarksStorage: () => dispatch(getBookmarksStorage()),
-    getSearchResults: (inputValue) => dispatch(getSearchResults(inputValue)),
-  };
-};
-
-export default connect(mapStateProps, mapStateDispatch)(App);
+export default App;

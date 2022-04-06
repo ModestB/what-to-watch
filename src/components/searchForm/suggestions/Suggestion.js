@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // Action Types
 import { getSearchResults } from "../../../store/actions/actions";
@@ -8,7 +8,8 @@ import classes from "./Suggestions.module.scss";
 
 import ReactHtmlParser from "react-html-parser";
 
-export const Suggestion = ({ suggestion, searchInputValue }) => {
+export const Suggestion = ({ suggestion }) => {
+  const searchInputValue = useSelector((state) => state.search.inputValue);
   const [name, setName] = useState("");
   const [displayedName, setDisplayedName] = useState("");
   const dispatch = useDispatch();

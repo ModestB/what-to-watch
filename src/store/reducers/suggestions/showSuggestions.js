@@ -20,7 +20,7 @@ export default (state = false, action) => {
     }
 
     case SET_SEARCH_SUGGESTIONS: {
-      return true;
+      return !!action.payload.results.length;
     }
 
     default:

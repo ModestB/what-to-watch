@@ -12,15 +12,16 @@ import classes from "./ContentItems.module.scss";
 const ContentItems = () => {
   const { currentRoute, isSinglePage, isSearchPage } = useRoute();
   const displayedResults = useSelector((state) => state.displayedResults);
+  const searchTouched = useSelector((state) => state.search.touched);
   const [noItemsMsg, setNoItemsMsg] = useState("");
 
   useEffect(() => {
-    if (currentRoute.route === "search") {
+    if (currentRoute.route === "search" && searchTouched) {
       setNoItemsMsg("No results");
     } else {
       setNoItemsMsg("");
     }
-  }, [currentRoute]);
+  }, [currentRoute, searchTouched]);
 
   return (
     <div

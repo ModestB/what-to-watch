@@ -7,7 +7,7 @@ import loading from "./loading/loading";
 import loadingProfile from "./loading/loadingProfile";
 import loadingShowCard from "./loading/loadingShowCard";
 
-import searchInputValue from "./search/searchInputValue";
+import search from "./search/search";
 
 import displayedResults from "./results/displayedResults";
 
@@ -35,7 +35,7 @@ export default combineReducers({
   loading,
   loadingProfile,
   loadingShowCard,
-  searchInputValue,
+  search,
   displayedResults,
   singlePageType,
   displayReviews,
