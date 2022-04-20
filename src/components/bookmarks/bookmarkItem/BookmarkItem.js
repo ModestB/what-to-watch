@@ -1,45 +1,36 @@
 import React from "react";
-import { connect } from "react-redux";
 
-// Action Types
-import {
-  getShowById,
-  toggleBookmarks,
-  removeBookmark,
-} from "../../../store/actions/actions";
+import { useDispatch } from "react-redux";
 
+import { getShowById, removeBookmark } from "../../../store/actions/actions";
+
+import useRoute from "../../../hooks/useRoute";
 import classes from "./BookmarkItem.module.scss";
 import CloseIcon from "../../../icons/js/Close";
 
-export const BookmarkItem = React.memo(function BookmarkItem(props) {
+export const BookmarkItem = ({ id, mediaType, title, date }) => {
+  const { changeRoute } = useRoute();
+  const dispatch = useDispatch();
+
   function clickHandler() {
-    props.toggleBookmarks();
-    props.getShowById(props.id, props.mediaType);
+    dispatch(getShowById(id, mediaType));
+    changeRoute("single");
   }
 
   return (
     <div className={`${classes.container}`}>
       <div className={`${classes.title}`} onClick={clickHandler}>
-        {`${props.title} (${props.date})`}
+        {`${title} (${date})`}
       </div>
 
       <CloseIcon
         className="icon-close icon-close--danger"
-        onClick={() => props.removeBookmark(props.id)}
+        onClick={() => dispatch(removeBookmark(id))}
         width="20px"
         height="20px"
       />
     </div>
   );
-});
-
-const mapStateDispatch = (dispatch) => {
-  return {
-    getShowById: (showId, mediaType) =>
-      dispatch(getShowById(showId, mediaType)),
-    toggleBookmarks: () => dispatch(toggleBookmarks()),
-    removeBookmark: (bookmarkId) => dispatch(removeBookmark(bookmarkId)),
-  };
 };
 
-export default connect(null, mapStateDispatch)(BookmarkItem);
+export default BookmarkItem;

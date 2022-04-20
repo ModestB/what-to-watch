@@ -1,6 +1,6 @@
-@import 'assets/styles/variables';
+@import "../../../assets/styles/variables";
 
-.posterImg{
+.posterImg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,11 +12,11 @@
   transition: all 0.3s ease-in-out;
 }
 
-.posterImgPlaceholder{
+.posterImgPlaceholder {
   background-color: $text__color--dark;
 }
 
-.posterImgMd{
+.posterImgMd {
   width: 140px;
   min-width: 140px;
   max-height: 215px;

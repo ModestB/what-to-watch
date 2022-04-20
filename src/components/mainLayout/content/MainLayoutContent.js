@@ -6,11 +6,24 @@ import useRoute from "../../../hooks/useRoute";
 
 // Components imports
 import ContentItems from "./contentItems/ContentItems";
+import Bookmarks from "../../bookmarks/Bookmarks";
 import SearchForm from "../../searchForm/SearchForm";
 import LoadingSpinner from "../../../components/loadingSpinner/LoadingSpinner";
 
 // Style imports
 import classes from "./MainLayoutContent.module.scss";
+
+const Content = () => {
+  const { currentRoute } = useRoute();
+
+  switch (currentRoute.route) {
+    case "bookmarks":
+      return <Bookmarks />;
+
+    default:
+      return <ContentItems />;
+  }
+};
 
 const MainLayoutContent = () => {
   const { currentRoute, isSinglePage } = useRoute();
@@ -27,7 +40,7 @@ const MainLayoutContent = () => {
       {/* <Navigation /> */}
 
       {currentRoute.route === "search" && <SearchForm />}
-      {loading ? <LoadingSpinner /> : <ContentItems />}
+      {loading ? <LoadingSpinner /> : <Content />}
     </main>
   );
 };

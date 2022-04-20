@@ -1,13 +1,13 @@
-@import 'assets/styles/variables';
+@import "../../../assets/styles/variables";
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   height: 100px;
   margin-top: 8px;
 }
 
-.item{
+.item {
   display: flex;
   padding-right: 4px;
   padding-bottom: 4px;
@@ -17,18 +17,18 @@
   color: $color--dark;
 }
 
-.title{
+.title {
   display: flex;
   align-items: center;
   text-align: left;
   margin-left: 5px;
-  &:hover{
+  &:hover {
     cursor: pointer;
     color: $color--primary;
   }
 }
 
-.badge{
+.badge {
   display: flex;
   align-items: center;
   justify-content: center;

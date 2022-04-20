@@ -1,22 +1,22 @@
-@import 'assets/styles/variables';
+@import "../../../../assets/styles/variables";
 
-.container{
+.container {
   width: 50%;
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
-  .card{
+  .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    .body{
+    .body {
       padding: 8px 8px 20px 8px;
     }
   }
-  p{
+  p {
     font-size: 12px;
   }
-  .title{
+  .title {
     font-size: 14px;
     margin-bottom: 4px;
     font-weight: 700;

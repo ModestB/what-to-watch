@@ -1,26 +1,15 @@
 import { put } from "redux-saga/effects";
+import axios from "../../../axios";
+import { showByIdApiUrl } from "../../../constants";
 
 import * as actions from "../../actions/actions";
 
-// API
-import { API_KEY } from "../../../constants";
-
 export function* getShowByIdSaga(action) {
-  let request = "";
-
-  if (action.payload.mediaType === "movie") {
-    request = `https://api.themoviedb.org/3/movie/${action.payload.showId}?api_key=${API_KEY}&language=en-US`;
-  } else {
-    request = `https://api.themoviedb.org/3/tv/${action.payload.showId}?api_key=${API_KEY}&language=en-US `;
-  }
-
   const resultPromise = new Promise((resolve, reject) => {
-    fetch(request)
+    axios
+      .get(showByIdApiUrl(action.payload.showId, action.payload.mediaType))
       .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        resolve(data);
+        resolve(response.data);
       });
   });
 

@@ -1,4 +1,4 @@
-@import "assets/styles/variables";
+@import "../../assets/styles/variables";
 
 .container {
   display: grid;
@@ -7,6 +7,4 @@
   margin: $spacing-3 -$spacing-3 0 -$spacing-3;
   padding: 0;
   height: $app-content-height;
-  // display: flex;
-  // flex-direction: column;
 }

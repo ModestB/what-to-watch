@@ -4,7 +4,7 @@ import classes from "./SidebarItem.module.scss";
 
 import useRoute from "../../../../hooks/useRoute";
 
-export const SidebarItem = ({ title, children, route, onClick }) => {
+export const SidebarItem = ({ title, children, route, onClick = () => {} }) => {
   const { currentRoute, changeRoute } = useRoute();
 
   const clickHandler = () => {

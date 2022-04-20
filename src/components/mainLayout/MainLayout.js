@@ -8,7 +8,7 @@ import MainLayoutContent from "./content/MainLayoutContent";
 
 const MainLayout = (props) => {
   return (
-    <div class={classes.container}>
+    <div className={classes.container}>
       <MainLayoutSidebar />
       <MainLayoutContent />
     </div>

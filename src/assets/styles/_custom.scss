@@ -51,7 +51,11 @@ p {
     fill: $color--light;
   }
   &.icon-close--danger {
-    fill: $color--danger;
+    fill: $text__color--grey3;
+
+    &:hover {
+      fill: $color--danger;
+    }
   }
 }
 

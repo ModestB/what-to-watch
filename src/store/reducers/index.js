@@ -22,7 +22,6 @@ import profileDetails from "./extraInfo/profileDetails/profileDetails";
 import profileCredits from "./extraInfo/profileCredits/profileCredits";
 
 import bookmarks from "./bookmarks/bookmarks";
-import displayBookmarks from "./bookmarks/displayBookmarks";
 
 import showSuggestions from "./suggestions/showSuggestions";
 import suggestionsResults from "./suggestions/suggestionsResults";
@@ -45,7 +44,6 @@ export default combineReducers({
   profileDetails,
   profileCredits,
   bookmarks,
-  displayBookmarks,
   showSuggestions,
   suggestionsResults,
   routes,

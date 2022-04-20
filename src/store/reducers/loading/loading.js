@@ -1,4 +1,5 @@
 import {
+  GET_SHOW_BY_ID,
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
   SET_SHOW_BY_ID,
@@ -9,7 +10,8 @@ import {
 
 export default (state = true, action) => {
   switch (action.type) {
-    case REQUEST_SEARCH_RESULTS: {
+    case REQUEST_SEARCH_RESULTS:
+    case GET_SHOW_BY_ID: {
       return true;
     }
 

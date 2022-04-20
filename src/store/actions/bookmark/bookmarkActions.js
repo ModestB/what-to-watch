@@ -1,16 +1,11 @@
 /* global chrome */
 import {
-  TOGGLE_BOOKMARKS,
   ADD_BOOKMARK,
   REMOVE_BOOKMARK,
   SET_BOOKMARKS_STORAGE,
   GET_BOOKMARKS_STORAGE,
   UPDATE_BOOKMARKS_STORAGE,
 } from "../../actionTypes/actionTypes";
-
-export const toggleBookmarks = () => ({
-  type: TOGGLE_BOOKMARKS,
-});
 
 export const setBookmarksStorage = (bookmarks) => ({
   type: SET_BOOKMARKS_STORAGE,
