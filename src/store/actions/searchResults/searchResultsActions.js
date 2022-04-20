@@ -2,6 +2,7 @@ import {
   REQUEST_SEARCH_RESULTS,
   SET_SEARCH_RESULTS,
   GET_SEARCH_RESULTS,
+  RESET_SEARCH_RESULTS,
 } from "../../actionTypes/actionTypes";
 
 export const requestSearchResults = () => ({
@@ -21,4 +22,8 @@ export const getSearchResults = (inputValue) => ({
   payload: {
     inputValue,
   },
+});
+
+export const resetSearchResults = () => ({
+  type: RESET_SEARCH_RESULTS,
 });

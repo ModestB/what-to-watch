@@ -2,6 +2,7 @@ import {
   SET_SEARCH_RESULTS,
   GET_SEARCH_SUGGESTIONS,
   DELETE_SEARCH_SUGGESTIONS_INPUT,
+  RESET_SEARCH_RESULTS,
 } from "../../actionTypes/actionTypes";
 
 const defaultState = {
@@ -29,6 +30,13 @@ export default (state = defaultState, action) => {
       return {
         touched: true,
         inputValue: action.payload.inputValue,
+      };
+    }
+
+    case RESET_SEARCH_RESULTS: {
+      return {
+        touched: false,
+        inputValue: "",
       };
     }
 

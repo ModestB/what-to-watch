@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { connect } from "react-redux";
@@ -19,8 +19,15 @@ import CloseIcon from "../../icons/js/Close";
 
 const SearchForm = (props) => {
   const dispatch = useDispatch();
-  const nameInput = useRef(null);
+  const searchInput = useRef(null);
   const searchInputValue = useSelector((state) => state.search.inputValue);
+
+  useEffect(() => {
+    if (searchInput.current) {
+      searchInput.current.focus();
+    }
+    console.log(searchInput);
+  });
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
@@ -39,7 +46,7 @@ const SearchForm = (props) => {
         <input
           className={`${classes.input}`}
           type="text"
-          ref={nameInput}
+          ref={searchInput}
           placeholder="Enter Movie or Tv show name..."
           value={searchInputValue ? searchInputValue : ""}
           onChange={(e) => dispatch(getSearchSuggestions(e.target.value))}
@@ -48,7 +55,7 @@ const SearchForm = (props) => {
         {searchInputValue ? (
           <div
             className={classes.iconClose}
-            onClick={() => dispatch(deleteSearchSuggestionsInput(nameInput))}
+            onClick={() => dispatch(deleteSearchSuggestionsInput(searchInput))}
           >
             <CloseIcon fill="#616161" width="15px" height="15px" />
           </div>
