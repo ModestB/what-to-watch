@@ -7,24 +7,16 @@ import {
   addBookmarkSaga,
   removeBookmarkSaga,
 } from "./bookmark/bookmarkSaga";
-import { getExtraProfileInfoSaga } from "./extraProfileInfo/extraProfileInfoSaga";
 import { getExtraShowInfoSaga } from "./extraShowInfo/extraShowInfoSaga";
 import { initFilterSinglePageSaga } from "./filterSinglePage/filterSinglePageSaga";
 import { getSearchResultsSaga } from "./searchResults/searchResultsSaga";
-import {
-  getSearchSuggestionsSaga,
-  deleteSearchSuggestionsInputSaga,
-} from "./searchSuggestions/searchSuggestionsSaga";
-import { getShowByGenreSaga } from "./showByGenre/showByGenreSaga";
+import { getSearchSuggestionsSaga } from "./searchSuggestions/searchSuggestionsSaga";
 import { getShowByIdSaga } from "./showById/showByIdSaga";
 import { getTrendingShowsSaga } from "./trendingShows/trendingShowsSaga";
 export function* watchBookmarks() {
   yield takeEvery(actionsTypes.GET_BOOKMARKS_STORAGE, getBookmarksStorageSaga);
   yield takeEvery(actionsTypes.ADD_BOOKMARK, addBookmarkSaga);
   yield takeEvery(actionsTypes.REMOVE_BOOKMARK, removeBookmarkSaga);
-}
-export function* watchExtraProfileInfo() {
-  yield takeEvery(actionsTypes.GET_EXTRA_PROFILE_INFO, getExtraProfileInfoSaga);
 }
 
 export function* watchExtraShowInfo() {
@@ -47,14 +39,6 @@ export function* watchSearchSuggestions() {
     actionsTypes.GET_SEARCH_SUGGESTIONS,
     getSearchSuggestionsSaga
   );
-  yield takeEvery(
-    actionsTypes.DELETE_SEARCH_SUGGESTIONS_INPUT,
-    deleteSearchSuggestionsInputSaga
-  );
-}
-
-export function* watchShowByGenre() {
-  yield takeEvery(actionsTypes.GET_SHOWS_BY_GENRE, getShowByGenreSaga);
 }
 
 export function* watchShowById() {

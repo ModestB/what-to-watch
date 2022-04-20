@@ -2,25 +2,15 @@ import { put } from "redux-saga/effects";
 
 import * as actions from "../../actions/actions";
 
-import { API_KEY } from "../../../constants";
+import { API_URL, API_KEY } from "../../../constants";
 
-function* setExtraShowInfo(reviewsData, trailersData) {
-  yield put(actions.setExtraShowInfo(reviewsData, trailersData));
+function* setExtraShowInfo(reviews, trailers) {
+  yield put(actions.setExtraShowInfo(reviews, trailers));
 }
 
 export function* getExtraShowInfoSaga(action) {
-  let requestTrailers = "";
-  let requestReviews = "";
-  let trailersData = null;
-  let reviewsData = [];
-
-  if (action.payload.mediaType === "movie") {
-    requestTrailers = `https://api.themoviedb.org/3/movie/${action.payload.showId}/videos?api_key=${API_KEY}&language=en-US`;
-    requestReviews = `https://api.themoviedb.org/3/movie/${action.payload.showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
-  } else {
-    requestTrailers = `https://api.themoviedb.org/3/tv/${action.payload.showId}/videos?api_key=${API_KEY}&language=en-US`;
-    requestReviews = `https://api.themoviedb.org/3/tv/${action.payload.showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
-  }
+  const requestTrailers = `${API_URL}/${action.payload.mediaType}/${action.payload.showId}/videos?api_key=${API_KEY}&language=en-US`;
+  let requestReviews = `${API_URL}/${action.payload.mediaType}/${action.payload.showId}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
 
   const trailersPromise = new Promise((resolve, reject) => {
     fetch(requestTrailers)
@@ -46,8 +36,8 @@ export function* getExtraShowInfoSaga(action) {
       });
   });
 
-  trailersData = yield trailersPromise;
-  reviewsData = yield reviewsPromise;
+  const trailers = yield trailersPromise;
+  const reviews = yield reviewsPromise;
 
-  yield setExtraShowInfo(reviewsData, trailersData);
+  yield setExtraShowInfo(reviews, trailers);
 }

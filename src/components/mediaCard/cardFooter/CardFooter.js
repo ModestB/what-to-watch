@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 
 import useRoute from "../../../hooks/useRoute";
 
@@ -11,8 +10,6 @@ import classes from "./CardFooter.module.scss";
 
 const CardFooter = ({ elements }) => {
   const { isSinglePage } = useRoute();
-  const reviewsData = useSelector((state) => state.reviewsData);
-  const displayReviews = useSelector((state) => state.displayReviews);
   const [activeItemId, setActiveItemId] = useState(null);
 
   useEffect(() => {
@@ -54,10 +51,7 @@ const CardFooter = ({ elements }) => {
             clickHandler={() => setActiveItem("reviews")}
             title="Reviews"
           >
-            <Reviews
-              reviewsData={reviewsData}
-              displayReviews={displayReviews}
-            />
+            <Reviews />
           </CardFooterItem>
         </div>
       </footer>

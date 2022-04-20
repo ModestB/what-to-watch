@@ -15,9 +15,5 @@ export function* initFilterSinglePageSaga(action) {
     )
   );
 
-  if (mediaType === "person") {
-    yield put(actions.getExtraProfileInfo(action.payload.element.id));
-  } else {
-    yield put(actions.getExtraShowInfo(action.payload.element.id, mediaType));
-  }
+  yield put(actions.getExtraShowInfo(action.payload.element.id, mediaType));
 }

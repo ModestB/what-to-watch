@@ -21,7 +21,7 @@ const MediaCard = (props) => {
   const dispatch = useDispatch();
   const displayedResults = useSelector((state) => state.displayedResults);
   const singlePageType = useSelector((state) => state.singlePageType);
-  const loadingShowCard = useSelector((state) => state.loadingShowCard);
+  const loading = useSelector((state) => state.loading);
 
   const { isSinglePage, changeRoute } = useRoute();
 
@@ -39,7 +39,7 @@ const MediaCard = (props) => {
           isSinglePage ? classes.singlePage : ""
         }`}
       >
-        {loadingShowCard ? (
+        {loading ? (
           <LoadingSpinner />
         ) : (
           <div className={`${classes.card}`}>

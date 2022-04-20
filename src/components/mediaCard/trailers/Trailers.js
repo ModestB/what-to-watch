@@ -6,12 +6,12 @@ import Trailer from "./trailer/Trailer";
 import classes from "./Trailers.module.scss";
 
 const Trailers = (props) => {
-  const trailersData = useSelector((state) => state.trailersData);
+  const trailers = useSelector((state) => state.extraInfo.trailers);
 
   return (
     <div className={`${classes.trailers} customScroll`}>
-      {trailersData.length ? (
-        trailersData.map((element) => (
+      {trailers.length ? (
+        trailers.map((element) => (
           <Trailer
             key={element.id}
             youtubeKey={element.key}

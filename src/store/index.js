@@ -5,12 +5,10 @@ import reducer from "./reducers/index";
 
 import {
   watchBookmarks,
-  watchExtraProfileInfo,
   watchExtraShowInfo,
   watchFilterSinglePage,
   watchSearchResults,
   watchSearchSuggestions,
-  watchShowByGenre,
   watchShowById,
   watchTrendingShows,
 } from "./sagas/index";
@@ -29,12 +27,10 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchBookmarks);
-sagaMiddleware.run(watchExtraProfileInfo);
 sagaMiddleware.run(watchExtraShowInfo);
 sagaMiddleware.run(watchFilterSinglePage);
 sagaMiddleware.run(watchSearchResults);
 sagaMiddleware.run(watchSearchSuggestions);
-sagaMiddleware.run(watchShowByGenre);
 sagaMiddleware.run(watchShowById);
 sagaMiddleware.run(watchTrendingShows);
 

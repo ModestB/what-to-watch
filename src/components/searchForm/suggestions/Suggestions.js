@@ -6,8 +6,8 @@ import Suggestion from "./Suggestion";
 import classes from "./Suggestions.module.scss";
 
 export const Suggestions = () => {
-  const showSuggestions = useSelector((state) => state.showSuggestions);
-  const suggestionsResults = useSelector((state) => state.suggestionsResults);
+  const showSuggestions = useSelector((state) => state.suggestions.show);
+  const suggestionsResults = useSelector((state) => state.suggestions.results);
 
   return (
     <div

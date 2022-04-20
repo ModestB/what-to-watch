@@ -5,17 +5,15 @@ import classes from "./Reviews.module.scss";
 
 import Review from "./review/Review";
 
-const Reviews = (props) => {
-  const reviewsData = useSelector((state) => state.reviewsData);
+const Reviews = () => {
+  const reviews = useSelector((state) => state.extraInfo.reviews);
 
   return (
     <div
-      className={`${
-        props.reviewsData.length > 0 ? classes.reviews : ""
-      } customScroll`}
+      className={`${reviews.length > 0 ? classes.reviews : ""} customScroll`}
     >
-      {reviewsData.length ? (
-        reviewsData.map((element) => (
+      {reviews.length ? (
+        reviews.map((element) => (
           <Review
             key={element.id}
             author={element.author}

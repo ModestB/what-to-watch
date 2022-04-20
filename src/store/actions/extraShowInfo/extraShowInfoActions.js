@@ -3,11 +3,11 @@ import {
   GET_EXTRA_SHOW_INFO,
 } from "../../actionTypes/actionTypes";
 
-export const setExtraShowInfo = (reviewsData, trailersData) => ({
+export const setExtraShowInfo = (reviews, trailers) => ({
   type: SET_EXTRA_SHOW_INFO,
   payload: {
-    reviewsData,
-    trailersData,
+    reviews,
+    trailers,
   },
 });
 

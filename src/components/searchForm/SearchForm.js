@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { connect } from "react-redux";
-
 // Action Types
 import {
   getSearchResults,
@@ -26,8 +24,7 @@ const SearchForm = (props) => {
     if (searchInput.current) {
       searchInput.current.focus();
     }
-    console.log(searchInput);
-  });
+  }, []);
 
   const formSubmitHandler = (e) => {
     e.preventDefault();

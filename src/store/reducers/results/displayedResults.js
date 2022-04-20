@@ -3,7 +3,6 @@ import {
   SET_SHOW_BY_ID,
   FILTER_SINGLE_PAGE,
   SET_TRENDING_SHOWS,
-  SET_SHOWS_BY_GENRE,
   SHOW_PREVIOUS_RESULTS,
   SET_ROUTE,
   RESET_DISPLAYED_RESULTS,
@@ -28,8 +27,7 @@ export default (state = defaultState, action) => {
   switch (action.type) {
     case SET_SEARCH_RESULTS:
     case SET_SHOW_BY_ID:
-    case SET_TRENDING_SHOWS:
-    case SET_SHOWS_BY_GENRE: {
+    case SET_TRENDING_SHOWS: {
       return {
         current: filterOutPersonMedia(action.payload.searchResults),
         previous: state.current,
