@@ -10,6 +10,6 @@ export const showByIdApiUrl = (id, mediaType) => {
   return `tv/${id}?api_key=${API_KEY}&language=en-US `;
 };
 
-export const APIT_MULTI_SEARCH_URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
+export const API_MULTI_SEARCH_URL = `https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=`;
 
 export const API_URL = "https://api.themoviedb.org/3";
