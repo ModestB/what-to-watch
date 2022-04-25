@@ -22,7 +22,11 @@ export const CardTitle = ({ showTitle }) => {
     }
   }, [showTitle, isSinglePage]);
 
-  return <div className={`${classes.title}`}>{title}</div>;
+  return (
+    <div title={`${showTitle}`} className={`${classes.title}`}>
+      {title}
+    </div>
+  );
 };
 
 export default CardTitle;

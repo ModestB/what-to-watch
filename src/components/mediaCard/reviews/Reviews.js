@@ -9,9 +9,7 @@ const Reviews = () => {
   const reviews = useSelector((state) => state.extraInfo.reviews);
 
   return (
-    <div
-      className={`${reviews.length > 0 ? classes.reviews : ""} customScroll`}
-    >
+    <div className={`${classes.reviews} customScroll`}>
       {reviews.length ? (
         reviews.map((element) => (
           <Review

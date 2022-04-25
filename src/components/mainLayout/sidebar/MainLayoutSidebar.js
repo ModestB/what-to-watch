@@ -14,9 +14,9 @@ const MainLayoutSidebar = () => {
 
   return (
     <aside className={`${classes.aside}`}>
-      <TrendingItem />
-      <BookmarksItem />
       <SearchItem />
+      <BookmarksItem />
+      <TrendingItem />
       {isSinglePage && <BackItem />}
       <MovieDbSmall className={`${classes.logo}`} />
     </aside>
