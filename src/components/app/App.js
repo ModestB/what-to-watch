@@ -15,7 +15,6 @@ import { searchSuggestionSelectHandler } from "../../assets/js/all";
 
 // Components imports
 import IconTv from "../../icons/js/Tv";
-import MovieDbSmall from "../../icons/js/MoviedbSmall";
 import MainLayout from "../mainLayout/MainLayout";
 
 const App = (props) => {
@@ -38,9 +37,7 @@ const App = (props) => {
           target="_blank"
           rel="noopener noreferrer"
           className={`${classes.logo}`}
-        >
-          <MovieDbSmall height="50px" width="50px" />
-        </a>
+        ></a>
       </header>
       <MainLayout />
     </main>

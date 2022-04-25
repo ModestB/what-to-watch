@@ -5,6 +5,7 @@ import BookmarksItem from "./items/bookmarkItem/BookmarkItem";
 import SearchItem from "./items/searchItem/SearchItem";
 import TrendingItem from "./items/trendingItem/TrendingItem";
 import BackItem from "./items/backItem/BackItem";
+import MovieDbSmall from "../../../icons/js/MoviedbSmall";
 
 import classes from "./MainLayoutSidebar.module.scss";
 
@@ -17,6 +18,7 @@ const MainLayoutSidebar = () => {
       <BookmarksItem />
       <SearchItem />
       {isSinglePage && <BackItem />}
+      <MovieDbSmall className={`${classes.logo}`} />
     </aside>
   );
 };
