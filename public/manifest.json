@@ -1,16 +1,9 @@
 {
-  "manifest_version": 2,
-
+  "manifest_version": 3,
   "name": "What To Watch",
   "description": "Instantly find your favourite movies and TV shows! Or just search for something new.",
-  "version": "0.1.2",
-  "applications": {
-    "gecko": {
-        "id": "mbujanauskas@gmail.com"
-    }
-  },
-
-  "browser_action": {
+  "version": "0.1.4",
+  "action": {
     "default_popup": "index.html",
     "default_title": "What To Watch"
   },
@@ -19,8 +12,10 @@
     "48": "wtw-logo.png",
     "128": "wtw-logo.png"
   },
-  "content_security_policy": "script-src 'self' 'sha256-5As4+3YpY62+l38PsxCEkjB1R4YtyktBtRScTJ3fyLU='; object-src 'self'",
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
   "permissions": [
-	  "storage"
+    "storage"
   ]
 }

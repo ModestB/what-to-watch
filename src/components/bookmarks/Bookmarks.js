@@ -34,7 +34,7 @@ export const Bookmarks = (props) => {
           );
         })
       ) : (
-        <p>No bookmarks</p>
+        <p>No bookmarks.</p>
       )}
     </div>
   );

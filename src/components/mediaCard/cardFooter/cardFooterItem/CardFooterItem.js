@@ -1,7 +1,5 @@
 import React from "react";
 
-import CloseIcon from "../../../../icons/js/Close";
-
 import classes from "./CardFooterItem.module.scss";
 
 export const CardFooterItem = ({

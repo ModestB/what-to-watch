@@ -18,7 +18,15 @@ const MainLayoutSidebar = () => {
       <BookmarksItem />
       <TrendingItem />
       {isSinglePage && <BackItem />}
-      <MovieDbSmall className={`${classes.logo}`} />
+
+      <a
+        href="https://www.themoviedb.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${classes.logo}`}
+      >
+        <MovieDbSmall />
+      </a>
     </aside>
   );
 };

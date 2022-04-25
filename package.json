@@ -1,6 +1,6 @@
 {
   "name": "what-to-watch",
-  "version": "0.2.0",
+  "version": "0.1.4",
   "private": true,
   "dependencies": {
     "axios": "^0.26.1",
@@ -22,6 +22,8 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint": "^8.9.0",
     "events": "^3.3.0",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0",
     "node-sass": "^7.0.0",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",

@@ -32,12 +32,6 @@ const App = (props) => {
         <h1>
           <b>What</b> To Watch
         </h1>
-        <a
-          href="https://www.themoviedb.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`${classes.logo}`}
-        ></a>
       </header>
       <MainLayout />
     </main>
