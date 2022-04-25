@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 // Action Types
 import { addBookmark, removeBookmark } from "../../../store/actions/actions";
@@ -8,13 +8,15 @@ import classes from "./BookmarkBtn.module.scss";
 import HeartIcon from "../../../icons/js/Heart";
 
 const BookmarkBtn = (props) => {
-  let [active, setActive] = useState(false);
+  const dispatch = useDispatch();
+  const bookmarks = useSelector((state) => state.bookmarks);
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     let bookmark = null;
 
-    if (props.bookmarks) {
-      bookmark = props.bookmarks.find((boomark) => {
+    if (bookmarks) {
+      bookmark = bookmarks.find((boomark) => {
         return boomark.id === props.id;
       });
     }
@@ -24,19 +26,21 @@ const BookmarkBtn = (props) => {
     } else {
       setActive(false);
     }
-  }, [props.bookmarks, props.id]);
+  }, [bookmarks, props.id]);
 
   function clickHandler() {
     if (!active) {
-      props.addBookmark({
-        id: props.id,
-        title: props.title,
-        date: props.date,
-        mediaType: props.mediaType,
-      });
+      dispatch(
+        addBookmark({
+          id: props.id,
+          title: props.title,
+          date: props.date,
+          mediaType: props.mediaType,
+        })
+      );
     } else {
       setActive(false);
-      props.removeBookmark(props.id);
+      dispatch(removeBookmark(props.id));
     }
   }
 
@@ -50,17 +54,4 @@ const BookmarkBtn = (props) => {
   );
 };
 
-const mapStateProps = (state) => {
-  return {
-    bookmarks: state.bookmarks,
-  };
-};
-
-const mapStateDispatch = (dispatch) => {
-  return {
-    addBookmark: (bookmarkDetails) => dispatch(addBookmark(bookmarkDetails)),
-    removeBookmark: (bookmarkId) => dispatch(removeBookmark(bookmarkId)),
-  };
-};
-
-export default connect(mapStateProps, mapStateDispatch)(BookmarkBtn);
+export default BookmarkBtn;

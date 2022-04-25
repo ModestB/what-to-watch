@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
 import classes from "./BookmarkItem.module.scss";
 
@@ -7,8 +7,10 @@ import HeartIcon from "../../../../../icons/js/Heart";
 import SidebarItem from "../SidebarItem";
 
 export const BookmarksItem = (props) => {
+  const bookmarks = useSelector((state) => state.bookmarks);
   const isInitialMount = useRef(true);
-  let [heartKey, setHeartKey] = useState(0);
+  const [heartKey, setHeartKey] = useState(0);
+
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false;
@@ -16,7 +18,7 @@ export const BookmarksItem = (props) => {
       setHeartKey(heartKey + 1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.bookmarks]);
+  }, [bookmarks]);
 
   return (
     <SidebarItem title="Bookmarks" route="bookmarks">
@@ -31,10 +33,4 @@ export const BookmarksItem = (props) => {
   );
 };
 
-const mapStateProps = (state) => {
-  return {
-    bookmarks: state.bookmarks,
-  };
-};
-
-export default connect(mapStateProps)(BookmarksItem);
+export default BookmarksItem;
