@@ -6,8 +6,6 @@ import {
   UPDATE_BOOKMARKS_STORAGE,
 } from "../../actionTypes/actionTypes";
 
-import { LS_BOOKMARKS } from "../../../constants";
-
 function addBookmark(state, bookmarkDetails) {
   let bookmarks = [];
   if (!state) {
@@ -29,7 +27,7 @@ function removeBookmark(state, bookmarkId) {
 
 function updateBookmarksStorage(bookmarks) {
   if (process.env.NODE_ENV !== "production") {
-    localStorage.setItem(LS_BOOKMARKS, JSON.stringify(bookmarks));
+    localStorage.setItem("LS_BOOKMARKS", JSON.stringify(bookmarks));
     return bookmarks;
   }
   chrome.storage.sync.set({ LS_BOOKMARKS: bookmarks });
