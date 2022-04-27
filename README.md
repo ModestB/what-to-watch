@@ -14,8 +14,8 @@ What to watch is a browser extension for searching for Movies, TV shows and Acto
 
 ### Features
 
-- Ability to search for Movies, TV shows, Actors
-- View additional information (trailers, reviews, rating, description, biography) about Movie. TV show or Actor
+- Ability to search for Movies, TV shows
+- View additional information (trailers, reviews, rating, description, biography) about Movie. TV show
 - Ability to save Movies and TV shows to "To watch list" 
 - Support for Chrome, Firefox
 
