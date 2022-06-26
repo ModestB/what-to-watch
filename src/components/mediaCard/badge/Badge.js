@@ -18,7 +18,7 @@ export const Badge = ({ rating }) => {
   return (
     <span className={`${[classes.badge, classes[badgeType]].join(" ")}`}>
       {" "}
-      {rating}{" "}
+      {rating.toFixed(1)}{" "}
     </span>
   );
 };
